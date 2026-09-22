@@ -2,8 +2,8 @@
 
 The worked-example layer of the **Common Errors** course for the OpenClaw MM Rubrics MULTI TURN project.
 
-24 mistakes, each with the real audited tasks that made it, with the field that broke the task marked and a
-short note on what it should have said instead.
+24 errors that keep costing people their tasks. Each page carries the rule the error breaks, quoted from the
+Guidelines or the QC spec, then a real task where it happened with the field that broke it marked.
 
 **→ [Open the viewer](https://pablitofott14.github.io/red-shell-common-errors/)**
 
@@ -14,7 +14,7 @@ short note on what it should have said instead.
 | Page | What it does |
 |---|---|
 | `index.html` | The menu. Every mistake, grouped into the course's seven sections, with how many tasks and people each one hit. |
-| `mistakes/<name>.html` | One page per mistake. What it is, how to spot it in your own task, what to do instead, then the real examples. |
+| `mistakes/<name>.html` | One page per error. The rule it breaks, what the mistake is, how to spot it in your own task, what to do instead, then the real examples. |
 | `checklist.html` | Every recognition test on one page, in build order. The five minutes before you submit. |
 | `data/course.json` | The same content as data, if you want to render it somewhere else. |
 
@@ -22,9 +22,11 @@ Each example shows only the slice of the task that carries the mistake — the c
 prompt turn, the file listing — rather than the whole folder. The offending row is marked, and where a task
 repeats the same defect a dozen times the page shows four and tells you the count.
 
-## Where the evidence comes from
+## How the examples were chosen
 
-Built from **88 audits across 81 tasks**. Two things had to agree before an example was published:
+The audit record decides which errors are worth a page and which task illustrates each one. It is not what
+makes any of these an error: that is the rule quoted at the top of every page. Two things had to agree
+before an example was published:
 
 1. **A mechanical detector** reading the task folder directly, so the defect is provably in the data rather than
    inferred from a narrative. The detectors catch every task the auditors flagged for those mistakes, and

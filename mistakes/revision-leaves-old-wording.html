@@ -10,8 +10,8 @@
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 7 · Closing the task</p>
 <div class="mhead"><h1>A revision that leaves the old wording standing</h1><span class="bad fail">fails the task</span></div>
-<div class="mstats"><div><b>5</b> tasks hit</div><div><b>5</b> people</div>
-<div class="d">Multi-Turn - Revision Turn Handling</div></div>
+<div class="mstats"><div class="d">Multi-Turn - Revision Turn Handling</div></div>
+<div class="rule"><h4>What the project asks for <em>gl §6.3 · spec · Multi-Turn - Revision Turn Handling</em></h4><p>For a revision turn, “the golden has to show the edit applied to work that already existed: earlier content kept, the change visible, nothing left stale that depended on it. A total that still includes removed rows, or a header still describing the old state, is a regression.”</p></div>
 <div class="three">
   <div class="t3"><h4>What the mistake is</h4><p>The revision turn changes the thing it was asked to change and leaves every sentence, label and comment that depended on it untouched, so the final artifact states the old position and the new one at the same time.</p></div>
   <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>After every revision turn, search the artifact for the value, the label and the name that moved, and read each hit in place.</p></div>
@@ -36,11 +36,11 @@ A couple of notes on judgment:
 - It&#x27;s a live panel — it derives from the same row data, so if a stage or chaser changes, the slice updates with it.
 
 Everything else on the page is unchanged (stuck-story column, office clocks, sitting-vs-window, chaser, the parked phishing mail, filters/sort/search). Verified the JS parses and the three answers compute correctly.</div></div></div></div><div class="panel"><div class="ph">Prompt, turn 1</div><div class="pb"><div class="turn"><div class="tn">Turn 1</div><div class="tt">Hey I need one view of the open city records requests so I&#x27;m not updating a list by hand. I&#x27;ve got stuff sitting with the clerk&#x27;s office and with other city departments and they&#x27;re not all in the same place. I dumped the August pile, just a desk short of the folder plus a mail screenshot from that same week. There&#x27;s other city paper in the stack that isn&#x27;t a request. Can you build me an interactive dashboard in a file called foia_register.html? I want a register of the actual open requests by agency and stage, with the dates pulled off from the messages and reference numbers they came from, using the pile and what&#x27;s already in my mail. Stamp last checked with the date that&#x27;s on that August pile.</div></div></div></div></div><div class="rationale"><div class="rr"><div class="rl">What is wrong</div><div class="rv">The newsletter teaser rides the same Records batch</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">That sentence still renders one line after the card lists &quot;The newsletter (RPD-26-2204, 58d past)&quot;, so the page places the teaser in two places at once. The same edit left the expanded row detail printing the figure as &quot;days since filing&quot; while the column header, the summary card and the footer all say acknowledgment.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Delete the walk-in sentence or move it to the row the teaser now sits on, and change the row detail to read &quot;days since acknowledgment&quot; so all four places agree.</div></div></div></article>
-<section class="who"><h4>Contributors this was found on</h4>
-<p class="whop">5 of the people audited so far. IDs are stable across the dashboard.</p>
+<section class="who"><h4>Who this has come up for</h4>
+<p class="whop">So you can see whether it is yours to fix. IDs are stable across the insights dashboard.</p>
 <div class="cbs"><code class="cbid">CB-262A</code><code class="cbid">CB-33C0</code><code class="cbid">CB-6325</code><code class="cbid">CB-6586</code><code class="cbid">CB-B5CF</code></div></section>
 <nav class="pager"><a href="golden-contradicts-sources.html">← The golden states something its own sources contradict</a><a href="closeout-mechanics.html">The five minute close-out nobody runs →</a></nav>
 </main>
-<footer><p>Built from 88 audits across 81 tasks.
-Every example is a real task. Contributors are shown as stable IDs.</p></footer>
+<footer><p>Every example on these pages is a real task from this project. Contributors are shown as
+stable IDs.</p></footer>
 </body></html>
