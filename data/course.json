@@ -1,10 +1,4 @@
 {
- "generated_from": {
-  "audits": 88,
-  "tasks": 81,
-  "errors": 49,
-  "updated": "2026-09-22T01:10:46"
- },
  "sections": [
   {
    "n": 1,
@@ -92,9 +86,6 @@
    "slug": "scenario-drift",
    "title": "The Scenario field describes a different task",
    "section": 1,
-   "ce": [
-    "CE-011"
-   ],
    "dim": "Rejected at QC before the rubric is read",
    "cost": "fail",
    "what": "The Scenario on file is not the task you built. Everything downstream — prompts, Draft History, milestones, criteria, golden — is one scenario, and the Scenario field is another, often with a Required Output line naming a deliverable the task never produces.",
@@ -102,47 +93,31 @@
    "spot": "Open the Story Draft step and read the Scenario field out loud against prompt 1. If the person, the deliverable or the Required Output line do not match, you have it.",
    "fix": "Read the Scenario back before you write prompt 1, and again as the last check before you submit. Where the two disagree, stop and settle which one is right — never ship both.",
    "note": null,
-   "rule": "The scenario, the category and the universe are assigned parameters. The prompt must not drift away from the assigned task parameters, and a build that does is rejected before the rubric is read.",
-   "rule_src": "gl §1",
-   "most_common": false,
-   "tasks": 21,
-   "people": 20,
-   "contributors": [
-    "CB-0578",
-    "CB-08C6",
-    "CB-0DCC",
-    "CB-11E3",
-    "CB-14C3",
-    "CB-4D8C",
-    "CB-6325",
-    "CB-727B",
-    "CB-7A33",
-    "CB-8828",
-    "CB-9BB4",
-    "CB-9CEC",
-    "CB-9EF5",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-A5C1",
-    "CB-B0DD",
-    "CB-B5CF",
-    "CB-BA13",
-    "CB-D514"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "1.1 Task Parameters & Execution Rules",
+     "quote": "Four parameters are assigned to you and cannot be changed: task type, category, subcategory and universe. Your prompts must align strictly with them, and a task that drifts from any of them is rejected at QC.",
+     "means": "Drift is not a quality problem to be argued down. It is a rejection condition."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "1.1 Task Parameters & Execution Rules",
+     "quote": "The scenario is a predefined idea you are given and are expected to build the task around. It is not optional or arbitrary; it is a mandatory part of the task.",
+     "means": "The Scenario field is an assigned parameter, so it has to describe the task you shipped."
+    }
    ],
+   "rule_src": "Guidelines 1.1 Task Parameters & Execution Rules",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8bb",
-     "source": "CE-011",
-     "confidence": 0.91,
-     "locator": null,
      "scenario": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced the",
      "category": "Commerce & Product",
      "turns": 3,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-BA13",
      "setup": "Three turns producing ada_list.html, a buy list built from four photographs and the Fresh catalog and order history.",
      "wrong": "Scenario: \"There is an ecobee in the hallway and an argument in a text thread going back to 2023\", with a Required Output line asking for six Dixie Electric bills plotted against degree days for Hattiesburg.",
-     "problem": "Nothing else in the folder is about thermostats or electricity bills. A reviewer opening the task cannot tell whether the contributor built the wrong scenario, whose penalty is rejection, or whether the export carried stale text into an otherwise correct task, whose penalty is nothing. Only the platform settles it, so the task stalls on a field nobody checked.",
+     "problem": "Nothing else in the folder is about thermostats or electricity bills. A reviewer opening the task cannot tell whether the task was built around the wrong scenario, whose penalty is rejection, or whether the export carried stale text into an otherwise correct task, whose penalty is nothing. Only the platform settles it, so the task stalls on a field nobody checked.",
      "right": "Open the Story Draft step, read the Scenario field and make it describe the task you built: the deliverable, the person, and the Required Output line that matches prompt 1.",
      "highlights": [
       "There is an ecobee in the hallway and an argument in a text thread going back to 2023"
@@ -183,9 +158,6 @@
    "slug": "below-complexity-bar",
    "title": "The deliverable sits below the complexity bar",
    "section": 1,
-   "ce": [
-    "CE-014"
-   ],
    "dim": "Complexity Bar",
    "cost": "fail",
    "what": "The task ships a styled static page — no script, no control, no state, no linked views — while the Agent Objective calls it a dashboard. The scenario and the data behind it are usually strong. Nothing in any prompt asks for interaction, so the page comes out a document.",
@@ -193,34 +165,34 @@
    "spot": "Read your own prompts and ask what the page does when someone clicks it. If the answer is nothing, you built a document. The word dashboard in the Agent Objective does not change that.",
    "fix": "Pick the deliverable type before prompt 1 and check it against the bar's floor for that type. If the data the agent will gather would support a sort, a filter or two linked views, write the prompt that asks for them.",
    "note": null,
-   "rule": "“Raising the complexity standard from Blue Shell has been one of the clearest and most consistent client requirements.” Interactive HTML needs “interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify.” A dashboard needs “several linked views over data the model extracted itself. One chart is not a dashboard.” Both are P0.",
-   "rule_src": "gl · Complexity Bar",
-   "most_common": false,
-   "tasks": 10,
-   "people": 10,
-   "contributors": [
-    "CB-0DCC",
-    "CB-1449",
-    "CB-33C0",
-    "CB-963D",
-    "CB-9BB4",
-    "CB-9C2F",
-    "CB-9CEC",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-B6F2"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "Complexity Bar",
+     "quote": "Interactive HTML — Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard — Several linked views over data the model extracted itself. One chart is not a dashboard.",
+     "means": "Both are P0 floors. A page with no control and no state is a document, whatever the objective calls it."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "Complexity Bar",
+     "quote": "Make sure the task clears that bar while you are still designing the scenario, because the artifact defined in the opening prompt shapes the inputs, workflow, and rubric set that follow.",
+     "means": "This is decided before prompt 1. After the run it cannot be patched."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "Complexity Bar",
+     "quote": "Raising the complexity standard from Blue Shell has been one of the clearest and most consistent client requirements.",
+     "means": "The bar is a client requirement, not a house preference."
+    }
    ],
+   "rule_src": "Guidelines Complexity Bar",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8bb",
-     "source": "CE-014",
-     "confidence": 0.8,
-     "locator": null,
      "scenario": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced the",
      "category": "Commerce & Product",
      "turns": 3,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-BA13",
      "setup": "Three turns; the Agent Objective calls the deliverable a dashboard, and 14 orders and 222 order lines sit behind the five products it covers.",
      "wrong": "ada_list.html ships with no script tag, no button, no filter and no in-page navigation: 8,959 characters of markup around nine embedded images.",
      "problem": "What the task produces is sections, a table and figures the text refers to — a document. The data for a real dashboard was already gathered: a sortable buy list, a filter for Fresh versus not-on-Fresh rows, or a view showing each usual product against its alternative with the order counts that decide between them were all available and none were asked for.",
@@ -262,9 +234,6 @@
    "slug": "universe-missing-records",
    "title": "The rules point at records the universe does not hold",
    "section": 1,
-   "ce": [
-    "CE-045"
-   ],
    "dim": "Trajectory - Feasibility With Tools",
    "cost": "fail",
    "what": "The scenario's rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it — the prompts, the rules file and the criteria all read as though the data is there.",
@@ -272,26 +241,34 @@
    "spot": "The tell is in your own golden: a search that comes back empty, a steering turn telling the agent to reach the page another way, and a deliverable that flags its own figures as unconfirmed.",
    "fix": "At scenario-design time, open the universe and confirm it returns every record your rules point at, one query per rule. An empty search on the first golden turn is a signal to fix the source, never something to steer around.",
    "note": null,
-   "rule": "Every requirement the task states has to be reachable with the tools and records the assigned universe actually exposes. A rule pointing at data no tool returns cannot be satisfied by any run, so the criteria resting on it are unreachable rather than hard.",
-   "rule_src": "spec · Trajectory - Feasibility With Tools",
-   "most_common": false,
-   "tasks": 2,
-   "people": 2,
-   "contributors": [
-    "CB-262A",
-    "CB-9BB4"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "1.2.1 Start With the Universe",
+     "quote": "Confirm there is enough material. The universe combined with the multimodal input has to sustain the opening prompt and every follow-up you intend to add, not just the first request.",
+     "means": "Every rule you write has to have a record behind it, for every turn, not only turn 1."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "4. Valid vs. Invalid Model Failures",
+     "quote": "Data that is not in the server, asked for anyway, and the model penalised for not finding it.",
+     "means": "Listed under “Not valid: your defect, or the platform's”. It grades your defect, not the model's."
+    },
+    {
+     "doc": "QC spec",
+     "sec": "Trajectory - Feasibility With Tools",
+     "quote": "The primary request is impractical or impossible and can't be answered by the tools available or enabled for the task.",
+     "means": "That is the option QC picks at score 2. Unreachable is worse than hard: no run can satisfy it."
+    }
    ],
+   "rule_src": "Guidelines 1.2.1 Start With the Universe  ·  Guidelines 4. Valid vs. Invalid Model Failures  ·  QC spec Trajectory - Feasibility With Tools",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
-     "source": "CE-045",
-     "confidence": 1.0,
-     "locator": null,
      "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long",
      "category": "Commerce & Product",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-262A",
      "setup": "Five items on a neighbour's board have to be priced against what Amazon Fresh actually sells, with the delivery fee taken from Fresh's policy and one apartment's quantity from a Subscribe and Save record. The task is assigned to openclaw_mm_thaddeus_okonjo_commerce_product.",
      "wrong": "Rule 1 prices every line \"at the pack option we add to the cart from Fresh's catalog\"; rule 5 takes the delivery fee from \"Fresh's Delivery Policy and nothing else\"; rule 7 allows only claims \"Fresh's own catalog or policies back up\". That universe's Fresh catalog holds 39 products and none of the five board items, its policies and faqs lists are both empty, and it carries no subscription records at all.",
      "problem": "The golden hit the wall in the run itself. Turn 3 tells the agent \"all five items are sold on fresh, so if the search is coming back empty try getting to the product pages and the policy pages another way\", turn 7 becomes \"leave anything you genuinely cant confirm as is\", and the delivered page states \"its catalog search returns nothing, so I can't pull the building's real prices\" - so every price on it is the board figure flagged unconfirmed, and the criteria wanting $0.55 a lb, $5.45 a tub and a $4.99 fee cannot be reached by anyone.",
@@ -344,10 +321,6 @@
    "slug": "steering-hands-answer",
    "title": "A steering turn that hands over the answer",
    "section": 2,
-   "ce": [
-    "CE-013",
-    "CE-047"
-   ],
    "dim": "Multi-Turn - Simulator Answer Leak",
    "cost": "fail",
    "what": "A user turn goes past saying something is wrong and supplies what the agent was meant to derive: the exact file to open, the value, the structure of the answer, or the conclusion. It usually appears after two or three softer turns failed to move the run.",
@@ -355,41 +328,37 @@
    "spot": "Read each of your turns and ask what is left for the agent to work out. Then read your negative criteria against the same turns and check each one is still reachable.",
    "fix": "Write every steering turn in the voice of the person in the scenario. Say something looks wrong and point at the area — never at the file, the value, the structure or the conclusion. If the model still cannot get there, the scenario needs fixing, not the hint.",
    "note": null,
-   "rule": "You are the user, not a second author. A follow up may say something looks wrong and point at the area; it may not supply the file, the value, the structure or the conclusion. Pointing directly at the failure “compromises the 50% failure threshold every task has to meet”, and any leak of a graded value fails the dimension however late in the conversation it happens.",
-   "rule_src": "gl §3 · spec · Multi-Turn - Simulator Answer Leak",
-   "most_common": false,
-   "tasks": 15,
-   "people": 14,
-   "contributors": [
-    "CB-0DCC",
-    "CB-0EA9",
-    "CB-1449",
-    "CB-262A",
-    "CB-33C0",
-    "CB-4D8C",
-    "CB-66FF",
-    "CB-727B",
-    "CB-7A33",
-    "CB-93C1",
-    "CB-9C2F",
-    "CB-9E5C",
-    "CB-BA13",
-    "CB-CBD3"
+   "sources": [
+    {
+     "doc": "QC spec",
+     "sec": "Multi-Turn - Simulator Answer Leak",
+     "quote": "The no-answer-leak rule extends to everything the CB types as the simulated user, on every turn. The user may say THAT something is wrong; they may not say WHAT the right answer is, WHERE exactly to find it, or HOW MANY of anything there are — point at the area, never at the value. This is the most frequently broken rule in the multi-turn format because it feels like helping. Read every user turn, not just the opening prompt.",
+     "means": "Every turn you type counts, including the ones you sent only to unstick the golden."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "1.2.3 Create the Initial Prompt and the Follow-ups",
+     "quote": "Never flag the miss. If the agent omitted a total, misread a date, or ignored a source, do not tell it what went wrong or where to look. Pointing directly at the failure compromises the 50% failure threshold every task has to meet.",
+     "means": "Naming the miss is what breaks the task, not naming the value."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "7.2 Steering the Run & Hinting",
+     "quote": "A hint explains what is still missing from the user's point of view. It should never tell the model what to write or how to solve it. The test is simple: if the model can copy your hint into the artifact or use it directly as the reasoning needed to reach the milestone, you have given away the answer.",
+     "means": "The copy test is the one to run on every steering turn before you send it."
+    }
    ],
+   "rule_src": "QC spec Multi-Turn - Simulator Answer Leak  ·  Guidelines 1.2.3 Create the Initial Prompt and the Follow-ups  ·  Guidelines 7.2 Steering the Run & Hinting",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1b9",
-     "source": "CE-013",
-     "confidence": 1.0,
-     "locator": "golden.16",
      "scenario": "A fence built in 1948 sits 41.3 feet west of where the record line falls, for 1.9 miles, and 9.62 acres of native grass turn on whether it is an agreed boundary or a fence of convenience. Three original 1882 stone mounds were found and tied, and there is an ir",
      "category": "Research",
      "turns": 3,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-0DCC",
      "setup": "The run kept reading PT 128 off a deposition page instead of the field notes. Turn 8 had already pointed at the day-3 field notes in the mail and said the numbers were not locked in an unreachable book, and the run still had to find the attachment itself.",
      "wrong": "Not the physical field book. Open the day-3 field notes PDF in the mail, the file named 26-014_Field_notes_2026-03-19.pdf, and put what that file says about PT 128 on the cedar-mound card.",
-     "problem": "Naming the file removes the step the task existed to test. The criterion that grades PT 128 is then satisfied by obedience rather than by search, so a model that would never have found the attachment scores identically to one that would. Worse is what the same habit did on another audited task: a steering turn stated that a checking balance was \"an as-of current balance, not a beginning-of-month balance\" when the account's last transaction was 31 August, and three criteria were written to match the wrong answer that produced.",
+     "problem": "Naming the file removes the step the task existed to test. The criterion that grades PT 128 is then satisfied by obedience rather than by search, so a model that would never have found the attachment scores identically to one that would. Worse is what the same habit did on another task: a steering turn stated that a checking balance was \"an as-of current balance, not a beginning-of-month balance\" when the account's last transaction was 31 August, and three criteria were written to match the wrong answer that produced.",
      "right": "That's not the physical field book. There's a day-3 write-up that went out with the mail, and what it says about PT 128 should be on the cedar-mound card.",
      "highlights": [],
      "panels": [
@@ -477,14 +446,9 @@
     },
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
-     "source": "CE-047",
-     "confidence": 1.0,
-     "locator": "objective.30",
      "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long",
      "category": "Commerce & Product",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-262A",
      "setup": "A resident's phone screenshot shows Fresh prices from her own Prime account. Rule 5 bars member prices, and criterion 30 is a negative worth -5 for pricing the order off that screenshot.",
      "wrong": "Turn 7: \"dont price our order off rosas phone - thats her own account, not the buildings\".",
      "problem": "That is criterion 30's whole test, stated by the user. After turn 7 no run can fail the criterion, so the -5 never fires and the trap the screenshot was placed to set is closed by the conversation that released it.",
@@ -571,9 +535,6 @@
    "slug": "prompt-answers-attachment",
    "title": "A prompt that answers its own attachment",
    "section": 2,
-   "ce": [
-    "CE-030"
-   ],
    "dim": "Multi-Turn - Simulator Answer Leak",
    "cost": "fail",
    "what": "A user prompt releases a file and states the value the file exists to make the agent read: how many items are in the photograph, what the total comes to, which of two documents is current. It sits in the same sentence that hands over the asset, written as helpful context by someone who has already looked at the file.",
@@ -581,27 +542,28 @@
    "spot": "Read each prompt beside the file it releases. Every number, name or conclusion that the file itself carries is a leak, however conversational it sounds.",
    "fix": "State the requirement — the plates lie flat, the figure has to be the current one — and leave the value to the attachment.",
    "note": null,
-   "rule": "A prompt “states the policy directly, removing the work you intended to grade” the moment it carries what the attachment was there to make the agent read. The rule covers every turn you write as the user, and it treats a count as a value.",
-   "rule_src": "gl §3 · spec · Multi-Turn - Simulator Answer Leak",
-   "most_common": false,
-   "tasks": 3,
-   "people": 3,
-   "contributors": [
-    "CB-93C1",
-    "CB-B5CF",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "1.2.3 Create the Initial Prompt and the Follow-ups",
+     "quote": "A weak initial prompt that fails the task: States the policy directly in the prompt, removing the work you intended to grade. Plants shortcuts, obvious clues, or filenames that reveal the answer.",
+     "means": "The strong column says the opposite: keep thresholds, rules and formats in the input files, where the agent must find them."
+    },
+    {
+     "doc": "QC spec",
+     "sec": "Multi-Turn - Simulator Answer Leak",
+     "quote": "they may not say WHAT the right answer is, WHERE exactly to find it, or HOW MANY of anything there are",
+     "means": "A count is a value. “the five receipts” is a leak in the same sentence that attaches them."
+    }
    ],
+   "rule_src": "Guidelines 1.2.3 Create the Initial Prompt and the Follow-ups  ·  QC spec Multi-Turn - Simulator Answer Leak",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6a9e4478f55775e9124002e5",
-     "source": "CE-030",
-     "confidence": 1.0,
-     "locator": "prompt.2",
      "scenario": "The front room of the 1947 house needs a built-in for the drafting table, the plate storage, and the bound notebooks. The wall is not square, because no wall in that house is.",
      "category": "Property & Space",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-93C1",
      "setup": "IMG_4392 is held back from turn 1 and released at turn 2 so the agent has to count and measure the plates before sizing a shelf for them.",
      "wrong": "\"Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit.\"",
      "problem": "Counting five large plates and one small one out of that photograph is the read the deferred asset exists to force, and the stack at the back of the frame is exactly what a model gets wrong. With the count in the prompt the photograph settles nothing, and because no criterion in the set sizes the shelf either, a run that never opens the file passes the whole task.",
@@ -692,10 +654,6 @@
    "slug": "deferred-asset-announced",
    "title": "A deferred asset that announces its own turn",
    "section": 2,
-   "ce": [
-    "CE-017",
-    "CE-035"
-   ],
    "dim": "Input Artifacts - Deferred Asset Handling",
    "cost": "fail",
    "what": "Material available at turn 1 tells the agent what a later turn will ask. Two shapes: a deferred file named for the turn it belongs to, and a turn-1 document carrying the instruction prompt 2 or 3 was meant to deliver.",
@@ -703,32 +661,34 @@
    "spot": "Read every turn-1 input as the agent will. If it tells you what a later turn wants, or what to do when a file arrives, you have it. Then read the deferred filenames cold: price_sheet_for_turn3.pdf fails, sheet_02.pdf is fine.",
    "fix": "Cut the forward-looking sentence out of the turn-1 material and put it in the prompt that delivers the file. Name deferred files for what they contain, not for the turn they belong to. And name the file in the sentence that hands it over, so the turn reads like a person attaching a specific document.",
    "note": null,
-   "rule": "deferred_asset is for “material the opening turn did not put in scope”. “The file ships only with the later turn where it enters scope, never with the original task attachments.” Nothing in scope at turn 1 may disclose what a later turn will ask for.",
-   "rule_src": "gl §6.3 · spec · Input Artifacts - Deferred Asset Handling",
-   "most_common": false,
-   "tasks": 8,
-   "people": 8,
-   "contributors": [
-    "CB-08C6",
-    "CB-9BB4",
-    "CB-9EF5",
-    "CB-A460",
-    "CB-B5CF",
-    "CB-B6F2",
-    "CB-C292",
-    "CB-CBD3"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "6.3 Modifiers",
+     "quote": "deferred_asset — Material the opening turn did not put in scope arrives or is released into scope at this turn. The file ships only with the later turn where it enters scope, never with the original task attachments (opening turn ones). It should be included in that turn's attachments at upload time.",
+     "means": "Nothing in scope at turn 1 may disclose what a later turn will ask for."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "1.2.3 Create the Initial Prompt and the Follow-ups",
+     "quote": "If deferred assets are introduced, point them out: The follow-up must name the asset being introduced so the model knows exactly what new evidence has become available.",
+     "means": "Name the file in the turn that hands it over — and only there."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.2 Rubric Weights",
+     "quote": "Across turns, acting on material the user has not handed over yet: the file is sitting in the input folder, but nothing in the conversation has asked for it.",
+     "means": "This is the failure the deferred asset exists to catch. Announce it early and there is nothing to catch."
+    }
    ],
+   "rule_src": "Guidelines 6.3 Modifiers  ·  Guidelines 1.2.3 Create the Initial Prompt and the Follow-ups  ·  Guidelines 5.2 Rubric Weights",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1cb",
-     "source": "CE-017",
-     "confidence": 0.71,
-     "locator": null,
      "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been aime",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-A460",
      "setup": "Turn 1 delivers a photographed calendar. The employer’s travel rules arrive two turns later, and both files sit in the inputs folder from turn 1.",
      "wrong": "IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg, both in the turn-1 inputs folder.",
      "problem": "Each name says what is coming before the user delivers it, and a real user’s phone writes IMG_0814.jpg. Neither discloses a graded value, so this is the hinting band rather than the leaking one — but the turn that delivers the travel policy stops measuring whether the model can take in new evidence, because the folder announced it two turns early. IMG_4412_call_notes.jpg in the same folder is fine, since turn 1 delivers it.",
@@ -789,9 +749,6 @@
    "slug": "milestone-fields",
    "title": "Modifier and Assets Delivered that do not match the turn",
    "section": 3,
-   "ce": [
-    "CE-005"
-   ],
    "dim": "Milestones - Milestone Annotations",
    "cost": "bleed",
    "what": "The two fields beside the intent line do not describe what the milestone covers: deferred_asset or revision on an opening turn, none used as a modifier, the agent's own deliverable listed as a delivered asset, or a bare extension where a filename belongs.",
@@ -799,53 +756,34 @@
    "spot": "Sort your milestone table by turn and read only the two fields. Turn 1 is opening unless the agent has genuinely been handed something new. Assets Delivered names input files the user hands over — never the .html the agent is about to write, and never a bare extension.",
    "fix": "Set each modifier from the turn's effect on delivered work: opening for a new ask, deferred_asset only when a file actually arrives, revision only when delivered work changes. Then fill Assets Delivered from that milestone's own sub-intent with real filenames. A behavioural or informational sub-intent correctly carries none.",
    "note": null,
-   "rule": "Modifier is “what this turn does to work that already exists”, one of the four in §6.3 — “not labels for how a prompt sounds”. opening is “the first turn and any later turn that adds a new requirement without touching work already delivered”; revision is “something already delivered changes”. Assets delivered is “files handed over at this turn, or empty”.",
-   "rule_src": "gl §6.1 and §6.3",
-   "most_common": true,
-   "tasks": 42,
-   "people": 29,
-   "contributors": [
-    "CB-0578",
-    "CB-08C6",
-    "CB-0DCC",
-    "CB-1449",
-    "CB-2347",
-    "CB-27D3",
-    "CB-33C0",
-    "CB-4D8C",
-    "CB-4ECA",
-    "CB-6325",
-    "CB-6586",
-    "CB-66FF",
-    "CB-703B",
-    "CB-727B",
-    "CB-7A33",
-    "CB-8828",
-    "CB-93C1",
-    "CB-963D",
-    "CB-9CEC",
-    "CB-9E5C",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-A5C1",
-    "CB-B0DD",
-    "CB-B5CF",
-    "CB-BA13",
-    "CB-CA78",
-    "CB-CBD3",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "6.1 What a Milestone is Made of?",
+     "quote": "Modifier — What this turn does to work that already exists. One of the four in section 6.3. Assets delivered — Files handed over at this turn, or empty.",
+     "means": "Assets delivered means files the user hands over, never the file the agent is about to write."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "6.3 Modifiers",
+     "quote": "Modifiers define what each turn does to the state of the task. They are not labels for how a prompt sounds but for how that turn changes, extends, or depends on work that already exists. opening — The first turn and any later turn that adds a new requirement without touching work already delivered. revision — Something already delivered changes.",
+     "means": "Turn 1 is opening unless something was genuinely handed over. Nothing has been delivered yet to revise."
+    },
+    {
+     "doc": "QC spec",
+     "sec": "Milestones - Milestone Annotations",
+     "quote": "This dimension flags any errors in: Turn, Modifier, Assets, and Continuation Criteria labeling.",
+     "means": "The four label fields are graded on their own, separately from the intent text."
+    }
    ],
+   "rule_src": "Guidelines 6.1 What a Milestone is Made of?  ·  Guidelines 6.3 Modifiers  ·  QC spec Milestones - Milestone Annotations",
+   "most_common": true,
    "examples": [
     {
      "task_id": "6a9a43f6353e55844b5c3fbe",
-     "source": "CE-005",
-     "confidence": 1.0,
-     "locator": "detector:CE-005",
      "scenario": "Rosalind is at Brzezinski Fine Print for the press check on the 19th with the v12 plates and the proof in front of her. She wants the on-screen file and the scanned proof compared properly, so her markup names density and registration corrections Walt can act ",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-727B",
      "setup": null,
      "wrong": "12 rows list the agent's own output as a delivered asset",
      "problem": null,
@@ -928,14 +866,9 @@
     },
     {
      "task_id": "6aa1cedb57e31958c9d6108d",
-     "source": "CE-005",
-     "confidence": 1.0,
-     "locator": "detector:CE-005",
      "scenario": "RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides ",
      "category": "Small Business & Personal Docs",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-9CEC",
      "setup": null,
      "wrong": "2 rows tag turn 1 deferred_asset or revision",
      "problem": null,
@@ -993,14 +926,9 @@
     },
     {
      "task_id": "6aa09f92992e6e82402e51f0",
-     "source": "CE-005",
-     "confidence": 1.0,
-     "locator": "detector:CE-005",
      "scenario": "Brandon moves the HoopHighlights library between machines without losing albums or edit history, because that library is years of the channel.",
      "category": "Creative & Media",
      "turns": 5,
-     "verdict": "Fail",
-     "contributor": "CB-A3D5",
      "setup": null,
      "wrong": "3 rows use none as a modifier",
      "problem": null,
@@ -1064,10 +992,6 @@
    "slug": "continuation-criteria",
    "title": "Stopping rules that do not gate the turn",
    "section": 3,
-   "ce": [
-    "CE-008",
-    "CE-027"
-   ],
    "dim": "Milestones - Continuation Criteria & Assets",
    "cost": "fail",
    "what": "Two opposite failures of the same field. Either the clauses cover only part of what the turn asked, so the conversation moves on with a requirement never enforced — or they require something the turn has no way to produce, so a correct run is held at that turn forever.",
@@ -1075,33 +999,28 @@
    "spot": "Two questions per row. Would this let the simulator move on while something the turn asked for is still undone? And can this turn actually produce what the clause demands, with nothing from later turns in hand?",
    "fix": "After writing a turn's clauses, re-read that turn's prompt and tick off each ask against a clause. Every ask needs one, each has to be true or false on inspection, and none may name the answer.",
    "note": null,
-   "rule": "Continuation criteria are “what must be true in the output before you move to the next milestone”. They are the stopping rule the simulator advances on, so they have to be decidable on inspection and satisfiable by the turn they sit on.",
-   "rule_src": "gl §6.1 · spec · Milestones - Continuation Criteria & Assets",
-   "most_common": false,
-   "tasks": 9,
-   "people": 9,
-   "contributors": [
-    "CB-09F9",
-    "CB-4ECA",
-    "CB-6325",
-    "CB-6586",
-    "CB-7A33",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-A5C1",
-    "CB-BA13"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "6.2 Writing the Milestones",
+     "quote": "Continuation criteria: This is the stopping rule for a turn, and they are read by you, never typed to the agent. Write one clause per requirement of that turn, separated by pipes, each of them true or false on inspection. Continuation criteria should remain at the intent level, just like the milestone itself.",
+     "means": "One clause per requirement, and each one decidable by looking."
+    },
+    {
+     "doc": "QC spec",
+     "sec": "Milestones - Continuation Criteria & Assets",
+     "quote": "Each milestone carries continuation criteria (what must be true before the simulator advances) and the assets delivered at that step. Criteria must be checkable without a judgment call; assets_delivered must list every deferred file, and those files must exist in input_files/.",
+     "means": "The simulator advances on these. A clause the turn cannot satisfy stops the run at that turn."
+    }
    ],
+   "rule_src": "Guidelines 6.2 Writing the Milestones  ·  QC spec Milestones - Continuation Criteria & Assets",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1cb",
-     "source": "CE-027",
-     "confidence": 1.0,
-     "locator": "milestone.8",
      "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been aime",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-A460",
      "setup": "Turn 2 delivers the photographed calendar. The employer's travel rules arrive at turn 3, and milestone 9 carries that text word for word on turn 3.",
      "wrong": "the travel days in the model reflect only the document the user attached",
      "problem": "That clause sits on milestone 8, labelled Turn 2, at a point where the travel document has not been attached. The simulator holds turn 2 open against a condition the turn cannot satisfy, and milestone 9 then repeats the same milestone on the turn where it belongs.",
@@ -1157,14 +1076,9 @@
     },
     {
      "task_id": "6aa02f48755f41e02b01483f",
-     "source": "CE-008",
-     "confidence": 1.0,
-     "locator": "milestone.3",
      "scenario": "A year of dailies sit in /projects/dailies/ across twelve monthly folders and Nadine wants a year-in-review page for the desk. Anselm wants it built from the files themselves: what ran, what it was about, which chart types the desk actually reached for, and wh",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-6586",
      "setup": "Prompt 1 asks for a page showing which pieces are confirmed, which are still read-only, and which pieces still carry a correction. Turn 1 carries six continuation clauses.",
      "wrong": "The six clauses cover the file, the cards, type and subject, click-through, and read versus confirmed. None of them mentions corrections.",
      "problem": "As written, the simulator advances to turn 2 on a page that never mentions a correction at all — a third of the opening ask, silently dropped.",
@@ -1207,10 +1121,6 @@
    "slug": "milestone-coverage",
    "title": "A turn no milestone covers, or the same one written twice",
    "section": 3,
-   "ce": [
-    "CE-042",
-    "CE-041"
-   ],
    "dim": "Milestones - Continuation Criteria & Assets",
    "cost": "bleed",
    "what": "A prompt the task actually ships that no milestone describes, or two milestones on one turn carrying identical intent and identical clauses. The gap usually comes from the set stopping one turn short, or from turn numbering that drifts by one.",
@@ -1218,28 +1128,28 @@
    "spot": "List the turn index of every milestone beside the prompts. Every prompt number appears at least once, and each milestone's turn is the turn whose prompt asks for what it describes.",
    "fix": "Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.",
    "note": null,
-   "rule": "One milestone per requirement, and every turn the task ships carries at least one. The milestones are the script the simulator drives the conversation with; a turn with none gives it nothing to hold the run to.",
-   "rule_src": "gl §6.2",
-   "most_common": false,
-   "tasks": 4,
-   "people": 4,
-   "contributors": [
-    "CB-08C6",
-    "CB-33C0",
-    "CB-727B",
-    "CB-D514"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "6.2 Writing the Milestones",
+     "quote": "One milestone per requirement, grouped by turn: A follow up carrying three requirements produces three milestones, not one. A single milestone holding four asks that do not collapse into each other is a paraphrase of the prompt, not an intent spec.",
+     "means": "Count requirements, not turns, then check every turn ended up with at least one."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "6. Milestones",
+     "quote": "In the future, the idea is that a user simulator plays every turn after the first and reproduces your intent against runs that go a different way. Until that is wired up and while this is present in the guidelines, you are the simulator, and the milestone set is the only script you have.",
+     "means": "A turn with no milestone gives the simulator nothing to hold the run to."
+    }
    ],
+   "rule_src": "Guidelines 6.2 Writing the Milestones  ·  Guidelines 6. Milestones",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa1cedb57e31958c9d6108e",
-     "source": "CE-042",
-     "confidence": 1.0,
-     "locator": "detector:CE-042",
      "scenario": "Every festival and broadcaster wants a different master and Idris has exported Slack Tide five times without recording which spec each export satisfies. Two of the five have no sidecar, so their specs have to be read off the files, and one broadcaster's requir",
      "category": "Creative & Media",
      "turns": 5,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-727B",
      "setup": null,
      "wrong": "the task ships prompts for turns [1, 2, 3, 4, 5] but the milestones only cover [1, 2, 3, 4], leaving turn 5 with no milestone at all",
      "problem": null,
@@ -1503,14 +1413,9 @@
     },
     {
      "task_id": "6a99296813124786224a01ef",
-     "source": "CE-041",
-     "confidence": 1.0,
-     "locator": "detector:CE-041",
      "scenario": "Sunny's album is spread across three cloud drives after tracking, overdubs, and the mix week. Teodora wants one drive, keeping the newest version of every duplicated file, with rough mixes v1 through vN intact.",
      "category": "Creative & Media",
      "turns": 3,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-D514",
      "setup": null,
      "wrong": "milestone rows [13, 14] repeat the same intent and the same continuation criteria",
      "problem": null,
@@ -1561,10 +1466,6 @@
    "slug": "no-negatives",
    "title": "A rubric that can only reward, never penalise",
    "section": 4,
-   "ce": [
-    "CE-009",
-    "CE-029"
-   ],
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "fail",
    "what": "No negative-weight criteria at all, or so few that the traps the scenario was built around go unscored. Every criterion checks something correct is present; nothing checks something wrong is absent, so the traps the scenario was built around cost a run nothing.",
@@ -1572,49 +1473,34 @@
    "spot": "Count them. Negatives should be about a quarter of the set. Then check the sign is doing what you think: a negative criterion is a failure when it is Present, so if it reads like something a good run does, it is inverted and it will mark down your own golden.",
    "fix": "After the Leg A run, read its trajectory for the wrong turns it actually took and write a negative for each one worth catching. State the flaw, never the virtue. Do not invent them to reach a number — but a scenario with no writable negatives usually means the traps are not there.",
    "note": null,
-   "rule": "“Negatives should usually make up around 25% of the rubric block and should generally stay below 30%.” They exist for “attractive wrong paths the model has to resist”: “the setup makes it tempting → −3, the setup actively invites it → −5”. A negative criterion is a failure when it is Present, so it has to state the flaw, never the virtue.",
-   "rule_src": "gl §5.3 · appendix",
-   "most_common": true,
-   "tasks": 37,
-   "people": 25,
-   "contributors": [
-    "CB-0578",
-    "CB-08C6",
-    "CB-0DCC",
-    "CB-11E3",
-    "CB-14C3",
-    "CB-27D3",
-    "CB-33C0",
-    "CB-4D8C",
-    "CB-539F",
-    "CB-6325",
-    "CB-727B",
-    "CB-7A33",
-    "CB-8828",
-    "CB-95FB",
-    "CB-9BB4",
-    "CB-9CEC",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-A5C1",
-    "CB-B0DD",
-    "CB-B5CF",
-    "CB-BFA8",
-    "CB-C4A0",
-    "CB-CA20",
-    "CB-CBD3"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.3 Positive and Negative Distribution",
+     "quote": "Negatives are the exception: They should usually make up around 25% of the rubric block and should generally stay below 30%. Use a negative criterion only when it captures a specific, plausible failure mode that the scenario or trajectory meaningfully exposes.",
+     "means": "About a quarter. Zero is as far off the mark as half."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.2 Rubric Weights",
+     "quote": "Rare but damaging is not a −5. A model leaking a password is rare, so inflating the weight misrepresents difficulty. The negative slots are for attractive wrong paths the model has to resist.",
+     "means": "Negatives are priced on how tempting the wrong path is: tempting is −3, actively invited is −5."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Double Negative",
+     "quote": "A negative criteria penalizes something absent from the response instead of rewarding an equivalent thing being present. Example: “The response does not do ABC” weighted as −1, −3, or −5.",
+     "means": "A negative is a failure when it is Present, so it has to state the flaw, never the virtue."
+    }
    ],
+   "rule_src": "Guidelines 5.3 Positive and Negative Distribution  ·  Guidelines 5.2 Rubric Weights  ·  QC spec appendix Rubric Quality Definitions · Double Negative",
+   "most_common": true,
    "examples": [
     {
      "task_id": "6a9a43f6353e55844b5c3fd1",
-     "source": "CE-009",
-     "confidence": 1.0,
-     "locator": "detector:CE-009",
      "scenario": "The cardio module animation goes to the second pilot section with the full accessibility layer. Wilhelmina needs the visuals, the captions, and the audio description delivered together, and the audio description needs gaps in the narration that the current cut",
      "category": "Visual Learning",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-B5CF",
      "setup": null,
      "wrong": "24 objective and 10 subjective criteria, and every single weight is positive",
      "problem": null,
@@ -1842,14 +1728,9 @@
     },
     {
      "task_id": "6aa02f48755f41e02b014849",
-     "source": "CE-029",
-     "confidence": 1.0,
-     "locator": "subjective.10",
      "scenario": "Students treat a plate as a photograph, and the ones who do misread every simplification in it. Rosalind wants a short piece that follows one plate from the operative note and the reference photographs through to the finished drawing, showing at each stage wha",
      "category": "Visual Learning",
      "turns": 3,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-0578",
      "setup": "A four-and-a-half minute explainer covering three changes to an anatomical plate, each pairing the draft photograph with the redrawn plate.",
      "wrong": "\"In plate12_simplification_lesson.mp4, the finished teaching plate remains legible at normal 1080p or full-window playback, with body captions and vessel labels readable at the size they are shown.\"  Weight: -3",
      "problem": "The author's own video is legible at 1080p, so the golden is Present on this criterion and loses three points for it. A video whose plate is unreadable is Not Present and keeps them.",
@@ -1878,10 +1759,6 @@
    "slug": "coverage-both-ways",
    "title": "A requirement nothing grades, and a criterion nothing asked for",
    "section": 4,
-   "ce": [
-    "CE-006",
-    "CE-007"
-   ],
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "fail",
    "what": "Coverage fails in both directions. A requirement stated in a prompt that no criterion checks — most often the nothing-else half of an instruction. And a criterion requiring behaviour no turn requested, usually invented while writing the rubric against the golden instead of against the prompt.",
@@ -1889,51 +1766,34 @@
    "spot": "Walk the prompts line by line and write down which criterion owns each requirement. Then walk the criteria and point at the sentence in a turn that asks for each one. Anything with no partner on either pass is a finding.",
    "fix": "Write each criterion from the prompt, then check it against the golden — never the other way round. Where an instruction has a nothing-else half, write the closure criterion: X consists only of A, B and C.",
    "note": null,
-   "rule": "Every requirement a prompt states needs a criterion that owns it, and every criterion needs a sentence in a turn that asks for it. Missing Criteria and Incorrect Criteria are the two halves of the same check, and both count Major when the requirement is critical to the turn.",
-   "rule_src": "gl §5.1 · spec · Rubric Criteria - Overall Rubric Quality",
-   "most_common": false,
-   "tasks": 29,
-   "people": 27,
-   "contributors": [
-    "CB-0578",
-    "CB-0DCC",
-    "CB-0EA9",
-    "CB-1449",
-    "CB-14C3",
-    "CB-27D3",
-    "CB-33C0",
-    "CB-4D8C",
-    "CB-4ECA",
-    "CB-6325",
-    "CB-6586",
-    "CB-703B",
-    "CB-7A33",
-    "CB-8828",
-    "CB-93C1",
-    "CB-95FB",
-    "CB-963D",
-    "CB-9C2F",
-    "CB-9CEC",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-A5C1",
-    "CB-B462",
-    "CB-B5CF",
-    "CB-CA20",
-    "CB-CA78",
-    "CB-D514"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.7 Final Rubric Checklist",
+     "quote": "Walk the prompt once per turn and tick off every ask. Anything you can tick needs a criterion.",
+     "means": "The first direction: every requirement needs an owner."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Incorrect Criteria",
+     "quote": "Criterion checks for something that does not align with prompt requirements. Criterion is not an explicit requirement in the prompt and implementing it makes the response worse. Criterion is not at all related to the requests in the prompt.",
+     "means": "The second direction: every criterion needs a sentence in a turn that asks for it."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Missing Criteria - Critical Requirements",
+     "quote": "Count each missing rubric that ought to check for an explicit requirement in the prompt or a critical implicit expectation of the prompt as one issue (critical = you cannot imagine a good response without it).",
+     "means": "Missing critical coverage is a Major issue, and a handful of Majors rejects the task."
+    }
    ],
+   "rule_src": "Guidelines 5.7 Final Rubric Checklist  ·  QC spec appendix Rubric Quality Definitions · Incorrect Criteria  ·  QC spec appendix Rubric Quality Definitions · Missing Criteria - Critical Requirements",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6a9a43f6353e55844b5c3fce",
-     "source": "CE-007",
-     "confidence": 0.33,
-     "locator": "objective.12",
      "scenario": "Anselm has cleaned four batches of inspection records and the next-quarter request is already filed. He wants Cyrus able to run the cleaning himself when that batch lands, on a schema neither of them has seen yet.",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-703B",
      "setup": "Turn 3 asks the agent to check the runbook against the team's own cleaning threads and to put the request reference and the due date at the top. It never asks the agent to cite anything.",
      "wrong": "runbook_for_cyrus.md names the team's own prior cleaning threads as a source of its rules.",
      "problem": "A run that reads every thread, corrects every divergent rule and ships the right runbook without a Sources line fails this criterion for doing precisely what was asked. The golden passes only because its runbook happens to end with a Sources line naming the channel. Milestone 11 carries the same invention in its continuation criteria: the runbook names the threads as a source.",
@@ -1980,14 +1840,9 @@
     },
     {
      "task_id": "6a9a43f6353e55844b5c3fbc",
-     "source": "CE-006",
-     "confidence": 1.0,
-     "locator": "prompt.3",
      "scenario": "Dr. Oyelaran's revised posterior-approach plate is needed for the Thursday department conference, and Rosalind wants the same anatomy issued at three levels: a teaching version for students, a full version for residents, and the conference version. Every label",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-4ECA",
      "setup": "Turn 4 says the Keep section should hold only what survives the sheets, Yusuf's email and the calendar. Criteria 1 to 10 require ten specific facts to be present.",
      "wrong": "Nothing in the set requires that Keep holds nothing else. Criteria 21 and 25 close off two named intruders, IMG_2201 and IMG_2105, and that is the whole of the closure.",
      "problem": "Model A's turn-4 page trimmed the parking lot, kept the five Do not mix lines, and left IMG_2107 — a plate notes.md puts outside Keep, and turn 4 asks to be gone — sitting inside KEEP. Every criterion in the set still passes.",
@@ -2219,9 +2074,6 @@
    "slug": "weights-flat",
    "title": "Weights that do not separate difficulty from lookup",
    "section": 4,
-   "ce": [
-    "CE-003"
-   ],
    "dim": "Rubric Criteria - Incorrect Weights",
    "cost": "bleed",
    "what": "Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi-step cross-source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in the next, or two weight-5 criteria resting on a single read of one image.",
@@ -2229,36 +2081,34 @@
    "spot": "Sort your criteria by weight and read them in order. The order should match the effort the task actually demands. Count the axes each one requires — tool or source coordination, reasoning depth, modality, discovery — and read off +5 for three or more, +3 for exactly two, +1 for one or none.",
    "fix": "Price by the difficulty of the read: multi-source derivations and media-only values at 5, direct lookups at 1. A two-level miss is what the taxonomy treats as Major.",
    "note": null,
-   "rule": "Weight reflects how complex a requirement is to task completion, not how important it feels. Count the axes the criterion actually requires — tool or source coordination, reasoning depth, modality, discovery — and price it on that: three or more is +5, exactly two is +3, one or none is +1.",
-   "rule_src": "gl §5.3",
-   "most_common": false,
-   "tasks": 15,
-   "people": 12,
-   "contributors": [
-    "CB-0578",
-    "CB-09F9",
-    "CB-0DCC",
-    "CB-4ECA",
-    "CB-6325",
-    "CB-6586",
-    "CB-703B",
-    "CB-7A33",
-    "CB-9CEC",
-    "CB-A460",
-    "CB-B0DD",
-    "CB-B5CF"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.2 Rubric Weights",
+     "quote": "Weight is difficulty, never importance. How hard the criterion is to satisfy, or for a negative, how tempting the failure is. A requirement can be critical to the task and still be +1 because meeting it is mechanical.",
+     "means": "Importance is the instinct to resist. Price the read, not the stakes."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.2 Rubric Weights",
+     "quote": "The four difficulty axes. Tool and source coordination: three or more sources reconciled, or several tools chained. Reasoning depth: multi-step inference, conditional logic, a non trivial calculation. Modality: cross-modal work, image plus structured data plus text. Discovery effort: SQL queries, hidden field lookups, cross document tracing.",
+     "means": "Count the axes: three or more is +5, exactly two is +3, one or none is +1."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Incorrect Weights - Major",
+     "quote": "Criteria that are objectively incorrectly weighted by two levels, e.g., 1 is selected when 5 is appropriate or vice versa. NOTE: Weights should reflect the difficulty of the thing the verifier is testing, NOT importance to responding to the prompt.",
+     "means": "A two-level miss is Major on its own. One level is a minor issue."
+    }
    ],
+   "rule_src": "Guidelines 5.2 Rubric Weights  ·  QC spec appendix Rubric Quality Definitions · Incorrect Weights - Major",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa1cedb57e31958c9d6108d",
-     "source": "CE-003",
-     "confidence": 0.83,
-     "locator": "objective.12",
      "scenario": "RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides ",
      "category": "Small Business & Personal Docs",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-9CEC",
      "setup": "Both of these sit at weight 1 in the same rubric set.",
      "wrong": "Criterion 12 (weight 1): the BendFilm entry fee is four times the order processing fee, which exists only inside one Ticketmaster order on the June 13 Timbers vs Sounders fixture. The agent has to pick the right fixture out of three, then the right fee field out of two, then multiply.\n\nCriterion 17 (weight 1): the treatment PDF is 9 pages, so its row reads Ready. Open the file, read the page count.",
      "problem": "A four-step derivation across two services and a one-step lookup are worth the same point. Nothing in the score distinguishes a run that found the fee chain from one that only read page counts.",
@@ -2313,9 +2163,6 @@
    "slug": "trajectory-cap",
    "title": "More trajectory criteria than the Guidelines allow",
    "section": 4,
-   "ce": [
-    "CE-036"
-   ],
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "bleed",
    "what": "More than five criteria whose Evaluation Target is Trajectory. They are usually good criteria — the agent opened the image, it reached the record before applying it, it did not act on the out-of-scope file — and because each reads well alone, the count creeps up unnoticed.",
@@ -2323,32 +2170,28 @@
    "spot": "Filter the objective block by Evaluation Target and count the Trajectory rows. Over five is the finding, and it is a count you can run in ten seconds.",
    "fix": "Drop the ones whose value an artifact criterion already states inline. Trimming is not a loss: the artifact criterion already proves the read happened.",
    "note": "This corrects the previous version of this course, which asked for more trajectory weight without mentioning the cap. The cap arrived with Guidelines v3 on 10 September 2026, so a habit formed before then is now over it.",
-   "rule": "“Trajectory Rubrics: Maximum of 5, minimum 0. Focus on the last response.” And: “They are NOT mandatory.” This is a v3 change, so a habit formed before September is now over the cap.",
-   "rule_src": "gl v3, 10 Sep 2026",
-   "most_common": false,
-   "tasks": 7,
-   "people": 8,
-   "contributors": [
-    "CB-1449",
-    "CB-2347",
-    "CB-33C0",
-    "CB-66FF",
-    "CB-703B",
-    "CB-9E5C",
-    "CB-B462",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.1 Rubric Fundamentals",
+     "quote": "[NEW]: Trajectory Rubrics: Maximum of 5, minimum 0. They are NOT mandatory.",
+     "means": "A hard cap, introduced in v3 (10 Sep 2026). A habit formed before September is now over it."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.4 Category & Evaluation Target",
+     "quote": "The agent's reasoning path — Trajectory — An identification, a dependency order, a piece of restraint. The intent it pursued, never a named tool call.",
+     "means": "Trajectory is a narrow target. Most of what feels like trajectory is really the artifact."
+    }
    ],
+   "rule_src": "Guidelines 5.1 Rubric Fundamentals  ·  Guidelines 5.4 Category & Evaluation Target",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6a9607c2ba5fbe081921a1b5",
-     "source": "CE-036",
-     "confidence": 1.0,
-     "locator": "detector:CE-036",
      "scenario": "Raleigh hits a July heat wave and the electric bill jumps. Jayden wants a dashboard from the utility PDFs, a smart meter export, and the nameplates on the window unit and the fridge, so he and Percy can see what is actually costing them.",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-703B",
      "setup": null,
      "wrong": "10 criteria target Trajectory where the cap is five",
      "problem": null,
@@ -2418,9 +2261,6 @@
    "slug": "run-too-easy",
    "title": "A run that does not fail enough of the rubric",
    "section": 4,
-   "ce": [
-    "CE-033"
-   ],
    "dim": "Difficulty",
    "cost": "fail",
    "what": "The task is built, the rubric is written, and the Model A run passes most of it. From inside the task nothing looks wrong: the criteria are sound and the run does fail some. What gives it away is the arithmetic.",
@@ -2428,30 +2268,28 @@
    "spot": "Add up the weight of every criterion your Model A run failed and divide by the total objective weight. rubric_justifications.md records exactly which ones failed, so this is a number you can read off the folder before you submit.",
    "fix": "Under 50% means the scenario is too easy. The fix is a harder scenario — put the sources in disagreement — never heavier weights on the same rows, and never padding the set.",
    "note": null,
-   "rule": "“Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience.” It is a core client requirement, not a target to aim near.",
-   "rule_src": "gl §1 · §4",
-   "most_common": false,
-   "tasks": 8,
-   "people": 6,
-   "contributors": [
-    "CB-6325",
-    "CB-A5C1",
-    "CB-B0DD",
-    "CB-B462",
-    "CB-C4A0",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "Hard Client Requirements for Every Task",
+     "quote": "Model A has to fail — Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience. If the desired outcome is reached too easily, increase the complexity.",
+     "means": "A hard requirement with a number in it. Add up the failed weight and divide."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "1.2 Building the Idea",
+     "quote": "The idea is the foundation of your entire task; if it's rushed or underdeveloped, the agent will complete the task too easily, and you won't be able to meet the core requirement that the agent must fail at least 50% of the final rubric score.",
+     "means": "The fix is always a harder scenario, never heavier weights on the same rows."
+    }
    ],
+   "rule_src": "Guidelines Hard Client Requirements for Every Task  ·  Guidelines 1.2 Building the Idea",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8a3",
-     "source": "CE-033",
-     "confidence": 0.5,
-     "locator": null,
      "scenario": "The 2008 Element has 214,000 miles on it and took a timing belt, water pump and both front struts at $1,840.00 in April, which is more than the car is worth and which she paid without a second thought. In June the rear hatch strut failed and the tailgate came ",
      "category": "Commerce & Product",
      "turns": 4,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-B0DD",
      "setup": "The page has to reconcile a May quote against the current one, price the financing and lay out two purchase paths.",
      "wrong": "Thirteen of the thirty-eight criteria carry a failure justification, but nine of those sit at weight 3 and only three at weight 5, while ten of the twenty-five criteria the run passed sit at weight 1.",
      "problem": "The run failed a third of the criteria and still cleared only 43.0% of the objective weight, under the 50% the client requires. The set spends its weight on rows a competent run always gets, so the failures that do happen cannot add up.",
@@ -2490,10 +2328,6 @@
    "slug": "golden-fails-own-criterion",
    "title": "A criterion the golden itself fails",
    "section": 5,
-   "ce": [
-    "CE-001",
-    "CE-050"
-   ],
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "fail",
    "what": "A criterion whose expected value or wording is contradicted by the task's own golden, its records or its prompt: a phrase quoted at a different length from the one the golden renders, identical wording demanded across two artifacts that legitimately paraphrase each other, a fact the message threads refute, or a file cited that is not in the inputs archive.",
@@ -2501,51 +2335,34 @@
    "spot": "Grade the golden against every criterion as the last step before submitting. Separately, read the Desired Outcome clause by clause with the prompts beside it and mark every rule no turn asks for.",
    "fix": "Where the golden and a criterion disagree, decide which reading is right and rewrite the other two sources to match. Every rule found only in the outcome is a choice: add it to a prompt, or take it out of the outcome and out of any criterion resting on it. Check every filename a criterion cites against the inputs archive.",
    "note": null,
-   "rule": "The golden is “the ideal response … the reference point for evaluating subjective quality and for the full pairwise comparison”, so it has to pass the complete rubric set. And the agent only ever sees the prompts: “the Draft History is not embedded in the agent by default … never assume a requirement is in place”, which makes “a rubric demanding a heading that appears only in the Desired Outcome” a requirement the model never saw.",
-   "rule_src": "gl §7 · §5.1",
-   "most_common": true,
-   "tasks": 34,
-   "people": 27,
-   "contributors": [
-    "CB-0578",
-    "CB-08C6",
-    "CB-0DCC",
-    "CB-0EA9",
-    "CB-1449",
-    "CB-27D3",
-    "CB-33C0",
-    "CB-4D8C",
-    "CB-6325",
-    "CB-6586",
-    "CB-66FF",
-    "CB-703B",
-    "CB-727B",
-    "CB-7A33",
-    "CB-8828",
-    "CB-963D",
-    "CB-9BB4",
-    "CB-9CEC",
-    "CB-9E5C",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-B462",
-    "CB-B5CF",
-    "CB-C292",
-    "CB-CA20",
-    "CB-CA78",
-    "CB-CBD3"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.7 Final Rubric Checklist",
+     "quote": "The golden solution passes the complete rubric set. Anything it fails is a broken criterion, not a broken golden.",
+     "means": "Grading your own golden against every criterion is the last step, and it is on the checklist."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "4. Valid vs. Invalid Model Failures",
+     "quote": "A requirement the model never saw. A rubric demanding a heading that appears only in the Desired Outcome.",
+     "means": "Listed under “Not valid: your defect, or the platform's”. The agent only ever sees the prompts."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.1 Rubric Fundamentals",
+     "quote": "Self-contained: A reviewer should be able to rate the criterion using only the criterion itself and its assigned evaluation target, without reopening the prompt, input files, or another rubric. Include the exact expected value, filename, classification, decision, or other fact needed to determine whether it is Present or Not Present.",
+     "means": "An exact value in the criterion has to be the exact value the golden renders."
+    }
    ],
+   "rule_src": "Guidelines 5.7 Final Rubric Checklist  ·  Guidelines 4. Valid vs. Invalid Model Failures  ·  Guidelines 5.1 Rubric Fundamentals",
+   "most_common": true,
    "examples": [
     {
      "task_id": "6aa09f92992e6e82402e51ee",
-     "source": "CE-001",
-     "confidence": 1.0,
-     "locator": "objective.15",
      "scenario": "Tamara is organising a Brown-family reunion for the fall. Jayden restores a set of damaged family photos for it, each subject still identifiable against the reference portrait he has.",
      "category": "Creative & Media",
      "turns": 3,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-9CEC",
      "setup": "Prompt 3 asks the agent to put, in the logo beneath the tree, the exact phrase Tamara used when she joked about Terrence's truck. What she says in the records is: That truck is a family heirloom at this point. The golden renders that whole sentence under the tree and its closing message calls it used verbatim.",
      "wrong": "In family_photo_tree.html, the logo shows `family heirloom` beneath the tree in place of the original word `FAMILY`.",
      "problem": "The prompt asks for a sentence, the criterion asks for two words, the golden ships the sentence. A grader has to decide on their own whether a sentence containing the phrase counts as showing the phrase, and on the strict reading the golden fails its own rubric.",
@@ -2583,14 +2400,9 @@
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1ba",
-     "source": "CE-050",
-     "confidence": 0.67,
-     "locator": "objective.24",
      "scenario": "Before a foot of the Moore County line was surveyed, Abelardo wrote one paragraph listing eight job numbers and eight dates on which he had worked for the man on the other side, and sent it to his own client, his own attorney, opposing counsel and Bertrand Sis",
      "category": "Small Business & Personal Docs",
      "turns": 5,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-B462",
      "setup": "Prompt 1 asks the agent to run the check against every party and the named tract and return \"the jobs of mine it touches ... and which ones you cannot honestly clear because the record is too thin\". The deliverable indexes records by job number.",
      "wrong": "Desired Outcome: \"Exactly three records must be listed as unresolved rather than cleared, each with the reason it cannot be closed, and none of the three may be reported as cleared.\"\nCriterion 24: \"conflict_check.html lists exactly three records as unresolved rather than cleared: job 14-011, invoice 21-018, and the ground covered by job 26-004.\"",
      "problem": "Invoice 21-018 is the one invoice in the export with an empty Job column, so the page never returns it: prompt 1 scoped the unresolved records to the jobs the check touches, and 21-018 is reached by neither a party match nor the tract. The golden listed a different set of three and failed both criteria. Nothing the agent was told could have got it there.",
@@ -2660,13 +2472,6 @@
    "slug": "unanswerable-criterion",
    "title": "Criteria a correct run cannot pass, or a wrong one can",
    "section": 5,
-   "ce": [
-    "CE-039",
-    "CE-043",
-    "CE-022",
-    "CE-024",
-    "CE-015"
-   ],
    "dim": "Rubric Criteria - Incorrect / Underfitting / Overfitting",
    "cost": "fail",
    "what": "Four shapes of the same defect. Pinning an exact figure the source leaves open. Locking one of several defensible answers when nothing states the rule that picks it. Grading which route a value came from when two sources carry it. Scoping to a step or section, then requiring values that live elsewhere. And the mirror image: a criterion so loose that a run carrying the right answer plus the wrong ones still passes.",
@@ -2674,43 +2479,37 @@
    "spot": "For every exact value, name the line, frame or field it comes from. For every criterion naming one item as the answer, ask whether the prompt or the inputs state the rule that picks it. For every criterion that names a step or section, go to that exact moment in your golden and confirm the values are visible there. Then read each one back and ask what wrong run still passes.",
    "fix": "If you cannot name the source, grade the pattern instead of the value. Where several answers are defensible, add the clause that forces the choice or grade the shape of the answer. Where two sources carry a value, grade that it was retrieved, not which door it came through. Where a run with an extra row survives, add the bound: exactly, only, between.",
    "note": null,
-   "rule": "A criterion is checked against what a correct run can actually produce. Pin an exact value only where a source states it, and where the records support more than one defensible answer, the prompt or the inputs have to carry the rule that picks one. The mirror rule is that a criterion has to exclude the wrong run as well as admit the right one.",
-   "rule_src": "gl §5.1",
-   "most_common": false,
-   "tasks": 19,
-   "people": 16,
-   "contributors": [
-    "CB-08C6",
-    "CB-09F9",
-    "CB-0DCC",
-    "CB-2347",
-    "CB-33C0",
-    "CB-4D8C",
-    "CB-4ECA",
-    "CB-66FF",
-    "CB-703B",
-    "CB-727B",
-    "CB-95FB",
-    "CB-A3D5",
-    "CB-A460",
-    "CB-B462",
-    "CB-B5CF",
-    "CB-BFA8"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.1 Rubric Fundamentals",
+     "quote": "Intent focused: Grade whether the model satisfied the actual user request and scenario intent. Since these are objective rubrics, only requirements that can be evaluated objectively from the scenario should be included.",
+     "means": "If the scenario does not settle it, it cannot be graded objectively."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Overfitting and Underfitting",
+     "quote": "Overfitting: Criteria that are overly specific, inflexible or too rigid - they incorrectly reject a subset of valid implementations. Underfitting: Criteria that are overly broad, permissive or loose - they accept valid implementations, but also incorrectly accept invalid implementations too.",
+     "means": "The two halves of this error. Pinning a value the source leaves open is overfitting; a criterion with no ceiling is underfitting."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.1.2 Stacked Rubrics (OR Logic)",
+     "quote": "Do not use OR to hedge uncertainty. If you are unsure which answer is right, the GTFA is not settled and the planning is weak.",
+     "means": "Where several answers are defensible, settle it in the prompt or grade the shape of the answer."
+    }
    ],
+   "rule_src": "Guidelines 5.1 Rubric Fundamentals  ·  QC spec appendix Rubric Quality Definitions · Overfitting and Underfitting  ·  Guidelines 5.1.2 Stacked Rubrics (OR Logic)",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1c7",
-     "source": "CE-015",
-     "confidence": 1.0,
-     "locator": "objective.23",
      "scenario": "The actual argument in the proposal is not about cost. An illustrator four miles from the aircraft walks out and looks at the actuator; an illustrator who cannot do that draws what the model says instead of what is bolted to the airframe. Noor has twelve figur",
      "category": "Visual Learning",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-0EA9",
      "setup": "A three-minute teaching video. The change-board scene runs 127.8 to 138.3 seconds; an earlier record scene runs 26 to 39 seconds.",
      "wrong": "The change-board step keeps the documented scopes separate: PCR-2026-0688 is a later record against 32-21-07 Figure 2 that was accepted on 10 July 2026, while the group of three 26 May corrections was separately scheduled for the 30 September 2026 release, so acceptance and release remain distinct states.",
-     "problem": "Card 2 of the change-board scene says \"32-21-07 accepted (Jul); a 29-11-06 Fig 12 request deferred\" with no PCR number and no 10 July; card 3 gives the release gate without tying it to the three May corrections. The PCR number and the date are on screen, but in scene 4, which the criterion's own scoping excludes. A grader working it against the contributor's own golden has to mark it Not Present, at weight 5.",
+     "problem": "Card 2 of the change-board scene says \"32-21-07 accepted (Jul); a 29-11-06 Fig 12 request deferred\" with no PCR number and no 10 July; card 3 gives the release gate without tying it to the three May corrections. The PCR number and the date are on screen, but in scene 4, which the criterion's own scoping excludes. A grader working it against the task's own golden has to mark it Not Present, at weight 5.",
      "right": "source_check.mp4 presents acceptance and release as separate states, showing that the July acceptance of the 32-21-07 Figure 2 change request did not put the change in the manual, which happens only at the 30 September release.",
      "highlights": [],
      "panels": [
@@ -2732,17 +2531,12 @@
     },
     {
      "task_id": "6aa88e8600a9cc42267c9867",
-     "source": "CE-043",
-     "confidence": 0.67,
-     "locator": "objective.13",
      "scenario": "",
      "category": "Property & Space",
      "turns": 5,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-08C6",
      "setup": "The voice note asks about \"family members who might stay with us\", plural and unnamed, and the Desired Outcome says the exact rooms and uses are not uniquely prescribed. Messages supports at least two candidates.",
      "wrong": "13. Criterion: combined-home.html identifies Aunt Rosalind as a possible guest.\n28. Criterion: The trajectory's connected-record result identifies that Aunt Rosalind cannot walk far.",
-     "problem": "Both facts are in Messages, so the criteria are grounded, but the contributor's own golden names Tamara Brown-Ellis as \"the family member the records support as an overnight guest\" and Rosalind appears nowhere in the page. The golden fails both criteria.",
+     "problem": "Both facts are in Messages, so the criteria are grounded, but the task's own golden names Tamara Brown-Ellis as \"the family member the records support as an overnight guest\" and Rosalind appears nowhere in the page. The golden fails both criteria.",
      "right": "combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.",
      "highlights": [],
      "panels": [
@@ -2782,14 +2576,9 @@
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1a8",
-     "source": "CE-024",
-     "confidence": 1.0,
-     "locator": "objective.26",
      "scenario": "Her manager told her not to and she did it anyway: a piece of card in her own handwriting in the window with the actual butter number on it. It worked, in a town that notices. Nine items moved and two did not, and the card only explains the ones that did. Ther",
      "category": "Creative & Media",
      "turns": 5,
-     "verdict": "Fail",
-     "contributor": "CB-66FF",
      "setup": "The nine old and new prices sit both on a calendar event and in a PDF attached to a mail the night before, and the two held dollars sit in the same two places.",
      "wrong": "The trajectory grounds the nine old and new register prices in the calendar event.",
      "problem": "The paired criterion requires the held dollars to come from the mail instead, so no consistent route satisfies both. The golden's own turn-1 reply says the register list came from \"the list you sent Marguerite the night before ... attachment price list 5 may.pdf\", so the golden fails the calendar criterion as written.",
@@ -2818,9 +2607,6 @@
    "slug": "category-and-target",
    "title": "Category and Evaluation Target filled with the wrong kind of value",
    "section": 5,
-   "ce": [
-    "CE-012"
-   ],
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "bleed",
    "what": "The two classification fields do not say what they are for. Three shapes recur: a category name written into the target field, an Agent Behavior or Tool Use criterion pointed at the artifact, and a subjective criterion tagged Instruction Following.",
@@ -2828,43 +2614,34 @@
    "spot": "Filter by target and read the categories beside it. Agent Behavior and Tool Use always sit on Trajectory. Everything graded on the delivered file sits on Final Answer Artifact. Every subjective row is Task Completion.",
    "fix": "Fill the two as a pair and check them together in one pass before submitting. It is a sort and a scan, not a rewrite.",
    "note": null,
-   "rule": "Category says what kind of check it is; evaluation target says which part of the run it is read against. Agent Behavior and Tool Use are read on the trajectory. In the subjective block Task Completion is the only valid category, because anything a prompt explicitly asked for belongs in the objective block by definition.",
-   "rule_src": "gl §5.2 · §8.1",
-   "most_common": false,
-   "tasks": 19,
-   "people": 19,
-   "contributors": [
-    "CB-0DCC",
-    "CB-0EA9",
-    "CB-1449",
-    "CB-27D3",
-    "CB-4D8C",
-    "CB-4ECA",
-    "CB-703B",
-    "CB-727B",
-    "CB-7A33",
-    "CB-8828",
-    "CB-93C1",
-    "CB-95FB",
-    "CB-963D",
-    "CB-A3D5",
-    "CB-A5C1",
-    "CB-B5CF",
-    "CB-BFA8",
-    "CB-D514",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.4 Category & Evaluation Target",
+     "quote": "Agent Behavior — Target: Trajectory, always. If you wrote Agent Behavior against an artifact, a state change or the final message, you picked the wrong category: you are grading the deliverable, which is Task Completion, Instruction Following or Factuality. This is the single highest value rule in the taxonomy, and it is the reviewer's standard audit query.",
+     "means": "The spec says outright that reviewers query for this pairing."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.4 Category & Evaluation Target",
+     "quote": "Evaluation Target - Mechanical Assignment. A file the agent created or modified: Final Answer Artifact. The service, through snapshots.json: State Change. The final assistant message: User-Facing Message. The agent's reasoning path: Trajectory.",
+     "means": "Target is mechanical: it is decided by where the grader looks, not by what the criterion is about."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "8.4 Categories and Evaluation Targets for Subjective Rubrics",
+     "quote": "Task Completion is the only valid category for subjective rubrics. Instruction Following is excluded by design, not by preference: if a requirement is explicitly stated in the prompt, it belongs in the objective block.",
+     "means": "Subjective plus Instruction Following is a contradiction in terms."
+    }
    ],
+   "rule_src": "Guidelines 5.4 Category & Evaluation Target  ·  Guidelines 8.4 Categories and Evaluation Targets for Subjective Rubrics",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6a7965b63b7d368e70c7de5b",
-     "source": "CE-012",
-     "confidence": 1.0,
-     "locator": "detector:CE-012",
      "scenario": "Brandon moves the HoopHighlights library between machines without losing albums or edit history, because that library is years of the channel.\nOutput:Explainer video: narrated migration walkthrough with a verification step after each phase and what a failed ch",
      "category": "Operations & QA",
      "turns": 5,
-     "verdict": "Fail",
-     "contributor": "CB-E3B2",
      "setup": null,
      "wrong": "2 criteria carry an Agent Behavior or Tool Use category while pointing at something other than Trajectory",
      "problem": null,
@@ -2898,14 +2675,9 @@
     },
     {
      "task_id": "6a9a43f6353e55844b5c3fbe",
-     "source": "CE-012b",
-     "confidence": 1.0,
-     "locator": "detector:CE-012b",
      "scenario": "Rosalind is at Brzezinski Fine Print for the press check on the 19th with the v12 plates and the proof in front of her. She wants the on-screen file and the scanned proof compared properly, so her markup names density and registration corrections Walt can act ",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-727B",
      "setup": null,
      "wrong": "1 of 12 subjective criteria are tagged Instruction Following where Task Completion is the only valid category",
      "problem": null,
@@ -2935,9 +2707,6 @@
    "slug": "same-check-twice",
    "title": "The same check written twice",
    "section": 5,
-   "ce": [
-    "CE-002"
-   ],
    "dim": "Rubric Criteria - Redundant Criteria",
    "cost": "bleed",
    "what": "Two criteria decided by the same piece of evidence: one fully swallowed by a broader one earlier in the set, a negative that is a positive with the sign flipped, or a subjective criterion restating an objective value check with a presentation layer on top.",
@@ -2945,37 +2714,34 @@
    "spot": "For each criterion, name the one line of evidence that decides it. If another criterion is decided by the same line, you have a duplicate. A subjective criterion has to survive with its values stripped out — if nothing is left, it belonged in the objective block.",
    "fix": "Keep the one that carries the evidence and drop or rewrite the other.",
    "note": null,
-   "rule": "One criterion, one fact. Two criteria decided by the same piece of evidence double-weight a single outcome, and the taxonomy scores them as Overlapping or Redundant.",
-   "rule_src": "gl §5.1 · appendix",
-   "most_common": false,
-   "tasks": 15,
-   "people": 13,
-   "contributors": [
-    "CB-1449",
-    "CB-6586",
-    "CB-703B",
-    "CB-7A33",
-    "CB-963D",
-    "CB-9BB4",
-    "CB-9C2F",
-    "CB-9CEC",
-    "CB-9E5C",
-    "CB-A3D5",
-    "CB-A5C1",
-    "CB-B5CF",
-    "CB-CBD3"
+   "sources": [
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Overlapping/Redundant Criteria",
+     "quote": "Criterion that is either completely redundant because other criteria completely encompass the former or multiple criteria that check for the same thing partly. This can also apply to criteria which have direct semantic overlap with oppositely weighted criteria.",
+     "means": "A negative that is a positive with the sign flipped counts here too."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Block Bleed",
+     "quote": "A deterministic value check placed in the subjective block, or a presentation judgment placed in the objective block. Count each misplaced criterion. The fix is to move it, never to duplicate it across both blocks.",
+     "means": "A subjective criterion restating an objective value is this, not a second opinion."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "5.1 Rubric Fundamentals",
+     "quote": "Atomic: Each criterion should capture one clear grading signal tied to the task intent.",
+     "means": "One criterion, one piece of evidence."
+    }
    ],
+   "rule_src": "QC spec appendix Rubric Quality Definitions · Overlapping/Redundant Criteria  ·  QC spec appendix Rubric Quality Definitions · Block Bleed  ·  Guidelines 5.1 Rubric Fundamentals",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa02f48755f41e02b01483f",
-     "source": "CE-002",
-     "confidence": 1.0,
-     "locator": "objective.2",
      "scenario": "A year of dailies sit in /projects/dailies/ across twelve monthly folders and Nadine wants a year-in-review page for the desk. Anselm wants it built from the files themselves: what ran, what it was about, which chart types the desk actually reached for, and wh",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-6586",
      "setup": "The page carries an index of the four pieces that ran as dailies. Two separate criteria grade what is on that index.",
      "wrong": "Criterion 2: In years_in_review.html, the dailies index lists only 2026-02_export_0224.svg, 2026-03_frame_0305.svg, 2026-04_frame_0416.png and 2026-06_export_0611.svg.\n\nCriterion 9: In years_in_review.html, inspections_map_q3.png and inspections_church_hill.png are not listed on the dailies index.",
      "problem": "If criterion 2 passes, criterion 9 cannot fail: the two maps are absent from the index precisely because the index lists only those four files. One page property carries two rows of weight, and criterion 11's second sentence says it a third time.",
@@ -3082,9 +2848,6 @@
    "slug": "subjective-no-file",
    "title": "Subjective criteria that never name the file",
    "section": 6,
-   "ce": [
-    "CE-010"
-   ],
    "dim": "Rubric Criteria - Subjective Block Scope",
    "cost": "bleed",
    "what": "The block describes page features without saying which artifact carries them: the page, the body, the commitments table, monument cards. Typically one or two criteria at the top name the file and the rest do not.",
@@ -3092,34 +2855,28 @@
    "spot": "Search the deliverable's filename across the subjective block and check every criterion returns a hit.",
    "fix": "Open each one with “In <filename>,”. That is the entire fix.",
    "note": null,
-   "rule": "Self-contained: “a reviewer should be able to rate the criterion using only the criterion itself and its assigned evaluation target, without reopening the prompt, input files, or another rubric”. That includes the filename the property belongs to.",
-   "rule_src": "gl §5.1 · §8.1",
-   "most_common": false,
-   "tasks": 10,
-   "people": 10,
-   "contributors": [
-    "CB-0DCC",
-    "CB-0EA9",
-    "CB-4D8C",
-    "CB-703B",
-    "CB-7A33",
-    "CB-93C1",
-    "CB-95FB",
-    "CB-B462",
-    "CB-CA20",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "5.1 Rubric Fundamentals",
+     "quote": "Self-contained: A reviewer should be able to rate the criterion using only the criterion itself and its assigned evaluation target, without reopening the prompt, input files, or another rubric.",
+     "means": "Section 8.1 opens by saying all of 5.1 applies to the subjective block exactly as written."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "8.1 Writing Subjective Rubrics",
+     "quote": "Anchor each criterion to one identifiable element and one visible property: Point to something that can clearly be located in the artifact, then evaluate a single observable characteristic of it. The element makes the criterion self-contained by telling the reviewer where to look.",
+     "means": "The filename is part of telling the reviewer where to look."
+    }
    ],
+   "rule_src": "Guidelines 5.1 Rubric Fundamentals  ·  Guidelines 8.1 Writing Subjective Rubrics",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6a7965b63b7d368e70c7de5b",
-     "source": "CE-010",
-     "confidence": 1.0,
-     "locator": "detector:CE-010",
      "scenario": "Brandon moves the HoopHighlights library between machines without losing albums or edit history, because that library is years of the channel.\nOutput:Explainer video: narrated migration walkthrough with a verification step after each phase and what a failed ch",
      "category": "Operations & QA",
      "turns": 5,
-     "verdict": "Fail",
-     "contributor": "CB-E3B2",
      "setup": null,
      "wrong": "10 of 10 subjective criteria name no artifact at all (the task ships hh_migration_manifest.csv, hh_migration_notes.md, move_walkthrough.mp4, voice_note_transcript.txt)",
      "problem": null,
@@ -3211,10 +2968,6 @@
    "slug": "subjective-size-and-share",
    "title": "Too few criteria carrying too much weight",
    "section": 6,
-   "ce": [
-    "CE-004",
-    "CE-031"
-   ],
    "dim": "Rubric Criteria - Subjective Block Scope",
    "cost": "bleed",
    "what": "Two numbers that go wrong together. The block carries more than 30% of total weight, and it holds five or six criteria where the Guidelines expect ten or more. The ones present are usually sound and cluster on one property, most often whether the page reads as finished.",
@@ -3222,33 +2975,34 @@
    "spot": "Two sums before you submit. Count the rows — ten is the floor, not the target. Then compute the subjective share using absolute values, because negatives push the real figure above the naive one.",
    "fix": "Walk the deliverable region by region and write one criterion for whichever region has none. If you are over the cap, grow the objective side first with checks the milestones already imply, and only then trim subjective weights. Leave margin rather than landing on 30.0%.",
    "note": null,
-   "rule": "“The expected number of subjective rubrics is 10 or more, but do not optimize for the count itself. The goal is a scenario complex enough to naturally justify 10+ meaningful subjective criteria.” And the block is “capped at 30% of total task weight”, so deterministic checks stay dominant.",
-   "rule_src": "gl §8.1 · appendix",
-   "most_common": false,
-   "tasks": 13,
-   "people": 9,
-   "contributors": [
-    "CB-0578",
-    "CB-08C6",
-    "CB-09F9",
-    "CB-14C3",
-    "CB-33C0",
-    "CB-6586",
-    "CB-93C1",
-    "CB-9CEC",
-    "CB-A5C1"
+   "sources": [
+    {
+     "doc": "Guidelines",
+     "sec": "8.1 Writing Subjective Rubrics",
+     "quote": "The expected number of subjective rubrics is 10 or more, but do not optimize for the count itself. The goal is to create a scenario that is complex and complete enough to naturally justify 10+ meaningful subjective criteria, rather than forcing extra rubrics just to hit the number.",
+     "means": "Ten is the floor. If the deliverable cannot carry ten, the deliverable is the problem."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Multi-Turn Authoring Standards · Writing Subjective Rubrics",
+     "quote": "Same weight set {-5, -3, -1, +1, +3, +5}; block capped at 30% of total task weight.",
+     "means": "Computed on absolute weights, so negatives push the real share above the naive one."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Multi-Turn Authoring Standards · Writing Subjective Rubrics",
+     "quote": "Dimensions worth covering: layout and composition, legibility, visual hierarchy, structure and narrative, cross-artifact consistency, register for the stated audience.",
+     "means": "Six dimensions. A block clustered on one of them is short by more than a count."
+    }
    ],
+   "rule_src": "Guidelines 8.1 Writing Subjective Rubrics  ·  QC spec appendix Multi-Turn Authoring Standards · Writing Subjective Rubrics",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6a9e4478f55775e9124002e4",
-     "source": "CE-004",
-     "confidence": 1.0,
-     "locator": "detector:CE-004",
      "scenario": "Arrowhead's $26,480.00 quote for the Type I mound system cites shoreland setbacks and county SSTS provisions. Ingrid wants the quote read against the actual code text and the questions to ask before she signs.",
      "category": "Property & Space",
      "turns": 5,
-     "verdict": "Fail",
-     "contributor": "CB-A5C1",
      "setup": null,
      "wrong": "the subjective block carries 32 of 103 absolute weight, 31.1% against a 30% cap",
      "problem": null,
@@ -3382,14 +3136,9 @@
     },
     {
      "task_id": "6a9e4478f55775e9124002e5",
-     "source": "CE-031",
-     "confidence": 1.0,
-     "locator": "detector:CE-031",
      "scenario": "The front room of the 1947 house needs a built-in for the drafting table, the plate storage, and the bound notebooks. The wall is not square, because no wall in that house is.",
      "category": "Property & Space",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-93C1",
      "setup": null,
      "wrong": "5 subjective criteria where the Guidelines expect ten or more",
      "problem": null,
@@ -3451,9 +3200,6 @@
    "slug": "subjective-from-the-page",
    "title": "Subjective criteria written from the finished page",
    "section": 6,
-   "ce": [
-    "CE-028"
-   ],
    "dim": "Rubric Criteria - Overfitting",
    "cost": "bleed",
    "what": "A subjective criterion names the exact heading, button label, row label or column title your golden page happens to use, and requires it. The property underneath is usually real and gradeable. The criterion asks for the wording instead of the property, and none of the quoted strings appears in any prompt — it is your own copy, read back off your own build.",
@@ -3461,26 +3207,34 @@
    "spot": "Cover the page and read the criterion again. If it only makes sense with your build in front of you, it is naming your text rather than a property.",
    "fix": "Write each one from the property down. A label the user fixed in a prompt can be required; a label you chose cannot.",
    "note": null,
-   "rule": "Subjective criteria name “ONE observable property of the RENDERED artifact”, graded against the golden side by side — layout, legibility, hierarchy, structure, consistency. A property, not the wording one build happened to use.",
-   "rule_src": "gl §8.1 · appendix",
-   "most_common": false,
-   "tasks": 3,
-   "people": 2,
-   "contributors": [
-    "CB-14C3",
-    "CB-A5C1"
+   "sources": [
+    {
+     "doc": "QC spec appendix",
+     "sec": "Multi-Turn Authoring Standards · Writing Subjective Rubrics",
+     "quote": "Name ONE observable property of the RENDERED artifact. The judge sees the render, not the intent behind it. TEST: if two careful reviewers looking at the same render would disagree on PASS/FAIL, the criterion is not specific enough. Name the property.",
+     "means": "A property, not the wording one build happened to use."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "8.1 Writing Subjective Rubrics",
+     "quote": "Focus on the render side never asked in the prompt: layout, visual hierarchy, spacing, readability, styling, structure, tone/register, consistency, and overall polish. If anything related to the render is asked in the prompt, it requires an objective rubric ONLY.",
+     "means": "A label the user fixed in a prompt can be required; a label you chose cannot."
+    },
+    {
+     "doc": "QC spec appendix",
+     "sec": "Rubric Quality Definitions · Overfitting and Underfitting",
+     "quote": "Overfitting: Criteria that are overly specific, inflexible or too rigid - they incorrectly reject a subset of valid implementations. Criteria must be flexible enough to accept different valid implementations.",
+     "means": "A second correct run presenting the same findings under its own wording fails every criterion written this way."
+    }
    ],
+   "rule_src": "QC spec appendix Multi-Turn Authoring Standards · Writing Subjective Rubrics  ·  Guidelines 8.1 Writing Subjective Rubrics  ·  QC spec appendix Rubric Quality Definitions · Overfitting and Underfitting",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8b6",
-     "source": "CE-028",
-     "confidence": 0.83,
-     "locator": "subjective.1",
      "scenario": "Everything that survived the April frost came in: Moorpark apricots in July and eleven quarts of them, cherries frozen, peaches in August, the first figs on the sixteenth, and the Gravensteins on the very last day. The Tilton apricots were lost entirely and ab",
      "category": "Small Business & Personal Docs",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-14C3",
      "setup": "Three turns asking for a single page resolving two expense claims separately, saying for each whether the money reached the user's account and whether the policy clock still allows her to raise it.",
      "wrong": "\"In reimbursement_status.html, two claim cards sit in one row, headed 'Claim 1 - May trip' on the left and 'Claim 2 - August trip' on the right.\" and \"...under 'The determination (as of 28 August 2026)', a four-column table has the header row Claim, Reached your account?, Due by 28 Aug?, and Verdict.\"",
      "problem": "Nine of the ten subjective criteria are written this way, which is 39% of all twenty-three criteria in the task and over every severity threshold. A page that answers both claims correctly, separates receipt status from due status, and heads its cards by month rather than by 'Claim 1' loses nine of ten subjective points for wording the author never asked for in any prompt.",
@@ -3543,10 +3297,6 @@
    "slug": "golden-contradicts-sources",
    "title": "The golden states something its own sources contradict",
    "section": 7,
-   "ce": [
-    "CE-021",
-    "CE-040"
-   ],
    "dim": "Golden Solution - Artifact Completeness",
    "cost": "fail",
    "what": "A figure, a time, a mapping or a placement written into the golden that the photographed page, the log or the message thread underneath it puts somewhere else. Or a sentence of prose inside the golden stating a total the rest of the same page disagrees with, usually true of an earlier draft. The artifact reads well and every graded column around it is right, which is why it survives to submission.",
@@ -3554,42 +3304,28 @@
    "spot": "Take every value the golden asserts that no criterion grades and point at the source line it came from. Ungraded values are where this hides, because nothing else in the task checks them. Then search the golden for every sentence containing a total, a count or a recommendation and check it against the tables on the same page.",
    "fix": "Correct the golden from the source, in every place the value appears — these travel in threes. A paragraph written at turn 1 is the one most likely to be stale at turn 5.",
    "note": null,
-   "rule": "“The golden is not a bonus artifact. It serves as the reference point for evaluating subjective quality and for the full pairwise comparison.” Every value it asserts has to be the one its own sources carry, including the values no criterion happens to grade.",
-   "rule_src": "gl §7 · spec · Golden Solution - Artifact Completeness",
-   "most_common": false,
-   "tasks": 18,
-   "people": 18,
-   "contributors": [
-    "CB-0578",
-    "CB-08C6",
-    "CB-1449",
-    "CB-27D3",
-    "CB-33C0",
-    "CB-6325",
-    "CB-66FF",
-    "CB-727B",
-    "CB-7A33",
-    "CB-8828",
-    "CB-9E5C",
-    "CB-A460",
-    "CB-A5C1",
-    "CB-BA13",
-    "CB-CA78",
-    "CB-CBD3",
-    "CB-D514",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "QC spec",
+     "sec": "Golden Solution - Artifact Completeness",
+     "quote": "The golden replaces the silver trajectory. It is the ideal response, reached by hinting Model B through the milestones, and verified requirement by requirement against the prompt before delivery. Subjective rubrics and pairwise scoring are graded relative to it, so a defective golden corrupts every subjective score on the task.",
+     "means": "A wrong value in the golden is graded as the correct one, so a run that read the source properly loses."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "7. Golden Solution - Leg B",
+     "quote": "Every factual claim is grounded in the actual inputs: images opened, videos watched, PDFs read. Nothing is asserted from a filename alone.",
+     "means": "Including the values no criterion happens to grade. Those are where this hides."
+    }
    ],
+   "rule_src": "QC spec Golden Solution - Artifact Completeness  ·  Guidelines 7. Golden Solution - Leg B",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1cb",
-     "source": "CE-021",
-     "confidence": 1.0,
-     "locator": "golden.11",
      "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been aime",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-A460",
      "setup": "The handover time is written in the margin of the photographed calendar and stored on the calendar service, and the dashboard has to place a Friday exchange against an on-site finish.",
      "wrong": "on-site until 17:00 Fri, can't make the 13:30-15:30 exchange",
      "problem": "The margin of the photograph reads 18:30 and the calendar service stores those events at 18:30 local. The dashboard states 13:30 to 15:30 in three places: the schedule controls note, the assumptions panel and the cost table row. The conclusion survives either way, so nothing catches it, and the golden ships a time its own source refutes.",
@@ -3634,14 +3370,9 @@
     },
     {
      "task_id": "6aa73af2a7b183d5fb7eb8be",
-     "source": "CE-040",
-     "confidence": 0.5,
-     "locator": "golden.5",
      "scenario": "The house fund holds $10,410.00 and its transfer was cut from $650.00 to $250.00 until the first of June 2027, because they can rent for one more year and only get married once. What nobody has done is work out what buying in Hattiesburg actually needs, which ",
      "category": "Property & Space",
      "turns": 3,
-     "verdict": "Pass with non-failing issues",
-     "contributor": "CB-CBD3",
      "setup": "Sixteen queued posts get one audit card each. A later turn delivers a photograph of the contractor's live queue holding a post that appears in no export row, so the page ends at sixteen cards rather than the fifteen the export supports.",
      "wrong": "Two artist-account posts (C16, C17) go out under @sunnyokafor — under P11 not ours to review, so not shown. That's why the count is 15, not 17.",
      "problem": "The header of the same page reads “16 label posts” and the page renders sixteen cards. Fifteen was right until turn 2 added the queue-only post and was never updated, so the one paragraph a reader goes to for the arithmetic disagrees with everything around it.",
@@ -3666,9 +3397,6 @@
    "slug": "revision-leaves-old-wording",
    "title": "A revision that leaves the old wording standing",
    "section": 7,
-   "ce": [
-    "CE-020"
-   ],
    "dim": "Multi-Turn - Revision Turn Handling",
    "cost": "fail",
    "what": "The revision turn changes the thing it was asked to change and leaves every sentence, label and comment that depended on it untouched, so the final artifact states the old position and the new one at the same time.",
@@ -3676,29 +3404,28 @@
    "spot": "After every revision turn, search the artifact for the value, the label and the name that moved, and read each hit in place.",
    "fix": "A revision is finished when nothing left on the page describes the state before it. Change one thing precisely, then re-read the whole artifact for every sentence that just became false.",
    "note": null,
-   "rule": "For a revision turn, “the golden has to show the edit applied to work that already existed: earlier content kept, the change visible, nothing left stale that depended on it. A total that still includes removed rows, or a header still describing the old state, is a regression.”",
-   "rule_src": "gl §6.3 · spec · Multi-Turn - Revision Turn Handling",
-   "most_common": false,
-   "tasks": 5,
-   "people": 5,
-   "contributors": [
-    "CB-262A",
-    "CB-33C0",
-    "CB-6325",
-    "CB-6586",
-    "CB-B5CF"
+   "sources": [
+    {
+     "doc": "QC spec",
+     "sec": "Multi-Turn - Revision Turn Handling",
+     "quote": "A correct golden shows the revision applied to work that already existed: it satisfies the revised brief while still carrying what the earlier turns established. FAIL: both present but contradictory — March rows gone and the flags survived, but the total at the bottom still includes the March amounts. Or the header still says “5 receipts” when 3 remain. The edit touched the table and not the parts that depend on it.",
+     "means": "The spec names this exact shape as a failing case."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "6.3 Modifiers",
+     "quote": "The golden has to show the edit applied to work that already existed: earlier content kept, the change visible, nothing left stale that depended on it. A total that still includes removed rows, or a header still saying five when three remain, fails.",
+     "means": "The rule attached to the revision modifier. “Nothing left stale that depended on it” is the whole test."
+    }
    ],
+   "rule_src": "QC spec Multi-Turn - Revision Turn Handling  ·  Guidelines 6.3 Modifiers",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa02f48755f41e02b01483e",
-     "source": "CE-020",
-     "confidence": 1.0,
-     "locator": "golden.9",
      "scenario": "Anselm has records requests open with Lorna Whitfield-Baptiste's office and two other City of Richmond departments, each at a different stage and each acknowledged on a different clock. He wants one view of every open request, what stage it is at, how long it ",
      "category": "Visual Learning",
      "turns": 5,
-     "verdict": "Fail",
-     "contributor": "CB-33C0",
      "setup": "A late turn moves the newsletter teaser from the records row onto the police request, and changes the sitting figure from days since filing to days since acknowledgment.",
      "wrong": "The newsletter teaser rides the same Records batch",
      "problem": "That sentence still renders one line after the card lists \"The newsletter (RPD-26-2204, 58d past)\", so the page places the teaser in two places at once. The same edit left the expanded row detail printing the figure as \"days since filing\" while the column header, the summary card and the footer all say acknowledgment.",
@@ -3733,13 +3460,6 @@
    "slug": "closeout-mechanics",
    "title": "The five minute close-out nobody runs",
    "section": 7,
-   "ce": [
-    "CE-034",
-    "CE-049",
-    "CE-018",
-    "CE-048",
-    "CE-038"
-   ],
    "dim": "Golden Solution - Trajectory Exclusion · Run Selection",
    "cost": "fail",
    "what": "Five mechanical checks, each cheap, each seen repeatedly. The artifacts archive holding files the prompts never asked for — the generator script, working notes, a build log. No preferred run starred when several completed. A file spelled one way in the prompt and another in the archive. Typos and half-finished clauses in the prompts and criteria a grader has to decode. And a golden conversation that stops before the task's last turn.",
@@ -3747,42 +3467,40 @@
    "spot": "Five lists, side by side, in five minutes. Archive contents against the filenames the prompts name. The run picker reading 1/1 and not 0/1. Every filename character for character. The prompts and criteria read straight through as a grader would. User markers in the golden transcript against populated prompts.",
    "fix": "Remove anything from the archive that is not a named deliverable, then read each delivered document for build instructions meant for you rather than the reader. Star the run your criteria were written against. The prompt's spelling wins — fix the archive to match it.",
    "note": null,
-   "rule": "The artifacts archive is the golden payload: finished deliverables only, named exactly as the prompts name them, with nothing describing how the work was produced. The starred run is the one the rubric was written against, and a criterion that cites a filename the archive does not contain cannot be graded at all.",
-   "rule_src": "gl §7 · spec · Golden Solution - Trajectory Exclusion",
-   "most_common": false,
-   "tasks": 21,
-   "people": 18,
-   "contributors": [
-    "CB-0578",
-    "CB-0EA9",
-    "CB-1449",
-    "CB-2347",
-    "CB-262A",
-    "CB-4D8C",
-    "CB-6325",
-    "CB-6586",
-    "CB-703B",
-    "CB-963D",
-    "CB-9C2F",
-    "CB-9EF5",
-    "CB-B462",
-    "CB-B5CF",
-    "CB-C292",
-    "CB-CA20",
-    "CB-CA78",
-    "CB-E3B2"
+   "sources": [
+    {
+     "doc": "QC spec",
+     "sec": "Golden Solution - Trajectory Exclusion",
+     "quote": "golden/ ships finished artifacts only. The external judge receives the golden ARTIFACTS and never the golden trajectory — anything left in the folder describing how the answer was reached leaks the solution path into grading. Narration: text that describes the making of the artifact: which tools were run, what was tried, what got fixed, in what order.",
+     "means": "A generator script is the clearest case: its comments usually say which input each answer came from."
+    },
+    {
+     "doc": "QC spec",
+     "sec": "Golden Solution - Trajectory Exclusion",
+     "quote": "Caveat: text about the state of the deliverable: a source was unreadable, coverage is partial, a value is estimated, some rows are unverified. It tells the reader what they need to know to use the file correctly, and reveals nothing about how the work was done. Caveats in the content also do not count toward leakage.",
+     "means": "So a note saying two rows are unverified stays. A note saying how you got them out does not."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "7.1 What Changes from Leg A",
+     "quote": "The preferred run (if multiple exist) must still be marked as ‘Preferred‘ with the star.",
+     "means": "Whoever opens the task next has only a timestamp otherwise, and a later run is not the better one."
+    },
+    {
+     "doc": "Guidelines",
+     "sec": "7. Golden Solution - Leg B",
+     "quote": "Satisfies every objective requirement, with every required file present and named exactly as requested.",
+     "means": "The prompt's spelling wins. A criterion citing a filename the archive does not carry cannot be graded."
+    }
    ],
+   "rule_src": "QC spec Golden Solution - Trajectory Exclusion  ·  Guidelines 7.1 What Changes from Leg A  ·  Guidelines 7. Golden Solution - Leg B",
+   "most_common": false,
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1be",
-     "source": "CE-034",
-     "confidence": 0.88,
-     "locator": null,
      "scenario": "The S6 came back four days early with a collimation sheet nobody asked for, and Abelardo took it straight to the 812-foot baseline behind his own shop, where it read within four thousandths of a foot. Nobody else in the office has ever run that check, and the ",
      "category": "Visual Learning",
      "turns": 4,
-     "verdict": "Fail",
-     "contributor": "CB-CA78",
      "setup": "The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.",
      "wrong": "make_baseline_video.py, shipped inside the artifacts archive, whose docstring reads: \"Source of truth: Abe's book pages (IMG_4638, IMG_4639), the setup photo (IMG_4452), and Abe's own mail + calendar... To swap in Abe's own quiz page: edit the QUIZ block near the bottom and re-run: python3 make_baseline_video.py\"",
      "problem": "The archive holds five files where the prompts name three, and the two extras tell a grader which input each answer came from. The same rebuild instruction also reached baseline_check_script.md, the document meant to be printed for the instrument case.",
@@ -3851,14 +3569,9 @@
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1ca",
-     "source": "CE-018",
-     "confidence": 1.0,
-     "locator": "prompt.3",
      "scenario": "The wedding is $28,400.00 with no contribution from any parent, settled in one conversation in September 2025. By the first Saturday in May the arithmetic had stopped working, so the house-fund transfer went from $650.00 to $250.00 until the first of June 2027",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "verdict": "Clean",
-     "contributor": "CB-CA20",
      "setup": "Prompt 3 hands over a photograph of a notebook page carrying the crate dimensions and weight.",
      "wrong": "Prompt 3 calls the file IMG_4508.jpg. The inputs archive holds it as IMG45.08.JPG.",
      "problem": "Model A's third trajectory works with IMG_4508, so the environment delivered it under the prompt's name and the mismatch is in the archive rather than in the run. Nothing failed here because no criterion cites the filename — but on a task where one does, the grader opens the archive, finds no IMG_4508.jpg, and the criterion cannot be scored either way.",
@@ -3909,14 +3622,9 @@
     },
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
-     "source": "CE-048",
-     "confidence": 0.67,
-     "locator": "objective.22",
      "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long",
      "category": "Commerce & Product",
      "turns": 3,
-     "verdict": "Fail",
-     "contributor": "CB-262A",
      "setup": "The rules file sets a delivery fee that falls away above a subtotal threshold, and the order date is established in criterion 3 as Monday 6 July 2026.",
      "wrong": "Criterion 22 asks for a delivery fee of \"%0.00\". Criterion 7 asks for the eggs verdict \"for the Mon Jul 2026 order\". Milestone 4 ends \"an apartment the sheet doe snot marks keeps all the requests\"; milestone 5 has \"that apartment's quantity for the subscribes item is adjustment as the rules file says\".",
      "problem": "A percent sign where the dollar belongs and a date with no day both read against nothing until the grader goes and finds the right value somewhere else in the set. The milestone text is what the simulator replays, so the continuation check is made against a sentence that does not parse.",
