@@ -1,6 +1,6 @@
-# Red Shell · Common Errors — mistake viewer
+# Red Shell · Common Errors: mistake viewer
 
-The worked-example layer of the **Common Errors** course for the OpenClaw MM Rubrics MULTI TURN project.
+The error pages of the **Common Errors** course for the OpenClaw MM Rubrics MULTI TURN project.
 
 23 errors that keep costing people their tasks. Each page carries the rules the error breaks, quoted from
 the Guidelines or the QC spec with the section they live in, and real tasks you can open beside them to see
@@ -19,15 +19,15 @@ what builds it; you do not need to read them to take the course.
 | Page | What it does |
 |---|---|
 | `index.html` | The menu. Every error, grouped into the course's seven sections. |
-| `mistakes/<name>.html` | One page per error. What the mistake is, how to spot it in your own task, what to do instead, the rules it breaks, then the real tasks. |
+| `mistakes/<name>.html` | One page per error, in five steps: what the issue is, why it matters with the rules it breaks quoted, how to recognise it in your own task, real tasks where it happened, what to do instead. |
 | `checklist.html` | Every recognition test on one page, in build order. The five minutes before you submit. |
 | `data/course.json` | The same content as data, if you want to render it somewhere else. |
 
 ## Opening an example
 
 Examples open **on the page you are already reading**, not on one of their own. Click one and a dialog comes
-up with the point on the left — what is wrong here, why, what it should have been, and the rules that decide
-it — and the task's own fields on the right, tabbed.
+up with the point on the left (what is wrong here, why, what it should have been, and the rules that decide
+it) and the task's own fields on the right, tabbed.
 
 The tabs carry only the parts of the task the error actually lives in, so a milestone error shows you the
 milestone table and the golden archive rather than the whole folder. The red chips in the left column jump
@@ -55,7 +55,7 @@ The site is generated. The build scripts live with the course material in Drive,
 
 ```bash
 python detect5.py      # run the mechanical detectors over the task folders
-python relocate.py     # resolve each worked example to its task and rows
+python relocate.py     # resolve each real task example to its task and rows
 python build_data.py   # -> course_data.json
 python build_site.py   # -> this site
 python build_slides.py # -> the deck
@@ -69,9 +69,9 @@ can drift from the others.
 
 ## The rest of the course
 
-- **Slides** — 13 HTML frames at 1920x1080, with a PNG of each
-- **Explanations** — the course text, one entry per mistake, with the same quoted rules
-- **Questions** — 18 comprehension questions, built to test whether someone can recognise the mistake rather
+- **Slides**: 13 HTML frames at 1920x1080, with a PNG of each
+- **Explanations**: the course text, one entry per mistake, with the same quoted rules
+- **Questions**: 23 comprehension questions, built to test whether someone can recognise the mistake rather
   than repeat the rule
 
 All three live beside the build scripts in Drive.
