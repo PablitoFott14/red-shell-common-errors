@@ -2,13 +2,13 @@
 
 The worked-example layer of the **Common Errors** course for the OpenClaw MM Rubrics MULTI TURN project.
 
-24 errors that keep costing people their tasks. Each page carries the rules the error breaks, quoted from
+23 errors that keep costing people their tasks. Each page carries the rules the error breaks, quoted from
 the Guidelines or the QC spec with the section they live in, and real tasks you can open beside them to see
 the field that broke.
 
 ## → [pablitofott14.github.io/red-shell-common-errors](https://pablitofott14.github.io/red-shell-common-errors/)
 
-That link is the course. The menu lists all 24 errors grouped into the seven sections, every error has its
+That link is the course. The menu lists all 23 errors grouped into the seven sections, every error has its
 own page, and each page moves to the next with the arrows at the bottom. The files in this repository are
 what builds it; you do not need to read them to take the course.
 
@@ -71,7 +71,7 @@ can drift from the others.
 
 - **Slides** — 13 HTML frames at 1920x1080, with a PNG of each
 - **Explanations** — the course text, one entry per mistake, with the same quoted rules
-- **Questions** — 19 comprehension questions, built to test whether someone can recognise the mistake rather
+- **Questions** — 18 comprehension questions, built to test whether someone can recognise the mistake rather
   than repeat the rule
 
 All three live beside the build scripts in Drive.

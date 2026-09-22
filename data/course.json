@@ -4,9 +4,8 @@
    "n": 1,
    "slug": "the-task-you-were-given",
    "title": "The task you were given",
-   "lead": "Three decisions made before prompt 1 that cannot be repaired afterwards. Each one is cheap to check and expensive to get wrong.",
+   "lead": "Two decisions made before prompt 1 that cannot be repaired afterwards. Each one is cheap to check and expensive to get wrong.",
    "mistakes": [
-    "scenario-drift",
     "below-complexity-bar",
     "universe-missing-records"
    ]
@@ -82,78 +81,6 @@
   }
  ],
  "mistakes": [
-  {
-   "slug": "scenario-drift",
-   "title": "The Scenario field describes a different task",
-   "section": 1,
-   "dim": "Rejected at QC before the rubric is read",
-   "cost": "fail",
-   "what": "The Scenario on file is not the task you built. Everything downstream — prompts, Draft History, milestones, criteria, golden — is one scenario, and the Scenario field is another, often with a Required Output line naming a deliverable the task never produces.",
-   "why": "Scenario, category and universe are assigned parameters. You cannot change them, and a task that drifts from any of them is rejected however well it is written. When only the field is stale the task is fine, but nobody downstream can tell which of the two is real, so the reviewer has to escalate instead of scoring. When the drift is genuine it is fatal.",
-   "spot": "Open the Story Draft step and read the Scenario field out loud against prompt 1. If the person, the deliverable or the Required Output line do not match, you have it.",
-   "fix": "Read the Scenario back before you write prompt 1, and again as the last check before you submit. Where the two disagree, stop and settle which one is right — never ship both.",
-   "note": null,
-   "sources": [
-    {
-     "doc": "Guidelines",
-     "sec": "1.1 Task Parameters & Execution Rules",
-     "quote": "Four parameters are assigned to you and cannot be changed: task type, category, subcategory and universe. Your prompts must align strictly with them, and a task that drifts from any of them is rejected at QC.",
-     "means": "Drift is not a quality problem to be argued down. It is a rejection condition."
-    },
-    {
-     "doc": "Guidelines",
-     "sec": "1.1 Task Parameters & Execution Rules",
-     "quote": "The scenario is a predefined idea you are given and are expected to build the task around. It is not optional or arbitrary; it is a mandatory part of the task.",
-     "means": "The Scenario field is an assigned parameter, so it has to describe the task you shipped."
-    }
-   ],
-   "rule_src": "Guidelines 1.1 Task Parameters & Execution Rules",
-   "most_common": false,
-   "examples": [
-    {
-     "task_id": "6aa73af2a7b183d5fb7eb8bb",
-     "scenario": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced…",
-     "category": "Commerce & Product",
-     "turns": 3,
-     "setup": "Three turns producing ada_list.html, a buy list built from four photographs and the Fresh catalog and order history.",
-     "wrong": "Scenario: \"There is an ecobee in the hallway and an argument in a text thread going back to 2023\", with a Required Output line asking for six Dixie Electric bills plotted against degree days for Hattiesburg.",
-     "problem": "Nothing else in the folder is about thermostats or electricity bills. A reviewer opening the task cannot tell whether the task was built around the wrong scenario, whose penalty is rejection, or whether the export carried stale text into an otherwise correct task, whose penalty is nothing. Only the platform settles it, so the task stalls on a field nobody checked.",
-     "right": "Open the Story Draft step, read the Scenario field and make it describe the task you built: the deliverable, the person, and the Required Output line that matches prompt 1.",
-     "highlights": [
-      "There is an ecobee in the hallway and an argument in a text thread going back to 2023"
-     ],
-     "panels": [
-      {
-       "t": "text",
-       "title": "Scenario (assigned, cannot be changed)",
-       "body": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced the two positions.\\n\\nRequired Output:\\nHTML dashboard: the six bills against degree days for Hattiesburg with the weather effect separated from behaviour, the cost of each set point estimated with the method and its error stated rather than presented as fact, the August peak decomposed, and a plain statement of how much of the argument the data can actually settle."
-      },
-      {
-       "t": "prompts",
-       "title": "Prompt, turn 1",
-       "rows": [
-        {
-         "turn": 1,
-         "text": "Ada called; she's going to the store after work, and I was making my list for her when I was told I could change some products. I got some pics of the products (proteinbars.png, gfacts.png, and gimage.png),  and I need to create a comparison table for the products I usually buy, coz I'm really picky about my things. I also need to create an \"ada_list.html\" where I need to have the items from the list I uploaded, with the amounts I usually buy. It should be detailed, like brand, price, size, and a pic of them, so Ada doesn't get them wrong."
-        }
-       ]
-      },
-      {
-       "t": "files",
-       "title": "Golden artifacts archive",
-       "rows": [
-        {
-         "name": "ada_list.html",
-         "ext": ".html",
-         "size": 1340961,
-         "turn": null
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
   {
    "slug": "below-complexity-bar",
    "title": "The deliverable sits below the complexity bar",
