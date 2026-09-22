@@ -5,7 +5,11 @@ The worked-example layer of the **Common Errors** course for the OpenClaw MM Rub
 24 errors that keep costing people their tasks. Each page carries the rule the error breaks, quoted from the
 Guidelines or the QC spec, then a real task where it happened with the field that broke it marked.
 
-**→ [Open the viewer](https://pablitofott14.github.io/red-shell-common-errors/)**
+## → [pablitofott14.github.io/red-shell-common-errors](https://pablitofott14.github.io/red-shell-common-errors/)
+
+That link is the course. The menu lists all 24 errors grouped into the seven sections, every error has its
+own page, and each page moves to the next with the arrows at the bottom. The files in this repository are
+what builds it; you do not need to read them to take the course.
 
 ---
 
