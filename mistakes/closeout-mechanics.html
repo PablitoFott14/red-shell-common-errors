@@ -55,12 +55,719 @@
     <aside class="ovrail">
       <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">make_baseline_video.py, shipped inside the artifacts archive, whose docstring reads: &quot;Source of truth: Abe&#x27;s book pages (IMG_4638, IMG_4639), the setup photo (IMG_4452), and Abe&#x27;s own mail + calendar... To swap in Abe&#x27;s own quiz page: edit the QUIZ block near the bottom and re-run: python3 make_baseline_video.py&quot;</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">The archive holds five files where the prompts name three. The generator&#x27;s docstring tells a grader which input each answer came from, and baseline_quiz_page.jpg is a renamed copy of the input IMG_4642.jpg. The same rebuild instruction also reached baseline_check_script.md, the document meant to be printed for the instrument case.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Ship only the files the prompts name, spelled the same way. The generator and the copied quiz page stay out of the archive, and the rebuild instruction comes out of baseline_check_script.md.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>golden/ ships finished artifacts only. The external judge receives the golden ARTIFACTS and never the golden trajectory — anything left in the folder describing how the answer was reached leaks the solution path into grading. Narration: text that describes the making of the artifact: which tools were run, what was tried, what got fixed, in what order.</blockquote><p class="rsrc">QC spec · Golden Solution - Trajectory Exclusion</p><p class="rcm">A generator script is the clearest case: its comments usually say which input each answer came from.</p></div><div class="railrule"><blockquote>Caveat: text about the state of the deliverable: a source was unreadable, coverage is partial, a value is estimated, some rows are unverified. It tells the reader what they need to know to use the file correctly, and reveals nothing about how the work was done. Caveats in the content also do not count toward leakage.</blockquote><p class="rsrc">QC spec · Golden Solution - Trajectory Exclusion</p></div><div class="railrule"><blockquote>The preferred run (if multiple exist) must still be marked as ‘Preferred‘ with the star.</blockquote><p class="rsrc">Attempter Guidelines · 7.1 What Changes from Leg A</p></div><div class="railrule"><blockquote>Satisfies every objective requirement, with every required file present and named exactly as requested.</blockquote><p class="rsrc">Attempter Guidelines · 7. Golden Solution - Leg B</p></div><div class="railrule"><blockquote>Contains avoidable grammatical or wording issues.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</p></div><div class="railrule"><blockquote>This dimension is binary: tasks are only penalized (non-fail) when no preferred run is selected.</blockquote><p class="rsrc">QC spec · Trajectory - Golden/Preferred Run Selection</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">make_baseline_video.py, shipped inside the artifacts archive, whose docstring reads: &quot;Source of truth: Abe&#x27;s book pages (IMG_4638, IMG_4639), the setup photo (IMG_4452), and Abe&#x27;s own mail + calendar... To swap in Abe&#x27;s own quiz page: edit the QUIZ block near the bottom and re-run: python3 make_baseline_video.py&quot;</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">The archive holds five files where the prompts name three. The generator&#x27;s docstring tells a grader which input each answer came from, and baseline_quiz_page.jpg is a renamed copy of the input IMG_4642.jpg. The same rebuild instruction also reached baseline_check_script.md, the document meant to be printed for the instrument case.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Ship only the files the prompts name, spelled the same way. The generator and the copied quiz page stay out of the archive, and the rebuild instruction comes out of baseline_check_script.md.</div></div><div class="jumps"><span class="jl">Jump to</span><button type="button" class="evjump" data-pane="2" data-row="p2m0">make_baseline_video.py</button><button type="button" class="evjump" data-pane="3" data-row="p3m0">baseline_check_script.md</button><button type="button" class="evjump" data-pane="4" data-row="p4ev">Quiz page and its source</button></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>golden/ ships finished artifacts only. The external judge receives the golden ARTIFACTS and never the golden trajectory — anything left in the folder describing how the answer was reached leaks the solution path into grading. Narration: text that describes the making of the artifact: which tools were run, what was tried, what got fixed, in what order.</blockquote><p class="rsrc">QC spec · Golden Solution - Trajectory Exclusion</p><p class="rcm">A generator script is the clearest case: its comments usually say which input each answer came from.</p></div><div class="railrule"><blockquote>Caveat: text about the state of the deliverable: a source was unreadable, coverage is partial, a value is estimated, some rows are unverified. It tells the reader what they need to know to use the file correctly, and reveals nothing about how the work was done. Caveats in the content also do not count toward leakage.</blockquote><p class="rsrc">QC spec · Golden Solution - Trajectory Exclusion</p></div><div class="railrule"><blockquote>The preferred run (if multiple exist) must still be marked as ‘Preferred‘ with the star.</blockquote><p class="rsrc">Attempter Guidelines · 7.1 What Changes from Leg A</p></div><div class="railrule"><blockquote>Satisfies every objective requirement, with every required file present and named exactly as requested.</blockquote><p class="rsrc">Attempter Guidelines · 7. Golden Solution - Leg B</p></div><div class="railrule"><blockquote>Contains avoidable grammatical or wording issues.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</p></div><div class="railrule"><blockquote>This dimension is binary: tasks are only penalized (non-fail) when no preferred run is selected.</blockquote><p class="rsrc">QC spec · Trajectory - Golden/Preferred Run Selection</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">
-        <button type="button" class="ovtab showrail">‹ The mistake</button><button type="button" class="ovtab on" data-pane="0" role="tab" aria-selected="true">Golden archive</button><button type="button" class="ovtab" data-pane="1" role="tab" aria-selected="false">The prompts</button></nav>
-      <div class="ovpanes"><div class="ovpane on" data-pane="0"><div class="panel"><div class="ph">Golden artifacts archive</div><div class="pb files"><div class="file"><code>MEMORY.md</code><span class="fx">.md</span><span class="fs">1 KB</span></div><div class="file"><code>make_baseline_video.py</code><span class="fx">.py</span><span class="fs">25 KB</span></div><div class="file"><code>baseline_quiz_page.jpg</code><span class="fx">.jpg</span><span class="fs">213 KB</span></div><div class="file"><code>baseline_check.mp4</code><span class="fx">.mp4</span><span class="fs">7979 KB</span></div><div class="file"><code>baseline_check_script.md</code><span class="fx">.md</span><span class="fs">8 KB</span></div></div></div></div><div class="ovpane" data-pane="1"><div class="panel"><div class="ph">Every prompt the task ships</div><div class="pb"><div class="turn"><div class="tn">Turn 1</div><div class="tt">The S6 came back from Lubbock in july and i ran it on  the baseline behind the shop the same afternoon, same as I do with anything that has been off the property. It passed . What brothers me is that I am the only one here who has ever run that check, and next time an instrument comes back from a bench it will not be me standing there. I want a short video the office can follow without me , saved as baseline_check.mp4 , and the script for it as baseline_check_script.md so Rosalba can print it and keep it in the case. It is for Estefana first and whoever comes after her. Open with where the baseline came from and what the S6 was on the bench for , then run the check end to end on my setup, and at every step show a good reading next to a bad one. Do the arithmetic on the screen , not in a spreadsheet afterwards. Feet to three places all the way through, nobody here reads millimetres. End with a set of readings they have to call before the video calls it, and the call has to be the one I would make. I will dig out the page for that. Attached are the pages from my book , the sheet came back in the case, and a photo of the setup. The sheet is nice to have . The sheet is not the check .Abe</div></div><div class="turn"><div class="tn">Turn 2</div><div class="tt">Dug out the April page, it is attached. That is what the S6 was reading before it went in, so that is your bad one. Put the real numbers in where you had to make some up and leave everything else where it is, it is right.</div></div><div class="turn"><div class="tn">Turn 3</div><div class="tt">This is the one for the end, attached. Loaner S5 from Llano, June, before I let it out on a job. I cut my arithmetic and my call off the bottom of the page on purpose. Show them the page, give them ten seconds, then work it on the screen and call it.</div></div><div class="turn"><div class="tn">Turn 4</div><div class="tt">Estefana watched it twice and came back with one question, which is more than I got from anyone else: why do we not just use the number on Talmadge&#x27;s sheet. Fair question. Put it in, his number worked out on the 812 next to mine, and one line on which one we use and why. One more thing while that is open, add the baseline number and my rule to MEMORY.md so next time nobody has to go looking for the book.</div></div></div></div></div></div>
+        <button type="button" class="ovtab showrail">‹ The mistake</button><button type="button" class="ovtab on" data-pane="0" role="tab" aria-selected="true">Golden archive</button><button type="button" class="ovtab" data-pane="1" role="tab" aria-selected="false">The prompts</button><button type="button" class="ovtab evtabb" data-pane="2" title="make_baseline_video.py" role="tab" aria-selected="false">make_baseline_video.py</button><button type="button" class="ovtab evtabb" data-pane="3" title="baseline_check_script.md" role="tab" aria-selected="false">baseline_check_script.md</button><button type="button" class="ovtab evtabb" data-pane="4" title="Quiz page and its source" role="tab" aria-selected="false">Quiz page and its source</button></nav>
+      <div class="ovpanes"><div class="ovpane on" data-pane="0"><div class="panel"><div class="ph">Golden artifacts archive</div><div class="pb files"><div class="file"><code>MEMORY.md</code><span class="fx">.md</span><span class="fs">1 KB</span></div><div class="file"><code>make_baseline_video.py</code><span class="fx">.py</span><span class="fs">25 KB</span><button type="button" class="evjump" data-pane="2" data-row="p2ev">Open it</button></div><div class="file"><code>baseline_quiz_page.jpg</code><span class="fx">.jpg</span><span class="fs">213 KB</span><button type="button" class="evjump" data-pane="4" data-row="p4ev">Open it</button></div><div class="file"><code>baseline_check.mp4</code><span class="fx">.mp4</span><span class="fs">7979 KB</span></div><div class="file"><code>baseline_check_script.md</code><span class="fx">.md</span><span class="fs">8 KB</span><button type="button" class="evjump" data-pane="3" data-row="p3ev">Open it</button></div></div></div></div><div class="ovpane" data-pane="1"><div class="panel"><div class="ph">Every prompt the task ships</div><div class="pb"><div class="turn"><div class="tn">Turn 1</div><div class="tt">The S6 came back from Lubbock in july and i ran it on  the baseline behind the shop the same afternoon, same as I do with anything that has been off the property. It passed . What brothers me is that I am the only one here who has ever run that check, and next time an instrument comes back from a bench it will not be me standing there. I want a short video the office can follow without me , saved as baseline_check.mp4 , and the script for it as baseline_check_script.md so Rosalba can print it and keep it in the case. It is for Estefana first and whoever comes after her. Open with where the baseline came from and what the S6 was on the bench for , then run the check end to end on my setup, and at every step show a good reading next to a bad one. Do the arithmetic on the screen , not in a spreadsheet afterwards. Feet to three places all the way through, nobody here reads millimetres. End with a set of readings they have to call before the video calls it, and the call has to be the one I would make. I will dig out the page for that. Attached are the pages from my book , the sheet came back in the case, and a photo of the setup. The sheet is nice to have . The sheet is not the check .Abe</div></div><div class="turn"><div class="tn">Turn 2</div><div class="tt">Dug out the April page, it is attached. That is what the S6 was reading before it went in, so that is your bad one. Put the real numbers in where you had to make some up and leave everything else where it is, it is right.</div></div><div class="turn"><div class="tn">Turn 3</div><div class="tt">This is the one for the end, attached. Loaner S5 from Llano, June, before I let it out on a job. I cut my arithmetic and my call off the bottom of the page on purpose. Show them the page, give them ten seconds, then work it on the screen and call it.</div></div><div class="turn"><div class="tn">Turn 4</div><div class="tt">Estefana watched it twice and came back with one question, which is more than I got from anyone else: why do we not just use the number on Talmadge&#x27;s sheet. Fair question. Put it in, his number worked out on the 812 next to mine, and one line on which one we use and why. One more thing while that is open, add the baseline number and my rule to MEMORY.md so next time nobody has to go looking for the book.</div></div></div></div></div><div class="ovpane" data-pane="2"><div class="panel"><div class="ph">make_baseline_video.py</div><div class="evnote">Shipped in the golden archive, though no prompt names it. Its docstring tells a grader which input each answer came from.</div><div class="pb ev" id="p2ev"><div class="evi evk-text"><div class="evh"><code>make_baseline_video.py</code><span class="evr">golden artifact</span></div><pre class="evtext">#!/usr/bin/env python3
+&quot;&quot;&quot;
+Builds baseline_check.mp4 — the office-follow-along video for the baseline check.
+
+<mark id="p2m0">Source of truth</mark>: Abe&#x27;s book pages (IMG_4638, IMG_4639), the setup photo (IMG_4452),
+and Abe&#x27;s own mail + calendar (why the S6 went in; how the baseline was established).
+
+Everything on screen is in FEET to three places. No millimetres.
+
+To swap in Abe&#x27;s own quiz page: edit the QUIZ block near the bottom and <mark>re-run</mark>:
+    python3 make_baseline_video.py
+&quot;&quot;&quot;
+
+import os
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont
+import imageio.v2 as imageio
+
+IN = &quot;/app/inputs&quot;
+OUT = &quot;/app/outputs&quot;
+FPS = 30
+W, H = 1920, 1080
+
+# ---- palette -------------------------------------------------------------
+BG     = (22, 24, 28)
+PANEL  = (32, 35, 41)
+INK    = (238, 240, 243)
+MUTED  = (154, 160, 170)
+GOOD   = (60, 196, 124)
+BAD    = (230, 88, 80)
+ACCENT = (247, 197, 42)   # instrument yellow
+LINE   = (72, 76, 86)
+GOODBG = (26, 46, 36)
+BADBG  = (52, 30, 30)
+
+FONTDIR = &quot;/usr/share/fonts/truetype/dejavu&quot;
+_cache = {}
+def font(kind, size):
+    key = (kind, size)
+    if key not in _cache:
+        f = {&quot;sans&quot;:&quot;DejaVuSans.ttf&quot;,&quot;bold&quot;:&quot;DejaVuSans-Bold.ttf&quot;,
+             &quot;mono&quot;:&quot;DejaVuSansMono.ttf&quot;,&quot;monob&quot;:&quot;DejaVuSansMono-Bold.ttf&quot;}[kind]
+        _cache[key] = ImageFont.truetype(os.path.join(FONTDIR, f), size)
+    return _cache[key]
+
+# ---- draw helpers --------------------------------------------------------
+def canvas(bg=BG):
+    im = Image.new(&quot;RGB&quot;, (W, H), bg)
+    return im, ImageDraw.Draw(im)
+
+def text(d, xy, s, fnt, fill=INK, anchor=&quot;la&quot;):
+    d.text(xy, s, font=fnt, fill=fill, anchor=anchor)
+
+def measure(fnt, s):
+    return fnt.getlength(s)
+
+def wrap(d, s, fnt, x, y, maxw, fill=INK, leading=1.35, center=False):
+    words, lines, cur = s.split(), [], &quot;&quot;
+    for w in words:
+        t = (cur + &quot; &quot; + w).strip()
+        if measure(fnt, t) &lt;= maxw:
+            cur = t
+        else:
+            if cur: lines.append(cur)
+            cur = w
+    if cur: lines.append(cur)
+    lh = int(fnt.size * leading)
+    for i, ln in enumerate(lines):
+        d.text((x, y+i*lh), ln, font=fnt, fill=fill, anchor=(&quot;ma&quot; if center else &quot;la&quot;))
+    return y + len(lines)*lh
+
+def panel(d, box, fill=PANEL, outline=None, width=2, radius=22):
+    d.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
+
+def chip(d, xy, s, fill, textcol=(15,16,18), fnt=None, pad=(22,12)):
+    fnt = fnt or font(&quot;bold&quot;, 34)
+    tw = measure(fnt, s); x, y = xy
+    box = (x, y, x+tw+pad[0]*2, y+fnt.size+pad[1]*2)
+    d.rounded_rectangle(box, radius=(box[3]-box[1])//2, fill=fill)
+    d.text((x+pad[0], y+pad[1]-2), s, font=fnt, fill=textcol)
+    return box
+
+def label_masked(d, cx, cy, s, fnt, fill, pad=12, bg=BG):
+    &quot;&quot;&quot;Center a label at (cx, cy top) with a background box so any line behind it stays readable.&quot;&quot;&quot;
+    w = measure(fnt, s)
+    d.rectangle((cx-w/2-pad, cy-4, cx+w/2+pad, cy+fnt.size+8), fill=bg)
+    d.text((cx, cy), s, font=fnt, fill=fill, anchor=&quot;ma&quot;)
+
+def footer(d, page=&quot;&quot;):
+    d.line((90, H-92, W-90, H-92), fill=LINE, width=2)
+    text(d, (90, H-70),
+         &quot;S6  SN 93441234   •   Baseline BL-1–BL-2  =  812.000 ft   •   feet to three places&quot;,
+         font(&quot;sans&quot;, 26), MUTED)
+    if page:
+        text(d, (W-90, H-70), page, font(&quot;bold&quot;, 26), MUTED, anchor=&quot;ra&quot;)
+
+def header(d, kicker, title, tcol=INK):
+    text(d, (90, 66), kicker, font(&quot;bold&quot;, 30), ACCENT)
+    # auto-fit title so it never clips the right edge
+    size = 72
+    while size &gt; 50 and measure(font(&quot;bold&quot;, size), title) &gt; (W-180):
+        size -= 2
+    text(d, (90, 114), title, font(&quot;bold&quot;, size), tcol)
+    d.line((90, 210, W-90, 210), fill=LINE, width=3)
+
+def goodbad_headers(d, lx, rx, top, w, badlabel=&quot;BAD&quot;):
+    d.rounded_rectangle((lx, top, lx+w, top+70), radius=14, fill=GOOD)
+    d.rounded_rectangle((rx, top, rx+w, top+70), radius=14, fill=BAD)
+    text(d, (lx+w//2, top+8), &quot;GOOD&quot;, font(&quot;bold&quot;, 44), (12,30,20), anchor=&quot;ma&quot;)
+    text(d, (rx+w//2, top+8), badlabel, font(&quot;bold&quot;, 44), (30,12,12), anchor=&quot;ma&quot;)
+
+def load_fit(path, box_w, box_h):
+    im = Image.open(path).convert(&quot;RGB&quot;)
+    r = min(box_w/im.width, box_h/im.height)
+    return im.resize((max(1,int(im.width*r)), max(1,int(im.height*r))), Image.LANCZOS)
+
+SLIDES = []
+def add(im, sec, fade=True): SLIDES.append((im, sec, fade))
+
+# =========================================================================
+# 0. TITLE
+# =========================================================================
+im, d = canvas()
+d.rectangle((0,0,W,12), fill=ACCENT)
+text(d, (W//2, 235), &quot;BASELINE CHECK&quot;, font(&quot;bold&quot;, 128), INK, anchor=&quot;ma&quot;)
+text(d, (W//2, 388), &quot;The whole thing, start to finish — so anyone can run it without Abe.&quot;,
+     font(&quot;sans&quot;, 40), MUTED, anchor=&quot;ma&quot;)
+panel(d, (W//2-580, 500, W//2+580, 770), fill=PANEL, outline=LINE)
+text(d, (W//2, 528), &quot;Any instrument back from a bench gets this before it goes out.&quot;,
+     font(&quot;sans&quot;, 36), INK, anchor=&quot;ma&quot;)
+text(d, (W//2, 596), &quot;Tripod both ends.  PPM every time.  Feet to three places.&quot;,
+     font(&quot;bold&quot;, 40), INK, anchor=&quot;ma&quot;)
+text(d, (W//2, 664), &quot;Inside 0.010 ft = good.   Over = it goes back.&quot;,
+     font(&quot;bold&quot;, 42), ACCENT, anchor=&quot;ma&quot;)
+text(d, (W//2, 720), &quot;Write it down.&quot;, font(&quot;bold&quot;, 36), INK, anchor=&quot;ma&quot;)
+text(d, (W//2, 870), &quot;Do the math on the screen, not in a spreadsheet after.&quot;,
+     font(&quot;sans&quot;, 34), MUTED, anchor=&quot;ma&quot;)
+add(im, 6.0)
+
+# =========================================================================
+# 1. WHERE THE BASELINE CAME FROM
+# =========================================================================
+im, d = canvas()
+header(d, &quot;FIRST — WHAT YOU ARE STANDING ON&quot;, &quot;Where our baseline came from&quot;)
+wrap(d, &quot;Abe set two brass caps behind the shop at 8710 Bowie in 2016 — 812.000 ft apart, with &quot;
+        &quot;the midpoint 406.000 out. He re-observes the line every spring to hold the 812.000. It is &quot;
+        &quot;our own baseline, and that 812.000 is the truth we judge against.&quot;,
+     font(&quot;sans&quot;, 38), 90, 244, W-180, MUTED)
+
+y = 590
+x1, x2 = 220, W-220
+xm = (x1+x2)//2
+d.line((x1, y, x2, y), fill=INK, width=6)
+for x, lab, sub in [(x1,&quot;BL-1&quot;,&quot;0.000&quot;),(xm,&quot;BL-M&quot;,&quot;406.000&quot;),(x2,&quot;BL-2&quot;,&quot;812.000&quot;)]:
+    d.line((x, y-34, x, y+34), fill=ACCENT, width=8)
+    text(d, (x, y-96), lab, font(&quot;bold&quot;, 46), INK, anchor=&quot;ma&quot;)
+    text(d, (x, y+52), sub, font(&quot;mono&quot;, 34), MUTED, anchor=&quot;ma&quot;)
+d.line((x1, y+150, xm, y+150), fill=LINE, width=3)
+d.line((xm, y+150, x2, y+150), fill=LINE, width=3)
+label_masked(d, (x1+xm)//2, y+134, &quot;406.000&quot;, font(&quot;mono&quot;, 30), MUTED)
+label_masked(d, (xm+x2)//2, y+134, &quot;406.000&quot;, font(&quot;mono&quot;, 30), MUTED)
+d.line((x1, y+238, x2, y+238), fill=ACCENT, width=4)
+label_masked(d, xm, y+214, &quot;812.000 ft  —  our hold since 2016&quot;, font(&quot;bold&quot;, 40), ACCENT)
+text(d, (xm, y+292), &quot;Two brass caps, set 2016  ·  re-observed every spring  ·  NOT the brochure.&quot;,
+     font(&quot;sans&quot;, 30), INK, anchor=&quot;ma&quot;)
+footer(d, &quot;1 / 9&quot;)
+add(im, 9.0)
+
+# =========================================================================
+# 2. WHY THE S6 WENT IN  (the story)
+# =========================================================================
+im, d = canvas()
+header(d, &quot;WHY THE S6 WENT IN&quot;, &quot;What happened on 26-004&quot;)
+steps = [
+    (&quot;2 Jun&quot;, &quot;Deaf Smith County — the 640-acre pivot as-builts, job 26-004. Estefana on the rod.&quot;),
+    (&quot;&quot;,      &quot;The S6 lost the tracker at 2:20 and would not re-acquire. We finished the day on the R12i and a 100-ft tape.&quot;),
+    (&quot;3 Jun&quot;, &quot;Drove it to Llano Estacado Instrument Service in Lubbock. Talmadge Ruff opened it up: tracker board and Y servo. Six weeks on the bench.&quot;),
+    (&quot;16 Jul&quot;,&quot;Back four days early, sheet in the case.&quot;),
+]
+yy = 250
+for when, what in steps:
+    if when:
+        chip(d, (90, yy), when, ACCENT, fnt=font(&quot;bold&quot;, 30))
+    yy2 = wrap(d, what, font(&quot;sans&quot;, 38), 330, yy+6, W-420, INK)
+    yy = max(yy2, yy+90) + 14
+
+panel(d, (90, 800, W-90, 900), fill=(44,38,24), outline=ACCENT, width=2, radius=16)
+text(d, (W//2, 820), &quot;A bench can say it&#x27;s fixed. The baseline is how WE know —&quot;,
+     font(&quot;bold&quot;, 36), ACCENT, anchor=&quot;ma&quot;)
+text(d, (W//2, 862), &quot;before it goes back out on a job.&quot;, font(&quot;bold&quot;, 36), ACCENT, anchor=&quot;ma&quot;)
+footer(d, &quot;2 / 9&quot;)
+add(im, 11.0)
+
+# =========================================================================
+# 3. SETUP  (good vs bad) — center, level, both ends, constant
+# =========================================================================
+im, d = canvas()
+header(d, &quot;SET UP THE SAME WAY EVERY TIME&quot;, &quot;Set up both ends&quot;)
+photo = load_fit(os.path.join(IN, &quot;IMG_4452.jpg&quot;), 820, 600)
+im.paste(photo, (90, 252))
+text(d, (90, 252+photo.height+10), &quot;Abe&#x27;s setup behind the shop.&quot;, font(&quot;sans&quot;, 26), MUTED)
+
+gx, gw = 960, 880
+bf = font(&quot;sans&quot;, 30)
+d.rounded_rectangle((gx, 250, gx+gw, 318), radius=14, fill=GOOD)
+text(d, (gx+gw//2, 258), &quot;GOOD&quot;, font(&quot;bold&quot;, 40), (12,30,20), anchor=&quot;ma&quot;)
+panel(d, (gx, 326, gx+gw, 600), fill=GOODBG, outline=GOOD, width=2)
+for i,s in enumerate([
+    &quot;Instrument on a tripod over BL-1, legs firm.&quot;,
+    &quot;Center over the cap, then level.&quot;,
+    &quot;Prism on a tripod over BL-2, both level.&quot;,
+    &quot;Trimble 360 prism, constant 0.0.&quot;]):
+    text(d, (gx+30, 352+i*60), &quot;•  &quot;+s, bf, INK)
+
+d.rounded_rectangle((gx, 620, gx+gw, 688), radius=14, fill=BAD)
+text(d, (gx+gw//2, 628), &quot;BAD&quot;, font(&quot;bold&quot;, 40), (30,12,12), anchor=&quot;ma&quot;)
+panel(d, (gx, 696, gx+gw, 966), fill=BADBG, outline=BAD, width=2)
+for i,s in enumerate([
+    &quot;Prism on a hand pole — it rocks.&quot;,
+    &quot;Legs loose — the tripod walks.&quot;,
+    &quot;Off-center or off-level — reads off.&quot;,
+    &quot;Constant wrong — same bias every shot.&quot;]):
+    text(d, (gx+30, 722+i*60), &quot;•  &quot;+s, bf, INK)
+footer(d, &quot;3 / 9&quot;)
+add(im, 10.0)
+
+# =========================================================================
+# 4. STEP 1 - PPM  (title short; arithmetic clear of footer)
+# =========================================================================
+im, d = canvas()
+header(d, &quot;STEP 1 — BEFORE THE FIRST SHOT, EVERY TIME&quot;, &quot;PPM off the shop gauge&quot;)
+wrap(d, &quot;Read the shop gauge. Punch temperature and pressure into the S6 so it sets PPM. &quot;
+        &quot;Forget it and the S6 reads short.&quot;,
+     font(&quot;sans&quot;, 38), 90, 244, W-180, MUTED)
+
+lx, rx, w, top = 120, 1030, 760, 388
+goodbad_headers(d, lx, rx, top, w)
+panel(d, (lx, top+80, lx+w, top+360), fill=GOODBG, outline=GOOD, width=2)
+panel(d, (rx, top+80, rx+w, top+360), fill=BADBG, outline=BAD, width=2)
+text(d, (lx+w//2, top+104), &quot;97°F   26.40 inHg   →  PPM +52&quot;, font(&quot;mono&quot;, 32), INK, anchor=&quot;ma&quot;)
+text(d, (lx+w//2, top+170), &quot;812.005&quot;, font(&quot;monob&quot;, 90), GOOD, anchor=&quot;ma&quot;)
+text(d, (lx+w//2, top+300), &quot;PPM set. Reads true.&quot;, font(&quot;sans&quot;, 32), INK, anchor=&quot;ma&quot;)
+text(d, (rx+w//2, top+104), &quot;PPM left at 0   (forgot it)&quot;, font(&quot;mono&quot;, 32), INK, anchor=&quot;ma&quot;)
+text(d, (rx+w//2, top+170), &quot;811.962&quot;, font(&quot;monob&quot;, 90), BAD, anchor=&quot;ma&quot;)
+text(d, (rx+w//2, top+300), &quot;Struck in July. Set PPM, shot again.&quot;, font(&quot;sans&quot;, 30), INK, anchor=&quot;ma&quot;)
+
+ay = 838   # arithmetic strip well above footer line at H-92 (=988)
+panel(d, (120, ay, W-120, ay+110), fill=PANEL, outline=LINE)
+text(d, (150, ay+16), &quot;On the screen:&quot;, font(&quot;bold&quot;, 28), ACCENT)
+text(d, (150, ay+56), &quot;812.000 ft × 0.000052 = 0.042 ft short   812.005 − 811.962 = 0.043 ft&quot;,
+     font(&quot;mono&quot;, 34), INK)
+footer(d, &quot;4 / 9&quot;)
+add(im, 9.0)
+
+# =========================================================================
+# 5. STEP 2 - THREE SETS + spread rule (good vs bad)
+# =========================================================================
+im, d = canvas()
+header(d, &quot;STEP 2&quot;, &quot;Three sets, HD, feet — check the spread&quot;)
+wrap(d, &quot;Shoot three sets of horizontal distance. A set more than 0.005 off the other two is a &quot;
+        &quot;strike (a bump, or PPM). Strike it, shoot it again. Never average a strike.&quot;,
+     font(&quot;sans&quot;, 38), 90, 244, W-180, MUTED)
+lx, rx, w, top = 120, 1030, 760, 440
+goodbad_headers(d, lx, rx, top, w)
+panel(d, (lx, top+80, lx+w, top+460), fill=GOODBG, outline=GOOD, width=2)
+panel(d, (rx, top+80, rx+w, top+460), fill=BADBG, outline=BAD, width=2)
+for i,(lab,val) in enumerate([(&quot;Set 1&quot;,&quot;812.005&quot;),(&quot;Set 2&quot;,&quot;812.003&quot;),(&quot;Set 3&quot;,&quot;812.004&quot;)]):
+    text(d, (lx+40, top+108+i*70), lab, font(&quot;sans&quot;, 36), MUTED)
+    text(d, (lx+300, top+108+i*70), val, font(&quot;mono&quot;, 46), INK)
+text(d, (lx+40, top+328), &quot;spread = 0.002  (≤ 0.005)&quot;, font(&quot;mono&quot;, 34), GOOD)
+text(d, (lx+40, top+388), &quot;Keep all three.&quot;, font(&quot;bold&quot;, 36), GOOD)
+for i,(lab,val,c) in enumerate([(&quot;Set 1&quot;,&quot;812.004&quot;,INK),(&quot;Set 2&quot;,&quot;812.037&quot;,BAD),(&quot;Set 3&quot;,&quot;812.003&quot;,INK)]):
+    text(d, (rx+40, top+108+i*70), lab, font(&quot;sans&quot;, 36), MUTED)
+    text(d, (rx+300, top+108+i*70), val, font(&quot;mono&quot;, 46), c)
+text(d, (rx+40, top+328), &quot;Set 2 is 0.033 off  (&gt; 0.005)&quot;, font(&quot;mono&quot;, 34), BAD)
+text(d, (rx+40, top+388), &quot;Strike Set 2. Reshoot. Don&#x27;t average.&quot;, font(&quot;bold&quot;, 30), BAD)
+footer(d, &quot;5 / 9&quot;)
+add(im, 9.0)
+
+# =========================================================================
+# 6. STEP 3 - MEAN &amp; CALL (good vs bad)
+# =========================================================================
+im, d = canvas()
+header(d, &quot;STEP 3&quot;, &quot;Mean of three, less 812.000 — make the call&quot;)
+wrap(d, &quot;Add the three good sets, divide by three, subtract 812.000. Inside 0.010 ft is good. &quot;
+        &quot;Over, it goes back. Tight sets can still fail — do the math.&quot;,
+     font(&quot;sans&quot;, 38), 90, 244, W-180, MUTED)
+lx, rx, w, top = 120, 1030, 760, 430
+goodbad_headers(d, lx, rx, top, w)
+panel(d, (lx, top+80, lx+w, top+470), fill=GOODBG, outline=GOOD, width=2)
+panel(d, (rx, top+80, rx+w, top+470), fill=BADBG, outline=BAD, width=2)
+text(d, (lx+40, top+96), &quot;S6 · 16 Jul · after repair&quot;, font(&quot;sans&quot;, 26), MUTED)
+text(d, (lx+40, top+134), &quot;812.005 + 812.003 + 812.004&quot;, font(&quot;mono&quot;, 32), INK)
+text(d, (lx+40, top+184), &quot;= 2436.012  ÷ 3  = 812.004&quot;, font(&quot;mono&quot;, 32), INK)
+text(d, (lx+40, top+244), &quot;812.004 − 812.000 = +0.004&quot;, font(&quot;mono&quot;, 36), INK)
+text(d, (lx+w//2, top+324), &quot;+0.004  ≤  0.010&quot;, font(&quot;monob&quot;, 48), GOOD, anchor=&quot;ma&quot;)
+chip(d, (lx+w//2-95, top+382), &quot;GOOD&quot;, GOOD)
+text(d, (rx+40, top+96), &quot;S6 · 18 Apr · before it went in&quot;, font(&quot;sans&quot;, 26), MUTED)
+text(d, (rx+40, top+134), &quot;812.012 + 812.015 + 812.012&quot;, font(&quot;mono&quot;, 32), INK)
+text(d, (rx+40, top+184), &quot;= 2436.039  ÷ 3  = 812.013&quot;, font(&quot;mono&quot;, 32), INK)
+text(d, (rx+40, top+244), &quot;812.013 − 812.000 = +0.013&quot;, font(&quot;mono&quot;, 36), INK)
+text(d, (rx+w//2, top+324), &quot;+0.013  &gt;  0.010&quot;, font(&quot;monob&quot;, 48), BAD, anchor=&quot;ma&quot;)
+chip(d, (rx+w//2-150, top+382), &quot;IT GOES BACK&quot;, BAD)
+footer(d, &quot;6 / 9&quot;)
+add(im, 9.0)
+
+# =========================================================================
+# 6b. WHY NOT TALMADGE&#x27;S NUMBER  (Estefana&#x27;s question)
+# =========================================================================
+im, d = canvas()
+header(d, &quot;ESTEFANA&#x27;S QUESTION&quot;, &quot;Why not just use Talmadge&#x27;s number?&quot;)
+wrap(d, &quot;His sheet certifies the gun on a 3-pillar bench: ±(2 mm + 2 ppm). Work that at our &quot;
+        &quot;812.000 ft and set it beside the office limit.&quot;,
+     font(&quot;sans&quot;, 38), 90, 244, W-180, MUTED)
+lx, rx, w, top = 120, 1030, 760, 400
+# left — the brochure allowance
+d.rounded_rectangle((lx, top, lx+w, top+70), radius=14, fill=LINE)
+text(d, (lx+w//2, top+8), &quot;TALMADGE&#x27;S SHEET&quot;, font(&quot;bold&quot;, 40), INK, anchor=&quot;ma&quot;)
+panel(d, (lx, top+80, lx+w, top+440), fill=PANEL, outline=LINE, width=2)
+text(d, (lx+30, top+106), &quot;±(2 mm + 2 ppm), prism mode&quot;, font(&quot;mono&quot;, 30), INK)
+text(d, (lx+30, top+156), &quot;worked at our 812.000 ft:&quot;, font(&quot;sans&quot;, 28), MUTED)
+text(d, (lx+30, top+212), &quot;2 mm             → 0.007 ft&quot;, font(&quot;mono&quot;, 30), INK)
+text(d, (lx+30, top+260), &quot;2 ppm × 812.000  → 0.002 ft&quot;, font(&quot;mono&quot;, 30), INK)
+text(d, (lx+w//2, top+338), &quot;the pair  →  ±0.008 ft&quot;, font(&quot;monob&quot;, 44), INK, anchor=&quot;ma&quot;)
+text(d, (lx+w//2, top+400), &quot;(each rounded to 0.001 ft)&quot;, font(&quot;sans&quot;, 22), MUTED, anchor=&quot;ma&quot;)
+# right — the office limit
+d.rounded_rectangle((rx, top, rx+w, top+70), radius=14, fill=ACCENT)
+text(d, (rx+w//2, top+8), &quot;OUR OFFICE LIMIT&quot;, font(&quot;bold&quot;, 40), (30,26,12), anchor=&quot;ma&quot;)
+panel(d, (rx, top+80, rx+w, top+440), fill=(44,38,24), outline=ACCENT, width=2)
+text(d, (rx+w//2, top+170), &quot;±0.010 ft&quot;, font(&quot;monob&quot;, 84), ACCENT, anchor=&quot;ma&quot;)
+text(d, (rx+w//2, top+300), &quot;the number in the book&quot;, font(&quot;sans&quot;, 32), INK, anchor=&quot;ma&quot;)
+# the one line — which we use and why
+panel(d, (90, 866, W-90, 950), fill=GOODBG, outline=GOOD, width=2, radius=16)
+text(d, (W//2, 882), &quot;We use 0.010 — our field limit covers the whole setup on our line,&quot;,
+     font(&quot;bold&quot;, 32), INK, anchor=&quot;ma&quot;)
+text(d, (W//2, 920), &quot;not the gun alone on Talmadge&#x27;s bench.&quot;, font(&quot;bold&quot;, 32), INK, anchor=&quot;ma&quot;)
+footer(d, &quot;7 / 9&quot;)
+add(im, 11.0)
+
+# =========================================================================
+# 7. WRITE IT DOWN  (good vs bad)
+# =========================================================================
+im, d = canvas()
+header(d, &quot;DON&#x27;T TRUST YOUR MEMORY&quot;, &quot;Write the check down&quot;)
+wrap(d, &quot;Same page every time, in the case. Date, gun, conditions, PPM, the three sets, the mean, &quot;
+        &quot;the deviation, and the call. Initial it.&quot;,
+     font(&quot;sans&quot;, 38), 90, 244, W-180, MUTED)
+lx, rx, w, top = 120, 1030, 760, 430
+goodbad_headers(d, lx, rx, top, w)
+panel(d, (lx, top+80, lx+w, top+470), fill=GOODBG, outline=GOOD, width=2)
+panel(d, (rx, top+80, rx+w, top+470), fill=BADBG, outline=BAD, width=2)
+good_note = [&quot;16 Jul 26   S6 93441234&quot;,&quot;BL-1-BL-2   812.000&quot;,&quot;97F  26.40  PPM +52&quot;,
+             &quot;1  812.005&quot;,&quot;2  812.003&quot;,&quot;3  812.004&quot;,&quot;mean 812.004   +0.004&quot;,&quot;GOOD - stays        AIQ&quot;]
+for i,ln in enumerate(good_note):
+    text(d, (lx+30, top+104+i*44), ln, font(&quot;mono&quot;, 30), INK)
+bad_note = [&quot;S6   93441234&quot;,&quot;(no ppm noted)&quot;,&quot;812.005  812.037  812.003&quot;,&quot;avg 812.015   ~ok&quot;]
+for i,ln in enumerate(bad_note):
+    text(d, (rx+30, top+104+i*52), ln, font(&quot;mono&quot;, 32), INK)
+text(d, (rx+30, top+332), &quot;No date. No PPM.&quot;, font(&quot;sans&quot;, 30), BAD)
+text(d, (rx+30, top+374), &quot;Averaged a strike (the 812.037).&quot;, font(&quot;sans&quot;, 30), BAD)
+text(d, (rx+30, top+416), &quot;+0.015 is over 0.010 — wrong call.&quot;, font(&quot;sans&quot;, 30), BAD)
+footer(d, &quot;8 / 9&quot;)
+add(im, 10.0)
+
+# =========================================================================
+# 8. THE REAL JULY RUN (worked end to end)
+# =========================================================================
+im, d = canvas()
+header(d, &quot;HOW IT WENT — 16 JUL&quot;, &quot;The real run, start to finish&quot;)
+jt = load_fit(os.path.join(IN, &quot;IMG_4639.jpg&quot;), 600, 700)
+im.paste(jt, (W-90-jt.width, 250))
+text(d, (W-90-jt.width, 250+jt.height+8), &quot;Abe&#x27;s page, 16 Jul.&quot;, font(&quot;sans&quot;, 26), MUTED)
+x, y, lh = 90, 262, 60
+lines = [
+    (&quot;Back from LEIS. Tripod both ends.&quot;, INK),
+    (&quot;97°F, 26.40  →  PPM +52.&quot;, INK),
+    (&quot;First shot PPM was 0 — 811.962. Struck it.&quot;, BAD),
+    (&quot;Set PPM. Shot again:&quot;, INK),
+    (&quot;   Set 1   812.005&quot;, INK),
+    (&quot;   Set 2   812.003&quot;, INK),
+    (&quot;   Set 3   812.004&quot;, INK),
+    (&quot;Mean      812.004&quot;, ACCENT),
+    (&quot;812.004 − 812.000 = +0.004&quot;, ACCENT),
+]
+for s,c in lines:
+    mono = any(k in s for k in (&quot;Set&quot;,&quot;Mean&quot;,&quot;812&quot;,&quot;→&quot;,&quot;First&quot;))
+    text(d, (x, y), s, font(&quot;mono&quot;, 42) if mono else font(&quot;sans&quot;, 42), c); y += lh
+chip(d, (x, y+16), &quot;+0.004 ≤ 0.010  —  GOOD, it stays&quot;, GOOD)
+footer(d, &quot;9 / 9&quot;)
+add(im, 10.0)
+
+# =========================================================================
+# QUIZ  --- Abe&#x27;s real loaner-S5 page. Arithmetic and call cut off on purpose. ---
+# To use a different page later, drop the image in as baseline_quiz_page.jpg and
+# update the three sets and the worked call below.
+# =========================================================================
+QPATH = os.path.join(OUT, &quot;baseline_quiz_page.jpg&quot;)
+
+# --- the page: read it, take ten seconds
+im, d = canvas()
+header(d, &quot;YOUR TURN — CALL IT BEFORE THE VIDEO DOES&quot;, &quot;Loaner S5, 22 Jun — before it goes out&quot;)
+qimg = load_fit(QPATH, 680, 770)
+im.paste(qimg, (90, 244))
+text(d, (90, 244+qimg.height+8), &quot;Abe&#x27;s page. Arithmetic and call cut off on purpose.&quot;,
+     font(&quot;sans&quot;, 24), MUTED)
+rx0 = 830
+wrap(d, &quot;This is the loaner S5 (SN 30712216) from Llano — checked before it went out on a job. &quot;
+        &quot;Read the page. Take ten seconds. Then work it and call it.&quot;,
+     font(&quot;sans&quot;, 34), rx0, 250, W-90-rx0, MUTED)
+panel(d, (rx0, 430, W-90, 902), fill=PANEL, outline=LINE)
+text(d, (rx0+30, 456), &quot;On the page:&quot;, font(&quot;bold&quot;, 30), ACCENT)
+for i,s in enumerate([
+    &quot;Published 812.000 · tripod both ends&quot;,
+    &quot;88°F   26.55   →   PPM +47&quot;,
+    &quot;1    812.008&quot;,
+    &quot;2    812.031 → leg in sand, reshot 812.010&quot;,
+    &quot;3    812.009&quot;]):
+    text(d, (rx0+30, 512+i*68), s, font(&quot;mono&quot;, 32), INK)
+text(d, (rx0+30, 852), &quot;Work the mean. Make the call.&quot;, font(&quot;bold&quot;, 36), INK)
+add(im, 7.0)
+
+# --- ten seconds
+for n in range(10, 0, -1):
+    im, d = canvas()
+    header(d, &quot;YOUR TURN — CALL IT&quot;, &quot;Ten seconds&quot;)
+    tw = load_fit(QPATH, 430, 560); im.paste(tw, (90, 260))
+    panel(d, (600, 300, 1300, 636), outline=LINE)
+    for i,(lab,val) in enumerate([(&quot;Set 1&quot;,&quot;812.008&quot;),(&quot;Set 2&quot;,&quot;812.010&quot;),(&quot;Set 3&quot;,&quot;812.009&quot;)]):
+        text(d, (640, 338+i*90), lab, font(&quot;sans&quot;, 42), MUTED)
+        text(d, (1260, 338+i*90), val, font(&quot;mono&quot;, 52), INK, anchor=&quot;ra&quot;)
+    text(d, (950, 600), &quot;Set 2 reshot after the leg moved.&quot;, font(&quot;sans&quot;, 26), MUTED, anchor=&quot;ma&quot;)
+    d.ellipse((1470, 380, 1710, 620), outline=ACCENT, width=8)
+    text(d, (1590, 392), str(n), font(&quot;bold&quot;, 150), ACCENT, anchor=&quot;ma&quot;)
+    add(im, 1.0, fade=False)   # hard cuts → the ten-count is exactly 10.0 s
+
+# --- work it on the screen and call it
+im, d = canvas()
+header(d, &quot;THE CALL&quot;, &quot;Loaner S5 — work it and call it&quot;, tcol=ACCENT)
+panel(d, (90, 250, 900, 650), outline=LINE)
+text(d, (130, 284), &quot;22 Jun · loaner S5 · SN 30712216&quot;, font(&quot;sans&quot;, 28), MUTED)
+for i,(lab,val) in enumerate([(&quot;Set 1&quot;,&quot;812.008&quot;),(&quot;Set 2&quot;,&quot;812.010&quot;),(&quot;Set 3&quot;,&quot;812.009&quot;)]):
+    text(d, (130, 342+i*80), lab, font(&quot;sans&quot;, 40), MUTED)
+    text(d, (760, 342+i*80), val, font(&quot;mono&quot;, 50), INK, anchor=&quot;ra&quot;)
+text(d, (130, 590), &quot;Set 2 first 812.031 — leg in the sand — struck, reshot.&quot;, font(&quot;sans&quot;, 26), MUTED)
+cxr = (960 + (W-90)) // 2
+panel(d, (960, 250, W-90, 650), fill=PANEL, outline=ACCENT, width=2)
+text(d, (990, 300), &quot;812.008 + 812.010 + 812.009&quot;, font(&quot;mono&quot;, 36), INK)
+text(d, (990, 364), &quot;= 2436.027  ÷ 3  =  812.009&quot;, font(&quot;mono&quot;, 36), INK)
+text(d, (990, 442), &quot;812.009 − 812.000 = +0.009&quot;, font(&quot;mono&quot;, 40), INK)
+text(d, (cxr, 522), &quot;+0.009  ≤  0.010&quot;, font(&quot;monob&quot;, 54), GOOD, anchor=&quot;ma&quot;)
+chip(d, (cxr-190, 590), &quot;GOOD — IT GOES OUT&quot;, GOOD)
+panel(d, (90, 690, W-90, 902), fill=GOODBG, outline=GOOD, width=2, radius=16)
+text(d, (120, 716), &quot;Inside 0.010 by a hair — still good.&quot;, font(&quot;bold&quot;, 34), INK)
+text(d, (120, 772), &quot;Set 2 was struck for the leg in the sand and reshot — never averaged.&quot;,
+     font(&quot;sans&quot;, 32), INK)
+text(d, (120, 828), &quot;Write it down: 22 Jun, S5, PPM +47, the three sets, mean 812.009, +0.009, GOOD.&quot;,
+     font(&quot;sans&quot;, 30), MUTED)
+add(im, 13.0)
+
+# =========================================================================
+# RULE CARD (keep in the case)
+# =========================================================================
+im, d = canvas()
+d.rectangle((0,0,W,12), fill=ACCENT)
+text(d, (W//2, 56), &quot;THE RULE CARD&quot;, font(&quot;bold&quot;, 66), INK, anchor=&quot;ma&quot;)
+text(d, (W//2, 146), &quot;Keep this in the case.&quot;, font(&quot;sans&quot;, 32), MUTED, anchor=&quot;ma&quot;)
+items = [
+    &quot;Any instrument back from a bench gets this before it goes out.&quot;,
+    &quot;BL-1 to BL-2 = 812.000 ft, set 2016, re-observed every spring. Tripod both ends, never a pole.&quot;,
+    &quot;Set up both ends: center, level, prism constant 0.0.&quot;,
+    &quot;PPM off the shop gauge before the first shot. Every time.&quot;,
+    &quot;Three sets, HD, feet.&quot;,
+    &quot;A set &gt; 0.005 off the other two = strike it, shoot it again. Never average.&quot;,
+    &quot;Mean of three, less 812.000:&quot;,
+    &quot;        inside 0.010 ft  →  GOOD&quot;,
+    &quot;        over 0.010 ft    →  IT GOES BACK&quot;,
+    &quot;Write it down: date, gun, conditions, PPM, three sets, mean, the call, initials.&quot;,
+    &quot;Judge against 812.000. NOT the brochure.&quot;,
+]
+y = 222
+maxw = W - 220
+for it in items:
+    col = ACCENT if &quot;GOOD&quot; in it else (BAD if &quot;GOES BACK&quot; in it else INK)
+    if &quot;→&quot; in it:                       # the indented pass/fail lines
+        text(d, (230, y), it.strip(), font(&quot;monob&quot;, 34), col); y += 56
+        continue
+    fnt = font(&quot;sans&quot;, 34)
+    pre = &quot;•  &quot;; prew = measure(fnt, pre)
+    words, line, first = it.split(), &quot;&quot;, True
+    for w0 in words:
+        t = (line + &quot; &quot; + w0).strip()
+        if measure(fnt, t) &lt;= (maxw - prew):
+            line = t
+        else:
+            text(d, (110 if first else 110+prew, y), (pre+line) if first else line, fnt, col)
+            y += 48; first = False; line = w0
+    text(d, (110 if first else 110+prew, y), (pre+line) if first else line, fnt, col)
+    y += 58
+text(d, (W//2, H-70), &quot;For Estefana, and whoever comes after.  — Abe&quot;, font(&quot;sans&quot;, 32), MUTED, anchor=&quot;ma&quot;)
+add(im, 9.0)
+
+# =========================================================================
+# ENCODE
+# =========================================================================
+def to_np(pil): return np.asarray(pil.convert(&quot;RGB&quot;), dtype=np.uint8)
+
+out_path = os.path.join(OUT, &quot;baseline_check.mp4&quot;)
+writer = imageio.get_writer(out_path, fps=FPS, codec=&quot;libx264&quot;, quality=8,
+                            macro_block_size=8, ffmpeg_params=[&quot;-pix_fmt&quot;,&quot;yuv420p&quot;])
+XFADE = 8
+prev, total = None, 0
+for pil, sec, fade in SLIDES:
+    arr = to_np(pil)
+    if prev is not None and fade:
+        for k in range(1, XFADE+1):
+            a = k/(XFADE+1)
+            writer.append_data((prev*(1-a)+arr*a).astype(np.uint8)); total += 1
+    for _ in range(int(round(sec*FPS))):
+        writer.append_data(arr); total += 1
+    prev = arr
+writer.close()
+print(f&quot;slides={len(SLIDES)} frames={total} dur={total/FPS:.1f}s -&gt; {out_path}&quot;)
+</pre></div></div></div></div><div class="ovpane" data-pane="3"><div class="panel"><div class="ph">baseline_check_script.md</div><div class="evnote">The document meant to be printed for the instrument case, carrying the same rebuild instruction.</div><div class="pb ev" id="p3ev"><div class="evi evk-text"><div class="evh"><code>baseline_check_script.md</code><span class="evr">golden artifact</span></div><pre class="evtext"># Baseline Check — Script &amp; Procedure
+
+**Instrument this was built for:** Trimble S6, SN 93441234
+**The line:** BL-1 → BL-2 behind the shop (8710 Bowie), **812.000 ft**, midpoint monument **BL-M at 406.000**
+**The rule, in one line:** mean of three sets less 812.000 — **inside 0.010 ft = good, over = it goes back.**
+
+&gt; **Print this and keep it in the case.** It matches the video `baseline_check.mp4` step for step.
+&gt; Whoever runs the check reads this; the video shows them what it looks like.
+&gt; Everything is in **feet to three places**. Nobody here reads millimetres.
+
+---
+
+## When you run this
+
+Any time an instrument comes back onto the property from a bench — repair, service,
+calibration, anywhere off-site — it gets this check **before it goes back out on a job.**
+Abe ran the S6 the same afternoon it came back from Lubbock. Same for everything else.
+
+**The sheet that came back in the case is nice to have. The sheet is not the check.**
+The baseline is the check.
+
+---
+
+## What you need
+
+- The instrument that came back, on a **tripod**.
+- Prism on a **tripod** at the far monument. **Never a hand-held pole** — a pole rocks and every set moves.
+- Trimble 360 prism, prism constant **0.0**.
+- The shop weather gauge (temperature + pressure).
+- The check page and a pen. Write the readings down as you go.
+
+---
+
+## The video, section by section (narration)
+
+Read it in this order if you ever need to walk someone through it without the screen.
+
+### 0 · Title
+&quot;This is the baseline check, start to finish, so anyone can run it without Abe. Any instrument
+back from a bench gets it before it goes out. Tripod both ends, PPM every time, feet to three
+places. Inside 0.010 is good, over goes back. Write it down. Do the math on the screen.&quot;
+
+### 1 · Where our baseline came from
+&quot;Abe set **two brass caps** behind the shop at 8710 Bowie in **2016** — **812.000 ft** apart, with
+the midpoint 406.000 out (BL-M). He **re-observes the line every spring** to hold the 812.000.
+It&#x27;s our own baseline, and that 812.000 is the truth we judge against. **Not the brochure.**&quot;
+
+### 2 · Why the S6 went in (the story)
+- **2 Jun** — Deaf Smith County, the 640-acre pivot as-builts, **job 26-004**. Estefana on the rod.
+- The **S6 lost the tracker at 2:20 and would not re-acquire.** We finished the day on the R12i and a 100-ft tape.
+- **3 Jun** — drove it to **Llano Estacado Instrument Service** in Lubbock. Talmadge Ruff opened it up: **tracker board and Y servo.** Six weeks on the bench.
+- **16 Jul** — back four days early, sheet in the case.
+
+&quot;A bench can say it&#x27;s fixed. **The baseline is how we know** — before it goes back out on a job.&quot;
+
+### 3 · Set up both ends
+
+| GOOD | BAD |
+|---|---|
+| Instrument on a tripod over BL-1, legs kicked in firm. | Prism on a hand pole — it rocks, every set moves. |
+| Center over the monument, then level (tribrach + comp). | Legs loose — the tripod walks between sets. |
+| Prism on a tripod over BL-2. Both tribrachs level. | Off-center or off-level — reads long or short. |
+| Trimble 360 prism, constant **0.0**. | Constant left wrong — same bias on every shot. |
+
+### 4 · Step 1 — PPM off the shop gauge, before the first shot
+Read the shop gauge. Punch temperature and pressure into the instrument so it sets PPM. **Every time.**
+
+| | GOOD | BAD |
+|---|---|---|
+| gauge | 97°F, 26.40 inHg → **PPM +52** | **PPM left at 0** (forgot it) |
+| reads | **812.005** | **811.962** |
+
+**On the screen:** `812.000 ft × 0.000052 = 0.042 ft short` and `812.005 − 811.962 = 0.043 ft`.
+Forget PPM and the instrument reads short by about that much. (This is the shot Abe struck in July,
+then set PPM and shot again.)
+
+### 5 · Step 2 — three sets, HD, feet — check the spread
+Shoot **three sets** of horizontal distance.
+
+- **GOOD:** 812.005 / 812.003 / 812.004 → spread **0.002** (≤ 0.005). Keep all three.
+- **BAD:** 812.004 / **812.037** / 812.003 → Set 2 is **0.033 off** (&gt; 0.005). That&#x27;s a strike
+  (a bump, or PPM). **Strike it, shoot it again. Never average a strike.**
+
+### 6 · Step 3 — mean of three, less 812.000 — make the call
+Add the three good sets, divide by three, subtract 812.000.
+
+- **GOOD — S6, 16 Jul, after repair:** `812.005 + 812.003 + 812.004 = 2436.012 ÷ 3 = 812.004`;
+  `812.004 − 812.000 = +0.004`. **+0.004 ≤ 0.010 → GOOD, it stays.**
+- **BAD — S6, 18 Apr, before it went in** (64°F, 26.70, PPM +35): `812.012 + 812.015 + 812.012 =
+  2436.039 ÷ 3 = 812.013`; `812.013 − 812.000 = +0.013`. **+0.013 &gt; 0.010 → IT GOES BACK.**
+  (Tracker was hunting on set 2 — the spring check first flagged it: &quot;call Talmadge, it does it again.&quot;
+  It finally went in after it quit on the pivot job on 2 Jun, dropped at Llano on 3 Jun.)
+
+### Why not just use Talmadge&#x27;s number? (Estefana&#x27;s question)
+His service sheet certifies the instrument on his 3-pillar bench: **±(2 mm + 2 ppm)**, prism mode.
+Worked at our baseline length, in feet to three places:
+
+- 2 mm → **0.007 ft** (the fixed part — exactly 0.0066 ft)
+- 2 ppm × 812.000 ft → **0.002 ft** (the scale part — exactly 0.0016 ft)
+- together → **±0.008 ft** (0.0082 ft, rounded to three places)
+
+**Office limit: ±0.010 ft.**
+
+**We use 0.010 — the office limit.** It&#x27;s a field limit for the *whole setup on our line* — tripods
+both ends, tribrachs, centering, PPM, and the baseline itself — not the instrument alone on
+Talmadge&#x27;s bench. His sheet is nice to have; the baseline against 0.010 ft is the check.
+
+### 7 · Write the check down
+Same page every time, in the case. Don&#x27;t trust your memory.
+
+**GOOD — the whole check on the page:**
+```
+16 Jul 26   S6 93441234
+BL-1-BL-2   812.000
+97F  26.40  PPM +52
+1  812.005
+2  812.003
+3  812.004
+mean 812.004   +0.004
+GOOD - stays        AIQ
+```
+
+**BAD — useless to Estefana in a year:**
+```
+S6   93441234
+(no ppm noted)
+812.005  812.037  812.003
+avg 812.015   ~ok
+```
+No date. No PPM. Averaged a strike (the 812.037). +0.015 is over 0.010 — wrong call.
+
+### 8 · The real run — 16 Jul
+- Back from Lubbock. Tripod both ends. 97°F, 26.40 → PPM +52.
+- First shot PPM was 0 → **811.962. Struck it.** Set PPM, shot again:
+  - Set 1 **812.005**
+  - Set 2 **812.003**
+  - Set 3 **812.004**
+- Mean **812.004**. `812.004 − 812.000 = +0.004`. **+0.004 ≤ 0.010 → GOOD, it stays.**
+
+---
+
+## The quiz — call it before the video does
+
+On screen: **Abe&#x27;s 22 Jun page for the loaner S5 (SN 30712216) from Llano** — checked before it
+went out on a job. The arithmetic and the call are cut off the bottom **on purpose**. Watch the
+page, take **ten seconds**, then work it and call it.
+
+**What&#x27;s on the page:**
+- Published **812.000** · tripod both ends
+- 88°F, 26.55 → **PPM +47**
+- Set 1 — **812.008**
+- Set 2 — 812.031 → *leg in the sand* — struck and reshot → **812.010**
+- Set 3 — **812.009**
+
+**Work it on the screen:**
+```
+812.008 + 812.010 + 812.009 = 2436.027 ÷ 3 = 812.009
+812.009 − 812.000 = +0.009
+```
+
+**The call:** **+0.009 ≤ 0.010 → GOOD. The loaner goes out.**
+Inside 0.010 by a hair — still good. And Set 2 was struck for the leg in the sand and reshot,
+never averaged. Write it down: 22 Jun, S5, PPM +47, the three sets, mean 812.009, +0.009, GOOD.
+
+&gt; The page image (`baseline_quiz_page.jpg`) sits alongside this script and in the video. To use a
+&gt; different page later, replace that image and the three sets / worked call above, then rebuild the
+&gt; video: `<mark id="p3m0">python3 make_baseline_video.py</mark>`.
+
+---
+
+## The rule card (keep in the case)
+
+1. Any instrument back from a bench gets this **before** it goes out.
+2. BL-1 to BL-2 = **812.000 ft**, set 2016, re-observed every spring. Tripod both ends, never a pole.
+3. Set up both ends: **center, level, prism constant 0.0.**
+4. **PPM off the shop gauge before the first shot. Every time.**
+5. **Three sets, HD, feet.**
+6. A set **&gt; 0.005** off the other two = **strike it, shoot it again. Never average.**
+7. Mean of three, less 812.000:
+   - inside **0.010 ft → GOOD**
+   - over **0.010 ft → IT GOES BACK**
+8. **Write it down:** date, gun, conditions, PPM, three sets, mean, the call, initials.
+9. Judge against **812.000** and our **±0.010 ft**. **Not the brochure** — its ±(2 mm + 2 ppm) is only ≈ ±0.008 ft at our length, and it&#x27;s the gun alone on the bench.
+
+*For Estefana, and whoever comes after. — Abe*
+</pre></div></div></div></div><div class="ovpane" data-pane="4"><div class="panel"><div class="ph">Quiz page and its source</div><div class="evnote">The golden&#x27;s quiz page beside the input it came from. They are the same file, byte for byte, under a new name.</div><div class="pb ev evpair" id="p4ev"><div class="evi evk-image"><div class="evh"><code>baseline_quiz_page.jpg</code><span class="evr">golden artifact</span></div><button type="button" class="evimg" title="Click for full size"><img loading="lazy" src="../evidence/6aa34dd1625bb5b220c6b1be/baseline_quiz_page.jpg" width="1080" height="1143" alt="baseline_quiz_page.jpg"></button><div class="evcut">Click the image to see it at full size, and again to fit it back.</div></div><div class="evi evk-image"><div class="evh"><code>IMG_4642.jpg</code><span class="evr">input file</span></div><button type="button" class="evimg" title="Click for full size"><img loading="lazy" src="../evidence/6aa34dd1625bb5b220c6b1be/IMG_4642.jpg" width="1080" height="1143" alt="IMG_4642.jpg"></button><div class="evcut">Click the image to see it at full size, and again to fit it back.</div></div></div></div></div></div>
       <div class="ovfoot"><span class="ovn">Real task 1 of 3</span><span class="sp"></span><button type="button" class="btn q exnav" data-ex="closeout-mechanics-2">Real task 2 →</button></div>
     </section>
   </div>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open City Records Requests — Register</title>
+<style>
+  :root{
+    --bg:#0f1720; --panel:#182430; --panel2:#1f2f3d; --line:#2c3e4f;
+    --ink:#e8eef4; --muted:#93a6b6; --accent:#4ea3ff; --accent2:#7ee0c8;
+    --warn:#ffcf6b; --danger:#ff8f8f; --ok:#7ee0a6;
+    --chip:#22323f; --chipOn:#2f5170;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0d141c,#0f1720 240px);color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 64px}
+  header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+  h1{font-size:24px;margin:0 0 4px;letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:13.5px}
+  .stamp{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);
+    border-radius:999px;padding:8px 14px;font-size:13px;color:var(--ink)}
+  .stamp b{color:var(--accent2)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 4px rgba(126,224,200,.15)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:22px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .card .k{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+  .card .v{font-size:26px;font-weight:700;margin-top:6px}
+  .card .v small{font-size:13px;font-weight:500;color:var(--muted)}
+
+  .controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px}
+  .search{flex:1;min-width:220px}
+  .search input{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    border-radius:10px;padding:10px 14px;font-size:14px;outline:none}
+  .search input:focus{border-color:var(--accent)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .flabel{color:var(--muted);font-size:12px;margin-right:2px}
+  .chip{background:var(--chip);border:1px solid var(--line);color:var(--ink);border-radius:999px;
+    padding:6px 12px;font-size:13px;cursor:pointer;user-select:none;transition:.15s}
+  .chip:hover{border-color:var(--accent)}
+  .chip.on{background:var(--chipOn);border-color:var(--accent)}
+
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;overflow:hidden}
+  thead th{background:var(--panel2);text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.5px;
+    color:var(--muted);padding:12px 14px;cursor:pointer;white-space:nowrap;border-bottom:1px solid var(--line)}
+  thead th .ar{opacity:.4;font-size:10px}
+  thead th.act .ar{opacity:1;color:var(--accent)}
+  tbody td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.row:hover{background:#1b2a37;cursor:pointer}
+  .ref{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:600;color:var(--accent2)}
+  .matter{font-weight:600}
+  .agency-tag{font-size:12px;color:var(--muted)}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid}
+  .b-ack{color:var(--warn);border-color:rgba(255,207,107,.5);background:rgba(255,207,107,.10)}
+  .b-prog{color:var(--accent);border-color:rgba(78,163,255,.5);background:rgba(78,163,255,.10)}
+  .b-legal{color:#d7a8ff;border-color:rgba(190,140,255,.5);background:rgba(190,140,255,.12)}
+  .due strong{font-weight:700}
+  .due .soon{color:var(--warn)}
+  .due .far{color:var(--ok)}
+  .muted{color:var(--muted)}
+  .src{font-size:12px;color:var(--muted)}
+  .chaser{font-weight:600;color:var(--accent2)}
+  .story{font-weight:600;color:var(--ink)}
+
+  /* walk-in slice */
+  .walkin{background:linear-gradient(180deg,#1b2c3b,#182430);border:1px solid var(--accent);
+    border-radius:16px;padding:18px 20px;margin-bottom:22px;box-shadow:0 0 0 3px rgba(78,163,255,.08)}
+  .walkin .wtop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:4px}
+  .walkin h2{font-size:17px;margin:0}
+  .walkin .hold{font-size:12.5px;color:var(--muted)}
+  .walkin .hold b{color:var(--accent2)}
+  .walkin .note{font-size:12.5px;color:var(--muted);margin:2px 0 14px}
+  .walkin .note em{color:var(--ink);font-style:normal}
+  .wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .wq{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .wq .q{font-size:13px;color:var(--warn);font-weight:600;margin-bottom:6px}
+  .wq .q .num{color:var(--muted);font-family:ui-monospace,monospace;margin-right:6px}
+  .wq .a{font-size:13.5px;line-height:1.5}
+  .wq .a b{color:var(--ink)}
+  .wq .a .hot{color:var(--danger);font-weight:600}
+  .wq .a .good{color:var(--ok);font-weight:600}
+  .wq .a .sub{display:block;margin-top:6px;color:var(--muted);font-size:12px}
+
+  /* per-office clocks strip */
+  .clocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:-6px 0 22px}
+  .clock{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .clock .office{font-weight:600;font-size:14px}
+  .clock .win{color:var(--accent2);font-family:ui-monospace,monospace;font-size:13px;margin-top:3px}
+  .clock .note{color:var(--muted);font-size:11.5px;margin-top:6px;line-height:1.45}
+
+  /* sitting vs window bar */
+  .sit{min-width:150px}
+  .sitbar{height:8px;border-radius:6px;background:#22323f;overflow:hidden;border:1px solid var(--line)}
+  .sitbar .fill{display:block;height:100%}
+  .sitbar .fill.over{background:linear-gradient(90deg,#ff7a7a,#ff9d5c)}
+  .sitbar .fill.within{background:linear-gradient(90deg,#4ea3ff,#7ee0c8)}
+  .sitlab{font-size:12px;margin-top:5px}
+  .sitlab .over{color:var(--danger);font-weight:600}
+  .sitlab .within{color:var(--ok);font-weight:600}
+
+  tr.detail td{background:#141f29;padding:0}
+  .detail-inner{padding:16px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 26px}
+  .detail-inner .f{font-size:13px}
+  .detail-inner .f .k{color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+  .detail-inner .f .val{margin-top:3px}
+  .hidden{display:none}
+  .empty{padding:30px;text-align:center;color:var(--muted)}
+
+  .excluded{margin-top:26px;background:var(--panel);border:1px dashed var(--line);border-radius:14px;padding:16px 18px}
+  .excluded h3{margin:0 0 6px;font-size:14px}
+  .excluded p{margin:4px 0;color:var(--muted);font-size:13px}
+  .excluded .tag{font-family:ui-monospace,monospace;color:var(--ink)}
+  .excluded .phish{color:#ffc4c4;background:rgba(255,143,143,.08);border:1px solid rgba(255,143,143,.35);border-radius:8px;padding:8px 10px}
+  .excluded .phish .tag{color:#ffd9d9}
+  footer.note{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.7}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1>Open City Records Requests</h1>
+      <div class="sub">Public records / FOIA register &middot; City of Richmond &middot; Anselm Kirchner, The Richmond Beacon</div>
+    </div>
+    <div class="stamp"><span class="dot"></span> Last checked: <b id="lastChecked">Oct 16, 2026</b></div>
+  </header>
+
+  <section class="walkin" id="walkin"></section>
+
+  <section class="cards" id="cards"></section>
+
+  <section class="clocks" id="clocks"></section>
+
+  <div class="controls">
+    <div class="search"><input id="q" type="text" placeholder="Search reference, matter, agency, contact…"></div>
+    <div class="filters">
+      <span class="flabel">Agency:</span>
+      <span id="agencyFilters"></span>
+    </div>
+    <div class="filters">
+      <span class="flabel">Stage:</span>
+      <span id="stageFilters"></span>
+    </div>
+  </div>
+
+  <table id="tbl">
+    <thead>
+      <tr>
+        <th data-k="ref">Reference <span class="ar">↕</span></th>
+        <th data-k="agency">Agency <span class="ar">↕</span></th>
+        <th data-k="matter">Matter <span class="ar">↕</span></th>
+        <th data-k="storyTitle">Stuck story <span class="ar">↕</span></th>
+        <th data-k="stage">Stage <span class="ar">↕</span></th>
+        <th data-k="filed">Filed <span class="ar">↕</span></th>
+        <th data-k="processing">Office window <span class="ar">↕</span></th>
+        <th data-k="daysToDue">Sitting vs window <span class="ar">↕</span></th>
+        <th data-k="chaserName">Chasing <span class="ar">↕</span></th>
+        <th data-k="source">Source <span class="ar">↕</span></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div class="excluded">
+    <h3>In the stack, but not on the register</h3>
+    <p>These came up in the pile / mail and were intentionally left off — kept here so nothing looks lost.</p>
+    <p>• <span class="tag">City of Richmond Utilities</span> — water/wastewater bill, $91.30 due Aug 15, 2026. A bill, not a records request.</p>
+    <p>• <span class="tag">2026-0417</span> — 2024 Q3 building-inspection records (Records Office). <b>Fulfilled &amp; closed</b> — receipt confirmed Apr 9, 2026, so it is not an open request.</p>
+    <p>• <span class="tag">Charles City County — Public Works</span> — "Drainage permit — field notes" (Route 5 / ditch 12, site visit May 14, 2026, status open). A county permit field sheet that turned up in the dump — not one of our records requests, and a different jurisdiction.</p>
+    <p>• <span class="tag">Old handwritten tracker</span> — the "tracker (old)" notebook page from the pile (clerk still dark, bill, portal login thing, planning/overlay, "Cyrus chasing?"). <b>Superseded</b> by this register and the live #citydesk thread; kept only so it's accounted for.</p>
+    <p class="phish">⚠ <span class="tag">"City Records Portal" — reverify FOIA login</span> (Oct 16, 2026, from <span class="tag">records-portal@records-<b>richmondgov.net</b></span>). <b>Likely phishing — do not click "Reverify account."</b> The real office writes from <b>richmondgov.com</b>; this look-alike <b>.net</b> domain and the "reverify in 24 hours or your request is paused" pressure are the tell. Not a request, and no action is needed on the register.</p>
+  </div>
+
+  <footer class="note">
+    <div>Sources: the paper pile / folder (acknowledgment letter <span class="src">IMG_2847.jpg</span>, RPD FOIA slip <span class="src">IMG_3318.jpg</span>, folder clip <span class="src">VID_1104.mp4</span>), the "CLOCKS" whiteboard <span class="src">IMG_4491.jpg</span>, and the mailbox (Records Office thread).</div>
+    <div>Each office runs on its own clock, started from the date that office <b>acknowledged</b> the request (not the filing date): <b>Planning</b> 10 calendar days, <b>Police</b> 5 working days, <b>City Clerk – Records</b> 15 business days. Windows come from what each office wrote us — for the City Clerk's records office that is the emailed "15 business days," <b>not</b> the "CLERK 5 wrk?" note on the whiteboard.</div>
+    <div>"Sitting vs window" = days since acknowledgment, counted <b>as of today</b>, against that office's window. The Last-checked stamp stays <b>Oct 16, 2026</b> (the date on the folder clip); the sitting counts keep moving after it. All three are past window and still awaiting fulfillment — the City Clerk's Q4 batch in particular was acknowledged but never delivered.</div>
+    <div>"Chasing" is the newsroom partner assigned to follow up if a request goes quiet — RPD-26-2204 is assigned to Cyrus Adeagbo per the Slack DM.</div>
+    <div>"Stuck story" is the newsroom piece each request is blocking, from the #citydesk thread of Oct 16, 2026 (Wren / Anselm). The desk named three stuck pieces — Church Hill, the inspections lead, and the newsletter — mapped one per open row: Church Hill → Planning (overlay), the inspections lead → City Clerk (Q4 batch), the newsletter → Police (the slip request).</div>
+  </footer>
+
+</div>
+
+<script>
+// ---- Anchors: "last checked" stays the clip date (10/16); "sitting" counts live, as of today ----
+const CLIP = new Date('2026-10-16T00:00:00');              // date on the folder clip — the Last-checked stamp
+const _now = new Date();
+const _midnight = new Date(_now.getFullYear(), _now.getMonth(), _now.getDate());
+const TODAY = _midnight > CLIP ? _midnight : CLIP;          // as of today, but never earlier than the last check
+
+// ---- Open requests, transcribed from the pile + mailbox ----
+const REQUESTS = [
+  {
+    ref: 'PDR-26-441',
+    agency: 'Planning & Development Review',
+    agencyFull: 'City of Richmond — Dept. of Planning & Development Review, 900 E Broad St',
+    matter: 'Church Hill overlay files',
+    story: 'Church Hill piece',
+    storyBlurb: 'needs the overlay file',
+    storyNote: 'Church Hill housing piece — tenant complaints vs. how many inspections actually happened. The overlay file from this request feeds it. Named as stuck in #citydesk, Oct 16, 2026 ("church hill piece is stuck… can\'t write the tenant vs inspections bit yet").',
+    stage: 'Legal review',
+    filed: '2026-08-06',
+    acknowledged: '2026-08-07',
+    processing: '10 calendar days',
+    windowSource: 'Their acknowledgment letter (matches the board: "PLANNING 10 cal"). Clock runs from acknowledgment (Aug 7).',
+    expected: '2026-08-17',
+    expectedBasis: 'Acknowledged Aug 7 + 10 calendar days',
+    contact: '—',
+    chaser: null,
+    statusNote: 'Advanced from Acknowledged to Legal review — folder tab "PLANNING / LEGAL REVIEW" in the Oct clip (VID_1104.mp4).',
+    source: 'Paper (pile)',
+    sourceDetail: 'Acknowledgment letter in the August folder — photo IMG_2847.jpg; status update from the Oct 16 folder clip'
+  },
+  {
+    ref: '2026-1642',
+    agency: 'City Clerk — Records',
+    agencyFull: 'City of Richmond, Records Office',
+    matter: 'Building inspection records, 2024 Q4',
+    matterDetail: 'CSV export, one row per inspection incl. permit number & result; Oct 1 – Dec 31, 2024',
+    story: 'The inspections lead',
+    storyBlurb: 'late-Sept first story, already late',
+    storyNote: 'The lead inspections story — the "late September first story," now already late. Blocked on this Q4 batch, still sitting with the clerk. Per #citydesk, Oct 16, 2026.',
+    late: true,
+    stage: 'Awaiting batch',
+    filed: '2026-08-04',
+    filedTime: '11:15 AM ET',
+    acknowledged: '2026-08-04',
+    ackTime: '3:05 PM ET',
+    processing: '15 business days',
+    windowSource: 'From what the office actually wrote ("Standard processing time is 15 business days from today"). The board\'s "CLERK 5 wrk?" scribble was not used. Clock runs from acknowledgment (Aug 4, 3:05 PM ET).',
+    expected: '2026-08-25',
+    expectedBasis: 'Acknowledged Aug 4 + 15 business days',
+    contact: 'L. Whitfield-Baptiste · lorna.whitfield-baptiste@richmondgov.com',
+    signature: 'Signed "City of Richmond, Records Office" by L. Whitfield-Baptiste.',
+    chaser: null,
+    statusNote: 'Still sitting with the clerk — request received and acknowledged Aug 4, but the completed batch was never sent ("will be sent to this address once it is ready"). Nothing delivered.',
+    source: 'Email (mail)',
+    sourceDetail: 'Thread "Re: Building inspection records, 2024 Q4": request sent Aug 4, 2026, 11:15 AM ET; acknowledged 3:05 PM ET the same day.'
+  },
+  {
+    ref: 'RPD-26-2204',
+    agency: 'Police Dept — Records',
+    agencyFull: 'Richmond Police Department — Records (RPD Records)',
+    matter: 'East End CAD / incident logs, Jul–Dec 2024',
+    matterDetail: 'CAD / incident logs for the East End, July–December 2024 (filed as Beacon / Kirchner)',
+    story: 'The newsletter',
+    storyBlurb: 'teaser, third of the desk\'s three',
+    storyNote: 'The newsletter teaser — the third of the three pieces the desk named as stuck in #citydesk (Oct 16). Tracked on this row so each open request carries exactly one story.',
+    stage: 'Processing',
+    filed: '2026-08-11',
+    acknowledged: '2026-08-12',
+    processing: '5 working days',
+    windowSource: 'From the RPD FOIA slip ("5 working days"; matches the board: "POLICE 5 wrk"). Clock runs from acknowledgment (Aug 12).',
+    expected: '2026-08-19',
+    expectedBasis: 'Acknowledged Aug 12 + 5 working days',
+    contact: 'RPD Records',
+    statusNote: null,
+    chaser: {
+      name: 'Cyrus Adeagbo',
+      handle: '@Cyrus',
+      email: 'cyrus.adeagbo@richmondbeacon.org',
+      note: 'Agreed to chase if it goes quiet — "put me down for the follow-up, i’ve got the records office thread open anyway" (Slack).'
+    },
+    source: 'Paper (pile)',
+    sourceDetail: 'FOIA slip in the August folder — photo IMG_3318.jpg; chaser confirmed in Slack DM with Cyrus'
+  }
+];
+
+// ---- the calendar hold + the laptop sticky list (for the walk-in slice) ----
+const HOLD = {
+  title: '1:1 with Nadine',
+  when: 'Mon, Oct 19, 2026 · 9:30–10:00 AM',
+  where: 'Newsroom (the desk)',
+  withWho: 'Nadine Ptaszek',
+  note: 'bring the live request view'
+};
+
+// ---- helpers ----
+const MS = 86400000;
+function d(s){return new Date(s+'T00:00:00');}
+function fmt(s){return d(s).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
+function daysBetween(a,b){return Math.round((b-a)/MS);}
+
+REQUESTS.forEach(r=>{
+  r.filedTs = d(r.filed).getTime();
+  r.ackTs = d(r.acknowledged).getTime();
+  r.expectedTs = d(r.expected).getTime();
+  r.daysOpen = daysBetween(d(r.acknowledged), TODAY);   // "sitting": from their acknowledgment, as of today
+  r.daysToDue = daysBetween(TODAY, d(r.expected));       // vs the window (clock runs from acknowledgment)
+  r.chaserName = r.chaser ? r.chaser.name : '';
+  r.storyTitle = r.story || '';
+});
+
+// ---- state ----
+let state = { q:'', agency:'All', stage:'All', sortK:'expectedTs', sortDir:1 };
+
+// ---- filter chips ----
+function uniq(k){return ['All', ...Array.from(new Set(REQUESTS.map(r=>r[k])))];}
+function buildChips(containerId, key){
+  const c = document.getElementById(containerId);
+  uniq(key).forEach(v=>{
+    const el = document.createElement('span');
+    el.className='chip'+((state[key==='agency'?'agency':'stage']===v)?' on':'');
+    el.textContent=v;
+    el.onclick=()=>{ state[key==='agency'?'agency':'stage']=v;
+      [...c.children].forEach(x=>x.classList.remove('on')); el.classList.add('on'); render(); };
+    c.appendChild(el);
+  });
+}
+
+// ---- stats ----
+function renderCards(){
+  const open = REQUESTS.length;
+  const offices = new Set(REQUESTS.map(r=>r.agency)).size;
+  const pastWindow = REQUESTS.filter(r=>r.daysToDue<0).length;
+  const longest = [...REQUESTS].sort((a,b)=>b.daysOpen-a.daysOpen)[0];
+  const cards = [
+    {k:'Open requests', v:open},
+    {k:'Offices', v:offices},
+    {k:'Past window', v:pastWindow+' of '+open, s:'awaiting fulfillment'},
+    {k:'Longest sitting', v:longest.daysOpen+'d', s:longest.ref+' · '+longest.agency}
+  ];
+  document.getElementById('cards').innerHTML = cards.map(c=>
+    `<div class="card"><div class="k">${c.k}</div><div class="v">${c.v}${c.s?` <small>${c.s}</small>`:''}</div></div>`
+  ).join('');
+}
+function renderClocks(){
+  // one clock per office, derived from the requests already on the register
+  const seen = new Set(), out = [];
+  REQUESTS.forEach(r=>{ if(!seen.has(r.agency)){ seen.add(r.agency); out.push(r); } });
+  document.getElementById('clocks').innerHTML = out.map(r=>
+    `<div class="clock"><div class="office">${r.agency}</div><div class="win">⏱ ${r.processing} <span style="color:var(--muted)">· from acknowledgment</span></div>`+
+    `${r.windowSource?`<div class="note">${r.windowSource}</div>`:''}</div>`
+  ).join('');
+}
+function renderWalkin(){
+  // three prompts off the laptop sticky, each answered live from the open rows
+  const clerk = REQUESTS.find(r=>r.ref==='2026-1642');
+  const dark = clerk && clerk.daysToDue<0;
+  const chasing = REQUESTS.filter(r=>r.chaser);
+  const unassigned = REQUESTS.filter(r=>!r.chaser);
+  const scored = REQUESTS.filter(r=>r.story)
+    .map(r=>({r, score:(r.late?1000:0) + (-r.daysToDue) - (r.stage==='Legal review'?100:0)}))
+    .sort((a,b)=>b.score-a.score);
+  const first = scored[0].r, others = scored.slice(1);
+
+  const a1 = `${dark?'<span class="hot">Yes — still sitting with them, nothing delivered.</span>':'<span class="good">Delivered.</span>'} `+
+    `<b>${clerk.ref}</b> (${clerk.agency}): acknowledged ${fmt(clerk.acknowledged)}${clerk.ackTime?', '+clerk.ackTime:''}, the completed batch was never sent — `+
+    `<span class="hot">${-clerk.daysToDue}d past</span> the ${clerk.processing} window they wrote us.`;
+
+  const a2 = chasing.map(r=>`<b>${r.chaser.name}</b> → ${r.ref} (${r.agency})`).join('<br>')+
+    `<span class="sub">No chaser assigned yet: ${unassigned.map(r=>r.ref+' ('+r.agency+')').join(', ')}.</span>`;
+
+  const a3 = `<b>${first.story}</b> — riding <b>${first.ref}</b> (${first.agency}), `+
+    `<span class="hot">${-first.daysToDue}d past window</span> and ${first.stage==='Acknowledged'?'still not moving':('now in '+first.stage.toLowerCase())}; it was the late-September first story, already late.`+
+    `<span class="sub">Behind it: ${others.map(o=>`${o.r.story} (${o.r.ref}, ${-o.r.daysToDue}d past${o.r.stage==='Legal review'?' — but in legal review, moving':''})`).join('; ')}. The newsletter teaser rides the same Records batch. Your call — this is read from the live rows.</span>`;
+
+  const qs=[
+    {n:'1', q:'clerk still dark?', a:a1},
+    {n:'2', q:"who's chasing", a:a2},
+    {n:'3', q:'which story dies first', a:a3}
+  ];
+  const stamp = document.getElementById('lastChecked').textContent;
+  document.getElementById('walkin').innerHTML =
+    `<div class="wtop"><h2>Walk-in slice — ${HOLD.title}</h2>`+
+    `<div class="hold">🗓 <b>${HOLD.when}</b> · ${HOLD.where} · with ${HOLD.withWho}</div></div>`+
+    `<div class="note">Hold’s note: “<em>${HOLD.note}</em>.” Prompts are your laptop list; answers read live from the ${REQUESTS.length} open rows (as of last checked ${stamp}).</div>`+
+    `<div class="wgrid">`+
+    qs.map(x=>`<div class="wq"><div class="q"><span class="num">${x.n}</span>${x.q}</div><div class="a">${x.a}</div></div>`).join('')+
+    `</div>`;
+}
+
+// ---- table ----
+function stageBadge(s){
+  const cls = (s==='Acknowledged'||s==='Awaiting batch') ? 'b-ack' : (s==='Legal review' ? 'b-legal' : 'b-prog');
+  return `<span class="badge ${cls}">${s}</span>`;
+}
+function sittingCell(r){
+  const span = Math.max(1, daysBetween(d(r.acknowledged), d(r.expected))); // window length, from acknowledgment
+  const pct = Math.max(5, Math.min(100, Math.round(r.daysOpen/span*100)));
+  const over = r.daysToDue < 0;
+  const cls = over ? 'over' : 'within';
+  const label = over ? `${-r.daysToDue}d past window` : `${r.daysToDue}d left in window`;
+  return `<div class="sit">
+      <div class="sitbar"><span class="fill ${cls}" style="width:${pct}%"></span></div>
+      <div class="sitlab"><strong>${r.daysOpen}d</strong> sitting · <span class="${cls}">${label}</span></div>
+    </div>`;
+}
+function render(){
+  const q = state.q.trim().toLowerCase();
+  let rows = REQUESTS.filter(r=>{
+    if(state.agency!=='All' && r.agency!==state.agency) return false;
+    if(state.stage!=='All' && r.stage!==state.stage) return false;
+    if(q){
+      const hay=[r.ref,r.agency,r.agencyFull,r.matter,r.matterDetail,r.story,r.storyNote,r.contact,r.source].join(' ').toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  const k=state.sortK, dir=state.sortDir;
+  rows.sort((a,b)=>{
+    let x=a[k], y=b[k];
+    if(typeof x==='string'){x=x.toLowerCase();y=y.toLowerCase();}
+    return x<y?-1*dir : x>y?1*dir : 0;
+  });
+
+  const tb=document.getElementById('tbody');
+  if(!rows.length){ tb.innerHTML=`<tr><td colspan="10" class="empty">No requests match the current filters.</td></tr>`; markSort(); return; }
+
+  tb.innerHTML = rows.map((r,i)=>`
+    <tr class="row" data-i="${i}">
+      <td><span class="ref">${r.ref}</span></td>
+      <td>${r.agency}<div class="agency-tag">${r.agencyFull.replace(r.agency,'').replace(/^City of Richmond —?\s*/,'City of Richmond')}</div></td>
+      <td><span class="matter">${r.matter}</span></td>
+      <td>${r.story ? `<span class="story">${r.story}</span>${r.storyBlurb?`<div class="muted" style="font-size:12px">${r.storyBlurb}</div>`:''}` : '<span class="muted">—<div style="font-size:11px">not cited by desk</div></span>'}</td>
+      <td>${stageBadge(r.stage)}</td>
+      <td>${fmt(r.filed)}${r.filedTime?` · ${r.filedTime}`:''}<div class="muted" style="font-size:12px">ack ${fmt(r.acknowledged)}${r.ackTime?` · ${r.ackTime}`:''}</div></td>
+      <td>${r.processing}<div class="muted" style="font-size:12px">due ${fmt(r.expected)}</div></td>
+      <td>${sittingCell(r)}</td>
+      <td>${r.chaser ? `<span class="chaser">${r.chaser.name}</span><div class="muted" style="font-size:12px">${r.chaser.handle}</div>` : '<span class="muted">—</span>'}</td>
+      <td class="src">${r.source}</td>
+    </tr>
+    <tr class="detail hidden" id="det-${i}">
+      <td colspan="10"><div class="detail-inner">
+        <div class="f"><div class="k">Full agency</div><div class="val">${r.agencyFull}</div></div>
+        <div class="f"><div class="k">Matter detail</div><div class="val">${r.matterDetail||r.matter}</div></div>
+        <div class="f"><div class="k">Stuck story</div><div class="val">${r.story?`<b>${r.story}</b> — `:''}${r.storyNote}</div></div>
+        <div class="f"><div class="k">Filed</div><div class="val">${fmt(r.filed)}${r.filedTime?`, ${r.filedTime}`:''}</div></div>
+        <div class="f"><div class="k">Acknowledged</div><div class="val">${fmt(r.acknowledged)}${r.ackTime?`, ${r.ackTime}`:''}${r.signature?`<div class="muted" style="margin-top:3px">${r.signature}</div>`:''}</div></div>
+        <div class="f"><div class="k">Office window</div><div class="val">${r.processing}${r.windowSource?`<div class="muted" style="margin-top:3px">${r.windowSource}</div>`:''}</div></div>
+        <div class="f"><div class="k">Expected by</div><div class="val">${fmt(r.expected)} <span class="muted">(${r.expectedBasis})</span></div></div>
+        <div class="f"><div class="k">Sitting vs window</div><div class="val">${r.daysOpen} days since filing · ${r.daysToDue<0?`<span style="color:var(--danger);font-weight:600">${-r.daysToDue} days past window</span>`:`${r.daysToDue} days left`}</div></div>
+        ${r.statusNote?`<div class="f"><div class="k">Status note</div><div class="val">${r.statusNote}</div></div>`:''}
+        <div class="f"><div class="k">Contact</div><div class="val">${r.contact}</div></div>
+        <div class="f"><div class="k">Chasing</div><div class="val">${r.chaser ? `${r.chaser.name} (${r.chaser.handle} · ${r.chaser.email})<div class="muted" style="margin-top:3px">${r.chaser.note}</div>` : '<span class="muted">No chaser assigned</span>'}</div></div>
+        <div class="f"><div class="k">Source</div><div class="val">${r.sourceDetail}</div></div>
+      </div></td>
+    </tr>
+  `).join('');
+
+  tb.querySelectorAll('tr.row').forEach(tr=>{
+    tr.onclick=()=>{ document.getElementById('det-'+tr.dataset.i).classList.toggle('hidden'); };
+  });
+  markSort();
+}
+function markSort(){
+  document.querySelectorAll('thead th').forEach(th=>{
+    th.classList.toggle('act', th.dataset.k===state.sortK);
+    const ar=th.querySelector('.ar'); if(ar) ar.textContent = th.dataset.k===state.sortK ? (state.sortDir===1?'↑':'↓') : '↕';
+  });
+}
+
+// ---- wire up ----
+document.querySelectorAll('thead th').forEach(th=>{
+  th.onclick=()=>{ const k=th.dataset.k;
+    if(state.sortK===k) state.sortDir*=-1; else {state.sortK=k; state.sortDir=1;} render(); };
+});
+document.getElementById('q').addEventListener('input',e=>{state.q=e.target.value;render();});
+
+buildChips('agencyFilters','agency');
+buildChips('stageFilters','stage');
+renderCards();
+renderClocks();
+renderWalkin();
+render();
+</script>
+<script>
+/* Added by the Common Errors viewer. Not part of the task: it marks the passage the example points at. */
+(function () {
+  var T = ["The newsletter teaser rides the same Records batch", "days since filing"];
+  var SKIP = {SCRIPT: 1, STYLE: 1, TEMPLATE: 1, NOSCRIPT: 1, MARK: 1};
+  function textTarget(t) {
+    var exact = t.charAt(0) === "=", s = exact ? t.slice(1) : t, hits = [];
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        return n.parentNode && SKIP[n.parentNode.nodeName] ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var n, list = [];
+    while ((n = w.nextNode())) list.push(n);
+    list.forEach(function (node) {
+      var i = exact ? (node.data.trim() === s ? node.data.indexOf(s) : -1) : node.data.indexOf(s);
+      if (i < 0) return;
+      var r = document.createRange();
+      r.setStart(node, i); r.setEnd(node, i + s.length);
+      var m = document.createElement("mark");
+      m.style.cssText = "background:#ffe066;color:#111;outline:3px solid #ff4d63;border-radius:2px;padding:0 1px";
+      r.surroundContents(m);
+      hits.push(m);
+    });
+    return hits;
+  }
+  /* Scroll only this page, never the viewer around it: scrollIntoView would
+     move the dialog too and push the file name and the note out of sight. */
+  function reveal(el) {
+    var p = el.parentElement;
+    while (p && p !== document.body && p !== document.documentElement) {
+      var cs = getComputedStyle(p);
+      if (/(auto|scroll)/.test(cs.overflowY) && p.scrollHeight > p.clientHeight) {
+        p.scrollTop += el.getBoundingClientRect().top - p.getBoundingClientRect().top - p.clientHeight / 3;
+      }
+      p = p.parentElement;
+    }
+    window.scrollTo(0, window.scrollY + el.getBoundingClientRect().top - window.innerHeight / 3);
+  }
+  function mark() {
+    var found = 0, first = null;
+    T.forEach(function (t) {
+      var hits = [];
+      if (t.indexOf("css:") === 0) {
+        hits = Array.prototype.slice.call(document.querySelectorAll(t.slice(4)));
+        hits.forEach(function (el) { el.style.outline = "4px solid #ff4d63"; el.style.outlineOffset = "4px"; });
+      } else {
+        hits = textTarget(t);
+      }
+      if (hits.length) { found++; if (!first) first = hits[0]; }
+    });
+    if (first) reveal(first);
+    try { parent.postMessage({ceEvidence: document.title || "page", found: found, of: T.length}, "*"); } catch (e) {}
+  }
+  window.addEventListener("load", function () { setTimeout(mark, 300); });
+})();
+</script></body>
+</html>

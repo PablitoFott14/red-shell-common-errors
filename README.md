@@ -22,6 +22,7 @@ what builds it; you do not need to read them to take the course.
 | `mistakes/<name>.html` | One page per error, in five steps: what the issue is, why it matters with the rules it breaks quoted, how to recognise it in your own task, real tasks where it happened, what to do instead. |
 | `checklist.html` | Every recognition test on one page, in build order. The five minutes before you submit. |
 | `data/course.json` | The same content as data, if you want to render it somewhere else. |
+| `evidence/<task>/` | The task files the examples open: golden pages, photos, videos. Only what an example needs. |
 
 ## Opening an example
 
@@ -35,6 +36,18 @@ straight to the row that broke, switching tabs and scrolling to it. Left and rig
 **Expand** takes the dialog full window, and **Escape** puts you back where you were.
 
 Where a task repeats the same defect a dozen times the panel shows four rows and tells you the count.
+
+### Seeing the evidence
+
+Where an error can only be checked by looking, the files it turns on open in the same dialog, as blue tabs
+beside the task's fields: the golden page running as it shipped, the photo a prompt gave away, the video with
+buttons that play the exact scene, the row of an export, the file a golden archive should not have carried.
+Each one says what to look at, and the passage the example points to is marked. The blue chips in the left
+column open them, and so does **Open it** beside a file in an archive panel. Click an image for full size.
+
+Only the files an example needs are published, taken from the task's own archive. An input is published only
+if the run itself named it, since a saved inputs archive does not always match what the run saw. Images carry
+no metadata, and nothing on these pages identifies a contributor.
 
 ## What grounds all of this
 
