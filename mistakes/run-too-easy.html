@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A run that does not fail enough of the rubric · Red Shell Common Errors</title>
+<meta name="description" content="The task is built, the rubric is written, and the Model A run passes most of it. From inside the task nothing looks wrong: the criteria are sound and the run does fail some. What gives it away is the ">
+<link rel="stylesheet" href="../assets/style.css">
+</head><body>
+<header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<main class="wrap mpage">
+<p class="crumb"><a href="../index.html">All mistakes</a> · Section 4 · A rubric that separates two runs</p>
+<div class="mhead"><h1>A run that does not fail enough of the rubric</h1><span class="bad fail">fails the task</span></div>
+<div class="mstats"><div><b>8</b> tasks hit</div><div><b>6</b> people</div>
+<div class="d">Difficulty</div></div>
+<div class="three">
+  <div class="t3"><h4>What the mistake is</h4><p>The task is built, the rubric is written, and the Model A run passes most of it. From inside the task nothing looks wrong: the criteria are sound and the run does fail some. What gives it away is the arithmetic.</p></div>
+  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Add up the weight of every criterion your Model A run failed and divide by the total objective weight. rubric_justifications.md records exactly which ones failed, so this is a number you can read off the folder before you submit.</p></div>
+  <div class="t3 t3f"><h4>What to do instead</h4><p>Under 50% means the scenario is too easy. The fix is a harder scenario — put the sources in disagreement — never heavier weights on the same rows, and never padding the set.</p></div>
+</div>
+<div class="why"><h4>Why it costs you</h4><p>Every task has to be hard enough that the Model A trajectory clearly fails at least 50% of the rubric score. That is a hard client requirement, not a target. A run that sails through most of the set is not separating a strong model from a weak one, and the data is worth less.</p></div>
+
+<h2 class="exs">Real tasks that did this</h2>
+<article class="ex"><div class="exh"><h3>Example 1</h3><div class="exm"><span>Commerce &amp; Product</span><span>4 turns</span><span class="vd">Pass with non-failing issues</span><span class="cb">CB-B0DD</span><code class="tid">6aa73af2a7b183d5fb7eb8a3</code></div></div><p class="scen">The 2008 Element has 214,000 miles on it and took a timing belt, water pump and both front struts at $1,840.00 in April, which is more than the car is worth and which she paid without a second thought. In June the rear hatch strut failed and the tailgate came </p><p class="setup">The page has to reconcile a May quote against the current one, price the financing and lay out two purchase paths.</p><div class="panels"><div class="panel"><div class="ph">The set, in numbers</div><div class="pb tiles"><div class="tile "><div class="tv">38</div><div class="tl">objective criteria</div></div><div class="tile "><div class="tv">11</div><div class="tl">subjective criteria</div></div><div class="tile bad"><div class="tv">2 (4.1%)</div><div class="tl">negative criteria</div></div><div class="tile "><div class="tv">18.7%</div><div class="tl">subjective share of weight</div></div><div class="tile "><div class="tv">5</div><div class="tl">criteria targeting Trajectory</div></div><div class="tile "><div class="tv">123</div><div class="tl">total absolute weight</div></div></div></div><div class="panel"><div class="ph">Agent Objective</div><div class="pb prose">Sunniva Haugland owns Storvik Bakeri at 808 Commercial Avenue in Anacortes. She has been trying to decide whether to buy a Doyon three‑deck oven since April. The oven needs a three‑phase electrical service the building does not have, and in June her landlord offered an early lease renewal that carries an improvement allowance. She reran the oven figures with that allowance in August. Her accountant has asked for a current oven price and for clarity on when the allowance can actually be used, ahead of a call with the landlord on 9 September. Sunniva needs one page that puts the decision in front of her with figures she can trust, using the corrections her shop manager made by hand and a fresh quote from the supplier, and she needs the current price sent to her accountant.</div></div></div><div class="rationale"><div class="rr"><div class="rl">What is wrong</div><div class="rv">Thirteen of the thirty-eight criteria carry a failure justification, but nine of those sit at weight 3 and only three at weight 5, while ten of the twenty-five criteria the run passed sit at weight 1.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">The run failed a third of the criteria and still cleared only 43.0% of the objective weight, under the 50% the client requires. The set spends its weight on rows a competent run always gets, so the failures that do happen cannot add up.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Weight each criterion by the reasoning it needs, so the difficulty sits where the failures are: &quot;The oven payment is 406.59 a month, being 19,702.00 financed at 8.75% APR over 60 months&quot; is a 5, and a criterion restating a single value the source states outright is a 1.</div></div></div></article>
+<section class="who"><h4>Contributors this was found on</h4>
+<p class="whop">6 of the people audited so far. IDs are stable across the dashboard.</p>
+<div class="cbs"><code class="cbid">CB-6325</code><code class="cbid">CB-A5C1</code><code class="cbid">CB-B0DD</code><code class="cbid">CB-B462</code><code class="cbid">CB-C4A0</code><code class="cbid">CB-E3B2</code></div></section>
+<nav class="pager"><a href="trajectory-cap.html">← More trajectory criteria than the Guidelines allow</a><a href="golden-fails-own-criterion.html">A criterion the golden itself fails →</a></nav>
+</main>
+<footer><p>Built from 88 audits across 81 tasks.
+Every example is a real task. Contributors are shown as stable IDs.</p></footer>
+</body></html>

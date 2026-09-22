@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The rules point at records the universe does not hold · Red Shell Common Errors</title>
+<meta name="description" content="The scenario&#x27;s rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it — the prompts, the rules file and the">
+<link rel="stylesheet" href="../assets/style.css">
+</head><body>
+<header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<main class="wrap mpage">
+<p class="crumb"><a href="../index.html">All mistakes</a> · Section 1 · The task you were given</p>
+<div class="mhead"><h1>The rules point at records the universe does not hold</h1><span class="bad fail">fails the task</span></div>
+<div class="mstats"><div><b>2</b> tasks hit</div><div><b>2</b> people</div>
+<div class="d">Trajectory - Feasibility With Tools</div></div>
+<div class="three">
+  <div class="t3"><h4>What the mistake is</h4><p>The scenario&#x27;s rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it — the prompts, the rules file and the criteria all read as though the data is there.</p></div>
+  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>The tell is in your own golden: a search that comes back empty, a steering turn telling the agent to reach the page another way, and a deliverable that flags its own figures as unconfirmed.</p></div>
+  <div class="t3 t3f"><h4>What to do instead</h4><p>At scenario-design time, open the universe and confirm it returns every record your rules point at, one query per rule. An empty search on the first golden turn is a signal to fix the source, never something to steer around.</p></div>
+</div>
+<div class="why"><h4>Why it costs you</h4><p>A rule pointing at data no tool returns cannot be followed by any run, so every criterion downstream of it is unreachable. Not wrong — impossible. It takes the difficulty with it too: where the second system is what made the task multi-system, the task ships with one side of every decision resolving to nothing.</p></div>
+
+<h2 class="exs">Real tasks that did this</h2>
+<article class="ex"><div class="exh"><h3>Example 1</h3><div class="exm"><span>Commerce &amp; Product</span><span>3 turns</span><span class="vd">Fail</span><span class="cb">CB-262A</span><code class="tid">6aac6ee4f0c334e21057f9e6</code></div></div><p class="scen">They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long</p><p class="setup">Five items on a neighbour&#x27;s board have to be priced against what Amazon Fresh actually sells, with the delivery fee taken from Fresh&#x27;s policy and one apartment&#x27;s quantity from a Subscribe and Save record. The task is assigned to openclaw_mm_thaddeus_okonjo_commerce_product.</p><div class="panels"><div class="panel"><div class="ph">Assigned universe</div><div class="pb prose">openclaw_mm_thaddeus_okonjo_commerce_product</div></div><div class="panel"><div class="ph">Scenario (assigned, cannot be changed)</div><div class="pb prose">They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long run of McLendon odds and ends, and nobody has added it up.</div></div><div class="panel"><div class="ph">Prompt, turn 1</div><div class="pb"><div class="turn"><div class="tn">Turn 1</div><div class="tt">hey so our building fresh order goes in monday 6/29/26. tom threw together pantry_board_draft.png for the neighbors, signup_sheet.jpg is the sheet from the laundry room and the house rules are in pantry_rules.md. can you check his listings before anyone sees it and make me pantry_audit.html - verdict+fixed card for each listing. and what each apt owes. people should be able to pick the apt and only see their part</div></div></div></div><div class="panel"><div class="ph">Opening of the golden run</div><div class="pb"><div class="gm"><div class="gr">user</div><div class="gt">hey so our building fresh order goes in monday 6/29/26. tom threw together pantry_board_draft.png for the neighbors, signup_sheet.jpg is the sheet from the laundry room and the house rules are in pantry_rules.md. can you check his listings before anyone sees it and make me pantry_audit.html - verdict+fixed card for each listing. and what each apt owes. people should be able to pick the apt and only see their part</div></div><div class="gm"><div class="gr">agent</div><div class="gt">Done — **`/app/outputs/pantry_audit.html`** is ready. Open it in any browser; it&#x27;s self-contained and has the apartment picker so each neighbor picks their apt and sees only their part (plus an &quot;All&quot; view for you as organizer).
+
+## What I found auditing Tom&#x27;s draft
+
+**Every one of the 5 cards needs a FIX (none can publish as-is, none get pulled):**
+
+| Card | Problem |
+|---|---|
+| Bananas | &quot;rich in potassium&quot; — nutrition claim Fresh doesn&#x27;t back → remove |
+| Organic Avocados | &quot;Return within 30 days&quot; isn&#x27;t backed by any Fresh policy → remove. Organic is real (USDA seal in your photo). Pack listed &quot;single&quot; but photo shows a **bagged multipack** → verify |
+| **Organic Baby Spinach** | **Biggest one — it&#x27;s NOT organic.** The delivered tub is plain *Good &amp; Gather Baby Spinach, 5 oz, &quot;Thoroughly Washed.&quot;* Drop &quot;Organic.&quot; |
+| Free-Range Large Eggs | &quot;free-range/Grade A&quot; couldn&#x27;t be verified → confirm or remove |
+| Red Bell Peppers | &quot;high in vitamin C&quot; claim → remove |
+| Delivery footer | Says &quot;split evenly&quot; — rule 6 says split **proportionally** by items total |
+
+**Two rule-driven consequences Tom&#x27;s board missed:**
+- **2A (Priya) is organic-only** → since bananas, spinach, and eggs aren&#x27;t organic, they&#x27;re *dropped, not swapped*. Priya only gets **1 organic avocado**. Worth a heads-up before order day.
+- **5D (Rosa)** ticked &quot;organic only&quot; but wrote *&quot;any is fine&quot;* — per rule 3 the last word wins, so no restriction.
+- **4B&#x27;s Subscribe &amp; Save** re-bills Wed 7/1 (in the 6/29–7/5 order week) for 2 lb of bananas ($1.02), so 2 lb come off your 3 lb request → group buys you 1 lb.
+
+**What each apt owes 4B** (you front it, they pay you back):
+- 2A Priya **$2.51** · 3C Tom **$14.58** · 4B (you) **$12.54** · 5D Rosa **$20.43**
+- Subtotal **$50.06 → delivery FREE** (clears the $50 line)</div></div></div></div></div><div class="rationale"><div class="rr"><div class="rl">What is wrong</div><div class="rv">Rule 1 prices every line &quot;at the pack option we add to the cart from Fresh&#x27;s catalog&quot;; rule 5 takes the delivery fee from &quot;Fresh&#x27;s Delivery Policy and nothing else&quot;; rule 7 allows only claims &quot;Fresh&#x27;s own catalog or policies back up&quot;. That universe&#x27;s Fresh catalog holds 39 products and none of the five board items, its policies and faqs lists are both empty, and it carries no subscription records at all.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">The golden hit the wall in the run itself. Turn 3 tells the agent &quot;all five items are sold on fresh, so if the search is coming back empty try getting to the product pages and the policy pages another way&quot;, turn 7 becomes &quot;leave anything you genuinely cant confirm as is&quot;, and the delivered page states &quot;its catalog search returns nothing, so I can&#x27;t pull the building&#x27;s real prices&quot; - so every price on it is the board figure flagged unconfirmed, and the criteria wanting $0.55 a lb, $5.45 a tub and a $4.99 fee cannot be reached by anyone.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Before writing the rules, call the tools against the assigned universe: search the catalog for each item you intend to price, and open the policy and subscription records you intend to cite. Where they are not there, change the universe rather than the rules - the arithmetic in this task was exact and every other part of it held up.</div></div></div></article>
+<section class="who"><h4>Contributors this was found on</h4>
+<p class="whop">2 of the people audited so far. IDs are stable across the dashboard.</p>
+<div class="cbs"><code class="cbid">CB-262A</code><code class="cbid">CB-9BB4</code></div></section>
+<nav class="pager"><a href="below-complexity-bar.html">← The deliverable sits below the complexity bar</a><a href="steering-hands-answer.html">A steering turn that hands over the answer →</a></nav>
+</main>
+<footer><p>Built from 88 audits across 81 tasks.
+Every example is a real task. Contributors are shown as stable IDs.</p></footer>
+</body></html>

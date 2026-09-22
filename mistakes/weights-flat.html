@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weights that do not separate difficulty from lookup · Red Shell Common Errors</title>
+<meta name="description" content="Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi-step cross-source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in">
+<link rel="stylesheet" href="../assets/style.css">
+</head><body>
+<header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<main class="wrap mpage">
+<p class="crumb"><a href="../index.html">All mistakes</a> · Section 4 · A rubric that separates two runs</p>
+<div class="mhead"><h1>Weights that do not separate difficulty from lookup</h1><span class="bad bleed">costs points</span></div>
+<div class="mstats"><div><b>15</b> tasks hit</div><div><b>12</b> people</div>
+<div class="d">Rubric Criteria - Incorrect Weights</div></div>
+<div class="three">
+  <div class="t3"><h4>What the mistake is</h4><p>Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi-step cross-source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in the next, or two weight-5 criteria resting on a single read of one image.</p></div>
+  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Sort your criteria by weight and read them in order. The order should match the effort the task actually demands. Count the axes each one requires — tool or source coordination, reasoning depth, modality, discovery — and read off +5 for three or more, +3 for exactly two, +1 for one or none.</p></div>
+  <div class="t3 t3f"><h4>What to do instead</h4><p>Price by the difficulty of the read: multi-source derivations and media-only values at 5, direct lookups at 1. A two-level miss is what the taxonomy treats as Major.</p></div>
+</div>
+<div class="why"><h4>Why it costs you</h4><p>The scale exists to separate discovery from lookup. When it does not, the final score says nothing about whether the model did the hard part, and a run that nails every lookup while missing every derivation still scores well.</p></div>
+
+<h2 class="exs">Real tasks that did this</h2>
+<article class="ex"><div class="exh"><h3>Example 1</h3><div class="exm"><span>Small Business &amp; Personal Docs</span><span>3 turns</span><span class="vd">Fail</span><span class="cb">CB-9CEC</span><code class="tid">6aa1cedb57e31958c9d6108d</code></div></div><p class="scen">RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides </p><p class="setup">Both of these sit at weight 1 in the same rubric set.</p><div class="panels"><div class="panel"><div class="ph">Objective criteria 12, 17</div><div class="pb rows"><div class="row flagged"><div class="ptr">the mistake</div><div class="rn">12</div><div class="rc"><div class="rt">In `vantol_films_2026_submission_dashboard.html`, the BendFilm Festival fee is shown as `$20`.</div><div class="rm"><span class="w w-lo">+1</span><span class="mt">Final answer/artifact</span><span class="mc">Task Completion</span></div></div></div><div class="row flagged"><div class="rn">17</div><div class="rc"><div class="rt">In `vantol_films_2026_submission_dashboard.html`, the RACC project treatment associated with `SetInLead_Treatment_Final.pdf` is classified as Ready.</div><div class="rm"><span class="w w-lo">+1</span><span class="mt">Final answer/artifact</span><span class="mc">Task Completion</span></div></div></div></div></div><div class="panel"><div class="ph">The set, in numbers</div><div class="pb tiles"><div class="tile "><div class="tv">50</div><div class="tl">objective criteria</div></div><div class="tile "><div class="tv">10</div><div class="tl">subjective criteria</div></div><div class="tile bad"><div class="tv">0 (0.0%)</div><div class="tl">negative criteria</div></div><div class="tile "><div class="tv">22.9%</div><div class="tl">subjective share of weight</div></div><div class="tile "><div class="tv">0</div><div class="tl">criteria targeting Trajectory</div></div><div class="tile "><div class="tv">140</div><div class="tl">total absolute weight</div></div></div></div></div><div class="rationale"><div class="rr"><div class="rl">What is wrong</div><div class="rv">Criterion 12 (weight 1): the BendFilm entry fee is four times the order processing fee, which exists only inside one Ticketmaster order on the June 13 Timbers vs Sounders fixture. The agent has to pick the right fixture out of three, then the right fee field out of two, then multiply.
+
+Criterion 17 (weight 1): the treatment PDF is 9 pages, so its row reads Ready. Open the file, read the page count.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">A four-step derivation across two services and a one-step lookup are worth the same point. Nothing in the score distinguishes a run that found the fee chain from one that only read page counts.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Weight 5 on criterion 12, weight 1 on criterion 17, and one shared weight for any criteria that rest on the same read.</div></div></div></article>
+<section class="who"><h4>Contributors this was found on</h4>
+<p class="whop">12 of the people audited so far. IDs are stable across the dashboard.</p>
+<div class="cbs"><code class="cbid">CB-0578</code><code class="cbid">CB-09F9</code><code class="cbid">CB-0DCC</code><code class="cbid">CB-4ECA</code><code class="cbid">CB-6325</code><code class="cbid">CB-6586</code><code class="cbid">CB-703B</code><code class="cbid">CB-7A33</code><code class="cbid">CB-9CEC</code><code class="cbid">CB-A460</code><code class="cbid">CB-B0DD</code><code class="cbid">CB-B5CF</code></div></section>
+<nav class="pager"><a href="coverage-both-ways.html">← A requirement nothing grades, and a criterion nothing asked for</a><a href="trajectory-cap.html">More trajectory criteria than the Guidelines allow →</a></nav>
+</main>
+<footer><p>Built from 88 audits across 81 tasks.
+Every example is a real task. Contributors are shown as stable IDs.</p></footer>
+</body></html>

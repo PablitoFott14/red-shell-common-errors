@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A revision that leaves the old wording standing · Red Shell Common Errors</title>
+<meta name="description" content="The revision turn changes the thing it was asked to change and leaves every sentence, label and comment that depended on it untouched, so the final artifact states the old position and the new one at ">
+<link rel="stylesheet" href="../assets/style.css">
+</head><body>
+<header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<main class="wrap mpage">
+<p class="crumb"><a href="../index.html">All mistakes</a> · Section 7 · Closing the task</p>
+<div class="mhead"><h1>A revision that leaves the old wording standing</h1><span class="bad fail">fails the task</span></div>
+<div class="mstats"><div><b>5</b> tasks hit</div><div><b>5</b> people</div>
+<div class="d">Multi-Turn - Revision Turn Handling</div></div>
+<div class="three">
+  <div class="t3"><h4>What the mistake is</h4><p>The revision turn changes the thing it was asked to change and leaves every sentence, label and comment that depended on it untouched, so the final artifact states the old position and the new one at the same time.</p></div>
+  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>After every revision turn, search the artifact for the value, the label and the name that moved, and read each hit in place.</p></div>
+  <div class="t3 t3f"><h4>What to do instead</h4><p>A revision is finished when nothing left on the page describes the state before it. Change one thing precisely, then re-read the whole artifact for every sentence that just became false.</p></div>
+</div>
+<div class="why"><h4>Why it costs you</h4><p>Revision Turn Handling fails on a regression, and this is the commonest form: the graded value moves, the prose around it does not. A reader meets an artifact arguing with itself, and a grader reading a criterion against the stale half marks a correct run Not Present.</p></div>
+
+<h2 class="exs">Real tasks that did this</h2>
+<article class="ex"><div class="exh"><h3>Example 1</h3><div class="exm"><span>Visual Learning</span><span>5 turns</span><span class="vd">Fail</span><span class="cb">CB-33C0</span><code class="tid">6aa02f48755f41e02b01483e</code></div></div><p class="scen">Anselm has records requests open with Lorna Whitfield-Baptiste&#x27;s office and two other City of Richmond departments, each at a different stage and each acknowledged on a different clock. He wants one view of every open request, what stage it is at, how long it </p><p class="setup">A late turn moves the newsletter teaser from the records row onto the police request, and changes the sitting figure from days since filing to days since acknowledgment.</p><div class="panels"><div class="panel"><div class="ph">From the golden conversation</div><div class="pb"><div class="gm"><div class="gr">agent</div><div class="gt">The logic checks out. The **Walk-in slice** now sits at the top of the same page, built from all three sources you gave me and answered live from the open rows.
+
+**Walk-in slice — 1:1 with Nadine** · 🗓 Mon, Oct 19, 2026 · 9:30–10:00 AM · Newsroom (the desk)
+*(hold&#x27;s note: &quot;bring the live request view&quot;)*
+
+Your three laptop-sticky prompts, answered from the live rows (as of last checked Oct 16):
+
+1. **clerk still dark?** → **Yes — still dark.** `2026-1642` (Records Office): acknowledged Aug 4, no batch since, **52 days past** its 15-business-day window.
+2. **who&#x27;s chasing** → **Cyrus Adeagbo → `RPD-26-2204`** (Police). No chaser assigned yet on `PDR-26-441` (Planning) or `2026-1642` (Records).
+3. **which story dies first** → **The inspections lead** — riding `2026-1642`, **52 days past window and still not moving**; it was the late-September first story, already late. Behind it: Church Hill piece (`PDR-26-441`, 61d past — *but in legal review, moving*). The newsletter teaser rides the same Records batch. *Framed as your call — it&#x27;s read from the live rows.*
+
+A couple of notes on judgment:
+- &quot;Which story dies first&quot; is an editorial call, so I didn&#x27;t hard-declare it — I surfaced the data-driven pick (the inspections lead: most overdue *and* not moving) and flagged that Church Hill is technically more days over but is actually progressing (legal review), so it&#x27;s less at risk. You decide; the panel says so.
+- It&#x27;s a live panel — it derives from the same row data, so if a stage or chaser changes, the slice updates with it.
+
+Everything else on the page is unchanged (stuck-story column, office clocks, sitting-vs-window, chaser, the parked phishing mail, filters/sort/search). Verified the JS parses and the three answers compute correctly.</div></div></div></div><div class="panel"><div class="ph">Prompt, turn 1</div><div class="pb"><div class="turn"><div class="tn">Turn 1</div><div class="tt">Hey I need one view of the open city records requests so I&#x27;m not updating a list by hand. I&#x27;ve got stuff sitting with the clerk&#x27;s office and with other city departments and they&#x27;re not all in the same place. I dumped the August pile, just a desk short of the folder plus a mail screenshot from that same week. There&#x27;s other city paper in the stack that isn&#x27;t a request. Can you build me an interactive dashboard in a file called foia_register.html? I want a register of the actual open requests by agency and stage, with the dates pulled off from the messages and reference numbers they came from, using the pile and what&#x27;s already in my mail. Stamp last checked with the date that&#x27;s on that August pile.</div></div></div></div></div><div class="rationale"><div class="rr"><div class="rl">What is wrong</div><div class="rv">The newsletter teaser rides the same Records batch</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">That sentence still renders one line after the card lists &quot;The newsletter (RPD-26-2204, 58d past)&quot;, so the page places the teaser in two places at once. The same edit left the expanded row detail printing the figure as &quot;days since filing&quot; while the column header, the summary card and the footer all say acknowledgment.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Delete the walk-in sentence or move it to the row the teaser now sits on, and change the row detail to read &quot;days since acknowledgment&quot; so all four places agree.</div></div></div></article>
+<section class="who"><h4>Contributors this was found on</h4>
+<p class="whop">5 of the people audited so far. IDs are stable across the dashboard.</p>
+<div class="cbs"><code class="cbid">CB-262A</code><code class="cbid">CB-33C0</code><code class="cbid">CB-6325</code><code class="cbid">CB-6586</code><code class="cbid">CB-B5CF</code></div></section>
+<nav class="pager"><a href="golden-contradicts-sources.html">← The golden states something its own sources contradict</a><a href="closeout-mechanics.html">The five minute close-out nobody runs →</a></nav>
+</main>
+<footer><p>Built from 88 audits across 81 tasks.
+Every example is a real task. Contributors are shown as stable IDs.</p></footer>
+</body></html>

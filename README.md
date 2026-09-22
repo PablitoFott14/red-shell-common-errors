@@ -1,0 +1,67 @@
+# Red Shell · Common Errors — mistake viewer
+
+The worked-example layer of the **Common Errors** course for the OpenClaw MM Rubrics MULTI TURN project.
+
+24 mistakes, each with the real audited tasks that made it, with the field that broke the task marked and a
+short note on what it should have said instead.
+
+**→ [Open the viewer](https://pablitofott14.github.io/red-shell-common-errors/)**
+
+---
+
+## What is in here
+
+| Page | What it does |
+|---|---|
+| `index.html` | The menu. Every mistake, grouped into the course's seven sections, with how many tasks and people each one hit. |
+| `mistakes/<name>.html` | One page per mistake. What it is, how to spot it in your own task, what to do instead, then the real examples. |
+| `checklist.html` | Every recognition test on one page, in build order. The five minutes before you submit. |
+| `data/course.json` | The same content as data, if you want to render it somewhere else. |
+
+Each example shows only the slice of the task that carries the mistake — the criterion, the milestone rows, the
+prompt turn, the file listing — rather than the whole folder. The offending row is marked, and where a task
+repeats the same defect a dozen times the page shows four and tells you the count.
+
+## Where the evidence comes from
+
+Built from **88 audits across 81 tasks**. Two things had to agree before an example was published:
+
+1. **A mechanical detector** reading the task folder directly, so the defect is provably in the data rather than
+   inferred from a narrative. The detectors catch every task the auditors flagged for those mistakes, and
+   usually a few more.
+2. **The audit evidence list**, so a reviewer independently called it out on that task.
+
+Examples that could not satisfy both were sourced from the audit pipeline's own worked example, with the field
+values re-read from the task folder so the page shows what the task actually contains.
+
+## Contributors
+
+Each mistake page lists the people it was found on, as stable IDs like `CB-3F7A`. The IDs are consistent across
+every page and across the insights dashboard, so the same ID is the same person throughout. The mapping from ID
+to person is kept out of this repository.
+
+## Keeping it current
+
+The site is generated. The build scripts live with the course material in Drive, under
+`Coruses & Screenings/common errors/improved/_build/`:
+
+```bash
+python detect5.py      # run the mechanical detectors over the task folders
+python relocate.py     # resolve each worked example to its task and rows
+python build_data.py   # -> course_data.json
+python build_site.py   # -> this site
+python build_slides.py # -> the deck
+python build_docs.py   # -> course_structure.md, explanations.md
+```
+
+Edit `spec.py` to change what a mistake says, then rebuild. The slides, the explanations and these pages all
+read the same `course_data.json`, so none of them can drift from the others.
+
+## The rest of the course
+
+- **Slides** — 13 HTML frames at 1920x1080
+- **Explanations** — the course text, one entry per mistake
+- **Questions** — 19 comprehension questions, built to test whether someone can recognise the mistake rather
+  than repeat the rule
+
+All three live beside the build scripts in Drive.

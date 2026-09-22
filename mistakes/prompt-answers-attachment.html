@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A prompt that answers its own attachment · Red Shell Common Errors</title>
+<meta name="description" content="A user prompt releases a file and states the value the file exists to make the agent read: how many items are in the photograph, what the total comes to, which of two documents is current. It sits in ">
+<link rel="stylesheet" href="../assets/style.css">
+</head><body>
+<header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<main class="wrap mpage">
+<p class="crumb"><a href="../index.html">All mistakes</a> · Section 2 · What the conversation may not say</p>
+<div class="mhead"><h1>A prompt that answers its own attachment</h1><span class="bad fail">fails the task</span></div>
+<div class="mstats"><div><b>3</b> tasks hit</div><div><b>3</b> people</div>
+<div class="d">Multi-Turn - Simulator Answer Leak</div></div>
+<div class="three">
+  <div class="t3"><h4>What the mistake is</h4><p>A user prompt releases a file and states the value the file exists to make the agent read: how many items are in the photograph, what the total comes to, which of two documents is current. It sits in the same sentence that hands over the asset, written as helpful context by someone who has already looked at the file.</p></div>
+  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Read each prompt beside the file it releases. Every number, name or conclusion that the file itself carries is a leak, however conversational it sounds.</p></div>
+  <div class="t3 t3f"><h4>What to do instead</h4><p>State the requirement — the plates lie flat, the figure has to be the current one — and leave the value to the attachment.</p></div>
+</div>
+<div class="why"><h4>Why it costs you</h4><p>The no-leak rule covers every turn you write as the user, and it treats a count as a value — the spec&#x27;s own failing example is “there are five receipts”. Once the value is in the prompt the attachment is decoration: no criterion that depends on reading it can separate a run that opened the file from one that did not.</p></div>
+
+<h2 class="exs">Real tasks that did this</h2>
+<article class="ex"><div class="exh"><h3>Example 1</h3><div class="exm"><span>Property &amp; Space</span><span>4 turns</span><span class="vd">Fail</span><span class="cb">CB-93C1</span><code class="tid">6a9e4478f55775e9124002e5</code></div></div><p class="scen">The front room of the 1947 house needs a built-in for the drafting table, the plate storage, and the bound notebooks. The wall is not square, because no wall in that house is.</p><p class="setup">IMG_4392 is held back from turn 1 and released at turn 2 so the agent has to count and measure the plates before sizing a shelf for them.</p><div class="panels"><div class="panel"><div class="ph">Prompt, turn 2</div><div class="pb"><div class="turn"><div class="tn">Turn 2</div><div class="tt">Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit. Add that into the HTML rather than starting over.</div></div></div></div><div class="panel"><div class="ph">Input files</div><div class="pb files"><div class="file"><code>IMG_4392.jpeg</code><span class="fx">.jpeg</span><span class="fs">225 KB</span></div><div class="file"><code>IMG_4381.png</code><span class="fx">.png</span><span class="fs">1087 KB</span></div><div class="file"><code>Scan 2026-08-22 at 19.04.png</code><span class="fx">.png</span><span class="fs">702 KB</span></div><div class="file"><code>Recording 3.mp3</code><span class="fx">.mp3</span><span class="fs">402 KB</span></div><div class="file"><code>IMG_4371.jpg</code><span class="fx">.jpg</span><span class="fs">58 KB</span></div><div class="file"><code>IMG_4378.jpg</code><span class="fx">.jpg</span><span class="fs">44 KB</span></div><div class="file"><code>notebooks.jpg</code><span class="fx">.jpg</span><span class="fs">92 KB</span></div><div class="file"><code>halvard shop sheet.webp</code><span class="fx">.webp</span><span class="fs">102 KB</span></div><div class="file"><code>IMG_4380.jpg</code><span class="fx">.jpg</span><span class="fs">82 KB</span></div><div class="file"><code>IMG_4379.webp</code><span class="fx">.webp</span><span class="fs">18 KB</span></div></div></div></div><div class="rationale"><div class="rr"><div class="rl">What is wrong</div><div class="rv">&quot;Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit.&quot;</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">Counting five large plates and one small one out of that photograph is the read the deferred asset exists to force, and the stack at the back of the frame is exactly what a model gets wrong. With the count in the prompt the photograph settles nothing, and because no criterion in the set sizes the shelf either, a run that never opens the file passes the whole task.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">&quot;Sorted the plates, the photo is fine to use now. They need to be stored flat somewhere in the unit, not stood on edge. Add that into the HTML rather than starting over.&quot;</div></div></div></article>
+<section class="who"><h4>Contributors this was found on</h4>
+<p class="whop">3 of the people audited so far. IDs are stable across the dashboard.</p>
+<div class="cbs"><code class="cbid">CB-93C1</code><code class="cbid">CB-B5CF</code><code class="cbid">CB-E3B2</code></div></section>
+<nav class="pager"><a href="steering-hands-answer.html">← A steering turn that hands over the answer</a><a href="deferred-asset-announced.html">A deferred asset that announces its own turn →</a></nav>
+</main>
+<footer><p>Built from 88 audits across 81 tasks.
+Every example is a real task. Contributors are shown as stable IDs.</p></footer>
+</body></html>
