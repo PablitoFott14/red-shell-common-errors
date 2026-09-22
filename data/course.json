@@ -112,7 +112,7 @@
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8bb",
-     "scenario": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced the",
+     "scenario": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced…",
      "category": "Commerce & Product",
      "turns": 3,
      "setup": "Three turns producing ada_list.html, a buy list built from four photographs and the Fresh catalog and order history.",
@@ -190,7 +190,7 @@
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8bb",
-     "scenario": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced the",
+     "scenario": "There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced…",
      "category": "Commerce & Product",
      "turns": 3,
      "setup": "Three turns; the Agent Objective calls the deliverable a dashboard, and 14 orders and 222 order lines sit behind the five products it covers.",
@@ -266,7 +266,7 @@
    "examples": [
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
-     "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long",
+     "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a…",
      "category": "Commerce & Product",
      "turns": 3,
      "setup": "Five items on a neighbour's board have to be priced against what Amazon Fresh actually sells, with the delivery fee taken from Fresh's policy and one apartment's quantity from a Subscribe and Save record. The task is assigned to openclaw_mm_thaddeus_okonjo_commerce_product.",
@@ -353,7 +353,7 @@
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1b9",
-     "scenario": "A fence built in 1948 sits 41.3 feet west of where the record line falls, for 1.9 miles, and 9.62 acres of native grass turn on whether it is an agreed boundary or a fence of convenience. Three original 1882 stone mounds were found and tied, and there is an ir",
+     "scenario": "A fence built in 1948 sits 41.3 feet west of where the record line falls, for 1.9 miles, and 9.62 acres of native grass turn on whether it is an agreed boundary or a fence of convenience. Three original 1882 stone mounds were found and tied, and there is an…",
      "category": "Research",
      "turns": 3,
      "setup": "The run kept reading PT 128 off a deposition page instead of the field notes. Turn 8 had already pointed at the day-3 field notes in the mail and said the numbers were not locked in an unreachable book, and the run still had to find the attachment itself.",
@@ -370,7 +370,8 @@
          "role": "user",
          "text": "Not the physical field book. Open the day-3 field notes PDF in the mail, the file named 26-014_Field_notes_2026-03-19.pdf, and put what that file says about PT 128 on the cedar-mound card."
         }
-       ]
+       ],
+       "isit": true
       },
       {
        "t": "criteria",
@@ -446,7 +447,7 @@
     },
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
-     "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long",
+     "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a…",
      "category": "Commerce & Product",
      "turns": 3,
      "setup": "A resident's phone screenshot shows Fresh prices from her own Prime account. Rule 5 bars member prices, and criterion 30 is a negative worth -5 for pricing the order off that screenshot.",
@@ -578,7 +579,8 @@
          "turn": 2,
          "text": "Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit. Add that into the HTML rather than starting over."
         }
-       ]
+       ],
+       "isit": true
       },
       {
        "t": "files",
@@ -686,7 +688,7 @@
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1cb",
-     "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been aime",
+     "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
      "setup": "Turn 1 delivers a photographed calendar. The employer’s travel rules arrive two turns later, and both files sit in the inputs folder from turn 1.",
@@ -781,7 +783,7 @@
    "examples": [
     {
      "task_id": "6a9a43f6353e55844b5c3fbe",
-     "scenario": "Rosalind is at Brzezinski Fine Print for the press check on the 19th with the v12 plates and the proof in front of her. She wants the on-screen file and the scanned proof compared properly, so her markup names density and registration corrections Walt can act ",
+     "scenario": "Rosalind is at Brzezinski Fine Print for the press check on the 19th with the v12 plates and the proof in front of her. She wants the on-screen file and the scanned proof compared properly, so her markup names density and registration corrections Walt can act…",
      "category": "Visual Learning",
      "turns": 4,
      "setup": null,
@@ -866,7 +868,7 @@
     },
     {
      "task_id": "6aa1cedb57e31958c9d6108d",
-     "scenario": "RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides ",
+     "scenario": "RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides…",
      "category": "Small Business & Personal Docs",
      "turns": 3,
      "setup": null,
@@ -1018,7 +1020,7 @@
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1cb",
-     "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been aime",
+     "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
      "setup": "Turn 2 delivers the photographed calendar. The employer's travel rules arrive at turn 3, and milestone 9 carries that text word for word on turn 3.",
@@ -1076,7 +1078,7 @@
     },
     {
      "task_id": "6aa02f48755f41e02b01483f",
-     "scenario": "A year of dailies sit in /projects/dailies/ across twelve monthly folders and Nadine wants a year-in-review page for the desk. Anselm wants it built from the files themselves: what ran, what it was about, which chart types the desk actually reached for, and wh",
+     "scenario": "A year of dailies sit in /projects/dailies/ across twelve monthly folders and Nadine wants a year-in-review page for the desk. Anselm wants it built from the files themselves: what ran, what it was about, which chart types the desk actually reached for, and…",
      "category": "Visual Learning",
      "turns": 4,
      "setup": "Prompt 1 asks for a page showing which pieces are confirmed, which are still read-only, and which pieces still carry a correction. Turn 1 carries six continuation clauses.",
@@ -1147,7 +1149,7 @@
    "examples": [
     {
      "task_id": "6aa1cedb57e31958c9d6108e",
-     "scenario": "Every festival and broadcaster wants a different master and Idris has exported Slack Tide five times without recording which spec each export satisfies. Two of the five have no sidecar, so their specs have to be read off the files, and one broadcaster's requir",
+     "scenario": "Every festival and broadcaster wants a different master and Idris has exported Slack Tide five times without recording which spec each export satisfies. Two of the five have no sidecar, so their specs have to be read off the files, and one broadcaster's…",
      "category": "Creative & Media",
      "turns": 5,
      "setup": null,
@@ -1498,7 +1500,7 @@
    "examples": [
     {
      "task_id": "6a9a43f6353e55844b5c3fd1",
-     "scenario": "The cardio module animation goes to the second pilot section with the full accessibility layer. Wilhelmina needs the visuals, the captions, and the audio description delivered together, and the audio description needs gaps in the narration that the current cut",
+     "scenario": "The cardio module animation goes to the second pilot section with the full accessibility layer. Wilhelmina needs the visuals, the captions, and the audio description delivered together, and the audio description needs gaps in the narration that the current…",
      "category": "Visual Learning",
      "turns": 3,
      "setup": null,
@@ -1728,7 +1730,7 @@
     },
     {
      "task_id": "6aa02f48755f41e02b014849",
-     "scenario": "Students treat a plate as a photograph, and the ones who do misread every simplification in it. Rosalind wants a short piece that follows one plate from the operative note and the reference photographs through to the finished drawing, showing at each stage wha",
+     "scenario": "Students treat a plate as a photograph, and the ones who do misread every simplification in it. Rosalind wants a short piece that follows one plate from the operative note and the reference photographs through to the finished drawing, showing at each stage…",
      "category": "Visual Learning",
      "turns": 3,
      "setup": "A four-and-a-half minute explainer covering three changes to an anatomical plate, each pairing the draft photograph with the redrawn plate.",
@@ -1840,7 +1842,7 @@
     },
     {
      "task_id": "6a9a43f6353e55844b5c3fbc",
-     "scenario": "Dr. Oyelaran's revised posterior-approach plate is needed for the Thursday department conference, and Rosalind wants the same anatomy issued at three levels: a teaching version for students, a full version for residents, and the conference version. Every label",
+     "scenario": "Dr. Oyelaran's revised posterior-approach plate is needed for the Thursday department conference, and Rosalind wants the same anatomy issued at three levels: a teaching version for students, a full version for residents, and the conference version. Every…",
      "category": "Visual Learning",
      "turns": 4,
      "setup": "Turn 4 says the Keep section should hold only what survives the sheets, Yusuf's email and the calendar. Criteria 1 to 10 require ten specific facts to be present.",
@@ -1857,7 +1859,8 @@
          "turn": 3,
          "text": "Marion just sent the Thursday gestures, IMG_2201.jpg. That's Thursday group, not the Saturday workshop. Stick them on canon_study.html so I don't quiz myself on the wrong session. Don't put them under Keep. Don't add another line under Do not mix either. Leave the Keep workshop measure alone unless the sheets themselves say it moved."
         }
-       ]
+       ],
+       "isit": true
       },
       {
        "t": "criteria",
@@ -2106,7 +2109,7 @@
    "examples": [
     {
      "task_id": "6aa1cedb57e31958c9d6108d",
-     "scenario": "RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides ",
+     "scenario": "RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides…",
      "category": "Small Business & Personal Docs",
      "turns": 3,
      "setup": "Both of these sit at weight 1 in the same rubric set.",
@@ -2287,7 +2290,7 @@
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8a3",
-     "scenario": "The 2008 Element has 214,000 miles on it and took a timing belt, water pump and both front struts at $1,840.00 in April, which is more than the car is worth and which she paid without a second thought. In June the rear hatch strut failed and the tailgate came ",
+     "scenario": "The 2008 Element has 214,000 miles on it and took a timing belt, water pump and both front struts at $1,840.00 in April, which is more than the car is worth and which she paid without a second thought. In June the rear hatch strut failed and the tailgate came…",
      "category": "Commerce & Product",
      "turns": 4,
      "setup": "The page has to reconcile a May quote against the current one, price the financing and lay out two purchase paths.",
@@ -2400,7 +2403,7 @@
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1ba",
-     "scenario": "Before a foot of the Moore County line was surveyed, Abelardo wrote one paragraph listing eight job numbers and eight dates on which he had worked for the man on the other side, and sent it to his own client, his own attorney, opposing counsel and Bertrand Sis",
+     "scenario": "Before a foot of the Moore County line was surveyed, Abelardo wrote one paragraph listing eight job numbers and eight dates on which he had worked for the man on the other side, and sent it to his own client, his own attorney, opposing counsel and Bertrand…",
      "category": "Small Business & Personal Docs",
      "turns": 5,
      "setup": "Prompt 1 asks the agent to run the check against every party and the named tract and return \"the jobs of mine it touches ... and which ones you cannot honestly clear because the record is too thin\". The deliverable indexes records by job number.",
@@ -2504,7 +2507,7 @@
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1c7",
-     "scenario": "The actual argument in the proposal is not about cost. An illustrator four miles from the aircraft walks out and looks at the actuator; an illustrator who cannot do that draws what the model says instead of what is bolted to the airframe. Noor has twelve figur",
+     "scenario": "The actual argument in the proposal is not about cost. An illustrator four miles from the aircraft walks out and looks at the actuator; an illustrator who cannot do that draws what the model says instead of what is bolted to the airframe. Noor has twelve…",
      "category": "Visual Learning",
      "turns": 3,
      "setup": "A three-minute teaching video. The change-board scene runs 127.8 to 138.3 seconds; an earlier record scene runs 26 to 39 seconds.",
@@ -2576,7 +2579,7 @@
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1a8",
-     "scenario": "Her manager told her not to and she did it anyway: a piece of card in her own handwriting in the window with the actual butter number on it. It worked, in a town that notices. Nine items moved and two did not, and the card only explains the ones that did. Ther",
+     "scenario": "Her manager told her not to and she did it anyway: a piece of card in her own handwriting in the window with the actual butter number on it. It worked, in a town that notices. Nine items moved and two did not, and the card only explains the ones that did…",
      "category": "Creative & Media",
      "turns": 5,
      "setup": "The nine old and new prices sit both on a calendar event and in a PDF attached to a mail the night before, and the two held dollars sit in the same two places.",
@@ -2639,7 +2642,7 @@
    "examples": [
     {
      "task_id": "6a7965b63b7d368e70c7de5b",
-     "scenario": "Brandon moves the HoopHighlights library between machines without losing albums or edit history, because that library is years of the channel.\nOutput:Explainer video: narrated migration walkthrough with a verification step after each phase and what a failed ch",
+     "scenario": "Brandon moves the HoopHighlights library between machines without losing albums or edit history, because that library is years of the channel.\nOutput:Explainer video: narrated migration walkthrough with a verification step after each phase and what a failed…",
      "category": "Operations & QA",
      "turns": 5,
      "setup": null,
@@ -2675,7 +2678,7 @@
     },
     {
      "task_id": "6a9a43f6353e55844b5c3fbe",
-     "scenario": "Rosalind is at Brzezinski Fine Print for the press check on the 19th with the v12 plates and the proof in front of her. She wants the on-screen file and the scanned proof compared properly, so her markup names density and registration corrections Walt can act ",
+     "scenario": "Rosalind is at Brzezinski Fine Print for the press check on the 19th with the v12 plates and the proof in front of her. She wants the on-screen file and the scanned proof compared properly, so her markup names density and registration corrections Walt can act…",
      "category": "Visual Learning",
      "turns": 4,
      "setup": null,
@@ -2739,7 +2742,7 @@
    "examples": [
     {
      "task_id": "6aa02f48755f41e02b01483f",
-     "scenario": "A year of dailies sit in /projects/dailies/ across twelve monthly folders and Nadine wants a year-in-review page for the desk. Anselm wants it built from the files themselves: what ran, what it was about, which chart types the desk actually reached for, and wh",
+     "scenario": "A year of dailies sit in /projects/dailies/ across twelve monthly folders and Nadine wants a year-in-review page for the desk. Anselm wants it built from the files themselves: what ran, what it was about, which chart types the desk actually reached for, and…",
      "category": "Visual Learning",
      "turns": 4,
      "setup": "The page carries an index of the four pieces that ran as dailies. Two separate criteria grade what is on that index.",
@@ -2874,7 +2877,7 @@
    "examples": [
     {
      "task_id": "6a7965b63b7d368e70c7de5b",
-     "scenario": "Brandon moves the HoopHighlights library between machines without losing albums or edit history, because that library is years of the channel.\nOutput:Explainer video: narrated migration walkthrough with a verification step after each phase and what a failed ch",
+     "scenario": "Brandon moves the HoopHighlights library between machines without losing albums or edit history, because that library is years of the channel.\nOutput:Explainer video: narrated migration walkthrough with a verification step after each phase and what a failed…",
      "category": "Operations & QA",
      "turns": 5,
      "setup": null,
@@ -3232,7 +3235,7 @@
    "examples": [
     {
      "task_id": "6aa73af2a7b183d5fb7eb8b6",
-     "scenario": "Everything that survived the April frost came in: Moorpark apricots in July and eleven quarts of them, cherries frozen, peaches in August, the first figs on the sixteenth, and the Gravensteins on the very last day. The Tilton apricots were lost entirely and ab",
+     "scenario": "Everything that survived the April frost came in: Moorpark apricots in July and eleven quarts of them, cherries frozen, peaches in August, the first figs on the sixteenth, and the Gravensteins on the very last day. The Tilton apricots were lost entirely and…",
      "category": "Small Business & Personal Docs",
      "turns": 3,
      "setup": "Three turns asking for a single page resolving two expense claims separately, saying for each whether the money reached the user's account and whether the policy clock still allows her to raise it.",
@@ -3323,7 +3326,7 @@
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1cb",
-     "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been aime",
+     "scenario": "Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
      "setup": "The handover time is written in the margin of the photographed calendar and stored on the calendar service, and the dashboard has to place a Friday exchange against an on-site finish.",
@@ -3340,7 +3343,8 @@
          "role": "agent",
          "text": "All references are correct — the savings simulation now runs on the adjusted delta, while the pre-cost figures remain only where they're explicitly labeled \"before travel / net of tax.\"\n\n## What the directive changed\n\n**Travel is now mandated Wed–Fri** (Section 2 — arrive 08:30 Wed, depart ≥17:00 Fri, Mon/Tue home-site only). That's stricter than the Tue–Thu block I'd defaulted to, and it's the worst case for your family calendar: the schedule section now defaults to **Wed/Thu/Fri**, hitting **all 74 carline mornings and all 21 handovers**. Section 3's **$45/day M&IE cap** is what pushes meals out of pocket.\n\n**The $530/mo comes off the raise.** New \"Regional travel directive\" panel shows the build-down:\n\n| Monthly | |\n|---|---|\n| Raise — net of tax | **+$1,216.42** |\n| − Before-school care (Thu/Fri mornings, no carline) | −$200.00 |\n| − Poplarville handover coverage (on-site to 17:00 Fri) | −$150.00 |\n| − Uncovered meals (over the $45/day cap) | −$180.00 |\n| **True adjusted monthly delta** | **+$686.42** |\n\nAnnually, the raise's real value drops from **+$14,597 → +$8,237/yr**.\n\n## What it does to your savings\n\nThe \"Deploy the raise\" section, the slider, and both fund charts now run on **$686.42/mo**, not $1,216. At the default plan (restore house $650, remainder to wedding):\n\n- The wedding fund gets only **+$286/mo** extra (vs $816 before), so it closes the $1,731.60 gap in **~6 months instead of ~2** — and the balance now reaches full commitments in **May 2027, right at the wedding**, no earlier.\n- The house pace is still restored to $650 (**+$3,600** vs staying), but the spillover cushion **collapses from ~$5,616 to ~$846**.\n\nBottom line surfaced in the recommendation: the raise still just barely does both jobs before 5/22, but the comfort is gone — and the directive's Wed–Fri lock is now colliding with every single carline morning and handover. The \"Beyond the numbers\" card was updated too, since travel is no longer cash-neutral. Everything recomputes live from the slider and weekday selector."
         }
-       ]
+       ],
+       "isit": true
       },
       {
        "t": "files",
@@ -3370,7 +3374,7 @@
     },
     {
      "task_id": "6aa73af2a7b183d5fb7eb8be",
-     "scenario": "The house fund holds $10,410.00 and its transfer was cut from $650.00 to $250.00 until the first of June 2027, because they can rent for one more year and only get married once. What nobody has done is work out what buying in Hattiesburg actually needs, which ",
+     "scenario": "The house fund holds $10,410.00 and its transfer was cut from $650.00 to $250.00 until the first of June 2027, because they can rent for one more year and only get married once. What nobody has done is work out what buying in Hattiesburg actually needs, which…",
      "category": "Property & Space",
      "turns": 3,
      "setup": "Sixteen queued posts get one audit card each. A later turn delivers a photograph of the contractor's live queue holding a post that appears in no export row, so the page ends at sixteen cards rather than the fifteen the export supports.",
@@ -3387,7 +3391,8 @@
          "role": "agent",
          "text": "The page is updated. Here's where it landed.\n\n**Which one can you actually do — the answer is now the lead section (§1):**\n\n**On the house fund alone, before June: neither — not yet.**\n\n- **House fund** (Ally …2278): **$13,942.60** today, +$250/mo, ≈ **$16,500** by next June.\n- **Wedding money** (Ally …2260): **$8,775.80** — left exactly where you said, walled off.\n- Cash it takes to buy *and* make livable (5% down + ~3% closing + repairs in cash):\n  - **Corinne:** ~$69,850 needed → ~**$53,350 short**\n  - **Adeline:** ~$65,740 (floor) → ~**$49,240 short**, and larger once roof/foundation get priced.\n\nThe repairs alone are 3–4× the whole fund, before a dollar of down payment — that's the wall, and it's the same on both. If it has to be one of these two, Corinne is the *less* far (cheaper entry, firmer number), but \"before June\" isn't the honest timeline for either. Your own note on 5124 Tulane Road (\"nothing left to do to it\") is the shape that actually fits a ~$16.5k fund — a done house where the fund only covers down + closing, not a $50k rehab.\n\n**On the Keesler pre-approval — I have to be straight with you:** I searched every connected place (bank feeds, all email folders, every message thread, Slack) and the pre-approval amount is **not in any of them**. Only an \"XFER KFCU ONWUKA\" transfer confirms Keesler is your credit union. I didn't invent a ceiling you told me not to cross. **Give me the number and I'll slot it in** — but it doesn't change the near-term verdict, because a normal mortgage finances the *price*, not the repair cash. The only path where the ceiling actually bites is a renovation loan (203k/HomeStyle) rolling repairs into the mortgage — and that needs the ceiling to clear ~$250k/~$277–289k *and* a down payment + reserves the fund still can't cover.\n\n**Your other two fixes:**\n- **Exact Corinne figures restored** (§6): envelope $38,000–$45,000 vs. real $54,250 → **off by +$9,250 to +$16,250**, with the arithmetic shown, plus the $42,400 non-sewer / $11,850 sewer split.\n- **All-in still runs the same way for both** with tax + HOA (§2), unchanged.\n\nOne thing worth your eye: the down-payment (5%) and closing (3%) lines are **illustrative** — I marked them as such — because your real pre-approval terms could shift them. The repair and fund numbers are hard."
         }
-       ]
+       ],
+       "isit": true
       }
      ]
     }
@@ -3423,7 +3428,7 @@
    "examples": [
     {
      "task_id": "6aa02f48755f41e02b01483e",
-     "scenario": "Anselm has records requests open with Lorna Whitfield-Baptiste's office and two other City of Richmond departments, each at a different stage and each acknowledged on a different clock. He wants one view of every open request, what stage it is at, how long it ",
+     "scenario": "Anselm has records requests open with Lorna Whitfield-Baptiste's office and two other City of Richmond departments, each at a different stage and each acknowledged on a different clock. He wants one view of every open request, what stage it is at, how long it…",
      "category": "Visual Learning",
      "turns": 5,
      "setup": "A late turn moves the newsletter teaser from the records row onto the police request, and changes the sitting figure from days since filing to days since acknowledgment.",
@@ -3440,7 +3445,8 @@
          "role": "agent",
          "text": "The logic checks out. The **Walk-in slice** now sits at the top of the same page, built from all three sources you gave me and answered live from the open rows.\n\n**Walk-in slice — 1:1 with Nadine** · 🗓 Mon, Oct 19, 2026 · 9:30–10:00 AM · Newsroom (the desk)\n*(hold's note: \"bring the live request view\")*\n\nYour three laptop-sticky prompts, answered from the live rows (as of last checked Oct 16):\n\n1. **clerk still dark?** → **Yes — still dark.** `2026-1642` (Records Office): acknowledged Aug 4, no batch since, **52 days past** its 15-business-day window.\n2. **who's chasing** → **Cyrus Adeagbo → `RPD-26-2204`** (Police). No chaser assigned yet on `PDR-26-441` (Planning) or `2026-1642` (Records).\n3. **which story dies first** → **The inspections lead** — riding `2026-1642`, **52 days past window and still not moving**; it was the late-September first story, already late. Behind it: Church Hill piece (`PDR-26-441`, 61d past — *but in legal review, moving*). The newsletter teaser rides the same Records batch. *Framed as your call — it's read from the live rows.*\n\nA couple of notes on judgment:\n- \"Which story dies first\" is an editorial call, so I didn't hard-declare it — I surfaced the data-driven pick (the inspections lead: most overdue *and* not moving) and flagged that Church Hill is technically more days over but is actually progressing (legal review), so it's less at risk. You decide; the panel says so.\n- It's a live panel — it derives from the same row data, so if a stage or chaser changes, the slice updates with it.\n\nEverything else on the page is unchanged (stuck-story column, office clocks, sitting-vs-window, chaser, the parked phishing mail, filters/sort/search). Verified the JS parses and the three answers compute correctly."
         }
-       ]
+       ],
+       "isit": true
       },
       {
        "t": "prompts",
@@ -3498,7 +3504,7 @@
    "examples": [
     {
      "task_id": "6aa34dd1625bb5b220c6b1be",
-     "scenario": "The S6 came back four days early with a collimation sheet nobody asked for, and Abelardo took it straight to the 812-foot baseline behind his own shop, where it read within four thousandths of a foot. Nobody else in the office has ever run that check, and the ",
+     "scenario": "The S6 came back four days early with a collimation sheet nobody asked for, and Abelardo took it straight to the 812-foot baseline behind his own shop, where it read within four thousandths of a foot. Nobody else in the office has ever run that check, and the…",
      "category": "Visual Learning",
      "turns": 4,
      "setup": "The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.",
@@ -3569,7 +3575,7 @@
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1ca",
-     "scenario": "The wedding is $28,400.00 with no contribution from any parent, settled in one conversation in September 2025. By the first Saturday in May the arithmetic had stopped working, so the house-fund transfer went from $650.00 to $250.00 until the first of June 2027",
+     "scenario": "The wedding is $28,400.00 with no contribution from any parent, settled in one conversation in September 2025. By the first Saturday in May the arithmetic had stopped working, so the house-fund transfer went from $650.00 to $250.00 until the first of June…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
      "setup": "Prompt 3 hands over a photograph of a notebook page carrying the crate dimensions and weight.",
@@ -3586,7 +3592,8 @@
          "turn": 3,
          "text": "You are asking me for statements again and I am not going to start exporting things. I told you at the start where our money sits and it has not moved since. The two funds month by month is the part I actually needed and it is still not there. And Yolanda's envelope finally turned up. Her vendor list is in it, IMG_4508.jpg, with a parking plan and a timeline template I do not need. That is the piece I was missing for the music and the Friday. Put the two lines I am covering in at what they would have cost, the way I said on the note. I do not want a page that makes us look cheaper than we are."
         }
-       ]
+       ],
+       "isit": true
       },
       {
        "t": "files",
@@ -3622,7 +3629,7 @@
     },
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
-     "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a long",
+     "scenario": "They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a…",
      "category": "Commerce & Product",
      "turns": 3,
      "setup": "The rules file sets a delivery fee that falls away above a subtotal threshold, and the order date is established in criterion 3 as Monday 6 July 2026.",

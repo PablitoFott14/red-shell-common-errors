@@ -297,3 +297,7 @@ footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var
 .railrules{display:grid;gap:9px}
 .railrules .rl{width:auto}
 .railrule .rcm{margin:9px 0 0;font-size:12px;color:var(--ink2)}
+/* a golden turn or a prompt resolved to one row is itself the thing being shown */
+.turn.flagged,.gm.flagged{position:relative;background:var(--red-bg);border:1px solid var(--red-d);
+  border-left:3px solid var(--red);border-radius:9px;padding:13px 14px;margin-top:2px}
+.turn.flagged{border-bottom:1px solid var(--red-d)}
