@@ -13,7 +13,7 @@ Guidelines or the QC spec, then a real task where it happened with the field tha
 
 | Page | What it does |
 |---|---|
-| `index.html` | The menu. Every mistake, grouped into the course's seven sections, with how many tasks and people each one hit. |
+| `index.html` | The menu. Every error, grouped into the course's seven sections. |
 | `mistakes/<name>.html` | One page per error. The rule it breaks, what the mistake is, how to spot it in your own task, what to do instead, then the real examples. |
 | `checklist.html` | Every recognition test on one page, in build order. The five minutes before you submit. |
 | `data/course.json` | The same content as data, if you want to render it somewhere else. |
