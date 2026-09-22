@@ -6,30 +6,42 @@
 <link rel="stylesheet" href="../assets/style.css"><script src="../assets/viewer.js" defer></script>
 </head><body>
 <header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
-<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Before you submit</a></nav></header>
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 4 · A rubric that separates two runs</p>
 <div class="mhead"><h1>A run that does not fail enough of the rubric</h1><span class="bad fail">fails the task</span></div>
 <div class="mstats"><div class="d">Difficulty</div></div>
-<div class="three">
-  <div class="t3"><h4>What the mistake is</h4><p>The task is built, the rubric is written, and the Model A run passes most of it. From inside the task nothing looks wrong: the criteria are sound and the run does fail some. What gives it away is the arithmetic.</p></div>
-  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Add up the weight of every criterion your Model A run failed and divide by the total objective weight. rubric_justifications.md records exactly which ones failed, so this is a number you can read off the folder before you submit.</p></div>
-  <div class="t3 t3f"><h4>What to do instead</h4><p>Under 50% means the scenario is too easy. The fix is a harder scenario — put the sources in disagreement — never heavier weights on the same rows, and never padding the set.</p></div>
-</div>
-<div class="why"><h4>Why it costs you</h4><p>Every task has to be hard enough that the Model A trajectory clearly fails at least 50% of the rubric score. That is a hard client requirement, not a target. A run that sails through most of the set is not separating a strong model from a weak one, and the data is worth less.</p></div>
 
-<section class="rules">
-  <h2 class="sh">What the project says</h2>
-  <p class="shp">The rules this breaks, quoted from the documents in Project Resources. Section titles are
-  the ones printed in the document, so you can go and read the whole thing around them.</p>
-  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Hard Client Requirements for Every Task</span></div><blockquote>Model A has to fail — Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience. If the desired outcome is reached too easily, increase the complexity.</blockquote><p class="rcm">A hard requirement with a number in it. Add up the failed weight and divide.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">1.2 Building the Idea</span></div><blockquote>The idea is the foundation of your entire task; if it&#x27;s rushed or underdeveloped, the agent will complete the task too easily, and you won&#x27;t be able to meet the core requirement that the agent must fail at least 50% of the final rubric score.</blockquote><p class="rcm">The fix is always a harder scenario, never heavier weights on the same rows.</p></article>
-</section>
-<section class="exsec">
-  <h2 class="sh">Where it happened in a real task</h2>
-  <p class="shp">Open one and it expands here, with the rule on the left and the task's own fields on the
-  right. The tabs carry only the parts of the task this error lives in. Escape closes it.</p>
-  <div class="exlist"><button type="button" class="excard" data-ex="run-too-easy-1"><div class="exn">Example 1</div><div class="exwhat">Thirteen of the thirty-eight criteria carry a failure justification, but nine of those sit at weight 3 and only three at weight 5, while ten of the tw</div><div class="exmeta"><span class="oc">Commerce &amp; Product</span><span class="oc">4 turns</span><code class="ovid">6aa73af2a7b183d5fb7eb8a3</code></div><span class="exopen">Open it here →</span></button></div>
-</section>
+<section class="step"><div class="stepn">1</div><div class="stepb">
+  <h2>What the issue is</h2>
+  <p class="lead">The task is built, the rubric is written, and the Model A run passes most of it. From inside the task nothing looks wrong: the criteria are sound and the run does fail some. What gives it away is the arithmetic.</p>
+</div></section>
+
+<section class="step"><div class="stepn">2</div><div class="stepb">
+  <h2>Why it matters, and what the project expects</h2>
+  <p>Every task has to be hard enough that the Model A trajectory clearly fails at least 50% of the rubric score. That is a hard client requirement, not a target. A run that sails through most of the set is not separating a strong model from a weak one, and the data is worth less.</p>
+  
+  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Hard Client Requirements for Every Task</span></div><blockquote>Model A has to fail: Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience. If the desired outcome is reached too easily, increase the complexity.</blockquote><p class="rcm">A hard requirement with a number in it. Add up the failed weight and divide.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">1.2 Building the Idea</span></div><blockquote>The idea is the foundation of your entire task; if it&#x27;s rushed or underdeveloped, the agent will complete the task too easily, and you won&#x27;t be able to meet the core requirement that the agent must fail at least 50% of the final rubric score.</blockquote><p class="rcm">The fix is always a harder scenario, never heavier weights on the same rows.</p></article>
+</div></section>
+
+<section class="step"><div class="stepn">3</div><div class="stepb">
+  <h2>How to recognise it in your own task</h2>
+  <p>Add up the weight of every criterion your Model A run failed and divide by the total objective weight. rubric_justifications.md records exactly which ones failed, so this is a number you can read off the folder before you submit.</p>
+</div></section>
+
+<section class="step"><div class="stepn">4</div><div class="stepb">
+  <h2>Real tasks where this happened</h2>
+  <p class="shp">One real task in this project is carrying it. They are evidence that it is real and something to practise spotting it on, not a
+  second version of the rule. Open one and it expands here, with the point on the left and the task's own
+  fields on the right. Escape closes it.</p>
+  <div class="exlist"><button type="button" class="excard" data-ex="run-too-easy-1"><div class="exn">Real task 1</div><div class="exwhat">Thirteen of the thirty-eight criteria carry a failure justification, but nine of those sit at weight 3 and only three at weight 5, while ten of the tw</div><div class="exmeta"><span class="oc">Commerce &amp; Product</span><span class="oc">4 turns</span><code class="ovid">6aa73af2a7b183d5fb7eb8a3</code></div><span class="exopen">Open it here →</span></button></div>
+</div></section>
+
+<section class="step"><div class="stepn">5</div><div class="stepb">
+  <h2>What to do instead</h2>
+  <p class="lead">Under 50% means the scenario is too easy. The fix is a harder scenario, putting the sources in disagreement, never heavier weights on the same rows, and never padding the set.</p>
+</div></section>
+
 <nav class="pager"><a href="trajectory-cap.html">← More trajectory criteria than the Guidelines allow</a><a href="golden-fails-own-criterion.html">A criterion the golden itself fails →</a></nav>
 </main>
 <div class="ovback" id="ex-run-too-easy-1" hidden>
@@ -41,9 +53,9 @@
   </div><p class="ovscen">The 2008 Element has 214,000 miles on it and took a timing belt, water pump and both front struts at $1,840.00 in April, which is more than the car is worth and which she paid without a second thought. In June the rear hatch strut failed and the tailgate came…</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">The page has to reconcile a May quote against the current one, price the financing and lay out two purchase paths.</div></div><div class="rr"><div class="rl">What is wrong</div><div class="rv">Thirteen of the thirty-eight criteria carry a failure justification, but nine of those sit at weight 3 and only three at weight 5, while ten of the twenty-five criteria the run passed sit at weight 1.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">The run failed a third of the criteria and still cleared only 43.0% of the objective weight, under the 50% the client requires. The set spends its weight on rows a competent run always gets, so the failures that do happen cannot add up.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Weight each criterion by the reasoning it needs, so the difficulty sits where the failures are: &quot;The oven payment is 406.59 a month, being 19,702.00 financed at 8.75% APR over 60 months&quot; is a 5, and a criterion restating a single value the source states outright is a 1.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Model A has to fail — Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience. If the desired outcome is reached too easily, increase the complexity.</blockquote><p class="rsrc">Attempter Guidelines · Hard Client Requirements for Every Task</p><p class="rcm">A hard requirement with a number in it. Add up the failed weight and divide.</p></div><div class="railrule"><blockquote>The idea is the foundation of your entire task; if it&#x27;s rushed or underdeveloped, the agent will complete the task too easily, and you won&#x27;t be able to meet the core requirement that the agent must fail at least 50% of the final rubric score.</blockquote><p class="rsrc">Attempter Guidelines · 1.2 Building the Idea</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">The page has to reconcile a May quote against the current one, price the financing and lay out two purchase paths.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">Thirteen of the thirty-eight criteria carry a failure justification, but nine of those sit at weight 3 and only three at weight 5, while ten of the twenty-five criteria the run passed sit at weight 1.</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">The run failed a third of the criteria and still cleared only 43.0% of the objective weight, under the 50% the client requires. The set spends its weight on rows a competent run always gets, so the failures that do happen cannot add up.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Weight each criterion by the reasoning it needs, so the difficulty sits where the failures are: &quot;The oven payment is 406.59 a month, being 19,702.00 financed at 8.75% APR over 60 months&quot; is a 5, and a criterion restating a single value the source states outright is a 1.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Model A has to fail: Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience. If the desired outcome is reached too easily, increase the complexity.</blockquote><p class="rsrc">Attempter Guidelines · Hard Client Requirements for Every Task</p><p class="rcm">A hard requirement with a number in it. Add up the failed weight and divide.</p></div><div class="railrule"><blockquote>The idea is the foundation of your entire task; if it&#x27;s rushed or underdeveloped, the agent will complete the task too easily, and you won&#x27;t be able to meet the core requirement that the agent must fail at least 50% of the final rubric score.</blockquote><p class="rsrc">Attempter Guidelines · 1.2 Building the Idea</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">

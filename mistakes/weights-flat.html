@@ -2,34 +2,46 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Weights that do not separate difficulty from lookup · Red Shell Common Errors</title>
-<meta name="description" content="Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi-step cross-source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in">
+<meta name="description" content="Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi step cross source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in">
 <link rel="stylesheet" href="../assets/style.css"><script src="../assets/viewer.js" defer></script>
 </head><body>
 <header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
-<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Before you submit</a></nav></header>
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 4 · A rubric that separates two runs</p>
 <div class="mhead"><h1>Weights that do not separate difficulty from lookup</h1><span class="bad bleed">costs points</span></div>
 <div class="mstats"><div class="d">Rubric Criteria - Incorrect Weights</div></div>
-<div class="three">
-  <div class="t3"><h4>What the mistake is</h4><p>Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi-step cross-source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in the next, or two weight-5 criteria resting on a single read of one image.</p></div>
-  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Sort your criteria by weight and read them in order. The order should match the effort the task actually demands. Count the axes each one requires — tool or source coordination, reasoning depth, modality, discovery — and read off +5 for three or more, +3 for exactly two, +1 for one or none.</p></div>
-  <div class="t3 t3f"><h4>What to do instead</h4><p>Price by the difficulty of the read: multi-source derivations and media-only values at 5, direct lookups at 1. A two-level miss is what the taxonomy treats as Major.</p></div>
-</div>
-<div class="why"><h4>Why it costs you</h4><p>The scale exists to separate discovery from lookup. When it does not, the final score says nothing about whether the model did the hard part, and a run that nails every lookup while missing every derivation still scores well.</p></div>
 
-<section class="rules">
-  <h2 class="sh">What the project says</h2>
-  <p class="shp">The rules this breaks, quoted from the documents in Project Resources. Section titles are
-  the ones printed in the document, so you can go and read the whole thing around them.</p>
-  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">5.2 Rubric Weights</span></div><blockquote>Weight is difficulty, never importance. How hard the criterion is to satisfy, or for a negative, how tempting the failure is. A requirement can be critical to the task and still be +1 because meeting it is mechanical.</blockquote><p class="rcm">Importance is the instinct to resist. Price the read, not the stakes.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">5.2 Rubric Weights</span></div><blockquote>The four difficulty axes. Tool and source coordination: three or more sources reconciled, or several tools chained. Reasoning depth: multi-step inference, conditional logic, a non trivial calculation. Modality: cross-modal work, image plus structured data plus text. Discovery effort: SQL queries, hidden field lookups, cross document tracing.</blockquote><p class="rcm">Count the axes: three or more is +5, exactly two is +3, one or none is +1.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">QC spec appendix</span><span class="rcsec">Rubric Quality Definitions · Incorrect Weights - Major</span></div><blockquote>Criteria that are objectively incorrectly weighted by two levels, e.g., 1 is selected when 5 is appropriate or vice versa. NOTE: Weights should reflect the difficulty of the thing the verifier is testing, NOT importance to responding to the prompt.</blockquote><p class="rcm">A two-level miss is Major on its own. One level is a minor issue.</p></article>
-</section>
-<section class="exsec">
-  <h2 class="sh">Where it happened in a real task</h2>
-  <p class="shp">Open one and it expands here, with the rule on the left and the task's own fields on the
-  right. The tabs carry only the parts of the task this error lives in. Escape closes it.</p>
-  <div class="exlist"><button type="button" class="excard" data-ex="weights-flat-1"><div class="exn">Example 1</div><div class="exwhat">Criterion 12 (weight 1): the BendFilm entry fee is four times the order processing fee, which exists only inside one Ticketmaster order on the June 13</div><div class="exmeta"><span class="oc">Small Business &amp; Personal Docs</span><span class="oc">3 turns</span><code class="ovid">6aa1cedb57e31958c9d6108d</code></div><span class="exopen">Open it here →</span></button></div>
-</section>
+<section class="step"><div class="stepn">1</div><div class="stepb">
+  <h2>What the issue is</h2>
+  <p class="lead">Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi step cross source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in the next, or two weight-5 criteria resting on a single read of one image.</p>
+</div></section>
+
+<section class="step"><div class="stepn">2</div><div class="stepb">
+  <h2>Why it matters, and what the project expects</h2>
+  <p>The scale exists to separate discovery from lookup. When it does not, the final score says nothing about whether the model did the hard part, and a run that nails every lookup while missing every derivation still scores well.</p>
+  
+  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">5.2 Rubric Weights</span></div><blockquote>Weight is difficulty, never importance. How hard the criterion is to satisfy, or for a negative, how tempting the failure is. A requirement can be critical to the task and still be +1 because meeting it is mechanical.</blockquote><p class="rcm">Importance is the instinct to resist. Price the read, not the stakes.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">5.2 Rubric Weights</span></div><blockquote>The four difficulty axes. Tool and source coordination: three or more sources reconciled, or several tools chained. Reasoning depth: multi-step inference, conditional logic, a non trivial calculation. Modality: cross-modal work, image plus structured data plus text. Discovery effort: SQL queries, hidden field lookups, cross document tracing.</blockquote><p class="rcm">Count the axes: three or more is +5, exactly two is +3, one or none is +1.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">QC spec appendix</span><span class="rcsec">Rubric Quality Definitions · Incorrect Weights - Major</span></div><blockquote>Criteria that are objectively incorrectly weighted by two levels, e.g., 1 is selected when 5 is appropriate or vice versa. NOTE: Weights should reflect the difficulty of the thing the verifier is testing, NOT importance to responding to the prompt.</blockquote><p class="rcm">A two level miss is Major on its own. One level is a minor issue.</p></article>
+</div></section>
+
+<section class="step"><div class="stepn">3</div><div class="stepb">
+  <h2>How to recognise it in your own task</h2>
+  <p>Sort your criteria by weight and read them in order. The order should match the effort the task actually demands. Count the axes each one requires: tool or source coordination, reasoning depth, modality, discovery. Then read off +5 for three or more, +3 for exactly two, +1 for one or none.</p>
+</div></section>
+
+<section class="step"><div class="stepn">4</div><div class="stepb">
+  <h2>Real tasks where this happened</h2>
+  <p class="shp">One real task in this project is carrying it. They are evidence that it is real and something to practise spotting it on, not a
+  second version of the rule. Open one and it expands here, with the point on the left and the task's own
+  fields on the right. Escape closes it.</p>
+  <div class="exlist"><button type="button" class="excard" data-ex="weights-flat-1"><div class="exn">Real task 1</div><div class="exwhat">Criterion 12 (weight 1): the BendFilm entry fee is four times the order processing fee, which exists only inside one Ticketmaster order on the June 13</div><div class="exmeta"><span class="oc">Small Business &amp; Personal Docs</span><span class="oc">3 turns</span><code class="ovid">6aa1cedb57e31958c9d6108d</code></div><span class="exopen">Open it here →</span></button></div>
+</div></section>
+
+<section class="step"><div class="stepn">5</div><div class="stepb">
+  <h2>What to do instead</h2>
+  <p class="lead">Price by the difficulty of the read: multi source derivations and values that live only in the media at 5,direct lookups at 1. A two level miss is what the taxonomy treats as Major.</p>
+</div></section>
+
 <nav class="pager"><a href="coverage-both-ways.html">← A requirement nothing grades, and a criterion nothing asked for</a><a href="trajectory-cap.html">More trajectory criteria than the Guidelines allow →</a></nav>
 </main>
 <div class="ovback" id="ex-weights-flat-1" hidden>
@@ -41,11 +53,11 @@
   </div><p class="ovscen">RACC was one of several, and each grant and festival wants the same materials rebuilt to a different spec on a different clock. Two festivals ask for the same runtime limit but one counts credits and the other does not, which puts Slack Tide on opposite sides…</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Both of these sit at weight 1 in the same rubric set.</div></div><div class="rr"><div class="rl">What is wrong</div><div class="rv">Criterion 12 (weight 1): the BendFilm entry fee is four times the order processing fee, which exists only inside one Ticketmaster order on the June 13 Timbers vs Sounders fixture. The agent has to pick the right fixture out of three, then the right fee field out of two, then multiply.
+      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Both of these sit at weight 1 in the same rubric set.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">Criterion 12 (weight 1): the BendFilm entry fee is four times the order processing fee, which exists only inside one Ticketmaster order on the June 13 Timbers vs Sounders fixture. The agent has to pick the right fixture out of three, then the right fee field out of two, then multiply.
 
-Criterion 17 (weight 1): the treatment PDF is 9 pages, so its row reads Ready. Open the file, read the page count.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">A four-step derivation across two services and a one-step lookup are worth the same point. Nothing in the score distinguishes a run that found the fee chain from one that only read page counts.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Weight 5 on criterion 12, weight 1 on criterion 17, and one shared weight for any criteria that rest on the same read.</div></div><div class="jumps"><span class="jl">Jump to</span><button type="button" class="jump" data-pane="0" data-row="p0r12">Criterion 12</button><button type="button" class="jump" data-pane="0" data-row="p0r17">Criterion 17</button></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Weight is difficulty, never importance. How hard the criterion is to satisfy, or for a negative, how tempting the failure is. A requirement can be critical to the task and still be +1 because meeting it is mechanical.</blockquote><p class="rsrc">Attempter Guidelines · 5.2 Rubric Weights</p><p class="rcm">Importance is the instinct to resist. Price the read, not the stakes.</p></div><div class="railrule"><blockquote>The four difficulty axes. Tool and source coordination: three or more sources reconciled, or several tools chained. Reasoning depth: multi-step inference, conditional logic, a non trivial calculation. Modality: cross-modal work, image plus structured data plus text. Discovery effort: SQL queries, hidden field lookups, cross document tracing.</blockquote><p class="rsrc">Attempter Guidelines · 5.2 Rubric Weights</p></div><div class="railrule"><blockquote>Criteria that are objectively incorrectly weighted by two levels, e.g., 1 is selected when 5 is appropriate or vice versa. NOTE: Weights should reflect the difficulty of the thing the verifier is testing, NOT importance to responding to the prompt.</blockquote><p class="rsrc">QC spec appendix · Rubric Quality Definitions · Incorrect Weights - Major</p></div></div></div>
+Criterion 17 (weight 1): the treatment PDF is 9 pages, so its row reads Ready. Open the file, read the page count.</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">A four-step derivation across two services and a one-step lookup are worth the same point. Nothing in the score distinguishes a run that found the fee chain from one that only read page counts.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Weight 5 on criterion 12, weight 1 on criterion 17, and one shared weight for any criteria that rest on the same read.</div></div><div class="jumps"><span class="jl">Jump to</span><button type="button" class="jump" data-pane="0" data-row="p0r12">Criterion 12</button><button type="button" class="jump" data-pane="0" data-row="p0r17">Criterion 17</button></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Weight is difficulty, never importance. How hard the criterion is to satisfy, or for a negative, how tempting the failure is. A requirement can be critical to the task and still be +1 because meeting it is mechanical.</blockquote><p class="rsrc">Attempter Guidelines · 5.2 Rubric Weights</p><p class="rcm">Importance is the instinct to resist. Price the read, not the stakes.</p></div><div class="railrule"><blockquote>The four difficulty axes. Tool and source coordination: three or more sources reconciled, or several tools chained. Reasoning depth: multi-step inference, conditional logic, a non trivial calculation. Modality: cross-modal work, image plus structured data plus text. Discovery effort: SQL queries, hidden field lookups, cross document tracing.</blockquote><p class="rsrc">Attempter Guidelines · 5.2 Rubric Weights</p></div><div class="railrule"><blockquote>Criteria that are objectively incorrectly weighted by two levels, e.g., 1 is selected when 5 is appropriate or vice versa. NOTE: Weights should reflect the difficulty of the thing the verifier is testing, NOT importance to responding to the prompt.</blockquote><p class="rsrc">QC spec appendix · Rubric Quality Definitions · Incorrect Weights - Major</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">

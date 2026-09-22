@@ -2,34 +2,46 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The rules point at records the universe does not hold · Red Shell Common Errors</title>
-<meta name="description" content="The scenario&#x27;s rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it — the prompts, the rules file and the">
+<meta name="description" content="The scenario&#x27;s rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it: the prompts, the rules file and the ">
 <link rel="stylesheet" href="../assets/style.css"><script src="../assets/viewer.js" defer></script>
 </head><body>
 <header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
-<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Before you submit</a></nav></header>
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 1 · The task you were given</p>
 <div class="mhead"><h1>The rules point at records the universe does not hold</h1><span class="bad fail">fails the task</span></div>
 <div class="mstats"><div class="d">Trajectory - Feasibility With Tools</div></div>
-<div class="three">
-  <div class="t3"><h4>What the mistake is</h4><p>The scenario&#x27;s rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it — the prompts, the rules file and the criteria all read as though the data is there.</p></div>
-  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>The tell is in your own golden: a search that comes back empty, a steering turn telling the agent to reach the page another way, and a deliverable that flags its own figures as unconfirmed.</p></div>
-  <div class="t3 t3f"><h4>What to do instead</h4><p>At scenario-design time, open the universe and confirm it returns every record your rules point at, one query per rule. An empty search on the first golden turn is a signal to fix the source, never something to steer around.</p></div>
-</div>
-<div class="why"><h4>Why it costs you</h4><p>A rule pointing at data no tool returns cannot be followed by any run, so every criterion downstream of it is unreachable. Not wrong — impossible. It takes the difficulty with it too: where the second system is what made the task multi-system, the task ships with one side of every decision resolving to nothing.</p></div>
 
-<section class="rules">
-  <h2 class="sh">What the project says</h2>
-  <p class="shp">The rules this breaks, quoted from the documents in Project Resources. Section titles are
-  the ones printed in the document, so you can go and read the whole thing around them.</p>
+<section class="step"><div class="stepn">1</div><div class="stepb">
+  <h2>What the issue is</h2>
+  <p class="lead">The scenario&#x27;s rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it: the prompts, the rules file and the criteria all read as though the data is there.</p>
+</div></section>
+
+<section class="step"><div class="stepn">2</div><div class="stepb">
+  <h2>Why it matters, and what the project expects</h2>
+  <p>A rule pointing at data no tool returns cannot be followed by any run, so every criterion downstream of it is unreachable. Not wrong. Impossible. It takes the difficulty with it too: where the second system is what made the task multi system, the task ships with one side of every decision resolving to nothing.</p>
+  
   <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">1.2.1 Start With the Universe</span></div><blockquote>Confirm there is enough material. The universe combined with the multimodal input has to sustain the opening prompt and every follow-up you intend to add, not just the first request.</blockquote><p class="rcm">Every rule you write has to have a record behind it, for every turn, not only turn 1.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">4. Valid vs. Invalid Model Failures</span></div><blockquote>Data that is not in the server, asked for anyway, and the model penalised for not finding it.</blockquote><p class="rcm">Listed under “Not valid: your defect, or the platform&#x27;s”. It grades your defect, not the model&#x27;s.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">QC spec</span><span class="rcsec">Trajectory - Feasibility With Tools</span></div><blockquote>The primary request is impractical or impossible and can&#x27;t be answered by the tools available or enabled for the task.</blockquote><p class="rcm">That is the option QC picks at score 2. Unreachable is worse than hard: no run can satisfy it.</p></article>
-</section>
-<section class="exsec">
-  <h2 class="sh">Where it happened in a real task</h2>
-  <p class="shp">Open one and it expands here, with the rule on the left and the task's own fields on the
-  right. The tabs carry only the parts of the task this error lives in. Escape closes it.</p>
-  <div class="exlist"><button type="button" class="excard" data-ex="universe-missing-records-1"><div class="exn">Example 1</div><div class="exwhat">Rule 1 prices every line &quot;at the pack option we add to the cart from Fresh&#x27;s catalog&quot;; rule 5 takes the delivery fee from &quot;Fresh&#x27;s Delivery Policy and</div><div class="exmeta"><span class="oc">Commerce &amp; Product</span><span class="oc">3 turns</span><code class="ovid">6aac6ee4f0c334e21057f9e6</code></div><span class="exopen">Open it here →</span></button></div>
-</section>
+</div></section>
+
+<section class="step"><div class="stepn">3</div><div class="stepb">
+  <h2>How to recognise it in your own task</h2>
+  <p>The tell is in your own golden: a search that comes back empty, a steering turn telling the agent to reach the page another way, and a deliverable that flags its own figures as unconfirmed.</p>
+</div></section>
+
+<section class="step"><div class="stepn">4</div><div class="stepb">
+  <h2>Real tasks where this happened</h2>
+  <p class="shp">One real task in this project is carrying it. They are evidence that it is real and something to practise spotting it on, not a
+  second version of the rule. Open one and it expands here, with the point on the left and the task's own
+  fields on the right. Escape closes it.</p>
+  <div class="exlist"><button type="button" class="excard" data-ex="universe-missing-records-1"><div class="exn">Real task 1</div><div class="exwhat">Rule 1 prices every line &quot;at the pack option we add to the cart from Fresh&#x27;s catalog&quot;; rule 5 takes the delivery fee from &quot;Fresh&#x27;s Delivery Policy and</div><div class="exmeta"><span class="oc">Commerce &amp; Product</span><span class="oc">3 turns</span><code class="ovid">6aac6ee4f0c334e21057f9e6</code></div><span class="exopen">Open it here →</span></button></div>
+</div></section>
+
+<section class="step"><div class="stepn">5</div><div class="stepb">
+  <h2>What to do instead</h2>
+  <p class="lead">At scenario design time, open the universe and confirm it returns every record your rules point at, one query per rule. An empty search on the first golden turn is a signal to fix the source, never something to steer around.</p>
+</div></section>
+
 <nav class="pager"><a href="below-complexity-bar.html">← The deliverable sits below the complexity bar</a><a href="steering-hands-answer.html">A steering turn that hands over the answer →</a></nav>
 </main>
 <div class="ovback" id="ex-universe-missing-records-1" hidden>
@@ -41,9 +53,9 @@
   </div><p class="ovscen">They looked properly at what a North Tacoma house with a fourth bedroom and a real shop costs, toured two, and decided in May to stay and finish the garage instead. The garage has taken a keyboard group buy, two eight terabyte drives, walnut, hinges and a…</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Five items on a neighbour&#x27;s board have to be priced against what Amazon Fresh actually sells, with the delivery fee taken from Fresh&#x27;s policy and one apartment&#x27;s quantity from a Subscribe and Save record. The task is assigned to openclaw_mm_thaddeus_okonjo_commerce_product.</div></div><div class="rr"><div class="rl">What is wrong</div><div class="rv">Rule 1 prices every line &quot;at the pack option we add to the cart from Fresh&#x27;s catalog&quot;; rule 5 takes the delivery fee from &quot;Fresh&#x27;s Delivery Policy and nothing else&quot;; rule 7 allows only claims &quot;Fresh&#x27;s own catalog or policies back up&quot;. That universe&#x27;s Fresh catalog holds 39 products and none of the five board items, its policies and faqs lists are both empty, and it carries no subscription records at all.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">The golden hit the wall in the run itself. Turn 3 tells the agent &quot;all five items are sold on fresh, so if the search is coming back empty try getting to the product pages and the policy pages another way&quot;, turn 7 becomes &quot;leave anything you genuinely cant confirm as is&quot;, and the delivered page states &quot;its catalog search returns nothing, so I can&#x27;t pull the building&#x27;s real prices&quot; - so every price on it is the board figure flagged unconfirmed, and the criteria wanting $0.55 a lb, $5.45 a tub and a $4.99 fee cannot be reached by anyone.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Before writing the rules, call the tools against the assigned universe: search the catalog for each item you intend to price, and open the policy and subscription records you intend to cite. Where they are not there, change the universe rather than the rules - the arithmetic in this task was exact and every other part of it held up.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Confirm there is enough material. The universe combined with the multimodal input has to sustain the opening prompt and every follow-up you intend to add, not just the first request.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.1 Start With the Universe</p><p class="rcm">Every rule you write has to have a record behind it, for every turn, not only turn 1.</p></div><div class="railrule"><blockquote>Data that is not in the server, asked for anyway, and the model penalised for not finding it.</blockquote><p class="rsrc">Attempter Guidelines · 4. Valid vs. Invalid Model Failures</p></div><div class="railrule"><blockquote>The primary request is impractical or impossible and can&#x27;t be answered by the tools available or enabled for the task.</blockquote><p class="rsrc">QC spec · Trajectory - Feasibility With Tools</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Five items on a neighbour&#x27;s board have to be priced against what Amazon Fresh actually sells, with the delivery fee taken from Fresh&#x27;s policy and one apartment&#x27;s quantity from a Subscribe and Save record. The task is assigned to openclaw_mm_thaddeus_okonjo_commerce_product.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">Rule 1 prices every line &quot;at the pack option we add to the cart from Fresh&#x27;s catalog&quot;; rule 5 takes the delivery fee from &quot;Fresh&#x27;s Delivery Policy and nothing else&quot;; rule 7 allows only claims &quot;Fresh&#x27;s own catalog or policies back up&quot;. That universe&#x27;s Fresh catalog holds 39 products and none of the five board items, its policies and faqs lists are both empty, and it carries no subscription records at all.</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">The golden hit the wall in the run itself. Turn 3 tells the agent &quot;all five items are sold on fresh, so if the search is coming back empty try getting to the product pages and the policy pages another way&quot;, turn 7 becomes &quot;leave anything you genuinely cant confirm as is&quot;, and the delivered page states &quot;its catalog search returns nothing, so I can&#x27;t pull the building&#x27;s real prices&quot; - so every price on it is the board figure flagged unconfirmed, and the criteria wanting $0.55 a lb, $5.45 a tub and a $4.99 fee cannot be reached by anyone.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Before writing the rules, call the tools against the assigned universe: search the catalog for each item you intend to price, and open the policy and subscription records you intend to cite. Where they are not there, change the universe rather than the rules - the arithmetic in this task was exact and every other part of it held up.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Confirm there is enough material. The universe combined with the multimodal input has to sustain the opening prompt and every follow-up you intend to add, not just the first request.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.1 Start With the Universe</p><p class="rcm">Every rule you write has to have a record behind it, for every turn, not only turn 1.</p></div><div class="railrule"><blockquote>Data that is not in the server, asked for anyway, and the model penalised for not finding it.</blockquote><p class="rsrc">Attempter Guidelines · 4. Valid vs. Invalid Model Failures</p></div><div class="railrule"><blockquote>The primary request is impractical or impossible and can&#x27;t be answered by the tools available or enabled for the task.</blockquote><p class="rsrc">QC spec · Trajectory - Feasibility With Tools</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">

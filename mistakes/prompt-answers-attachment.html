@@ -6,30 +6,42 @@
 <link rel="stylesheet" href="../assets/style.css"><script src="../assets/viewer.js" defer></script>
 </head><body>
 <header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
-<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Before you submit</a></nav></header>
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 2 · What the conversation may not say</p>
 <div class="mhead"><h1>A prompt that answers its own attachment</h1><span class="bad fail">fails the task</span></div>
 <div class="mstats"><div class="d">Multi-Turn - Simulator Answer Leak</div></div>
-<div class="three">
-  <div class="t3"><h4>What the mistake is</h4><p>A user prompt releases a file and states the value the file exists to make the agent read: how many items are in the photograph, what the total comes to, which of two documents is current. It sits in the same sentence that hands over the asset, written as helpful context by someone who has already looked at the file.</p></div>
-  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Read each prompt beside the file it releases. Every number, name or conclusion that the file itself carries is a leak, however conversational it sounds.</p></div>
-  <div class="t3 t3f"><h4>What to do instead</h4><p>State the requirement — the plates lie flat, the figure has to be the current one — and leave the value to the attachment.</p></div>
-</div>
-<div class="why"><h4>Why it costs you</h4><p>The no-leak rule covers every turn you write as the user, and it treats a count as a value — the spec&#x27;s own failing example is “there are five receipts”. Once the value is in the prompt the attachment is decoration: no criterion that depends on reading it can separate a run that opened the file from one that did not.</p></div>
 
-<section class="rules">
-  <h2 class="sh">What the project says</h2>
-  <p class="shp">The rules this breaks, quoted from the documents in Project Resources. Section titles are
-  the ones printed in the document, so you can go and read the whole thing around them.</p>
+<section class="step"><div class="stepn">1</div><div class="stepb">
+  <h2>What the issue is</h2>
+  <p class="lead">A user prompt releases a file and states the value the file exists to make the agent read: how many items are in the photograph, what the total comes to, which of two documents is current. It sits in the same sentence that hands over the asset, written as helpful context by someone who has already looked at the file.</p>
+</div></section>
+
+<section class="step"><div class="stepn">2</div><div class="stepb">
+  <h2>Why it matters, and what the project expects</h2>
+  <p>The no leak rule covers every turn you write as the user, and it treats a count as a value: the spec&#x27;s own failing example is “there are five receipts”. Once the value is in the promptthe attachment is decoration: no criterion that depends on reading it can separate a run that opened the file from one that did not.</p>
+  
   <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">1.2.3 Create the Initial Prompt and the Follow-ups</span></div><blockquote>A weak initial prompt that fails the task: States the policy directly in the prompt, removing the work you intended to grade. Plants shortcuts, obvious clues, or filenames that reveal the answer.</blockquote><p class="rcm">The strong column says the opposite: keep thresholds, rules and formats in the input files, where the agent must find them.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">QC spec</span><span class="rcsec">Multi-Turn - Simulator Answer Leak</span></div><blockquote>they may not say WHAT the right answer is, WHERE exactly to find it, or HOW MANY of anything there are</blockquote><p class="rcm">A count is a value. “the five receipts” is a leak in the same sentence that attaches them.</p></article>
-</section>
-<section class="exsec">
-  <h2 class="sh">Where it happened in a real task</h2>
-  <p class="shp">Open one and it expands here, with the rule on the left and the task's own fields on the
-  right. The tabs carry only the parts of the task this error lives in. Escape closes it.</p>
-  <div class="exlist"><button type="button" class="excard" data-ex="prompt-answers-attachment-1"><div class="exn">Example 1</div><div class="exwhat">&quot;Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit.&quot;</div><div class="exmeta"><span class="oc">Property &amp; Space</span><span class="oc">4 turns</span><code class="ovid">6a9e4478f55775e9124002e5</code></div><span class="exopen">Open it here →</span></button></div>
-</section>
+</div></section>
+
+<section class="step"><div class="stepn">3</div><div class="stepb">
+  <h2>How to recognise it in your own task</h2>
+  <p>Read each prompt beside the file it releases. Every number, name or conclusion that the file itself carries is a leak, however conversational it sounds.</p>
+</div></section>
+
+<section class="step"><div class="stepn">4</div><div class="stepb">
+  <h2>Real tasks where this happened</h2>
+  <p class="shp">One real task in this project is carrying it. They are evidence that it is real and something to practise spotting it on, not a
+  second version of the rule. Open one and it expands here, with the point on the left and the task's own
+  fields on the right. Escape closes it.</p>
+  <div class="exlist"><button type="button" class="excard" data-ex="prompt-answers-attachment-1"><div class="exn">Real task 1</div><div class="exwhat">&quot;Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit.&quot;</div><div class="exmeta"><span class="oc">Property &amp; Space</span><span class="oc">4 turns</span><code class="ovid">6a9e4478f55775e9124002e5</code></div><span class="exopen">Open it here →</span></button></div>
+</div></section>
+
+<section class="step"><div class="stepn">5</div><div class="stepb">
+  <h2>What to do instead</h2>
+  <p class="lead">State the requirement, that the plates lie flat or that the figure has to be the current one, and leave the value to the attachment.</p>
+</div></section>
+
 <nav class="pager"><a href="steering-hands-answer.html">← A steering turn that hands over the answer</a><a href="deferred-asset-announced.html">A deferred asset that announces its own turn →</a></nav>
 </main>
 <div class="ovback" id="ex-prompt-answers-attachment-1" hidden>
@@ -41,9 +53,9 @@
   </div><p class="ovscen">The front room of the 1947 house needs a built-in for the drafting table, the plate storage, and the bound notebooks. The wall is not square, because no wall in that house is.</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">IMG_4392 is held back from turn 1 and released at turn 2 so the agent has to count and measure the plates before sizing a shelf for them.</div></div><div class="rr"><div class="rl">What is wrong</div><div class="rv">&quot;Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit.&quot;</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">Counting five large plates and one small one out of that photograph is the read the deferred asset exists to force, and the stack at the back of the frame is exactly what a model gets wrong. With the count in the prompt the photograph settles nothing, and because no criterion in the set sizes the shelf either, a run that never opens the file passes the whole task.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">&quot;Sorted the plates, the photo is fine to use now. They need to be stored flat somewhere in the unit, not stood on edge. Add that into the HTML rather than starting over.&quot;</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>A weak initial prompt that fails the task: States the policy directly in the prompt, removing the work you intended to grade. Plants shortcuts, obvious clues, or filenames that reveal the answer.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</p><p class="rcm">The strong column says the opposite: keep thresholds, rules and formats in the input files, where the agent must find them.</p></div><div class="railrule"><blockquote>they may not say WHAT the right answer is, WHERE exactly to find it, or HOW MANY of anything there are</blockquote><p class="rsrc">QC spec · Multi-Turn - Simulator Answer Leak</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">IMG_4392 is held back from turn 1 and released at turn 2 so the agent has to count and measure the plates before sizing a shelf for them.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">&quot;Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit.&quot;</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">Counting five large plates and one small one out of that photograph is the read the deferred asset exists to force, and the stack at the back of the frame is exactly what a model gets wrong. With the count in the prompt the photograph settles nothing, and because no criterion in the set sizes the shelf either, a run that never opens the file passes the whole task.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">&quot;Sorted the plates, the photo is fine to use now. They need to be stored flat somewhere in the unit, not stood on edge. Add that into the HTML rather than starting over.&quot;</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>A weak initial prompt that fails the task: States the policy directly in the prompt, removing the work you intended to grade. Plants shortcuts, obvious clues, or filenames that reveal the answer.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</p><p class="rcm">The strong column says the opposite: keep thresholds, rules and formats in the input files, where the agent must find them.</p></div><div class="railrule"><blockquote>they may not say WHAT the right answer is, WHERE exactly to find it, or HOW MANY of anything there are</blockquote><p class="rsrc">QC spec · Multi-Turn - Simulator Answer Leak</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">

@@ -6,30 +6,42 @@
 <link rel="stylesheet" href="../assets/style.css"><script src="../assets/viewer.js" defer></script>
 </head><body>
 <header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
-<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Before you submit</a></nav></header>
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 2 · What the conversation may not say</p>
 <div class="mhead"><h1>A deferred asset that announces its own turn</h1><span class="bad fail">fails the task</span></div>
 <div class="mstats"><div class="d">Input Artifacts - Deferred Asset Handling</div></div>
-<div class="three">
-  <div class="t3"><h4>What the mistake is</h4><p>Material available at turn 1 tells the agent what a later turn will ask. Two shapes: a deferred file named for the turn it belongs to, and a turn-1 document carrying the instruction prompt 2 or 3 was meant to deliver.</p></div>
-  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Read every turn-1 input as the agent will. If it tells you what a later turn wants, or what to do when a file arrives, you have it. Then read the deferred filenames cold: price_sheet_for_turn3.pdf fails, sheet_02.pdf is fine.</p></div>
-  <div class="t3 t3f"><h4>What to do instead</h4><p>Cut the forward-looking sentence out of the turn-1 material and put it in the prompt that delivers the file. Name deferred files for what they contain, not for the turn they belong to. And name the file in the sentence that hands it over, so the turn reads like a person attaching a specific document.</p></div>
-</div>
-<div class="why"><h4>Why it costs you</h4><p>A deferred asset exists to test whether a model can absorb new evidence without a briefing. Told in advance that a file is coming and what to do when it arrives, the model can prepare, and the turn stops measuring anything. Where the advance notice carries the actual instruction rather than a hint of one, the dimension fails outright.</p></div>
 
-<section class="rules">
-  <h2 class="sh">What the project says</h2>
-  <p class="shp">The rules this breaks, quoted from the documents in Project Resources. Section titles are
-  the ones printed in the document, so you can go and read the whole thing around them.</p>
-  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">6.3 Modifiers</span></div><blockquote>deferred_asset — Material the opening turn did not put in scope arrives or is released into scope at this turn. The file ships only with the later turn where it enters scope, never with the original task attachments (opening turn ones). It should be included in that turn&#x27;s attachments at upload time.</blockquote><p class="rcm">Nothing in scope at turn 1 may disclose what a later turn will ask for.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">1.2.3 Create the Initial Prompt and the Follow-ups</span></div><blockquote>If deferred assets are introduced, point them out: The follow-up must name the asset being introduced so the model knows exactly what new evidence has become available.</blockquote><p class="rcm">Name the file in the turn that hands it over — and only there.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">5.2 Rubric Weights</span></div><blockquote>Across turns, acting on material the user has not handed over yet: the file is sitting in the input folder, but nothing in the conversation has asked for it.</blockquote><p class="rcm">This is the failure the deferred asset exists to catch. Announce it early and there is nothing to catch.</p></article>
-</section>
-<section class="exsec">
-  <h2 class="sh">Where it happened in a real task</h2>
-  <p class="shp">Open one and it expands here, with the rule on the left and the task's own fields on the
-  right. The tabs carry only the parts of the task this error lives in. Escape closes it.</p>
-  <div class="exlist"><button type="button" class="excard" data-ex="deferred-asset-announced-1"><div class="exn">Example 1</div><div class="exwhat">IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg, both in the turn-1 inputs folder.</div><div class="exmeta"><span class="oc">Small Business &amp; Personal Docs</span><span class="oc">4 turns</span><code class="ovid">6aa34dd1625bb5b220c6b1cb</code></div><span class="exopen">Open it here →</span></button></div>
-</section>
+<section class="step"><div class="stepn">1</div><div class="stepb">
+  <h2>What the issue is</h2>
+  <p class="lead">Material available at turn 1 tells the agent what a later turn will ask. Two shapes: a deferred file named for the turn it belongs to, and a turn-1 document carrying the instruction prompt 2 or 3 was meant to deliver.</p>
+</div></section>
+
+<section class="step"><div class="stepn">2</div><div class="stepb">
+  <h2>Why it matters, and what the project expects</h2>
+  <p>A deferred asset exists to test whether a model can absorb new evidence without a briefing. Told in advance that a file is coming and what to do when it arrives, the model can prepare, and the turn stops measuring anything. Where the advance notice carries the actual instruction rather than a hint of one, the dimension fails outright.</p>
+  
+  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">6.3 Modifiers</span></div><blockquote>deferred_asset: Material the opening turn did not put in scope arrives or is released into scope at this turn. The file ships only with the later turn where it enters scope, never with the original task attachments (opening turn ones). It should be included in that turn&#x27;s attachments at upload time.</blockquote><p class="rcm">Nothing in scope at turn 1 may disclose what a later turn will ask for.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">1.2.3 Create the Initial Prompt and the Follow-ups</span></div><blockquote>If deferred assets are introduced, point them out: The follow-up must name the asset being introduced so the model knows exactly what new evidence has become available.</blockquote><p class="rcm">Name the file in the turn that hands it over, and only there.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">5.2 Rubric Weights</span></div><blockquote>Across turns, acting on material the user has not handed over yet: the file is sitting in the input folder, but nothing in the conversation has asked for it.</blockquote><p class="rcm">This is the failure the deferred asset exists to catch. Announce it early and there is nothing to catch.</p></article>
+</div></section>
+
+<section class="step"><div class="stepn">3</div><div class="stepb">
+  <h2>How to recognise it in your own task</h2>
+  <p>Read every turn-1 input as the agent will. If it tells you what a later turn wants, or what to do when a file arrives, you have it. Then read the deferred filenames cold: price_sheet_for_turn3.pdf fails, sheet_02.pdf is fine.</p>
+</div></section>
+
+<section class="step"><div class="stepn">4</div><div class="stepb">
+  <h2>Real tasks where this happened</h2>
+  <p class="shp">One real task in this project is carrying it. They are evidence that it is real and something to practise spotting it on, not a
+  second version of the rule. Open one and it expands here, with the point on the left and the task's own
+  fields on the right. Escape closes it.</p>
+  <div class="exlist"><button type="button" class="excard" data-ex="deferred-asset-announced-1"><div class="exn">Real task 1</div><div class="exwhat">IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg, both in the turn-1 inputs folder.</div><div class="exmeta"><span class="oc">Small Business &amp; Personal Docs</span><span class="oc">4 turns</span><code class="ovid">6aa34dd1625bb5b220c6b1cb</code></div><span class="exopen">Open it here →</span></button></div>
+</div></section>
+
+<section class="step"><div class="stepn">5</div><div class="stepb">
+  <h2>What to do instead</h2>
+  <p class="lead">Cut the forward looking sentence out of the turn-1 material and put it in the prompt that delivers the file. Name deferred files for what they contain, not for the turn they belong to. And name the file in the sentence that hands it over, so the turn reads like a person attaching a specific document.</p>
+</div></section>
+
 <nav class="pager"><a href="prompt-answers-attachment.html">← A prompt that answers its own attachment</a><a href="milestone-fields.html">Modifier and Assets Delivered that do not match the turn →</a></nav>
 </main>
 <div class="ovback" id="ex-deferred-asset-announced-1" hidden>
@@ -41,9 +53,9 @@
   </div><p class="ovscen">Corwin Steadman called at 16:40 on a Tuesday in July with Regional Operations Manager, Southeast, at $104,000.00, based in Hattiesburg, sixty to seventy percent travel across five sites. It is twenty-two thousand dollars and it is the job Winslow has been…</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Turn 1 delivers a photographed calendar. The employer’s travel rules arrive two turns later, and both files sit in the inputs folder from turn 1.</div></div><div class="rr"><div class="rl">What is wrong</div><div class="rv">IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg, both in the turn-1 inputs folder.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">Each name says what is coming before the user delivers it, and a real user’s phone writes IMG_0814.jpg. Neither discloses a graded value, so this is the hinting band rather than the leaking one — but the turn that delivers the travel policy stops measuring whether the model can take in new evidence, because the folder announced it two turns early. IMG_4412_call_notes.jpg in the same folder is fine, since turn 1 delivers it.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">IMG_0814.jpg and IMG_0819.jpg. Name a deferred file the way the device that produced it would, and let the prompt that delivers it say what it is.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>deferred_asset — Material the opening turn did not put in scope arrives or is released into scope at this turn. The file ships only with the later turn where it enters scope, never with the original task attachments (opening turn ones). It should be included in that turn&#x27;s attachments at upload time.</blockquote><p class="rsrc">Attempter Guidelines · 6.3 Modifiers</p><p class="rcm">Nothing in scope at turn 1 may disclose what a later turn will ask for.</p></div><div class="railrule"><blockquote>If deferred assets are introduced, point them out: The follow-up must name the asset being introduced so the model knows exactly what new evidence has become available.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</p></div><div class="railrule"><blockquote>Across turns, acting on material the user has not handed over yet: the file is sitting in the input folder, but nothing in the conversation has asked for it.</blockquote><p class="rsrc">Attempter Guidelines · 5.2 Rubric Weights</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Turn 1 delivers a photographed calendar. The employer’s travel rules arrive two turns later, and both files sit in the inputs folder from turn 1.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg, both in the turn-1 inputs folder.</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">Each name says what is coming before the user delivers it, and a real user’s phone writes IMG_0814.jpg. Neither discloses a graded value, so this is the hinting band rather than the leaking one — but the turn that delivers the travel policy stops measuring whether the model can take in new evidence, because the folder announced it two turns early. IMG_4412_call_notes.jpg in the same folder is fine, since turn 1 delivers it.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">IMG_0814.jpg and IMG_0819.jpg. Name a deferred file the way the device that produced it would, and let the prompt that delivers it say what it is.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>deferred_asset: Material the opening turn did not put in scope arrives or is released into scope at this turn. The file ships only with the later turn where it enters scope, never with the original task attachments (opening turn ones). It should be included in that turn&#x27;s attachments at upload time.</blockquote><p class="rsrc">Attempter Guidelines · 6.3 Modifiers</p><p class="rcm">Nothing in scope at turn 1 may disclose what a later turn will ask for.</p></div><div class="railrule"><blockquote>If deferred assets are introduced, point them out: The follow-up must name the asset being introduced so the model knows exactly what new evidence has become available.</blockquote><p class="rsrc">Attempter Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</p></div><div class="railrule"><blockquote>Across turns, acting on material the user has not handed over yet: the file is sitting in the input folder, but nothing in the conversation has asked for it.</blockquote><p class="rsrc">Attempter Guidelines · 5.2 Rubric Weights</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">

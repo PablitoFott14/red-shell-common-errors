@@ -301,3 +301,18 @@ footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var
 .turn.flagged,.gm.flagged{position:relative;background:var(--red-bg);border:1px solid var(--red-d);
   border-left:3px solid var(--red);border-radius:9px;padding:13px 14px;margin-top:2px}
 .turn.flagged{border-bottom:1px solid var(--red-d)}
+
+/* ─── the five steps of an issue ─────────────────────────────────────────── */
+.step{display:flex;gap:18px;align-items:flex-start;margin-top:34px;padding-top:26px;
+  border-top:1px solid var(--line)}
+.step:first-of-type{border-top:0;padding-top:8px}
+.stepn{flex:none;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;
+  background:var(--card);border:1px solid var(--line2);color:var(--ink3);
+  font-family:var(--mono);font-size:13px;font-weight:700}
+.step:nth-of-type(4) .stepn{border-color:var(--red-d);color:var(--red);background:var(--red-bg)}
+.stepb{flex:1;min-width:0}
+.stepb h2{font-size:19px;letter-spacing:-.01em}
+.stepb p{margin:11px 0 0;color:var(--ink2);font-size:14.5px;max-width:92ch}
+.stepb p.lead{color:var(--ink);font-size:15.5px}
+.stepb .shp{font-size:13.5px}
+.stepb .rulecard:first-of-type{margin-top:18px}

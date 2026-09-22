@@ -6,30 +6,42 @@
 <link rel="stylesheet" href="../assets/style.css"><script src="../assets/viewer.js" defer></script>
 </head><body>
 <header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
-<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Before you submit</a></nav></header>
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 3 · Milestones</p>
 <div class="mhead"><h1>A turn no milestone covers, or the same one written twice</h1><span class="bad bleed">costs points</span></div>
 <div class="mstats"><div class="d">Milestones - Continuation Criteria &amp; Assets</div></div>
-<div class="three">
-  <div class="t3"><h4>What the mistake is</h4><p>A prompt the task actually ships that no milestone describes, or two milestones on one turn carrying identical intent and identical clauses. The gap usually comes from the set stopping one turn short, or from turn numbering that drifts by one.</p></div>
-  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>List the turn index of every milestone beside the prompts. Every prompt number appears at least once, and each milestone&#x27;s turn is the turn whose prompt asks for what it describes.</p></div>
-  <div class="t3 t3f"><h4>What to do instead</h4><p>Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.</p></div>
-</div>
-<div class="why"><h4>Why it costs you</h4><p>The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off-by-one, every milestone after it is attached to the wrong turn.</p></div>
 
-<section class="rules">
-  <h2 class="sh">What the project says</h2>
-  <p class="shp">The rules this breaks, quoted from the documents in Project Resources. Section titles are
-  the ones printed in the document, so you can go and read the whole thing around them.</p>
+<section class="step"><div class="stepn">1</div><div class="stepb">
+  <h2>What the issue is</h2>
+  <p class="lead">A prompt the task actually ships that no milestone describes, or two milestones on one turn carrying identical intent and identical clauses. The gap usually comes from the set stopping one turn short, or from turn numbering that drifts by one.</p>
+</div></section>
+
+<section class="step"><div class="stepn">2</div><div class="stepb">
+  <h2>Why it matters, and what the project expects</h2>
+  <p>The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off by one, every milestone after it is attached to the wrong turn.</p>
+  
   <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">6.2 Writing the Milestones</span></div><blockquote>One milestone per requirement, grouped by turn: A follow up carrying three requirements produces three milestones, not one. A single milestone holding four asks that do not collapse into each other is a paraphrase of the prompt, not an intent spec.</blockquote><p class="rcm">Count requirements, not turns, then check every turn ended up with at least one.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">6. Milestones</span></div><blockquote>In the future, the idea is that a user simulator plays every turn after the first and reproduces your intent against runs that go a different way. Until that is wired up and while this is present in the guidelines, you are the simulator, and the milestone set is the only script you have.</blockquote><p class="rcm">A turn with no milestone gives the simulator nothing to hold the run to.</p></article>
-</section>
-<section class="exsec">
-  <h2 class="sh">Where it happened in a real task</h2>
-  <p class="shp">Open one and it expands here, with the rule on the left and the task's own fields on the
-  right. The tabs carry only the parts of the task this error lives in. Escape closes it.</p>
-  <div class="exlist"><button type="button" class="excard" data-ex="milestone-coverage-1"><div class="exn">Example 1</div><div class="exwhat">the task ships prompts for turns [1, 2, 3, 4, 5] but the milestones only cover [1, 2, 3, 4], leaving turn 5 with no milestone at all</div><div class="exmeta"><span class="oc">Creative &amp; Media</span><span class="oc">5 turns</span><code class="ovid">6aa1cedb57e31958c9d6108e</code></div><span class="exopen">Open it here →</span></button><button type="button" class="excard" data-ex="milestone-coverage-2"><div class="exn">Example 2</div><div class="exwhat">milestone rows [13, 14] repeat the same intent and the same continuation criteria</div><div class="exmeta"><span class="oc">Creative &amp; Media</span><span class="oc">3 turns</span><code class="ovid">6a99296813124786224a01ef</code></div><span class="exopen">Open it here →</span></button></div>
-</section>
+</div></section>
+
+<section class="step"><div class="stepn">3</div><div class="stepb">
+  <h2>How to recognise it in your own task</h2>
+  <p>List the turn index of every milestone beside the prompts. Every prompt number appears at least once, and each milestone&#x27;s turn is the turn whose prompt asks for what it describes.</p>
+</div></section>
+
+<section class="step"><div class="stepn">4</div><div class="stepb">
+  <h2>Real tasks where this happened</h2>
+  <p class="shp">Two real tasks in this project are carrying it. They are evidence that it is real and something to practise spotting it on, not a
+  second version of the rule. Open one and it expands here, with the point on the left and the task's own
+  fields on the right. Escape closes it.</p>
+  <div class="exlist"><button type="button" class="excard" data-ex="milestone-coverage-1"><div class="exn">Real task 1</div><div class="exwhat">the task ships prompts for turns [1, 2, 3, 4, 5] but the milestones only cover [1, 2, 3, 4], leaving turn 5 with no milestone at all</div><div class="exmeta"><span class="oc">Creative &amp; Media</span><span class="oc">5 turns</span><code class="ovid">6aa1cedb57e31958c9d6108e</code></div><span class="exopen">Open it here →</span></button><button type="button" class="excard" data-ex="milestone-coverage-2"><div class="exn">Real task 2</div><div class="exwhat">milestone rows [13, 14] repeat the same intent and the same continuation criteria</div><div class="exmeta"><span class="oc">Creative &amp; Media</span><span class="oc">3 turns</span><code class="ovid">6a99296813124786224a01ef</code></div><span class="exopen">Open it here →</span></button></div>
+</div></section>
+
+<section class="step"><div class="stepn">5</div><div class="stepb">
+  <h2>What to do instead</h2>
+  <p class="lead">Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.</p>
+</div></section>
+
 <nav class="pager"><a href="continuation-criteria.html">← Stopping rules that do not gate the turn</a><a href="no-negatives.html">A rubric that can only reward, never penalise →</a></nav>
 </main>
 <div class="ovback" id="ex-milestone-coverage-1" hidden>
@@ -41,9 +53,9 @@
   </div><p class="ovscen">Every festival and broadcaster wants a different master and Idris has exported Slack Tide five times without recording which spec each export satisfies. Two of the five have no sidecar, so their specs have to be read off the files, and one broadcaster&#x27;s…</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">What is wrong</div><div class="rv">the task ships prompts for turns [1, 2, 3, 4, 5] but the milestones only cover [1, 2, 3, 4], leaving turn 5 with no milestone at all</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off-by-one, every milestone after it is attached to the wrong turn.</div></div><div class="rr"><div class="rl">What to do instead</div><div class="rv">Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>One milestone per requirement, grouped by turn: A follow up carrying three requirements produces three milestones, not one. A single milestone holding four asks that do not collapse into each other is a paraphrase of the prompt, not an intent spec.</blockquote><p class="rsrc">Attempter Guidelines · 6.2 Writing the Milestones</p><p class="rcm">Count requirements, not turns, then check every turn ended up with at least one.</p></div><div class="railrule"><blockquote>In the future, the idea is that a user simulator plays every turn after the first and reproduces your intent against runs that go a different way. Until that is wired up and while this is present in the guidelines, you are the simulator, and the milestone set is the only script you have.</blockquote><p class="rsrc">Attempter Guidelines · 6. Milestones</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">the task ships prompts for turns [1, 2, 3, 4, 5] but the milestones only cover [1, 2, 3, 4], leaving turn 5 with no milestone at all</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off by one, every milestone after it is attached to the wrong turn.</div></div><div class="rr"><div class="rl">What to do instead</div><div class="rv">Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>One milestone per requirement, grouped by turn: A follow up carrying three requirements produces three milestones, not one. A single milestone holding four asks that do not collapse into each other is a paraphrase of the prompt, not an intent spec.</blockquote><p class="rsrc">Attempter Guidelines · 6.2 Writing the Milestones</p><p class="rcm">Count requirements, not turns, then check every turn ended up with at least one.</p></div><div class="railrule"><blockquote>In the future, the idea is that a user simulator plays every turn after the first and reproduces your intent against runs that go a different way. Until that is wired up and while this is present in the guidelines, you are the simulator, and the milestone set is the only script you have.</blockquote><p class="rsrc">Attempter Guidelines · 6. Milestones</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">
@@ -71,9 +83,9 @@ The co-op is screening the film at the Hollywood on Friday the 25th of September
   </div><p class="ovscen">Sunny&#x27;s album is spread across three cloud drives after tracking, overdubs, and the mix week. Teodora wants one drive, keeping the newest version of every duplicated file, with rough mixes v1 through vN intact.</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">What is wrong</div><div class="rv">milestone rows [13, 14] repeat the same intent and the same continuation criteria</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off-by-one, every milestone after it is attached to the wrong turn.</div></div><div class="rr"><div class="rl">What to do instead</div><div class="rv">Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.</div></div><div class="jumps"><span class="jl">Jump to</span><button type="button" class="jump" data-pane="0" data-row="p0r13">Milestone 13</button><button type="button" class="jump" data-pane="0" data-row="p0r14">Milestone 14</button></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>One milestone per requirement, grouped by turn: A follow up carrying three requirements produces three milestones, not one. A single milestone holding four asks that do not collapse into each other is a paraphrase of the prompt, not an intent spec.</blockquote><p class="rsrc">Attempter Guidelines · 6.2 Writing the Milestones</p><p class="rcm">Count requirements, not turns, then check every turn ended up with at least one.</p></div><div class="railrule"><blockquote>In the future, the idea is that a user simulator plays every turn after the first and reproduces your intent against runs that go a different way. Until that is wired up and while this is present in the guidelines, you are the simulator, and the milestone set is the only script you have.</blockquote><p class="rsrc">Attempter Guidelines · 6. Milestones</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">milestone rows [13, 14] repeat the same intent and the same continuation criteria</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off by one, every milestone after it is attached to the wrong turn.</div></div><div class="rr"><div class="rl">What to do instead</div><div class="rv">Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.</div></div><div class="jumps"><span class="jl">Jump to</span><button type="button" class="jump" data-pane="0" data-row="p0r13">Milestone 13</button><button type="button" class="jump" data-pane="0" data-row="p0r14">Milestone 14</button></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>One milestone per requirement, grouped by turn: A follow up carrying three requirements produces three milestones, not one. A single milestone holding four asks that do not collapse into each other is a paraphrase of the prompt, not an intent spec.</blockquote><p class="rsrc">Attempter Guidelines · 6.2 Writing the Milestones</p><p class="rcm">Count requirements, not turns, then check every turn ended up with at least one.</p></div><div class="railrule"><blockquote>In the future, the idea is that a user simulator plays every turn after the first and reproduces your intent against runs that go a different way. Until that is wired up and while this is present in the guidelines, you are the simulator, and the milestone set is the only script you have.</blockquote><p class="rsrc">Attempter Guidelines · 6. Milestones</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">

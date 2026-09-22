@@ -87,8 +87,8 @@
    "section": 1,
    "dim": "Complexity Bar",
    "cost": "fail",
-   "what": "The task ships a styled static page — no script, no control, no state, no linked views — while the Agent Objective calls it a dashboard. The scenario and the data behind it are usually strong. Nothing in any prompt asks for interaction, so the page comes out a document.",
-   "why": "The bar is explicit that a styled static page is not interactive HTML, and that a dashboard needs several linked views over data the model extracted itself. A document is the lowest priority deliverable on the table, so the task scores below where the client wants it however good the reasoning underneath is. It is a scenario-stage decision, so it cannot be patched later.",
+   "what": "The task ships a styled static page with no script, no control, no state and no linked views, while the Agent Objective calls it a dashboard. The scenario and the data behind it are usually strong. Nothing in any prompt asks for interaction, so the page comes out a document.",
+   "why": "The bar is explicit that a styled static page is not interactive HTML, and that a dashboard needs several linked views over data the model extracted itself. A document is the lowest priority deliverable on the table, so the task scores below where the client wants it however good the reasoning underneath is. It is a scenario stage decision, so it cannot be patched later.",
    "spot": "Read your own prompts and ask what the page does when someone clicks it. If the answer is nothing, you built a document. The word dashboard in the Agent Objective does not change that.",
    "fix": "Pick the deliverable type before prompt 1 and check it against the bar's floor for that type. If the data the agent will gather would support a sort, a filter or two linked views, write the prompt that asks for them.",
    "note": null,
@@ -96,7 +96,7 @@
     {
      "doc": "Guidelines",
      "sec": "Complexity Bar",
-     "quote": "Interactive HTML — Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard — Several linked views over data the model extracted itself. One chart is not a dashboard.",
+     "quote": "Interactive HTML: Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard: Several linked views over data the model extracted itself. One chart is not a dashboard.",
      "means": "Both are P0 floors. A page with no control and no state is a document, whatever the objective calls it."
     },
     {
@@ -163,10 +163,10 @@
    "section": 1,
    "dim": "Trajectory - Feasibility With Tools",
    "cost": "fail",
-   "what": "The scenario's rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it — the prompts, the rules file and the criteria all read as though the data is there.",
-   "why": "A rule pointing at data no tool returns cannot be followed by any run, so every criterion downstream of it is unreachable. Not wrong — impossible. It takes the difficulty with it too: where the second system is what made the task multi-system, the task ships with one side of every decision resolving to nothing.",
+   "what": "The scenario's rules read off a catalog, a policy page, a price list or a subscription that the assigned universe does not contain. Nothing in the folder shows it: the prompts, the rules file and the criteria all read as though the data is there.",
+   "why": "A rule pointing at data no tool returns cannot be followed by any run, so every criterion downstream of it is unreachable. Not wrong. Impossible. It takes the difficulty with it too: where the second system is what made the task multi system, the task ships with one side of every decision resolving to nothing.",
    "spot": "The tell is in your own golden: a search that comes back empty, a steering turn telling the agent to reach the page another way, and a deliverable that flags its own figures as unconfirmed.",
-   "fix": "At scenario-design time, open the universe and confirm it returns every record your rules point at, one query per rule. An empty search on the first golden turn is a signal to fix the source, never something to steer around.",
+   "fix": "At scenario design time, open the universe and confirm it returns every record your rules point at, one query per rule. An empty search on the first golden turn is a signal to fix the source, never something to steer around.",
    "note": null,
    "sources": [
     {
@@ -251,9 +251,9 @@
    "dim": "Multi-Turn - Simulator Answer Leak",
    "cost": "fail",
    "what": "A user turn goes past saying something is wrong and supplies what the agent was meant to derive: the exact file to open, the value, the structure of the answer, or the conclusion. It usually appears after two or three softer turns failed to move the run.",
-   "why": "The steering turns are not graded, but what they produce is. A criterion satisfied by following an instruction no longer separates a strong model from a weak one. It is also how wrong answers get into a rubric: a turn that dictates can dictate incorrectly, and the criteria then get written to match it. The same applies to a turn that settles a question one of your negatives exists to catch — nothing states a value, and the negative can still never fire.",
+   "why": "The steering turns are not graded, but what they produce is. A criterion satisfied by following an instruction no longer separates a strong model from a weak one. It is also how wrong answers get into a rubric: a turn that dictates can dictate incorrectly, and the criteria then get written to match it. The same applies to a turn that settles a question one of your negatives exists to catch: nothing states a value, and the negative can still never fire.",
    "spot": "Read each of your turns and ask what is left for the agent to work out. Then read your negative criteria against the same turns and check each one is still reachable.",
-   "fix": "Write every steering turn in the voice of the person in the scenario. Say something looks wrong and point at the area — never at the file, the value, the structure or the conclusion. If the model still cannot get there, the scenario needs fixing, not the hint.",
+   "fix": "Write every steering turn in the voice of the person in the scenario. Say something looks wrong and point at the area, never at the file, the value, the structure or the conclusion. If the model still cannot get there, the scenario needs fixing, not the hint.",
    "note": null,
    "sources": [
     {
@@ -466,9 +466,9 @@
    "dim": "Multi-Turn - Simulator Answer Leak",
    "cost": "fail",
    "what": "A user prompt releases a file and states the value the file exists to make the agent read: how many items are in the photograph, what the total comes to, which of two documents is current. It sits in the same sentence that hands over the asset, written as helpful context by someone who has already looked at the file.",
-   "why": "The no-leak rule covers every turn you write as the user, and it treats a count as a value — the spec's own failing example is “there are five receipts”. Once the value is in the prompt the attachment is decoration: no criterion that depends on reading it can separate a run that opened the file from one that did not.",
+   "why": "The no leak rule covers every turn you write as the user, and it treats a count as a value: the spec's own failing example is “there are five receipts”. Once the value is in the promptthe attachment is decoration: no criterion that depends on reading it can separate a run that opened the file from one that did not.",
    "spot": "Read each prompt beside the file it releases. Every number, name or conclusion that the file itself carries is a leak, however conversational it sounds.",
-   "fix": "State the requirement — the plates lie flat, the figure has to be the current one — and leave the value to the attachment.",
+   "fix": "State the requirement, that the plates lie flat or that the figure has to be the current one, and leave the value to the attachment.",
    "note": null,
    "sources": [
     {
@@ -588,20 +588,20 @@
    "what": "Material available at turn 1 tells the agent what a later turn will ask. Two shapes: a deferred file named for the turn it belongs to, and a turn-1 document carrying the instruction prompt 2 or 3 was meant to deliver.",
    "why": "A deferred asset exists to test whether a model can absorb new evidence without a briefing. Told in advance that a file is coming and what to do when it arrives, the model can prepare, and the turn stops measuring anything. Where the advance notice carries the actual instruction rather than a hint of one, the dimension fails outright.",
    "spot": "Read every turn-1 input as the agent will. If it tells you what a later turn wants, or what to do when a file arrives, you have it. Then read the deferred filenames cold: price_sheet_for_turn3.pdf fails, sheet_02.pdf is fine.",
-   "fix": "Cut the forward-looking sentence out of the turn-1 material and put it in the prompt that delivers the file. Name deferred files for what they contain, not for the turn they belong to. And name the file in the sentence that hands it over, so the turn reads like a person attaching a specific document.",
+   "fix": "Cut the forward looking sentence out of the turn-1 material and put it in the prompt that delivers the file. Name deferred files for what they contain, not for the turn they belong to. And name the file in the sentence that hands it over, so the turn reads like a person attaching a specific document.",
    "note": null,
    "sources": [
     {
      "doc": "Guidelines",
      "sec": "6.3 Modifiers",
-     "quote": "deferred_asset — Material the opening turn did not put in scope arrives or is released into scope at this turn. The file ships only with the later turn where it enters scope, never with the original task attachments (opening turn ones). It should be included in that turn's attachments at upload time.",
+     "quote": "deferred_asset: Material the opening turn did not put in scope arrives or is released into scope at this turn. The file ships only with the later turn where it enters scope, never with the original task attachments (opening turn ones). It should be included in that turn's attachments at upload time.",
      "means": "Nothing in scope at turn 1 may disclose what a later turn will ask for."
     },
     {
      "doc": "Guidelines",
      "sec": "1.2.3 Create the Initial Prompt and the Follow-ups",
      "quote": "If deferred assets are introduced, point them out: The follow-up must name the asset being introduced so the model knows exactly what new evidence has become available.",
-     "means": "Name the file in the turn that hands it over — and only there."
+     "means": "Name the file in the turn that hands it over, and only there."
     },
     {
      "doc": "Guidelines",
@@ -682,20 +682,20 @@
    "cost": "bleed",
    "what": "The two fields beside the intent line do not describe what the milestone covers: deferred_asset or revision on an opening turn, none used as a modifier, the agent's own deliverable listed as a delivered asset, or a bare extension where a filename belongs.",
    "why": "The simulator reads the modifier to decide how it drives the turn, and the assets field to know what arrives when. A wrong label changes the conversation the task actually runs: a revision that revises nothing, a deferred file that was attached from the start, an attachment that never reaches the agent because no milestone asked for it. It is two fields and a five minute pass, which is why it is worth making a habit.",
-   "spot": "Sort your milestone table by turn and read only the two fields. Turn 1 is opening unless the agent has genuinely been handed something new. Assets Delivered names input files the user hands over — never the .html the agent is about to write, and never a bare extension.",
-   "fix": "Set each modifier from the turn's effect on delivered work: opening for a new ask, deferred_asset only when a file actually arrives, revision only when delivered work changes. Then fill Assets Delivered from that milestone's own sub-intent with real filenames. A behavioural or informational sub-intent correctly carries none.",
+   "spot": "Sort your milestone table by turn and read only the two fields. Turn 1 is opening unless the agent has genuinely been handed something new. Assets Delivered names input files the user hands over, never the .html the agent is about to write, and never a bare extension.",
+   "fix": "Set each modifier from the turn's effect on delivered work: opening for a new ask, deferred_asset only when a file actually arrives, revision only when delivered work changes. Then fill Assets Delivered from that milestone's own sub intent with real filenames. A behavioural or informational sub intent correctly carries none.",
    "note": null,
    "sources": [
     {
      "doc": "Guidelines",
      "sec": "6.1 What a Milestone is Made of?",
-     "quote": "Modifier — What this turn does to work that already exists. One of the four in section 6.3. Assets delivered — Files handed over at this turn, or empty.",
+     "quote": "Modifier: What this turn does to work that already exists. One of the four in section 6.3. Assets delivered: Files handed over at this turn, or empty.",
      "means": "Assets delivered means files the user hands over, never the file the agent is about to write."
     },
     {
      "doc": "Guidelines",
      "sec": "6.3 Modifiers",
-     "quote": "Modifiers define what each turn does to the state of the task. They are not labels for how a prompt sounds but for how that turn changes, extends, or depends on work that already exists. opening — The first turn and any later turn that adds a new requirement without touching work already delivered. revision — Something already delivered changes.",
+     "quote": "Modifiers define what each turn does to the state of the task. They are not labels for how a prompt sounds but for how that turn changes, extends, or depends on work that already exists. opening: The first turn and any later turn that adds a new requirement without touching work already delivered. revision: Something already delivered changes.",
      "means": "Turn 1 is opening unless something was genuinely handed over. Nothing has been delivered yet to revise."
     },
     {
@@ -923,10 +923,10 @@
    "section": 3,
    "dim": "Milestones - Continuation Criteria & Assets",
    "cost": "fail",
-   "what": "Two opposite failures of the same field. Either the clauses cover only part of what the turn asked, so the conversation moves on with a requirement never enforced — or they require something the turn has no way to produce, so a correct run is held at that turn forever.",
+   "what": "Two opposite failures of the same field. Either the clauses cover only part of what the turn asked, so the conversation moves on with a requirement never enforced, or they require something the turn has no way to produce, so a correct run is held at that turn forever.",
    "why": "Continuation criteria are what the simulator advances on. A missing clause means every later turn builds on a hole. An unsatisfiable clause is worse: the run cannot proceed at all, on a condition the user never created.",
    "spot": "Two questions per row. Would this let the simulator move on while something the turn asked for is still undone? And can this turn actually produce what the clause demands, with nothing from later turns in hand?",
-   "fix": "After writing a turn's clauses, re-read that turn's prompt and tick off each ask against a clause. Every ask needs one, each has to be true or false on inspection, and none may name the answer.",
+   "fix": "After writing a turn's clauses, read back that turn's prompt and tick off each ask against a clause. Every ask needs one, each has to be true or false on inspection, and none may name the answer.",
    "note": null,
    "sources": [
     {
@@ -1053,7 +1053,7 @@
    "dim": "Milestones - Continuation Criteria & Assets",
    "cost": "bleed",
    "what": "A prompt the task actually ships that no milestone describes, or two milestones on one turn carrying identical intent and identical clauses. The gap usually comes from the set stopping one turn short, or from turn numbering that drifts by one.",
-   "why": "The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off-by-one, every milestone after it is attached to the wrong turn.",
+   "why": "The milestones are the script the simulator drives the conversation with, and every turn needs at least one. A turn with none gives the simulator nothing to hold the run to. A duplicate makes it check one condition twice while whatever the second slot was meant to cover goes unrepresented. Where the gap is an off by one, every milestone after it is attached to the wrong turn.",
    "spot": "List the turn index of every milestone beside the prompts. Every prompt number appears at least once, and each milestone's turn is the turn whose prompt asks for what it describes.",
    "fix": "Count prompts against milestone turns before submitting. Then sort by intent text and look for adjacent duplicates.",
    "note": null,
@@ -1397,10 +1397,10 @@
    "section": 4,
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "fail",
-   "what": "No negative-weight criteria at all, or so few that the traps the scenario was built around go unscored. Every criterion checks something correct is present; nothing checks something wrong is absent, so the traps the scenario was built around cost a run nothing.",
+   "what": "No negative weight criteria at all, or so few that the traps the scenario was built around go unscored. Every criterion checks something correct is present; nothing checks something wrong is absent, so the traps the scenario was built around cost a run nothing.",
    "why": "A scenario earns its difficulty from the wrong answers sitting next to the right ones: the superseded quote, the decoy invoice, the figure from a different part of the store. Without negatives the rubric cannot see any of them, so a run that walks into every trap and recovers scores the same as one that never went near a trap. They are also the cheapest criteria to write, because Leg A usually shows you which failure to write about.",
    "spot": "Count them. Negatives should be about a quarter of the set. Then check the sign is doing what you think: a negative criterion is a failure when it is Present, so if it reads like something a good run does, it is inverted and it will mark down your own golden.",
-   "fix": "After the Leg A run, read its trajectory for the wrong turns it actually took and write a negative for each one worth catching. State the flaw, never the virtue. Do not invent them to reach a number — but a scenario with no writable negatives usually means the traps are not there.",
+   "fix": "After the Leg A run, read its trajectory for the wrong turns it actually took and write a negative for each one worth catching. State the flaw, never the virtue. Do not invent them to reach a number, but a scenario with no writable negatives usually means the traps are not there.",
    "note": null,
    "sources": [
     {
@@ -1690,10 +1690,10 @@
    "section": 4,
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "fail",
-   "what": "Coverage fails in both directions. A requirement stated in a prompt that no criterion checks — most often the nothing-else half of an instruction. And a criterion requiring behaviour no turn requested, usually invented while writing the rubric against the golden instead of against the prompt.",
+   "what": "Coverage fails in both directions. A requirement stated in a prompt that no criterion checks, most often the closing half of an instruction, the part saying nothing else belongs. And a criterion requiring behaviour no turn requested, usually invented while writing the rubric against the golden instead of against the prompt.",
    "why": "An ungraded requirement means a run can do the wrong thing and still pass the whole set, which is exactly the failure the rubric existed to catch. A criterion nobody asked for does the reverse: it punishes a run for doing what the user actually said. Both are Major when the requirement is critical to the turn, and the second hides, because the golden often passes it by accident.",
    "spot": "Walk the prompts line by line and write down which criterion owns each requirement. Then walk the criteria and point at the sentence in a turn that asks for each one. Anything with no partner on either pass is a finding.",
-   "fix": "Write each criterion from the prompt, then check it against the golden — never the other way round. Where an instruction has a nothing-else half, write the closure criterion: X consists only of A, B and C.",
+   "fix": "Write each criterion from the prompt, then check it against the golden, never the other way round. Where an instruction closes a set, write the closure criterion: X consists only of A, B and C.",
    "note": null,
    "sources": [
     {
@@ -2006,10 +2006,10 @@
    "section": 4,
    "dim": "Rubric Criteria - Incorrect Weights",
    "cost": "bleed",
-   "what": "Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi-step cross-source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in the next, or two weight-5 criteria resting on a single read of one image.",
+   "what": "Weight 5 and weight 1 handed out without regard to how hard the criterion is: a multi step cross source derivation at the same weight as a direct file read, the same operation at 5 in one row and 3 in the next, or two weight-5 criteria resting on a single read of one image.",
    "why": "The scale exists to separate discovery from lookup. When it does not, the final score says nothing about whether the model did the hard part, and a run that nails every lookup while missing every derivation still scores well.",
-   "spot": "Sort your criteria by weight and read them in order. The order should match the effort the task actually demands. Count the axes each one requires — tool or source coordination, reasoning depth, modality, discovery — and read off +5 for three or more, +3 for exactly two, +1 for one or none.",
-   "fix": "Price by the difficulty of the read: multi-source derivations and media-only values at 5, direct lookups at 1. A two-level miss is what the taxonomy treats as Major.",
+   "spot": "Sort your criteria by weight and read them in order. The order should match the effort the task actually demands. Count the axes each one requires: tool or source coordination, reasoning depth, modality, discovery. Then read off +5 for three or more, +3 for exactly two, +1 for one or none.",
+   "fix": "Price by the difficulty of the read: multi source derivations and values that live only in the media at 5,direct lookups at 1. A two level miss is what the taxonomy treats as Major.",
    "note": null,
    "sources": [
     {
@@ -2028,7 +2028,7 @@
      "doc": "QC spec appendix",
      "sec": "Rubric Quality Definitions · Incorrect Weights - Major",
      "quote": "Criteria that are objectively incorrectly weighted by two levels, e.g., 1 is selected when 5 is appropriate or vice versa. NOTE: Weights should reflect the difficulty of the thing the verifier is testing, NOT importance to responding to the prompt.",
-     "means": "A two-level miss is Major on its own. One level is a minor issue."
+     "means": "A two level miss is Major on its own. One level is a minor issue."
     }
    ],
    "rule_src": "Guidelines 5.2 Rubric Weights  ·  QC spec appendix Rubric Quality Definitions · Incorrect Weights - Major",
@@ -2095,7 +2095,7 @@
    "section": 4,
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "bleed",
-   "what": "More than five criteria whose Evaluation Target is Trajectory. They are usually good criteria — the agent opened the image, it reached the record before applying it, it did not act on the out-of-scope file — and because each reads well alone, the count creeps up unnoticed.",
+   "what": "More than five criteria whose Evaluation Target is Trajectory. They are usually good criteria: the agent opened the image, it reached the record before applying it, it did not act on the file that was out of scope. Because each reads well alone, the count creeps up unnoticed.",
    "why": "The Guidelines cap trajectory rubrics at five, minimum zero, and say to focus on the last response. Past that the set stops grading the deliverable and starts grading the route, and the same evidence usually appears twice: once as a trajectory criterion about the read, once as an artifact criterion about the value it produced.",
    "spot": "Filter the objective block by Evaluation Target and count the Trajectory rows. Over five is the finding, and it is a count you can run in ten seconds.",
    "fix": "Drop the ones whose value an artifact criterion already states inline. Trimming is not a loss: the artifact criterion already proves the read happened.",
@@ -2110,7 +2110,7 @@
     {
      "doc": "Guidelines",
      "sec": "5.4 Category & Evaluation Target",
-     "quote": "The agent's reasoning path — Trajectory — An identification, a dependency order, a piece of restraint. The intent it pursued, never a named tool call.",
+     "quote": "The agent's reasoning path, Trajectory: An identification, a dependency order, a piece of restraint. The intent it pursued, never a named tool call.",
      "means": "Trajectory is a narrow target. Most of what feels like trajectory is really the artifact."
     }
    ],
@@ -2196,13 +2196,13 @@
    "what": "The task is built, the rubric is written, and the Model A run passes most of it. From inside the task nothing looks wrong: the criteria are sound and the run does fail some. What gives it away is the arithmetic.",
    "why": "Every task has to be hard enough that the Model A trajectory clearly fails at least 50% of the rubric score. That is a hard client requirement, not a target. A run that sails through most of the set is not separating a strong model from a weak one, and the data is worth less.",
    "spot": "Add up the weight of every criterion your Model A run failed and divide by the total objective weight. rubric_justifications.md records exactly which ones failed, so this is a number you can read off the folder before you submit.",
-   "fix": "Under 50% means the scenario is too easy. The fix is a harder scenario — put the sources in disagreement — never heavier weights on the same rows, and never padding the set.",
+   "fix": "Under 50% means the scenario is too easy. The fix is a harder scenario, putting the sources in disagreement, never heavier weights on the same rows, and never padding the set.",
    "note": null,
    "sources": [
     {
      "doc": "Guidelines",
      "sec": "Hard Client Requirements for Every Task",
-     "quote": "Model A has to fail — Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience. If the desired outcome is reached too easily, increase the complexity.",
+     "quote": "Model A has to fail: Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score, with failures that materially affect task completion and the user experience. If the desired outcome is reached too easily, increase the complexity.",
      "means": "A hard requirement with a number in it. Add up the failed weight and divide."
     },
     {
@@ -2261,7 +2261,7 @@
    "dim": "Rubric Criteria - Overall Rubric Quality",
    "cost": "fail",
    "what": "A criterion whose expected value or wording is contradicted by the task's own golden, its records or its prompt: a phrase quoted at a different length from the one the golden renders, identical wording demanded across two artifacts that legitimately paraphrase each other, a fact the message threads refute, or a file cited that is not in the inputs archive.",
-   "why": "The golden has to pass the complete rubric set. A criterion the golden fails is a broken criterion, not a broken golden, so a correct run gets marked Not Present. Each one counts as Major, and two Majors can fail the task on their own. The commonest cause is a rule that lives only in the Desired Outcome: the agent never sees the outcome, so a criterion resting on it fails a run that did exactly what it was told — and catches your own golden too.",
+   "why": "The golden has to pass the complete rubric set. A criterion the golden fails is a broken criterion, not a broken golden, so a correct run gets marked Not Present. Each one counts as Major, and two Majors can fail the task on their own. The commonest cause is a rule that lives only in the Desired Outcome: the agent never sees the outcome, so a criterion resting on it fails a run that did exactly what it was told, and it catches your own golden too.",
    "spot": "Grade the golden against every criterion as the last step before submitting. Separately, read the Desired Outcome clause by clause with the prompts beside it and mark every rule no turn asks for.",
    "fix": "Where the golden and a criterion disagree, decide which reading is right and rewrite the other two sources to match. Every rule found only in the outcome is a choice: add it to a prompt, or take it out of the outcome and out of any criterion resting on it. Check every filename a criterion cites against the inputs archive.",
    "note": null,
@@ -2548,7 +2548,7 @@
     {
      "doc": "Guidelines",
      "sec": "5.4 Category & Evaluation Target",
-     "quote": "Agent Behavior — Target: Trajectory, always. If you wrote Agent Behavior against an artifact, a state change or the final message, you picked the wrong category: you are grading the deliverable, which is Task Completion, Instruction Following or Factuality. This is the single highest value rule in the taxonomy, and it is the reviewer's standard audit query.",
+     "quote": "Agent Behavior, Target: Trajectory, always. If you wrote Agent Behavior against an artifact, a state change or the final message, you picked the wrong category: you are grading the deliverable, which is Task Completion, Instruction Following or Factuality. This is the single highest value rule in the taxonomy, and it is the reviewer's standard audit query.",
      "means": "The spec says outright that reviewers query for this pairing."
     },
     {
@@ -2640,8 +2640,8 @@
    "dim": "Rubric Criteria - Redundant Criteria",
    "cost": "bleed",
    "what": "Two criteria decided by the same piece of evidence: one fully swallowed by a broader one earlier in the set, a negative that is a positive with the sign flipped, or a subjective criterion restating an objective value check with a presentation layer on top.",
-   "why": "Redundant criteria double-weight one outcome, so a single slip costs the run twice. A subjective block that repeats objective values also stops doing its own job, which is grading how the artifact reads and looks.",
-   "spot": "For each criterion, name the one line of evidence that decides it. If another criterion is decided by the same line, you have a duplicate. A subjective criterion has to survive with its values stripped out — if nothing is left, it belonged in the objective block.",
+   "why": "Redundant criteria double weight one outcome, so a single slip costs the run twice. A subjective block that repeats objective values also stops doing its own job, which is grading how the artifact reads and looks.",
+   "spot": "For each criterion, name the one line of evidence that decides it. If another criterion is decided by the same line, you have a duplicate. A subjective criterion has to survive with its values stripped out. If nothing is left, it belonged in the objective block.",
    "fix": "Keep the one that carries the evidence and drop or rewrite the other.",
    "note": null,
    "sources": [
@@ -2901,8 +2901,8 @@
    "dim": "Rubric Criteria - Subjective Block Scope",
    "cost": "bleed",
    "what": "Two numbers that go wrong together. The block carries more than 30% of total weight, and it holds five or six criteria where the Guidelines expect ten or more. The ones present are usually sound and cluster on one property, most often whether the page reads as finished.",
-   "why": "The cap keeps the score dominated by deterministic checks. Over it, presentation judgments outweigh whether the task was done. Under the count, the block cannot cover a multi-panel deliverable: a nested table, a timeline strip or a set of diagrams goes ungraded, and two runs presenting the same correct figures very differently score the same.",
-   "spot": "Two sums before you submit. Count the rows — ten is the floor, not the target. Then compute the subjective share using absolute values, because negatives push the real figure above the naive one.",
+   "why": "The cap keeps the score dominated by deterministic checks. Over it, presentation judgments outweigh whether the task was done. Under the count, the block cannot cover a multi panel deliverable: a nested table, a timeline strip or a set of diagrams goes ungraded, and two runs presenting the same correct figures very differently score the same.",
+   "spot": "Two sums before you submit. Count the rows: ten is the floor, not the target. Then compute the subjective share using absolute values, because negatives push the real figure above the naive one.",
    "fix": "Walk the deliverable region by region and write one criterion for whichever region has none. If you are over the cap, grow the objective side first with checks the milestones already imply, and only then trim subjective weights. Leave margin rather than landing on 30.0%.",
    "note": null,
    "sources": [
@@ -3132,7 +3132,7 @@
    "section": 6,
    "dim": "Rubric Criteria - Overfitting",
    "cost": "bleed",
-   "what": "A subjective criterion names the exact heading, button label, row label or column title your golden page happens to use, and requires it. The property underneath is usually real and gradeable. The criterion asks for the wording instead of the property, and none of the quoted strings appears in any prompt — it is your own copy, read back off your own build.",
+   "what": "A subjective criterion names the exact heading, button label, row label or column title your golden page happens to use, and requires it. The property underneath is usually real and gradeable. The criterion asks for the wording instead of the property, and none of the quoted strings appears in any prompt: it is your own copy, read back off your own build.",
    "why": "Subjective rubrics grade how the artifact reads: layout, hierarchy, spacing, consistency. A criterion naming one build's text rejects a subset of valid implementations, and a second correct run presenting the same findings under its own wording fails almost the whole block. Where most of the block is written this way, the count alone carries the task past the failing threshold, so rewriting three or four is not enough.",
    "spot": "Cover the page and read the criterion again. If it only makes sense with your build in front of you, it is naming your text rather than a property.",
    "fix": "Write each one from the property down. A label the user fixed in a prompt can be required; a label you chose cannot.",
@@ -3232,7 +3232,7 @@
    "what": "A figure, a time, a mapping or a placement written into the golden that the photographed page, the log or the message thread underneath it puts somewhere else. Or a sentence of prose inside the golden stating a total the rest of the same page disagrees with, usually true of an earlier draft. The artifact reads well and every graded column around it is right, which is why it survives to submission.",
    "why": "The golden is the reference every subjective rating and the pairwise comparison are scored against, so a wrong value in it is graded as correct and a run that reads the source properly is marked down. Where a criterion grades the same detail, the contradiction also makes that criterion unpassable.",
    "spot": "Take every value the golden asserts that no criterion grades and point at the source line it came from. Ungraded values are where this hides, because nothing else in the task checks them. Then search the golden for every sentence containing a total, a count or a recommendation and check it against the tables on the same page.",
-   "fix": "Correct the golden from the source, in every place the value appears — these travel in threes. A paragraph written at turn 1 is the one most likely to be stale at turn 5.",
+   "fix": "Correct the golden from the source, in every place the value appears. These travel in threes. A paragraph written at turn 1 is the one most likely to be stale at turn 5.",
    "note": null,
    "sources": [
     {
@@ -3334,13 +3334,13 @@
    "what": "The revision turn changes the thing it was asked to change and leaves every sentence, label and comment that depended on it untouched, so the final artifact states the old position and the new one at the same time.",
    "why": "Revision Turn Handling fails on a regression, and this is the commonest form: the graded value moves, the prose around it does not. A reader meets an artifact arguing with itself, and a grader reading a criterion against the stale half marks a correct run Not Present.",
    "spot": "After every revision turn, search the artifact for the value, the label and the name that moved, and read each hit in place.",
-   "fix": "A revision is finished when nothing left on the page describes the state before it. Change one thing precisely, then re-read the whole artifact for every sentence that just became false.",
+   "fix": "A revision is finished when nothing left on the page describes the state before it. Change one thing precisely, then read back the whole artifact for every sentence that just became false.",
    "note": null,
    "sources": [
     {
      "doc": "QC spec",
      "sec": "Multi-Turn - Revision Turn Handling",
-     "quote": "A correct golden shows the revision applied to work that already existed: it satisfies the revised brief while still carrying what the earlier turns established. FAIL: both present but contradictory — March rows gone and the flags survived, but the total at the bottom still includes the March amounts. Or the header still says “5 receipts” when 3 remain. The edit touched the table and not the parts that depend on it.",
+     "quote": "A correct golden shows the revision applied to work that already existed: it satisfies the revised brief while still carrying what the earlier turns established. FAIL: both present but contradictory: March rows gone and the flags survived, but the total at the bottom still includes the March amounts. Or the header still says “5 receipts” when 3 remain. The edit touched the table and not the parts that depend on it.",
      "means": "The spec names this exact shape as a failing case."
     },
     {
@@ -3391,14 +3391,14 @@
   },
   {
    "slug": "closeout-mechanics",
-   "title": "The five minute close-out nobody runs",
+   "title": "The five minute close out nobody runs",
    "section": 7,
    "dim": "Golden Solution - Trajectory Exclusion · Run Selection",
    "cost": "fail",
-   "what": "Five mechanical checks, each cheap, each seen repeatedly. The artifacts archive holding files the prompts never asked for — the generator script, working notes, a build log. No preferred run starred when several completed. A file spelled one way in the prompt and another in the archive. Typos and half-finished clauses in the prompts and criteria a grader has to decode. And a golden conversation that stops before the task's last turn.",
+   "what": "Five mechanical checks, each cheap, each seen repeatedly. The artifacts archive holding files the prompts never asked for: the generator script, working notes, a build log. No preferredrun starred when several completed. A file spelled one way in the prompt and another in the archive. Typos and half finished clauses in the prompts and criteria a grader has to decode. And a golden conversation that stops before the task's last turn.",
    "why": "Trajectory Exclusion is scored against the artifacts listing: finished artifacts only, named exactly as the prompts name them, nothing describing how the work was produced. A generator script is the clearest case, because its comments usually say which input each answer came from. An unstarred run leaves whoever opens the task next with only a timestamp, and a later run is not automatically the better one. A criterion citing a filename the archive does not contain is ungradeable. And a grader who has to work out what a clause means is making the judgment the clause was supposed to make.",
    "spot": "Five lists, side by side, in five minutes. Archive contents against the filenames the prompts name. The run picker reading 1/1 and not 0/1. Every filename character for character. The prompts and criteria read straight through as a grader would. User markers in the golden transcript against populated prompts.",
-   "fix": "Remove anything from the archive that is not a named deliverable, then read each delivered document for build instructions meant for you rather than the reader. Star the run your criteria were written against. The prompt's spelling wins — fix the archive to match it.",
+   "fix": "Remove anything from the archive that is not a named deliverable, then read each delivered document for build instructions meant for you rather than the reader. Star the run your criteria were written against. The prompt's spelling wins, so fix the archive to match it.",
    "note": null,
    "sources": [
     {

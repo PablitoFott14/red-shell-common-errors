@@ -2,34 +2,46 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The deliverable sits below the complexity bar · Red Shell Common Errors</title>
-<meta name="description" content="The task ships a styled static page — no script, no control, no state, no linked views — while the Agent Objective calls it a dashboard. The scenario and the data behind it are usually strong. Nothing">
+<meta name="description" content="The task ships a styled static page with no script, no control, no state and no linked views, while the Agent Objective calls it a dashboard. The scenario and the data behind it are usually strong. No">
 <link rel="stylesheet" href="../assets/style.css"><script src="../assets/viewer.js" defer></script>
 </head><body>
 <header class="top"><a class="brand" href="../index.html"><span class="bd"></span>Red Shell · Common Errors</a>
-<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Pre-submit checklist</a></nav></header>
+<nav><a href="../index.html">All mistakes</a><a href="../checklist.html">Before you submit</a></nav></header>
 <main class="wrap mpage">
 <p class="crumb"><a href="../index.html">All mistakes</a> · Section 1 · The task you were given</p>
 <div class="mhead"><h1>The deliverable sits below the complexity bar</h1><span class="bad fail">fails the task</span></div>
 <div class="mstats"><div class="d">Complexity Bar</div></div>
-<div class="three">
-  <div class="t3"><h4>What the mistake is</h4><p>The task ships a styled static page — no script, no control, no state, no linked views — while the Agent Objective calls it a dashboard. The scenario and the data behind it are usually strong. Nothing in any prompt asks for interaction, so the page comes out a document.</p></div>
-  <div class="t3 t3s"><h4>How to recognise it in your own task</h4><p>Read your own prompts and ask what the page does when someone clicks it. If the answer is nothing, you built a document. The word dashboard in the Agent Objective does not change that.</p></div>
-  <div class="t3 t3f"><h4>What to do instead</h4><p>Pick the deliverable type before prompt 1 and check it against the bar&#x27;s floor for that type. If the data the agent will gather would support a sort, a filter or two linked views, write the prompt that asks for them.</p></div>
-</div>
-<div class="why"><h4>Why it costs you</h4><p>The bar is explicit that a styled static page is not interactive HTML, and that a dashboard needs several linked views over data the model extracted itself. A document is the lowest priority deliverable on the table, so the task scores below where the client wants it however good the reasoning underneath is. It is a scenario-stage decision, so it cannot be patched later.</p></div>
 
-<section class="rules">
-  <h2 class="sh">What the project says</h2>
-  <p class="shp">The rules this breaks, quoted from the documents in Project Resources. Section titles are
-  the ones printed in the document, so you can go and read the whole thing around them.</p>
-  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Complexity Bar</span></div><blockquote>Interactive HTML — Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard — Several linked views over data the model extracted itself. One chart is not a dashboard.</blockquote><p class="rcm">Both are P0 floors. A page with no control and no state is a document, whatever the objective calls it.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Complexity Bar</span></div><blockquote>Make sure the task clears that bar while you are still designing the scenario, because the artifact defined in the opening prompt shapes the inputs, workflow, and rubric set that follow.</blockquote><p class="rcm">This is decided before prompt 1. After the run it cannot be patched.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Complexity Bar</span></div><blockquote>Raising the complexity standard from Blue Shell has been one of the clearest and most consistent client requirements.</blockquote><p class="rcm">The bar is a client requirement, not a house preference.</p></article>
-</section>
-<section class="exsec">
-  <h2 class="sh">Where it happened in a real task</h2>
-  <p class="shp">Open one and it expands here, with the rule on the left and the task's own fields on the
-  right. The tabs carry only the parts of the task this error lives in. Escape closes it.</p>
-  <div class="exlist"><button type="button" class="excard" data-ex="below-complexity-bar-1"><div class="exn">Example 1</div><div class="exwhat">ada_list.html ships with no script tag, no button, no filter and no in-page navigation: 8,959 characters of markup around nine embedded images.</div><div class="exmeta"><span class="oc">Commerce &amp; Product</span><span class="oc">3 turns</span><code class="ovid">6aa73af2a7b183d5fb7eb8bb</code></div><span class="exopen">Open it here →</span></button></div>
-</section>
+<section class="step"><div class="stepn">1</div><div class="stepb">
+  <h2>What the issue is</h2>
+  <p class="lead">The task ships a styled static page with no script, no control, no state and no linked views, while the Agent Objective calls it a dashboard. The scenario and the data behind it are usually strong. Nothing in any prompt asks for interaction, so the page comes out a document.</p>
+</div></section>
+
+<section class="step"><div class="stepn">2</div><div class="stepb">
+  <h2>Why it matters, and what the project expects</h2>
+  <p>The bar is explicit that a styled static page is not interactive HTML, and that a dashboard needs several linked views over data the model extracted itself. A document is the lowest priority deliverable on the table, so the task scores below where the client wants it however good the reasoning underneath is. It is a scenario stage decision, so it cannot be patched later.</p>
+  
+  <article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Complexity Bar</span></div><blockquote>Interactive HTML: Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard: Several linked views over data the model extracted itself. One chart is not a dashboard.</blockquote><p class="rcm">Both are P0 floors. A page with no control and no state is a document, whatever the objective calls it.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Complexity Bar</span></div><blockquote>Make sure the task clears that bar while you are still designing the scenario, because the artifact defined in the opening prompt shapes the inputs, workflow, and rubric set that follow.</blockquote><p class="rcm">This is decided before prompt 1. After the run it cannot be patched.</p></article><article class="rulecard"><div class="rch"><span class="rcdoc">Attempter Guidelines</span><span class="rcsec">Complexity Bar</span></div><blockquote>Raising the complexity standard from Blue Shell has been one of the clearest and most consistent client requirements.</blockquote><p class="rcm">The bar is a client requirement, not a house preference.</p></article>
+</div></section>
+
+<section class="step"><div class="stepn">3</div><div class="stepb">
+  <h2>How to recognise it in your own task</h2>
+  <p>Read your own prompts and ask what the page does when someone clicks it. If the answer is nothing, you built a document. The word dashboard in the Agent Objective does not change that.</p>
+</div></section>
+
+<section class="step"><div class="stepn">4</div><div class="stepb">
+  <h2>Real tasks where this happened</h2>
+  <p class="shp">One real task in this project is carrying it. They are evidence that it is real and something to practise spotting it on, not a
+  second version of the rule. Open one and it expands here, with the point on the left and the task's own
+  fields on the right. Escape closes it.</p>
+  <div class="exlist"><button type="button" class="excard" data-ex="below-complexity-bar-1"><div class="exn">Real task 1</div><div class="exwhat">ada_list.html ships with no script tag, no button, no filter and no in-page navigation: 8,959 characters of markup around nine embedded images.</div><div class="exmeta"><span class="oc">Commerce &amp; Product</span><span class="oc">3 turns</span><code class="ovid">6aa73af2a7b183d5fb7eb8bb</code></div><span class="exopen">Open it here →</span></button></div>
+</div></section>
+
+<section class="step"><div class="stepn">5</div><div class="stepb">
+  <h2>What to do instead</h2>
+  <p class="lead">Pick the deliverable type before prompt 1 and check it against the bar&#x27;s floor for that type. If the data the agent will gather would support a sort, a filter or two linked views, write the prompt that asks for them.</p>
+</div></section>
+
 <nav class="pager"><span></span><a href="universe-missing-records.html">The rules point at records the universe does not hold →</a></nav>
 </main>
 <div class="ovback" id="ex-below-complexity-bar-1" hidden>
@@ -41,9 +53,9 @@
   </div><p class="ovscen">There is an ecobee in the hallway and an argument in a text thread going back to 2023 that neither of them wants to end. He wants 71 and she wants 74. Dixie Electric went from $186.40 in March to $312.40 in August, and nobody in that thread has ever priced…</p></header>
   <div class="ovbody">
     <aside class="ovrail">
-      <div class="railh"><span class="eyebrow">The mistake in this task</span><span class="sp"></span>
+      <div class="railh"><span class="eyebrow">The issue, in this task</span><span class="sp"></span>
         <button type="button" class="btn q railhide">Hide</button></div>
-      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Three turns; the Agent Objective calls the deliverable a dashboard, and 14 orders and 222 order lines sit behind the five products it covers.</div></div><div class="rr"><div class="rl">What is wrong</div><div class="rv">ada_list.html ships with no script tag, no button, no filter and no in-page navigation: 8,959 characters of markup around nine embedded images.</div></div><div class="rr"><div class="rl">Why it is wrong</div><div class="rv">What the task produces is sections, a table and figures the text refers to — a document. The data for a real dashboard was already gathered: a sortable buy list, a filter for Fresh versus not-on-Fresh rows, or a view showing each usual product against its alternative with the order counts that decide between them were all available and none were asked for.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Ask for it in the prompt: &quot;put the buy list in a table I can sort by aisle or by price, and give me a toggle that hides anything Fresh doesn&#x27;t stock.&quot;</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Interactive HTML — Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard — Several linked views over data the model extracted itself. One chart is not a dashboard.</blockquote><p class="rsrc">Attempter Guidelines · Complexity Bar</p><p class="rcm">Both are P0 floors. A page with no control and no state is a document, whatever the objective calls it.</p></div><div class="railrule"><blockquote>Make sure the task clears that bar while you are still designing the scenario, because the artifact defined in the opening prompt shapes the inputs, workflow, and rubric set that follow.</blockquote><p class="rsrc">Attempter Guidelines · Complexity Bar</p></div><div class="railrule"><blockquote>Raising the complexity standard from Blue Shell has been one of the clearest and most consistent client requirements.</blockquote><p class="rsrc">Attempter Guidelines · Complexity Bar</p></div></div></div>
+      <div class="raillist"><div class="rr"><div class="rl">The setup</div><div class="rv">Three turns; the Agent Objective calls the deliverable a dashboard, and 14 orders and 222 order lines sit behind the five products it covers.</div></div><div class="rr"><div class="rl">Where the issue shows up here</div><div class="rv">ada_list.html ships with no script tag, no button, no filter and no in-page navigation: 8,959 characters of markup around nine embedded images.</div></div><div class="rr"><div class="rl">Why that is wrong</div><div class="rv">What the task produces is sections, a table and figures the text refers to — a document. The data for a real dashboard was already gathered: a sortable buy list, a filter for Fresh versus not-on-Fresh rows, or a view showing each usual product against its alternative with the order counts that decide between them were all available and none were asked for.</div></div><div class="rr"><div class="rl">What it should have said</div><div class="rv">Ask for it in the prompt: &quot;put the buy list in a table I can sort by aisle or by price, and give me a toggle that hides anything Fresh doesn&#x27;t stock.&quot;</div></div><div class="railrules"><div class="rl">The rules it breaks</div><div class="railrule"><blockquote>Interactive HTML: Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard: Several linked views over data the model extracted itself. One chart is not a dashboard.</blockquote><p class="rsrc">Attempter Guidelines · Complexity Bar</p><p class="rcm">Both are P0 floors. A page with no control and no state is a document, whatever the objective calls it.</p></div><div class="railrule"><blockquote>Make sure the task clears that bar while you are still designing the scenario, because the artifact defined in the opening prompt shapes the inputs, workflow, and rubric set that follow.</blockquote><p class="rsrc">Attempter Guidelines · Complexity Bar</p></div><div class="railrule"><blockquote>Raising the complexity standard from Blue Shell has been one of the clearest and most consistent client requirements.</blockquote><p class="rsrc">Attempter Guidelines · Complexity Bar</p></div></div></div>
     </aside>
     <section class="ovev">
       <nav class="ovtabs" role="tablist">
