@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storvik Bakeri — Deck Oven Decision</title>
+<style>
+  :root{
+    --ink:#1c2733; --muted:#5c6b7a; --line:#d7dee5; --bg:#fff;
+    --old:#b02a2a; --new:#0a7d3c; --flagbg:#fff6e5; --flagbd:#e9c877;
+    --nobg:#fdecec; --nobd:#e3a3a3; --okbg:#eaf6ee; --okbd:#a6d5b6;
+    --hdr:#243447; --band:#eef2f6;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);font-size:10.3px;line-height:1.34;background:#eceff2}
+  .page{width:8.5in;min-height:11in;margin:12px auto;background:var(--bg);padding:0.42in 0.5in 0.34in;
+    box-shadow:0 1px 6px rgba(0,0,0,.15)}
+  h1{font-size:18px;margin:0;letter-spacing:.2px;color:var(--hdr)}
+  .sub{color:var(--muted);font-size:10px;margin:2px 0 0}
+  .rule{height:3px;background:var(--hdr);margin:7px 0 9px;border-radius:2px}
+  h2{font-size:11.5px;margin:0 0 4px;color:var(--hdr);text-transform:uppercase;letter-spacing:.5px;
+    border-bottom:1.5px solid var(--line);padding-bottom:2px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:11px 14px}
+  section{break-inside:avoid}
+  table{width:100%;border-collapse:collapse;margin-top:3px}
+  th,td{padding:2.5px 5px;text-align:left;vertical-align:top}
+  thead th{background:var(--band);font-size:8.8px;text-transform:uppercase;letter-spacing:.3px;color:var(--muted);
+    border-bottom:1px solid var(--line)}
+  tbody td{border-bottom:1px solid #eef1f4}
+  .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tot td{border-top:1.5px solid var(--hdr);border-bottom:none;font-weight:700;background:#f6f8fa}
+  .src{color:var(--muted);font-size:8.6px}
+  .old{color:var(--old);text-decoration:line-through}
+  .new{color:var(--new);font-weight:700}
+  .tag{display:inline-block;font-size:7.6px;font-weight:700;padding:0.5px 4px;border-radius:8px;
+    vertical-align:middle;margin-left:3px;text-transform:uppercase;letter-spacing:.3px}
+  .tag.corr{background:#e7f3ec;color:var(--new);border:1px solid var(--okbd)}
+  .verdict{font-weight:800;font-size:11px;padding:1px 7px;border-radius:4px}
+  .v-no{background:var(--nobg);color:var(--old);border:1px solid var(--nobd)}
+  .v-cond{background:var(--flagbg);color:#8a6300;border:1px solid var(--flagbd)}
+  .box{border:1px solid var(--line);border-radius:5px;padding:6px 8px;margin-top:6px;background:#fbfcfd}
+  .flag{background:var(--flagbg);border:1px solid var(--flagbd);border-radius:5px;padding:5px 8px;margin-top:6px}
+  ul{margin:3px 0 0;padding-left:15px}
+  li{margin:1.5px 0}
+  .kv{display:flex;justify-content:space-between;gap:6px;padding:1.5px 0;border-bottom:1px dotted #e3e8ed}
+  .kv:last-child{border-bottom:none}
+  .kv b{font-variant-numeric:tabular-nums}
+  .lead{font-weight:700}
+  .foot{margin-top:9px;border-top:1px solid var(--line);padding-top:5px;color:var(--muted);font-size:8.4px}
+  .neg{color:var(--old)}
+  .callout{font-size:9.4px}
+  .balrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:2px}
+  .bal{border:1px solid var(--line);border-radius:5px;padding:5px 7px;background:#fbfcfd}
+  .bal .lbl{font-size:8.3px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+  .bal .amt{font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:1px}
+  .amt.pos{color:var(--new)} .amt.negb{color:var(--old)}
+  @media print{body{background:#fff}.page{margin:0;box-shadow:none;width:auto}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Storvik Bakeri — Deck Oven Decision</h1>
+  <p class="sub">One-page summary for your 1:00&nbsp;pm call with Delphine Mowatt (Cap Sante), 9 September. Doyon 3T‑2 deck oven, 808 Commercial Ave. &nbsp;<b>Status: nothing ordered, nothing signed.</b></p>
+  <div class="rule"></div>
+
+  <!-- SECTION 1: COST -->
+  <section style="margin-bottom:10px">
+    <h2>1 · The cost — May vs. with the allowance, line by line</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>One-time item</th>
+          <th class="num">As it stood in May</th>
+          <th class="num">With allowance in it</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Doyon 3T‑2 deck oven, delivered &amp; installed</td><td class="num">21,400.00</td><td class="num"><span class="new">22,250.00</span><span class="tag corr">current</span></td><td class="src">May: quote 14827 (expired 19 Jun). Now: <b>quote 15310, 1 Sep</b> — holds to <b>16 Oct 2026</b>, <b>10–12 wk</b> lead</td></tr>
+        <tr><td>Three-phase service + 400A panel</td><td class="num">11,240.00</td><td class="num">11,240.00</td><td class="src">Fidalgo Electric 2618, 2 May</td></tr>
+        <tr><td>Puget Sound Energy — transformer &amp; run</td><td class="num">3,900.00</td><td class="num">3,900.00</td><td class="src">PSE estimate via Fidalgo</td></tr>
+        <tr><td>City of Anacortes electrical permit</td><td class="num">312.00</td><td class="num">312.00</td><td class="src">Fidalgo, 2 May</td></tr>
+        <tr><td>Tenant improvement allowance</td><td class="num">—</td><td class="num neg">(18,000.00)</td><td class="src">Cap Sante renewal option, 16 Jun</td></tr>
+        <tr class="tot"><td>Net capital cost</td><td class="num">36,852.00</td><td class="num">19,702.00</td><td class="src">out of pocket</td></tr>
+        <tr><td>If financed (SaviBank line, 8.75% APR, 60 mo)</td><td class="num">—</td><td class="num new">406.59 / mo</td><td class="src">verbal only — nothing in writing (Terese, 25 Aug)</td></tr>
+      </tbody>
+    </table>
+    <div class="flag callout">
+      <b>Read the right-hand column with care.</b> The −$18,000 is <b>not</b> a discount you can spend on a 2027 oven — see box 2. On its own merits the oven still needs the full package of work — <b>$37,702</b> at the current price, before any allowance. <b>Current oven price: NWBE quote 15310 (1 Sep), $22,250 delivered &amp; installed</b> (up $850 on April — 4% maker increase), <b>holds to 16 Oct 2026</b>; lead time <b>10–12 weeks</b> from signed order + deposit (order by 16 Oct ships the week of 4 Jan 2027 at the latest).
+    </div>
+  </section>
+
+  <div class="grid">
+
+    <!-- SECTION 2: ALLOWANCE -->
+    <section>
+      <h2>2 · The allowance — what it is &amp; can it buy the oven</h2>
+      <div style="margin-bottom:4px"><span class="verdict v-no">NO — it cannot pay for an oven bought before the new term</span></div>
+      <p style="margin:4px 0 2px"><b>What Cap Sante actually wrote</b> (16 &amp; 18 June; on 26 Aug Delphine wrote, "Nothing has been withdrawn and nothing has been amended"):</p>
+      <ul>
+        <li>It is a <b>reimbursement, not a rent credit</b> — and "it cannot be taken as one."</li>
+        <li>Cap to <b>$18,000</b>, against <b>paid invoices</b> for work at the premises.</li>
+        <li>Scope must be <b>approved in writing before work begins</b>.</li>
+        <li>Invoices submitted <b>within 12 months of commencement</b> — and commencement is <b>1 July 2030</b>.</li>
+        <li>It exists <b>only if you sign the 5-yr renewal</b> (2030–2035, $24.75/sq ft NNN, 3% compounding). Deadline to accept: <b>15 Jan 2027</b>.</li>
+      </ul>
+      <div class="box callout">
+        <b>Why it doesn't touch a 2027 oven:</b> the reimbursement window opens at the 2030 commencement, so a 2027 purchase falls years outside it and before any pre-approval could exist. Odalys, 26 Aug: <i>"The 18,000.00 does not exist unless you exercise the option… money attached to a signature on a five year term beginning 1 July 2030, not money attached to an oven."</i>
+      </div>
+    </section>
+
+    <!-- SECTION 3: BUILDING -->
+    <section>
+      <h2>3 · Can the building take the oven as quoted?</h2>
+      <div style="margin-bottom:4px"><span class="verdict v-no">NO — not without the three-phase upgrade</span></div>
+      <p style="margin:4px 0 2px">From <b>Peder's note left after the panel, 24 July</b>:</p>
+      <ul>
+        <li>Building main: <b>200A, 240/120V — single-phase (1ph)</b>.</li>
+        <li>Everything running ≈ <b>148A</b> (of 200A).</li>
+        <li>Walk-in + mixer <b>still share one leg</b> — "next job."</li>
+        <li>Doyon needs <b>45A at 208V, three-phase (3ph)</b>.</li>
+      </ul>
+      <div class="box callout">
+        <b>On amps alone it would have just fitted:</b> 148A running + 45A = 193A of the 200A main, ~7A to spare. But that is academic — a 240/120V single-phase service <b>cannot supply 208V three-phase</b> at all, so the limit is the phase, not the amperage. This is exactly the wall you hit in May, and the reason Fidalgo's $15,452 of service + panel + transformer sits in the cost. <b>Three-phase service is a prerequisite, not an option.</b>
+      </div>
+    </section>
+  </div>
+
+  <!-- SECTION 4: MONTHLY -->
+  <section style="margin-top:10px">
+    <h2>4 · What you're committed to every month from September — Marguerite's corrections applied</h2>
+    <table>
+      <thead>
+        <tr><th>Monthly line</th><th class="num">On the sheet</th><th class="num">Corrected</th><th>Basis (FinTrack unless noted)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rent — Cap Sante, all in</td>
+          <td class="num old">4,340.00</td>
+          <td class="num"><span class="new">4,462.00</span><span class="tag corr">fixed</span></td>
+          <td class="src">FinTrack: $4,462 charged since 1 Jul (was $4,340)</td>
+        </tr>
+        <tr>
+          <td>SBA 7(a) loan 5507</td>
+          <td class="num">2,030.79</td>
+          <td class="num">2,030.79</td>
+          <td class="src">FinTrack: confirmed, unchanged</td>
+        </tr>
+        <tr>
+          <td>Extra payroll since July (per run × 26 ÷ 12)</td>
+          <td class="num old">4,116.67</td>
+          <td class="num"><span class="new">5,850.00</span><span class="tag corr">fixed</span></td>
+          <td class="src">$2,700/run, not $1,900 (Odalys, 2 Aug)</td>
+        </tr>
+        <tr>
+          <td>Oven electricity <span class="src">— only if oven proceeds</span></td>
+          <td class="num">310.00</td>
+          <td class="num">310.00</td>
+          <td class="src">your estimate, PSE tariff × 45A — rough</td>
+        </tr>
+        <tr>
+          <td>Oven loan payment <span class="src">— only if oven proceeds</span></td>
+          <td class="num old">389.05</td>
+          <td class="num"><span class="new">406.59</span><span class="tag corr">current</span></td>
+          <td class="src">on $19,702 financed (oven net of leftover allowance), 8.75%/60 mo</td>
+        </tr>
+        <tr class="tot">
+          <td>"Committed before flour, butter or me"</td>
+          <td class="num old">11,186.51</td>
+          <td class="num"><span class="new">13,059.38</span></td>
+          <td class="src">corrections + current oven price</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="grid" style="margin-top:6px;gap:8px 14px">
+      <div class="box callout" style="background:var(--okbg);border-color:var(--okbd)">
+        <b>Committed no matter what you decide: <span style="font-size:11px">$12,342.79</span>/mo</b><br>
+        Rent $4,462 + SBA $2,030.79 + extra payroll $5,850. These are real today.
+      </div>
+      <div class="box callout" style="background:var(--flagbg);border-color:var(--flagbd)">
+        <b>Added only if you sign for the oven: +$716.59/mo</b><br>
+        Oven electricity $310 + oven loan $406.59. Nothing is ordered or signed, so this is not yet a commitment.
+      </div>
+    </div>
+    <p class="src" style="margin-top:5px"><b>What changed vs. the sheet:</b> rent +$122.00, extra payroll +$1,733.33, and oven loan +$17.54 (financed amount rose to $19,702) → the monthly total rose <b>$1,872.87</b>, from $11,186.51 to $13,059.38.<span class="src">(The "extra payroll" line is the <i>increase</i> since July, not total payroll.)</span></p>
+
+    <div class="box" style="margin-top:7px">
+      <b style="font-size:10px">Does this match August? — checked against what actually left SaviBank Business Checking ·2207 (FinTrack)</b>
+      <table style="margin-top:3px">
+        <thead><tr><th>Line</th><th class="num">On the page (monthly)</th><th class="num">Actually left ·2207 in August</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>Rent — Cap Sante</td><td class="num">4,462.00</td><td class="num">4,462.00</td><td><span class="tag corr">match</span> <span class="src">1 Aug, one charge</span></td></tr>
+          <tr><td>SBA 7(a) loan 5507</td><td class="num">2,030.79</td><td class="num">2,030.79</td><td><span class="tag corr">match</span> <span class="src">1 Aug, one charge</span></td></tr>
+          <tr><td>Payroll (Gusto)</td><td class="num">5,850.00</td><td class="num">29,760.00</td><td><span class="tag" style="background:var(--flagbg);color:#8a6300;border:1px solid var(--flagbd)">not the same figure</span></td></tr>
+        </tbody>
+      </table>
+      <p class="src" style="margin-top:4px"><b>Rent and loan are exact.</b> <b>Payroll needs reading carefully:</b> the page line is the <i>increase</i> since July, averaged (2,700/run × 26 ÷ 12 = 5,850) — it is not the money that leaves the account. Full payroll out of ·2207 in August was <b>$29,760.00</b> (two runs of $14,880, 8/7 and 8/21). The extra-vs-June portion in August was <b>2 × $2,700 = $5,400</b>; the $5,850 on the page is the 12-month average, which runs ~$450 high in a two-run month like August (some months carry three runs, which is where the average comes back). Nothing on the page is wrong — just don't expect the $5,850 to equal a single month's debit.</p>
+    </div>
+  </section>
+
+  <!-- BALANCES -->
+  <section style="margin-top:10px">
+    <h2>5 · Account balances — from FinTrack</h2>
+    <div class="balrow">
+      <div class="bal"><div class="lbl">SaviBank Business Checking ·2207</div><div class="amt pos">$32,145.61</div></div>
+      <div class="bal"><div class="lbl">SaviBank Visa Business ·4418</div><div class="amt negb">−$3,186.42</div></div>
+      <div class="bal"><div class="lbl">SBA 7(a) Loan ·5507 (balance)</div><div class="amt negb">−$105,676.14</div></div>
+      <div class="bal"><div class="lbl">Square ·9931</div><div class="amt pos">$2,140.85</div></div>
+    </div>
+    <p class="src" style="margin-top:4px">Per your instruction, these are FinTrack balances — not the bank's alert emails (SaviBank's 24 Aug statement alert showed ·2207 at $21,207.88; FinTrack's current figure is used above).</p>
+  </section>
+
+  <!-- SECTION 6: TWO PATHS -->
+  <section style="margin-top:10px">
+    <h2>6 · Two ways forward</h2>
+    <div class="grid" style="gap:11px 14px">
+
+      <div class="box" style="margin-top:0;padding:0;overflow:hidden">
+        <div style="background:var(--hdr);color:#fff;padding:4px 8px;font-weight:800;font-size:10.5px">
+          Path A · Buy now, on your own money <span style="font-weight:600;opacity:.85">— running early 2027</span>
+        </div>
+        <div style="padding:6px 8px">
+          <div class="kv"><span>Oven, delivered &amp; installed (quote 15310)</span><b>22,250.00</b></div>
+          <div class="kv"><span>Three-phase service + panel + PSE + permit</span><b>15,452.00</b></div>
+          <div class="kv"><span>Allowance available</span><b class="neg">none</b></div>
+          <div class="kv" style="border-top:1.5px solid var(--hdr);margin-top:2px;padding-top:3px"><span class="lead">Cash out, now</span><b style="font-size:12px">$37,702.00</b></div>
+          <ul style="margin-top:5px">
+            <li>The building can't take it as-is — the three-phase upgrade (the $15,452) has to happen first.</li>
+            <li>Quote holds to <b>16 Oct 2026</b>; order by then → oven ships ~<b>wk of 4 Jan 2027</b>.</li>
+            <li><b>No lease commitment required.</b> You own it in 2027.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box" style="margin-top:0;padding:0;overflow:hidden">
+        <div style="background:#5c6b7a;color:#fff;padding:4px 8px;font-weight:800;font-size:10.5px">
+          Path B · Wait for the new term, use the allowance <span style="font-weight:600;opacity:.85">— 2030</span>
+        </div>
+        <div style="padding:6px 8px">
+          <div class="kv"><span>Same package at today's prices</span><b>37,702.00</b></div>
+          <div class="kv"><span>Tenant improvement allowance</span><b class="neg">(18,000.00)</b></div>
+          <div class="kv" style="border-top:1.5px solid var(--hdr);margin-top:2px;padding-top:3px"><span class="lead">Net capital (today's prices)</span><b style="font-size:12px">$19,702.00</b></div>
+          <ul style="margin-top:5px">
+            <li>Only exists if you <b>sign the 2030–2035 renewal by 15 Jan 2027</b> — so the renewal has to be worth signing on its own.</li>
+            <li>Allowance is a <b>reimbursement</b> on pre-approved scope, paid invoices <b>within 12 mo of the 1 Jul 2030 start</b>.</li>
+            <li>The $19,702 is at today's prices; the current oven quote only holds to 16 Oct 2026.</li>
+            <li>Rent under the new term starts at <b>$4,950/mo base</b> ($24.75 × 2,400 sq ft), 3% compounding — vs $4,462 now.</li>
+            <li><b>Nothing changes in the kitchen until 2030</b> — the payoff is four years out.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="foot">
+    <b>Sources:</b> Spreadsheet "Deck oven, run again with the allowance in it" (26 Aug) + Marguerite's note · Peder's panel note, 24 Jul · Cap Sante emails (Delphine Mowatt) 16 &amp; 18 Jun; call reconfirmed 26 Aug · Odalys Ferreira-Kwan 29 Jun, 2 Aug, 26 Aug · #maintenance Slack · FinTrack (rent, SBA loan, balances).
+    &nbsp;<b>Current oven price folded in:</b> NWBE quote 15310, 1 Sep — $22,250 delivered &amp; installed, holds to 16 Oct 2026, 10–12 wk lead time (sent to Odalys).
+  </div>
+
+</div>
+</body>
+</html>

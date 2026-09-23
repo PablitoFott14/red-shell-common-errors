@@ -114,10 +114,11 @@
      "scenario": "Winslow Achebe is picky about grocery brands, and this time, Adaeze is the one going to the store.  While he was writing his shopping list, someone at the office pushed some cheaper lookalike products on him. He needs one local HTML dashboard, 'ada_list.html…",
      "category": "Commerce & Product",
      "turns": 3,
-     "setup": "The Agent Objective calls it a dashboard, over 14 orders and 222 order lines.",
-     "wrong": "ada_list.html has no script, button, filter or navigation: markup around nine images.",
-     "problem": "That is a document, the lowest priority deliverable on the bar, though the data would have supported a sortable buy list or a filter for what Fresh does not stock.",
-     "right": "A prompt that asks for it: \"put the buy list in a table I can sort by aisle or by price\".",
+     "gist": "The Agent Objective asks for \"one local HTML dashboard\"; the golden ada_list.html has no script, button, filter or link. Static, it clears neither the dashboard nor the interactive HTML floor.",
+     "setup": "Leg A turn 1 asks Model A for ada_list.html, a shop list giving brand, price, size and a picture per item. Leg A turns 2 and 3 add rules and layout.",
+     "wrong": "The Agent Objective: \"He needs one local HTML dashboard\". The golden ada_list.html has no script, button, filter or link: a list of seven items, one comparison table and nine images.",
+     "problem": "Nothing on ada_list.html responds, so the task ships a document, the lowest priority type on the Complexity Bar, though 14 Fresh orders could feed sorting or filters. Model A and Model B never see the Agent Objective, and no Leg A prompt asks for interaction, so no criterion grades it.",
+     "right": "Leg A turn 1 asks for the interaction: \"Put the buy list in a table I can sort by price, and let Ada hide what's not on Fresh.\"",
      "marks": [
       [
        null,
@@ -166,7 +167,7 @@
        {
         "t": "said",
         "where": "Leg A turn 1",
-        "text": "…with the amounts I usually buy. {{Put the buy list in a table I can sort by aisle or by price.}} It should be detailed…",
+        "text": "…with the amounts I usually buy. {{Put the buy list in a table I can sort by price, and let Ada hide what's not on Fresh.}} It should be detailed…",
         "ref": [
          "prompt",
          1
@@ -175,7 +176,7 @@
        {
         "t": "fact",
         "where": "ada_list.html",
-        "text": "{{Controls that respond}}: the list sorts by aisle or by price.",
+        "text": "{{Controls that respond}}: the list sorts by price and hides what Fresh does not stock.",
         "ref": null
        }
       ],
@@ -285,10 +286,11 @@
      "scenario": "The resident of Apt 4B at 123 Main street, San Francisco  organizes the buildings shared Amazon Fresh group order for four apartments (2A, 3C, 4B, and 5D). A neighbor, Tom from 3C, mocked up a pantry board of product listings for the neighbors, and residents…",
      "category": "Commerce & Product",
      "turns": 3,
-     "setup": "Five items on a neighbour's board are priced against Amazon Fresh.",
-     "wrong": "Rule 1 prices lines \"at the pack option we add to the cart from Fresh's catalog\"; rule 5 takes the fee from \"Fresh's Delivery Policy and nothing else\". The universe's catalog has none of the five items, and its policies are empty.",
-     "problem": "Leg B turn 3 tells Model B to reach the pages \"another way\", the golden says \"its catalog search returns nothing\", and no run can meet the criteria wanting $0.55 a lb or a $4.99 fee.",
-     "right": "Rules that cite only records the universe returns, checked before the run.",
+     "gist": "pantry_rules.md prices every line from Fresh's catalog and the delivery fee from Fresh's Delivery Policy. The universe's catalog holds none of the five board items, and its policies are empty.",
+     "setup": "Leg A turn 1 asks Model A to check the five listings on Tom's pantry_board_draft.png and work out what each apartment owes, under the house rules in pantry_rules.md.",
+     "wrong": "Rule 1 prices lines \"at the pack option we add to the cart from Fresh's catalog\"; rule 5 takes the fee from \"Fresh's Delivery Policy and nothing else\". The universe's catalog has none of the five items, and its policies are empty, so Leg B turn 3 sends Model B to find the pages \"another way\".",
+     "problem": "Pricing every card and what each apartment owes rests on rules 1 and 5, so neither Model A nor Model B can do the main request. The golden keeps Tom's board prices, flagged unconfirmed, and criteria 16, 17 and 26 want Fresh's $0.55 a lb bananas, $5.45 spinach and $4.99 fee, which no tool returns.",
+     "right": "Rules 1 and 5 cite only records the universe returns, checked before Leg A turn 1: a catalog search for the five items and a policy search for the fee.",
      "marks": [
       [
        "evidence",
@@ -414,6 +416,36 @@
        ]
       },
       {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 16,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The corrected Bananas card in pantry_audit.html prices the 1lb pack at $0.55 per lb.",
+         "flag": false
+        },
+        {
+         "n": 17,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The corrected spinach card in pantry_audit.html prices the 5oz pack at $5.45.",
+         "flag": false
+        },
+        {
+         "n": 26,
+         "weight": 5,
+         "target": "Trajectory",
+         "category": "Agent Behavior",
+         "text": "In turn 1 the model sets the Mon 29 Jun 2026 delivery fee at $4.99 on an items subtotal of $48.98",
+         "flag": false
+        }
+       ],
+       "title": "Objective criteria 16, 17, 26"
+      },
+      {
        "t": "evidence",
        "title": "pantry_rules.md",
        "label": "pantry_rules.md",
@@ -441,11 +473,28 @@
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6aac6ee4f0c334e21057f9e6/pantry_audit.html",
+         "src": "evidence/6aac6ee4f0c334e21057f9e6/pantry_audit.ace588.html",
          "targets": 1,
          "runtime": [],
          "name": "pantry_audit.html",
          "role": "artifact",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "pantry_board_draft.png",
+       "label": "pantry_board_draft.png",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aac6ee4f0c334e21057f9e6/pantry_board_draft.png",
+         "w": 1120,
+         "h": 1600,
+         "name": "pantry_board_draft.png",
+         "role": "input",
          "marks": []
         }
        ]
@@ -506,10 +555,11 @@
      "scenario": "Abelardo Quintero is a licensed land surveyor in Amarillo and owns Quintero Land Surveying PLLC. He landed a case as a surveyor expert in Threadgill Ranch Partners, Ltd. v. Sisemore Cattle Co., Cause No. 26-0114-CV in Moore County. Odessa Trull runs the case…",
      "category": "Research",
      "turns": 3,
-     "setup": "Model B still had not opened the day 3 field notes after Leg B turn 8 said they describe PT 128.",
+     "gist": "Leg B turn 9 names the file Model B must open, 26-014_Field_notes_2026-03-19.pdf, and opening it is what criterion 14 grades. Leg B hints may name the mail, not the file.",
+     "setup": "PT 128 is described in 26-014_Field_notes_2026-03-19.pdf, a mail attachment. After Leg B turn 8 points at the day 3 notes, Model B says the figures are in an unreachable book.",
      "wrong": "Leg B turn 9, to Model B: “Open the day-3 field notes PDF in the mail, the file named 26-014_Field_notes_2026-03-19.pdf”.",
-     "problem": "Criteria 14 and 2 grade opening that PDF and the card built from it; the golden meets both because the turn named the file. No value is stated, so it costs points.",
-     "right": "A hint that leaves the work: “The PT 128 figure on the cedar mound card doesn't match what was actually recorded out there.”",
+     "problem": "Criteria 14 and 2, both weight 5, grade opening that PDF and the PT 128 description taken from it. Model B's own search had missed the attachment, and the filename did that search for it, so the golden meets both on instruction. No value from the PDF is stated, so it costs points.",
+     "right": "Leg B turn 9 points at the source, not the file: \"Not the physical field book. The day 3 field notes came by email.\"",
      "marks": [
       [
        "golden",
@@ -562,7 +612,8 @@
        {
         "t": "said",
         "where": "Leg B turn 9",
-        "text": "{{The PT 128 figure on the cedar mound card doesn't match what was actually recorded out there.}}",
+        "text": "Not the physical field book. {{The day 3 field notes came by email.}}",
+        "note": "the source, not the file",
         "ref": [
          "legb",
          9,
@@ -623,10 +674,11 @@
      "scenario": "The resident of Apt 4B at 123 Main street, San Francisco  organizes the buildings shared Amazon Fresh group order for four apartments (2A, 3C, 4B, and 5D). A neighbor, Tom from 3C, mocked up a pantry board of product listings for the neighbors, and residents…",
      "category": "Commerce & Product",
      "turns": 3,
-     "setup": "Rule 5 says the building account is not Prime; criterion 30, a -5 negative, catches pricing avocados at the $1.89 Prime price in chat_5D.png.",
+     "gist": "Leg B turn 7 tells Model B \"dont price our order off rosas phone\", the conclusion criterion 30 tests. Model B had to reach it from rule 5 and chat_5D.png.",
+     "setup": "Rule 5 of pantry_rules.md: the building account is not Prime. chat_5D.png, delivered at Leg B turn 5, shows Rosa's Prime app pricing avocados at $1.89, and Model B used it.",
      "wrong": "Leg B turn 7, to Model B: \"dont price our order off rosas phone - thats her own account, not the buildings\".",
-     "problem": "That is the conclusion criterion 30 tests, so the golden avoids the trap on instruction. A stated conclusion fails the task in either leg. Model A never got this turn.",
-     "right": "Leg B turn 6: \"some prices on the page dont look like what fresh charges us\", which leaves Model B to find which prices.",
+     "problem": "Criterion 30, a -5 negative, catches that price. Model B kept it after the Leg B turn 6 hint, and Leg B turn 7 handed it the conclusion criterion 30 tests, so the golden avoids the trap on instruction, not reasoning. No price is stated, so it is over steering and costs points. Model A got no such turn.",
+     "right": "Leg B turn 7 drops the answer and keeps its pointer: \"the house rules say which prices count for us\". Model B still has to find rule 5.",
      "marks": [
       [
        "golden",
@@ -663,20 +715,14 @@
       "now": [
        {
         "t": "said",
-        "where": "Leg B turn 6",
-        "text": "{{some prices on the page dont look like what fresh charges us}}",
-        "note": "already in the task, one turn earlier: it says something is wrong, not what",
+        "where": "Leg B turn 7",
+        "text": "…and the house rules say which prices count for us",
+        "note": "the same turn without the conclusion: it points at the rules, not the answer",
         "ref": [
          "legb",
-         6,
+         7,
          "user"
         ]
-       },
-       {
-        "t": "fact",
-        "where": "Leg B turn 7",
-        "text": "{{Another hint at that level}}, or none: never the conclusion.",
-        "ref": null
        }
       ],
       "rule": {
@@ -717,6 +763,17 @@
        ]
       },
       {
+       "t": "golden",
+       "title": "From the Leg B conversation, with Model B",
+       "rows": [
+        {
+         "role": "user",
+         "turn": 5,
+         "text": "ugh fresh has no delivery slots this week so the order's moving to monday 7/6/26.\nrosa texted me too, chat_5D.png. update pantry_audit.html and give me settle_up.csv\n(household, items_total, fee_share, amount_due) so i can send out the payment requests\nAttachments: chat_5D.png"
+        }
+       ]
+      },
+      {
        "t": "evidence",
        "title": "chat_5D.png",
        "label": "chat_5D.png",
@@ -728,6 +785,23 @@
          "w": 941,
          "h": 1672,
          "name": "chat_5D.png",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "pantry_rules.md",
+       "label": "pantry_rules.md",
+       "note": "",
+       "items": [
+        {
+         "kind": "text",
+         "text": "# 123 Main St shared pantry - group order rules\n(what we agreed at the June building meeting)\n\n1. We charge what Fresh charges us for what actually goes in the cart. Every line is priced at the pack option we add to the cart from Fresh's catalog. If an item has no pack options, use its catalog price.\n2. For each item we buy the cheapest mix of Fresh's pack options that covers everyone's total. Never less than what people asked for.\n3. \"Organic only\" apartments only get items that Fresh's own catalog marks as organic. Anything else they asked for is dropped, not swapped. Whatever an apartment said last is what counts.\n4. 4B's Subscribe & Save: whatever it's due to bill in the week the order goes in (our weeks run Monday to Sunday) comes off 4B's request for that item.\n5. The building account is not Prime, so no member prices or member deals. For the delivery fee we go by Fresh's Delivery Policy and nothing else.\n6. Splitting: a line's cost is split by how many units each apartment gets on that line, each share rounded to the cent (if the rounded shares don't add up to the line cost, the difference goes on whoever has the most units on that line). An apartment's items total is the sum of its line shares. Each apartment's delivery share = delivery fee x (its items total / everyone's items totals added up), rounded to the cent only at the very end. Any leftover cent, up or down, goes on 4B.\n7. Listing cards show: name, the pack option we're buying, price per unit (line cost / total units on that line, 2 decimals), and only claims that Fresh's own catalog or policies back up.\n8. Verdicts: publish = card is right as is, fix = card needs changes, pull = nobody ends up ordering it.\n",
+         "cut": false,
+         "find": [],
+         "name": "pantry_rules.md",
          "role": "input",
          "marks": []
         }
@@ -771,10 +845,11 @@
      "scenario": "Ingrid Falkenrath is a research ecologist in Duluth who binds her own field notebooks and prints their covers by letterpress. She and her husband Halvard, a shop teacher, live in a 1947 frame house where nothing is square. The front room wall between the…",
      "category": "Property & Space",
      "turns": 4,
-     "setup": "Leg A turn 2 releases the plates photo, IMG_4392, for Model A to count and measure the plates; Leg B turn 4 releases it to Model B.",
+     "gist": "Leg A turn 2 releases IMG_4392.jpeg and tells Model A the count it exists to supply: \"five big ones and one small one\". Leg B turn 4 repeats it to Model B.",
+     "setup": "Leg A turn 1 holds back IMG_4392.jpeg, the plates photo. Leg A turn 2 releases it, so Model A can plan flat storage sized from it.",
      "wrong": "Leg A turn 2: \"There are five big ones and one small one, and they need to be stored flat somewhere in the unit.\" Leg B turn 4 sent Model B the same words.",
-     "problem": "That count is the read IMG_4392 exists to force, so neither model has to open the photo to pass.",
-     "right": "The same turn without the count: \"They need to be stored flat somewhere in the unit, not stood on edge.\"",
+     "problem": "IMG_4392.jpeg shows one large plate by the rulers, a stack behind it and a small one; counting the stack is the read the photo exists to force. Given the count, Model A and Model B only have to measure one plate of each size. A count is a value, so this fails the task.",
+     "right": "Leg A turn 2 and Leg B turn 4 without the count: \"They need to be stored flat somewhere in the unit, not stood on edge.\" Both legs run again.",
      "marks": [
       [
        "prompts",
@@ -864,6 +939,17 @@
        ]
       },
       {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 1, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "Hi, I need a plan for the built-in on the front room wall, the one between the corner and the door. Halvard agreed to build it, but he needs a proper cut list as the wall isn't a perfect square. I measured it and took photos at the floor, middle and ceiling levels + made a sketch, and keep in mind that the photos are the ground truth for the measurements if something's off. I have a voice memo of what plywood he has and a sticky note with his shop rules attached so stick to those. It has to fit my drafting table, my bound notebooks(standing up) + my printing plates. I included a picture of my notebooks to see their sizes from and leave space for two more seasons of notebooks(my calendar has info on how many I do per season). I still have to verify something on the photo of the plates, so skip that for now. Write all up as front_room_builtin.html - the cut list in mm with each part sized to the real wall, how to scribe the edges that meet the wall and ceiling and a cutting diagram for each sheet."
+        }
+       ],
+       "isit": true
+      },
+      {
        "t": "evidence",
        "title": "IMG_4392.jpeg",
        "label": "IMG_4392.jpeg",
@@ -924,10 +1010,11 @@
      "scenario": "Winslow Achebe, an Operations Manager at Marchand Logistics Group facility HAT2 in Hattiesburg, Mississippi, has received an internal promotion offer from Regional Vice President Corwin Steadman for Regional Operations Manager, Southeast at $104,000 base…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "setup": "The calendar arrives at Leg A turn 2 and the travel rules at Leg A turn 3, both in the input folder from turn 1.",
+     "gist": "The deferred files IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg sit in the input folder from the start, and their names say what Leg A turns 2 and 3 will hand over.",
+     "setup": "Leg A turn 2 hands Model A Jaylen's marked school calendar, and Leg A turn 3 the Q3 travel directives.",
      "wrong": "They are named IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg.",
-     "problem": "Each name tells both models what is coming before its turn. Nothing graded leaks, so this costs points; a phone would write IMG_0814.jpg.",
-     "right": "IMG_0814.jpg and IMG_0819.jpg, with the turns that deliver them saying what each is.",
+     "problem": "From their first turn, Model A and Model B can see in the input folder that a school calendar and a travel policy are coming, before the turn that hands each over in either leg. Neither name states a requirement or a graded value, so this costs points.",
+     "right": "IMG_0814.jpg and IMG_0819.jpg. Leg A turns 2 and 3 already say what each is, \"Jaylen's school calendar\" and the \"Q3 travel directives\", and their Leg B turns repeat it.",
      "marks": [
       [
        null,
@@ -1032,7 +1119,10 @@
          "turn": null
         }
        ],
-       "links": {}
+       "links": {
+        "IMG_0814_calendar.jpg": 3,
+        "IMG_0819_travel_policy.jpg": 4
+       }
       },
       {
        "t": "prompts",
@@ -1051,6 +1141,40 @@
         {
          "turn": 3,
          "text": "Corwin sent over the Southeast region's Q3 travel directives (see attached IMG_0819_travel_policy.jpg). Read it and apply what it actually requires, because it is stricter than what you have modelled and it changes the math. On that schedule we would be out about $200 a month for before-school care, $150 a month for the Poplarville handovers, and $180 a month on meals the company will not cover. Update dashboard.html so those costs come off the raise in the cash comparison, and show me the true adjusted monthly delta and what it does to our savings."
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_0814_calendar.jpg",
+       "label": "IMG_0814_calendar.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa34dd1625bb5b220c6b1cb/IMG_0814_calendar.jpg",
+         "w": 1200,
+         "h": 1600,
+         "name": "IMG_0814_calendar.jpg",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_0819_travel_policy.jpg",
+       "label": "IMG_0819_travel_policy.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa34dd1625bb5b220c6b1cb/IMG_0819_travel_policy.jpg",
+         "w": 900,
+         "h": 1600,
+         "name": "IMG_0819_travel_policy.jpg",
+         "role": "input",
+         "marks": []
         }
        ]
       }
@@ -1098,10 +1222,11 @@
      "scenario": "Rosalind Achterberg is a certified medical illustrator in the Surgical Visualization Unit at the University of Michigan Medical School. In the summer lull after the atlas went to press she is redrawing the deltoid plate for Dr. Yusuf Oyelaran's shoulder…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "Leg A turn 2 hands over bourgery_legend_pages.pdf, the one deferred file.",
+     "gist": "Milestone 9, the deferred_asset row for Leg A turn 2, reads Assets Delivered: .html, the deliverable's extension. The file that turn hands over, bourgery_legend_pages.pdf, is on no milestone.",
+     "setup": "Leg A turn 1 asks for deltoid_plate_study.html from eighteen images. Leg A turn 2 hands over bourgery_legend_pages.pdf, the one deferred file.",
      "wrong": "Milestones 1 to 12 all read Assets Delivered: .html, including milestone 9, the deferred_asset row for Leg A turn 2.",
-     "problem": "A bare extension is not a filename, so the deferred file is listed on no row, which fails the task. The saved input archive lacks the PDF too.",
-     "right": "Milestone 9 lists bourgery_legend_pages.pdf, which ships in input_files/.",
+     "problem": "The .html on those rows is the extension of deltoid_plate_study.html, the deliverable, not a file the user hands over. The file Leg A turn 2 hands over, bourgery_legend_pages.pdf, sits on no row, so a user simulator replaying them has no record of when it arrives. A deferred file missing from Assets Delivered fails the task.",
+     "right": "Milestone 9 reads Assets Delivered: bourgery_legend_pages.pdf, which ships in input_files/ from upload. Milestones 1 to 8 name the eighteen Leg A turn 1 files; milestones 10 to 12 are empty.",
      "marks": [],
      "good": [],
      "fields": [
@@ -1224,7 +1349,36 @@
          "turn": null
         }
        ],
-       "links": {}
+       "links": {
+        "deltoid_plate_study.html": 4
+       }
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 1, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "I'm redrawing the deltoid plate for Yusuf's shoulder series and I want to study how the classic atlases handled this region before I commit to my own linework. I have the Bourgery on interlibrary loan until August 12, so I scanned its shoulder and back plates. I also shot the Vesalius muscle tabulae and their index pages before the Fabrica went back, and I pulled the Gray plates for the same muscles.\n\nBuild me deltoid_plate_study.html, one file I can open off my desktop. I care about five muscles: the deltoid, the trapezius, the pectoralis major, the latissimus dorsi and the infraspinatus. For each plat, wherever it shows one of those five, give me the key letter or number the plate uses for it, the name the atlas's own legend gives it, and the current anatomical term, so I end up with one side-by-side table across all three atlases. For the deltoid and the trapezius, tell me where the atlases disagree about the origin, the insertion, or whether the muscle is one of several, and say which plate says what. Make it something I can work with rather than read: clicking a key on a plate should take me to its row, and let me filter that table by muscle. Yusuf emailed me a note about the shoulder; make sure the view he cares about is covered."
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "deltoid_plate_study.html",
+       "label": "deltoid_plate_study.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6a9a43f6353e55844b5c3fbe/deltoid_plate_study.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "deltoid_plate_study.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 7
@@ -1234,10 +1388,11 @@
      "scenario": "Idris Vantol is a Portland-based filmmaker and producer at Vantol Films, managing overlapping grant and festival submissions for Set in Lead and Slack Tide. He is working from a mix of submission requirements, production assets, runtime records, festival…",
      "category": "Small Business & Personal Docs",
      "turns": 3,
-     "setup": "handbook.mp4 comes with the opening prompt, at Leg A turn 1.",
+     "gist": "Milestones 7 and 8, on Leg A turn 1, read deferred_asset and revision, with Assets Delivered: .mp4. Leg A turn 1 is always opening, and handbook.mp4 comes with it.",
+     "setup": "Leg A turn 1 attaches index.html, Vantol.pdf and handbook.mp4 together, and asks Model A to reconcile “a festival message and a runtime record” and complete the runtime section.",
      "wrong": "Milestones 7 and 8, both on Leg A turn 1, read deferred_asset and revision, each with Assets Delivered: .mp4.",
-     "problem": "Nothing is deferred into Leg A turn 1, and Model A has delivered nothing yet for a revision to change.",
-     "right": "Both opening, with handbook.mp4 named in full.",
+     "problem": "Leg A turn 1 asks for milestone 7's work, and handbook.mp4 is in the folder before Model A starts, so nothing is deferred. Milestone 8's corrections fall within the response to that same turn, and a revision changes work delivered at an earlier Leg A turn. A bare .mp4 names no file.",
+     "right": "Milestones 7 and 8 read Modifier: opening, like milestones 1 to 6. Assets Delivered names the Leg A turn 1 files in full: index.html, Vantol.pdf and handbook.mp4.",
      "marks": [],
      "good": [],
      "fields": [
@@ -1282,7 +1437,7 @@
         "n": 7,
         "fields": {
          "modifier": "opening",
-         "assets": "handbook.mp4"
+         "assets": "index.html, Vantol.pdf, handbook.mp4"
         },
         "ref": [
          "milestone",
@@ -1295,7 +1450,7 @@
         "n": 8,
         "fields": {
          "modifier": "opening",
-         "assets": "handbook.mp4"
+         "assets": "index.html, Vantol.pdf, handbook.mp4"
         },
         "ref": [
          "milestone",
@@ -1356,6 +1511,75 @@
          "text": "Hey, Idris here. I have been trying to get a clearer handle on the grant and festival submissions because the information is spread across different places, and I do not want to keep checking separate notes every time I need to confirm information about them. I have been bouncing between project files, old planning notes, festival records, and submission paperwork, and a couple of newer records I found, and at this point I would rather have one place that I can actually trust when I need to see what is due, what each opportunity is asking for, what we already have on hand, and whether the versions we have can actually be submitted. I have attached the dashboard and records to the workspace, so please populate the submission overview for the RACC project, Big Sky, and BendFilm with each opportunity's project or film, deadline, fee, and notification date or window, and complete the requirements section for all three. For each item, classify it as Ready, Needs adaptation, or Missing, and show the relevant file when there is one. For the fees, they have confirmed to me that for RACC it will be the same amount as the service fee from the Timbers vs Sounders game in June, and that for Big Sky it will be twice that service fee. For BendFilm, it will be four times the order processing fee from that same game. I also found a festival message and a runtime record, so please reconcile them with the rest of the available records and update anything that is no longer accurate. I also need the runtime section completed so I can see whether Slack Tide actually qualifies for each one. Please base the calculations on the timecodes and use the displayed values directly.  Please save the updated dashboard as `vantol_films_2026_submission_dashboard.html`."
         }
        ]
+      },
+      {
+       "t": "evidence",
+       "title": "handbook.mp4",
+       "label": "handbook.mp4",
+       "note": "",
+       "items": [
+        {
+         "kind": "video",
+         "src": "evidence/6aa1cedb57e31958c9d6108d/handbook.mp4",
+         "name": "handbook.mp4",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "index.html",
+       "label": "index.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6aa1cedb57e31958c9d6108d/index.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "index.html",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "Vantol.pdf",
+       "label": "Vantol.pdf",
+       "note": "",
+       "items": [
+        {
+         "kind": "pdf",
+         "pages": [
+          {
+           "src": "evidence/6aa1cedb57e31958c9d6108d/Vantol-p1.png",
+           "w": 1500,
+           "h": 1942
+          },
+          {
+           "src": "evidence/6aa1cedb57e31958c9d6108d/Vantol-p2.png",
+           "w": 1500,
+           "h": 1942
+          },
+          {
+           "src": "evidence/6aa1cedb57e31958c9d6108d/Vantol-p3.png",
+           "w": 1500,
+           "h": 1942
+          },
+          {
+           "src": "evidence/6aa1cedb57e31958c9d6108d/Vantol-p4.png",
+           "w": 1500,
+           "h": 1942
+          }
+         ],
+         "total": 4,
+         "name": "Vantol.pdf",
+         "role": "input",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 8
@@ -1365,10 +1589,11 @@
      "scenario": "Brandon Lewis is a product manager at Sparrow Money in West Roxbury who runs HoopHighlights, a basketball highlights channel he has built over four years of filming pickup runs, rec league games and his son's WRYB season. The library behind it lives on his…",
      "category": "Creative & Media",
      "turns": 4,
-     "setup": "Leg A has four turns; the fourth asks for a new list without touching the walkthroughs.",
-     "wrong": "Milestones 1 and 4 read Modifier: none, and milestone 5 sits on turn 5.",
-     "problem": "None is not a modifier: turns 1 and 4 add work without touching delivered work, so both are opening. Leg A has no turn 5.",
-     "right": "Milestones 1 and 4 opening; milestone 5 deleted.",
+     "gist": "Milestones 1 and 4 read Modifier: none, which is not one of the four modifiers. Both should read opening.",
+     "setup": "Leg A has four turns. Leg A turn 1 asks for the walkthrough; Leg A turn 4 asks for every check, in order, in the reply, and touches no file.",
+     "wrong": "Milestones 1 and 4 read Modifier: none.",
+     "problem": "The value none is not one of the four modifiers. Leg A turn 1 is always opening, and Leg A turn 4 asks for a list in the reply, changing neither walkthrough, so it is opening too. A wrong modifier costs points.",
+     "right": "Milestones 1 and 4 read Modifier: opening.",
      "marks": [],
      "good": [],
      "fields": {
@@ -1377,9 +1602,6 @@
       ],
       "4": [
        "modifier"
-      ],
-      "5": [
-       "turn"
       ]
      },
      "gap": [],
@@ -1402,15 +1624,6 @@
         "ref": [
          "milestone",
          4
-        ]
-       },
-       {
-        "t": "row",
-        "block": "milestone",
-        "n": 5,
-        "ref": [
-         "milestone",
-         5
         ]
        }
       ],
@@ -1439,17 +1652,6 @@
          "milestone",
          4
         ]
-       },
-       {
-        "t": "row",
-        "block": "milestone",
-        "n": 5,
-        "note": "Leg A has no turn 5",
-        "op": "delete",
-        "ref": [
-         "milestone",
-         5
-        ]
        }
       ],
       "rule": {
@@ -1463,7 +1665,7 @@
        "t": "milestones",
        "title": "Milestone rows flagged",
        "note": "none is not one of the four modifiers",
-       "more": 0,
+       "more": 1,
        "rows": [
         {
          "n": 1,
@@ -1493,18 +1695,28 @@
          ],
          "flag": true,
          "note": null
+        }
+       ]
+      },
+      {
+       "t": "prompts",
+       "title": "Every Leg A prompt, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "The HoopHighlights library is moving off my old MacBook. The new machine lands next week and the drive I bought for the move is here. That library is four years of the channel, every game I've filmed and every cut I've made, and I've never moved it. Screenshots of what's on the old machine and what the drive looks like are in inputs, plus a shot of my cloud settings. I need a narrated walkthrough I can follow phase by phase over a couple of evenings. After each phase I want a check I can actually run, what it looks like when it passes, and what it looks like when it's failed so I know to stop. The half-cut WRYB finale reel has to come across with its history intact, I'm not rebuilding that one. Build the phase screens as migration_walkthrough.html, one scene per phase, put the narration in migration_narration.vtt with one cue per phase numbered to match, and render the whole thing to migration_walkthrough.mp4 so I can just hit play. Before you tell me to move or delete anything, work out what I actually have a second copy of right now. Don't take my word for it, my receipts and subscriptions are in my email."
         },
         {
-         "n": 5,
-         "turn": 5,
-         "modifier": "none",
-         "assets": "none",
-         "text": "none",
-         "continuation": [
-          "none"
-         ],
-         "flag": true,
-         "note": null
+         "turn": 2,
+         "text": "Ran the footage copy overnight. Screenshot 2026-09-09 at 07.02.18.png is what the drive shows this morning. Update the walkthrough to where I actually am rather than starting over, and keep the phase numbering as it stands."
+        },
+        {
+         "turn": 3,
+         "text": "Split it. Everything through verifying the copy on the drive stays in migration_walkthrough.html with its narration in migration_narration.vtt. The part that happens on the new machine moves to relink_walkthrough.html with narration in relink_narration.vtt, rendered to relink_walkthrough.mp4. Keep the phase numbering continuous across the two. Don't change anything else"
+        },
+        {
+         "turn": 4,
+         "text": "Before I do any of this, give me every check across both walkthroughs in order, with what a pass looks like and what a fail looks like for each, in your reply."
         }
        ]
       }
@@ -1546,10 +1758,11 @@
      "scenario": "Winslow Achebe, an Operations Manager at Marchand Logistics Group facility HAT2 in Hattiesburg, Mississippi, has received an internal promotion offer from Regional Vice President Corwin Steadman for Regional Operations Manager, Southeast at $104,000 base…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "setup": "Leg A turn 2 hands over the school calendar; the travel rules arrive at Leg A turn 3.",
-     "wrong": "Milestone 8, on Leg A turn 2, asks for the travel rules, with the clause “the travel days in the model reflect only the document the user attached”.",
-     "problem": "No correct response to Leg A turn 2 can meet it, so in Leg B it keeps you hinting Model B toward a document not yet handed over.",
-     "right": "Delete milestone 8; milestone 9 already carries it on Leg A turn 3.",
+     "gist": "Milestone 8, on Leg A turn 2, requires the travel rules in IMG_0819_travel_policy.jpg, which only Leg A turn 3 hands over. Milestone 9 repeats its intent there, word for word.",
+     "setup": "Leg A turn 2 hands over IMG_0814_calendar.jpg and sets the travel itself: “about three days a week”. The travel directives, IMG_0819_travel_policy.jpg, arrive at Leg A turn 3.",
+     "wrong": "Milestone 8, on Leg A turn 2, reads “The user has sent the travel rules his employer issued”, and its first clause requires “the travel days in the model reflect only the document the user attached”.",
+     "problem": "At Leg A turn 2 the only file handed over is the calendar, and the user sets the travel at about three days a week himself. No correct response to Leg A turn 2 can meet the clause, so in Leg B it would keep you hinting Model B toward a directive not yet handed over.",
+     "right": "Delete milestone 8. Milestone 9, on Leg A turn 3, the turn that hands over IMG_0819_travel_policy.jpg, already checks that the travel days come from it.",
      "marks": [
       [
        "milestones",
@@ -1656,6 +1869,40 @@
          "text": "Corwin sent over the Southeast region's Q3 travel directives (see attached IMG_0819_travel_policy.jpg). Read it and apply what it actually requires, because it is stricter than what you have modelled and it changes the math. On that schedule we would be out about $200 a month for before-school care, $150 a month for the Poplarville handovers, and $180 a month on meals the company will not cover. Update dashboard.html so those costs come off the raise in the cash comparison, and show me the true adjusted monthly delta and what it does to our savings."
         }
        ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_0819_travel_policy.jpg",
+       "label": "IMG_0819_travel_policy.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa34dd1625bb5b220c6b1cb/IMG_0819_travel_policy.jpg",
+         "w": 900,
+         "h": 1600,
+         "name": "IMG_0819_travel_policy.jpg",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_0814_calendar.jpg",
+       "label": "IMG_0814_calendar.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa34dd1625bb5b220c6b1cb/IMG_0814_calendar.jpg",
+         "w": 1200,
+         "h": 1600,
+         "name": "IMG_0814_calendar.jpg",
+         "role": "input",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 10
@@ -1665,10 +1912,11 @@
      "scenario": "Anselm Kirchner (graphics editor, The Richmond Beacon) needs a year-in-review page of the desk's chart dailies. Nadine Ptaszek asked for something the desk can actually use. He wants it built from exports in the drop, path matches, and not from every chart…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "Leg A turn 1 asks, among other things, which pieces still carry a correction.",
-     "wrong": "Milestone 1's six clauses never mention corrections.",
-     "problem": "In Leg B they let you move Model B on with that ask undone.",
-     "right": "Add a clause: pieces carrying a correction are marked as such on their own card.",
+     "gist": "Leg A turn 1 asks which pieces still carry a correction, and none of milestone 1's six clauses checks it, so Model B can pass milestone 1 without it.",
+     "setup": "Leg A turn 1 asks, among other things, which pieces still carry a correction. None of its three exports does, and Slack holds corrections for pieces outside the drop.",
+     "wrong": "Milestone 1's six clauses check the file, the cards, type and subject, the counts and the read or confirmed marks. The first restates Leg A turn 1's ask and stops at “every count opening the files behind it”, with no word on corrections.",
+     "problem": "In Leg B you move Model B past milestone 1 once its six clauses hold, and a response that never checks corrections meets every one. Here the right answer is none of the three, so a response that skips the check, or pins another piece's Slack correction on one, moves on unchecked. This costs points.",
+     "right": "A seventh clause beside the six: each card states whether its piece still carries a correction. Until every card does, you keep hinting Model B in Leg B.",
      "marks": [
       [
        "prompts",
@@ -1704,7 +1952,7 @@
         "t": "row",
         "block": "milestone",
         "n": 1,
-        "text": "{{Each piece that still carries a correction is marked as such on its own card}}",
+        "text": "{{Each card states whether its piece still carries a correction}}",
         "note": "a seventh clause, beside the six it has",
         "ref": [
          "milestone",
@@ -1791,10 +2039,11 @@
      "scenario": "Idris Vantol cuts documentaries out of a basement edit bay in Portland. Slack Tide, his feature for OPB, was delivered in May and paid in July. Since then he has rendered the film five times for different places and never wrote down what each render was for…",
      "category": "Creative & Media",
      "turns": 5,
-     "setup": "Model A asked which addresses to use for a note to June, and Leg A turn 5, the last, answers.",
+     "gist": "No milestone covers Leg A turn 5, “Use her OPB address, from my Vantol Films account.” The set stops at Leg A turn 4, and every Leg A turn needs one.",
+     "setup": "Leg A turn 4 asks for a note to June. Model A asks which address and which sending account to use, and Leg A turn 5, the last, answers.",
      "wrong": "The milestones stop at Leg A turn 4, so “Use her OPB address, from my Vantol Films account” has none.",
-     "problem": "Criterion 7 grades both, but no milestone carries them, so a replay against a run that asks, as Model A did, has no script for the answer.",
-     "right": "A Leg A turn 5 milestone: the note goes to the address, and from the account, the user named.",
+     "problem": "Criterion 7 grades both answers: the note goes to June's OPB address, from Idris's Vantol Films account. Model B did this unasked, so the gap never showed in Leg B. A user simulator replaying the set against a future run that asks, as Model A did, has no script for the reply. This costs points.",
+     "right": "A milestone on Leg A turn 5: the note to June goes to her OPB address, sent from the Vantol Films account, one continuation clause for each.",
      "marks": [
       [
        "prompts",
@@ -2111,6 +2360,20 @@
          "text": "Use her OPB address, from my Vantol Films account."
         }
        ]
+      },
+      {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 7,
+         "weight": 3,
+         "target": "State change",
+         "category": "Task Completion",
+         "text": "An email exists in the sent folder from Idris's Vantol Films account to [june.kettleborough@opb.org](mailto:june.kettleborough@opb.org) that puts the 23.976 versus 29.97 discrepancy to her for confirmation, naming both the Exhibit C specification and the portal page.",
+         "flag": false
+        }
+       ],
+       "title": "Objective criterion 7"
       }
      ],
      "num": 12
@@ -2120,10 +2383,11 @@
      "scenario": "Teodora Marchetti co-owns Fret and Fathom Records in East Nashville and has spent most of 2026 producing Sunny Okafor's debut album. The record was tracked in Room A through the spring, overdubbed across a run of evening sessions, and mixed during a week in…",
      "category": "Creative & Media",
      "turns": 3,
-     "setup": null,
+     "gist": "Milestones 13 and 14, on Leg A turn 2, are the same milestone twice, intent and clauses word for word. Only one artwork file, loudness_card.png, is missing.",
+     "setup": "Leg A turn 2 hands over asset_pack/, the artwork and a shot of Marisol's queue. One post's artwork, loudness_card.png, never came through.",
      "wrong": "Milestones 13 and 14, both on Leg A turn 2, are identical, word for word.",
-     "problem": "Leg A turn 2's other asks already have milestones, so the copy only repeats a check.",
-     "right": "Delete milestone 14.",
+     "problem": "Leg A turn 2 has one missing file to report, and its other asks, the artwork, the queue and the take downs, already have milestones 11, 12, 15 and 16. Milestone 14 repeats milestone 13's check and covers nothing new; Model B meets both with one answer, so nothing flags it. A duplicate costs points.",
+     "right": "Delete milestone 14 and keep milestone 13 as the one milestone for the missing artwork file.",
      "marks": [],
      "good": [],
      "fields": null,
@@ -2216,6 +2480,82 @@
          "note": null
         }
        ]
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 2, to Model A",
+       "rows": [
+        {
+         "turn": 2,
+         "text": "ok Marisol finally sent the artwork over, it's all in asset_pack/ - there's a shot of\nher actual queue in there too. fold it into the same page, i think a couple of these\nchange the picture.\n\nand can you tell me plainly which of the ones already out there need to come down\ntonight, rather than sitting in a list with everything else"
+        }
+       ]
+      },
+      {
+       "t": "milestones",
+       "rows": [
+        {
+         "n": 11,
+         "turn": 2,
+         "modifier": "deferred_asset",
+         "assets": ".jpg",
+         "text": "The artwork that has now arrived is folded into the page that already exists, so each post is judged on its words and its picture together rather than the review being started over.",
+         "continuation": [
+          "the existing page is updated rather than replaced with a new file",
+          "cards whose posts carry artwork now say something about that artwork",
+          "findings recorded before the artwork arrived are still on the page"
+         ],
+         "flag": false,
+         "note": null
+        },
+        {
+         "n": 12,
+         "turn": 2,
+         "modifier": "deferred_asset",
+         "assets": ".png",
+         "text": "Each supplied picture is judged as part of the post it goes out with, both for whether it is the right shape for that post's channel and for whatever is printed inside it, so a picture can change what happens to a post whose wording is clean.",
+         "continuation": [
+          "every post that carries artwork has its shape assessed against its channel",
+          "the assessment appears in the rule or the correction on the card rather than only in a file listing",
+          "what is printed inside each supplied picture is read and reported",
+          "at least one post's call moves because of what its picture contains",
+          "the card says what in the picture caused it"
+         ],
+         "flag": false,
+         "note": null
+        },
+        {
+         "n": 15,
+         "turn": 2,
+         "modifier": "deferred_asset",
+         "assets": ".jpg",
+         "text": "Where the contractor's live queue and the earlier export disagree, the live queue governs, and anything it shows that the export does not is picked up and reviewed on its own terms.",
+         "continuation": [
+          "the page carries a post that appears only in the live queue and in no export row",
+          "posts the queue shows differently from the export are updated to match the queue",
+          "a post that the queue shows separately is not merged into an existing one",
+          "the review count reflects the post that was added"
+         ],
+         "flag": false,
+         "note": null
+        },
+        {
+         "n": 16,
+         "turn": 2,
+         "modifier": "deferred_asset",
+         "assets": ".jpg",
+         "text": "The user is told plainly which of the posts already out in public have to come down, set apart from the rest of the review rather than buried in the list.",
+         "continuation": [
+          "a distinct take down region exists on the page",
+          "it names only posts that are both already out and not permitted",
+          "posts that are already out and permitted are not in it",
+          "posts that are not permitted but never went out are not in it"
+         ],
+         "flag": false,
+         "note": null
+        }
+       ],
+       "title": "Milestones 11, 12, 15, 16"
       }
      ],
      "num": 13
@@ -2261,10 +2601,11 @@
      "scenario": "Wilhelmina is preparing the cardiovascular module animation for a second pilot section and needs the accessibility layer completed before it can be used with learners. The current cut communicates important concepts visually, but it was not timed with audio…",
      "category": "Visual Learning",
      "turns": 3,
-     "setup": null,
+     "gist": "The 34 criteria carry no negative, though Leg A turn 1 sets a trap: it says the clip's quiz picks are right, and basics.mp4 shows all three wrong.",
+     "setup": "Leg A turn 1 asks for the page shown in 2panels_demo.webm, built as cardio.html, and calls the clip's picks right. mod3_notes.txt says they “were fast ones”: go with the slides.",
      "wrong": "24 objective and 10 subjective criteria, every weight positive.",
-     "problem": "The opening prompt calls the clip's selected answers right, and all three are wrong. A run that trusts them loses only the two +3s of criteria 12 and 19.",
-     "right": "“cardio.html keys the self check to the picks selected in 2panels_demo.webm.” Weight −5.",
+     "problem": "The trap is real: Model B, Leg B turn 1, keyed the third item to the clip's ~80%. Yet a run that trusts all three picks loses only the two +3s of objective criteria 12 and 19, exactly what Model A lost without reading the clip at all. Taking the bait costs nothing extra.",
+     "right": "Add an objective negative at -3, since mod3_notes.txt points the right way: “cardio.html keys the self check to the picks selected in 2panels_demo.webm.”",
      "marks": [
       [
        "prompts",
@@ -2322,9 +2663,10 @@
         "t": "row",
         "block": "objective",
         "text": "{{cardio.html keys the self check to the picks selected in 2panels_demo.webm.}}",
+        "note": "-3, since mod3_notes.txt points the right way",
         "op": "add",
         "fields": {
-         "weight": -5
+         "weight": -3
         },
         "ref": null
        }
@@ -2562,6 +2904,34 @@
          "text": "Im working in mod 3 with featherman, I added a video, a txt note and some other files of the page I want in the folder. Transform it into cardio.html for real, same panels same quiz options. I think selected the right answers in the clip for reference. And the slide captions never got typed, finish those into captions.pdf."
         }
        ]
+      },
+      {
+       "t": "golden",
+       "title": "From the Leg B conversation, with Model B",
+       "rows": [
+        {
+         "role": "agent",
+         "turn": 1,
+         "text": "Both files are in `/app/outputs`. Here's the rundown.\n\n## Deliverables\n\n**`cardio.html`** — one self-contained file (no libraries), drops straight into Canvas. Rebuilt to match the clip exactly:\n- Header, controls (**Pause/Play, Step phase, Slow ¼×/Full speed, live `t=` clock**) and the \"75 bpm → 0.80 s\" info line.\n- **Two timed panels** (Systole \"the heart empties\" / Diastole \"the heart refills\") with animated heart diagrams and the 3+3 phase list under each, highlighting the active step by time.\n- **\"The same 0.8 s on the monitor\"** ECG strip with a moving \"now\" dot, P/QRS/T + S1/S2 markers, legend, and the event-chip row that lights up in sync.\n- **Quiz** — same 3 questions, same options, click-to-check with feedback.\n- **Cardiac output** calculator (HR 75 × SV 70 = 5.25 L/min, editable).\n\n**`captions.pdf`** — the deck's 8 slides with every empty `caption:` now filled from the `basics.mp4` narration (transcribed, lightly cleaned), key values kept for reference, with amber notes where the source differs from the legacy deck.\n\n## Quiz answer key (your clip picks were \"fast ones\" — here's the deck-checked truth)\n- **Q1** → **\"the AV valves · S1\"**. Your clip pick \"the aortic valve · S1\" showed red/wrong.\n- **Q2** → **\"the QRS complex\"**. Your clip pick \"the P wave\" was red/wrong. The source ECG slide says *\"atrial systole extends until the QRS complex, at which point the atria relax\"* — atrial repolarization is masked inside the QRS.\n- **Q3** → **\"~80%\"** (your clip pick, green/correct) — kept as the nearest listed option; see flag below.\n\n## 🚩 Flags (deck/source beat the demo; I went with the deck and noted it in-file)\n1. **T wave** — demo said \"atrial repolarization\"; it's **ventricular** repolarization (deck slide 4 + source). Fixed on the strip.\n2. **Passive filling** — demo said 80%; deck **and the teacher's narration both say ~70%**. Panels/chips now say ~70%; Q3 stays ~80% only because there's no 70% option.\n3. **Heart rate** — page's **75 bpm is correct** (source video literally says \"for 75 bpm heart rate\"); your **`mod3_slide_notes.pdf`'s \"70 bpm\" is a typo**.\n4. **Tricuspid** — demo said \"heard at 2LICS\"; deck says **4LICS** (2LICS is the *pulmonary* point). Fixed.\n5. **Deck slide 6 itself is wrong** — it lists S1=semilunar / S2=AV, which is backwards. Correct (and what's on the page): S1=AV valves close, S2=semilunar. Noted in captions.pdf.\n\nA collapsible \"Instructor/QA notes\" block at the bottom of `cardio.html` repeats these — delete it before publishing to students.\n\n## Your two questions\n**When did the Section 02 pilot actually happen?** Your calendar settles it: the pilot ran **Wednesday, March 18, 2026, 1:00 PM** in the Lone Tree science lab (first of two sessions), with a **second observed session Wednesday, April 15, 2026**. The \"different days\" is a weekday-label slip: both you and Harlan wrote **\"Tuesday the 18th,\"** but the 18th is a **Wednesday** (Slack and the calendar agree). April 15 isn't a competing date for the same session — it's the follow-up look. So: **the 18th is right; \"Tuesday\" is the error.**\n\n**Is `budget_fy27.xlsx` in the folder what went to Mateo?** **No.** The folder copy is an earlier *working draft*: 2.0 FTE, personnel $175,600, **TOTAL ASK $197,600**, no captioning assistant. What you actually emailed Mateo on **May 15** (subject \"FY27 Visual Curriculum proposal,\" attaching `budget_fy27.xlsx` + `proposal_v3.docx`) was **$212,400 total / $190,400 personnel / 2.5 FTE**, adding the half-time student captioning assistant. The folder file is missing that 0.5 FTE line (a $14,800 gap on both personnel and total) — it's a pre-assistant draft, not the sent version."
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "cardio.html",
+       "label": "cardio.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6a9a43f6353e55844b5c3fd1/cardio.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "cardio.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 14
@@ -2571,10 +2941,11 @@
      "scenario": "Rosalind Achterberg is a medical illustrator at the University of Michigan Medical School and is finishing teaching materials after the Thieme surgical atlas plates cleared production. Students keep reading atlas plates as if they were photographs and then…",
      "category": "Visual Learning",
      "turns": 3,
-     "setup": "A four and a half minute explainer on an anatomical plate.",
-     "wrong": "A negative at weight −3: “the finished teaching plate remains legible at normal 1080p or full-window playback”.",
-     "problem": "The golden is legible, so it is Present and loses three points; an unreadable video keeps them.",
-     "right": "Weight −3 on the flaw: the plate renders with its captions or labels below legible size.",
+     "gist": "Subjective criterion 10 is a -3 negative worded as a virtue: the finished plate “remains legible”. The golden's plate is legible, so the golden is Present and loses three points.",
+     "setup": "Leg A turns 1 to 3 ask for plate12_simplification_lesson.mp4, a narrated lesson on Plate 12. The golden video runs four and a half minutes at 1080p, its finished plate legible.",
+     "wrong": "Subjective criterion 10, a negative at weight -3: “the finished teaching plate remains legible at normal 1080p or full-window playback”.",
+     "problem": "A negative takes its weight when Present, so subjective criterion 10 charges every legible video three points and spares an unreadable one. The golden, the reference the subjective block is graded against, is the video it penalises. Subjective criterion 3 has the right form: it names the flaw, a black or frozen frame.",
+     "right": "Subjective criterion 10 at -3, naming the flaw: the finished plate in plate12_simplification_lesson.mp4 renders its captions or labels below legible size at 1080p.",
      "marks": [
       [
        "criteria",
@@ -2637,6 +3008,38 @@
          "flag": true
         }
        ]
+      },
+      {
+       "t": "prompts",
+       "title": "Every Leg A prompt, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "My students keep reading the finished plates as if they were photos, misreading every simplification I made. So I need a short explainer video (plate12_simplification_lesson.mp4) that walks through Plate 12 (plate12_drat_sketch.jpeg), then applies the real instructions from  my notes to the finished drawing and explains, at each step, what I kept, what I simplified, and why. I have attached my desk notes (img_23232.jpg and img22223.jpg); you may need to cross-reference them with my data so they make sense, and don't invent general drawing tips."
+        },
+        {
+         "turn": 2,
+         "text": "There is no separate finished Plate 12 scan to upload. plate12_draft_sketch.jpeg is the wrong draft; the finished teaching version is what you get after applying the real Plate 12 revision instructions from my desk notes and the trail in my Slack, and email with Yusuf and the unit. Do not ask me to retype the notes. Open the live Plate 12 record, map each kept vs simplified step onto the draft drawing, and produce plate12_simplification_lesson.mp4 with narration. Update that file in place if you already started one."
+        },
+        {
+         "turn": 3,
+         "text": "You added a bunch of overlaid rectangles that cover the entire image; students need to see the corrected plate 12 drawing, not only the highlighted boxes over the wrong draft. Update the mp4 in place: apply the changes to the draft so they follow up the explanations. Keep only the narrated version of the video."
+        }
+       ]
+      },
+      {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 3,
+         "weight": -3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "plate12_simplification_lesson.mp4 contains an unintended black or frozen frame between slides.",
+         "flag": false
+        }
+       ],
+       "title": "Subjective criterion 3"
       },
       {
        "t": "evidence",
@@ -2703,10 +3106,11 @@
      "scenario": "Anselm Kirchner is graphics editor at The Richmond Beacon. He and data reporter Cyrus Adeagbo have hand‑cleaned four quarterly batches of city building‑inspection records, and the Q4 2024 request is already filed with the city records office and due back in…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "Leg A turn 3 asks for the runbook checked against the cleaning threads, never for a citation.",
-     "wrong": "Criterion 12: runbook_for_cyrus.md names the team's own prior cleaning threads as a source of its rules.",
-     "problem": "A run that corrects every rule but cites nothing fails it; the golden passes only because it happens to end with a Sources line.",
-     "right": "Delete the criterion, and its copy in milestone 11.",
+     "gist": "Objective criterion 12 requires runbook_for_cyrus.md to cite the team's cleaning threads. No Leg A turn asks for a citation: Leg A turn 3 asks for a check against them.",
+     "setup": "Leg A turn 3 asks Model A to check runbook_for_cyrus.md against “what we worked out” in the team's threads, and to put the request and due date on top.",
+     "wrong": "Objective criterion 12: runbook_for_cyrus.md names the team's own prior cleaning threads as a source of its rules.",
+     "problem": "A correct run checks every rule against the threads and fixes the ones that diverge, as Leg A turn 3 asks, and still fails objective criterion 12 for lacking a citation nobody requested. The golden passes only because runbook_for_cyrus.md happens to end with a Sources line, so checking against the golden never exposes it.",
+     "right": "Delete objective criterion 12 and milestone 11's clause “the runbook names the threads as a source”. Objective criteria 3 to 5 already grade the rules the threads settled.",
      "marks": [
       [
        "criteria@objective@12",
@@ -2827,10 +3231,11 @@
      "scenario": "Rosalind Achterberg is 39 and lives at 927 Baldwin Avenue in Ann Arbor. She is a medical illustrator in the Surgical Visualization Unit at U-M Medical School. She sat Dr. Yusuf Oyelaran's conference and the OR for that case. She also draws at the Ann Arbor…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "Leg A turn 4 says Keep holds only what survives the sheets, Yusuf's email and the calendar.",
-     "wrong": "Only IMG_2201 and IMG_2105 are excluded; nothing says Keep holds nothing else.",
-     "problem": "Model A's page left IMG_2107 in Keep, which notes.md leaves out of it, and every criterion still passes.",
-     "right": "One closure criterion: Keep holds only the items criteria 1 to 10 check for, and nothing else.",
+     "gist": "Leg A turn 4 limits Keep to what survives the sheets, Yusuf's email and the calendar. No criterion grades it: objective criteria 21 and 25 exclude only IMG_2201.jpg and IMG_2105.jpg.",
+     "setup": "notes.md defines Keep on canon_study.html: the live head height, the plate IMG_2104.jpg, and the conference and workshop facts from Yusuf's email and the calendar. IMG_2107.jpg is not among them.",
+     "wrong": "Objective criteria 1 to 10 require ten facts in Keep, and objective criteria 21 and 25 penalise IMG_2201.jpg and IMG_2105.jpg there. No criterion says Keep holds nothing else.",
+     "problem": "Model A walked into the gap: its Leg A turn 4 page keeps IMG_2107.jpg, the deep back muscles plate, under Keep, though notes.md says “Keep is only IMG_2104.jpg.” No negative names IMG_2107.jpg, so no criterion fails Model A for it, and the point of Leg A turn 4 goes ungraded.",
+     "right": "Add a closure, as objective criterion 13 does for Do not mix: Keep on the final canon_study.html holds only the items criteria 1 to 10 check for, and nothing else.",
      "marks": [
       [
        "prompts",
@@ -3125,6 +3530,91 @@
          "marks": []
         }
        ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_2201.jpg",
+       "label": "IMG_2201.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6a9a43f6353e55844b5c3fbc/IMG_2201.jpg",
+         "w": 810,
+         "h": 1080,
+         "name": "IMG_2201.jpg",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_2105.jpg",
+       "label": "IMG_2105.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6a9a43f6353e55844b5c3fbc/IMG_2105.jpg",
+         "w": 1080,
+         "h": 1054,
+         "name": "IMG_2105.jpg",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "canon_study.html",
+       "label": "canon_study.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6a9a43f6353e55844b5c3fbc/canon_study.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "canon_study.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_2104.jpg",
+       "label": "IMG_2104.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6a9a43f6353e55844b5c3fbc/IMG_2104.jpg",
+         "w": 1080,
+         "h": 770,
+         "name": "IMG_2104.jpg",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "IMG_2107.jpg",
+       "label": "IMG_2107.jpg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6a9a43f6353e55844b5c3fbc/IMG_2107.jpg",
+         "w": 582,
+         "h": 1080,
+         "name": "IMG_2107.jpg",
+         "role": "input",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 17
@@ -3164,10 +3654,11 @@
      "scenario": "Idris Vantol is a Portland-based filmmaker and producer at Vantol Films, managing overlapping grant and festival submissions for Set in Lead and Slack Tide. He is working from a mix of submission requirements, production assets, runtime records, festival…",
      "category": "Small Business & Personal Docs",
      "turns": 3,
-     "setup": "",
-     "wrong": "Criterion 12, a four step fee derivation across two services, and criterion 17, a PDF page count, both weigh 1.",
-     "problem": "The score cannot tell a run that found the fee from one that only read page counts.",
-     "right": "Weight 5 on criterion 12, 1 on criterion 17.",
+     "gist": "Objective criterion 12, the BendFilm fee worked out from a ticket order, weighs 1, like objective criterion 17, a page count read off the inventory. A calculation from one source takes +3.",
+     "setup": "Leg A turn 1 sets the BendFilm fee at four times the order processing fee of the June Timbers vs Sounders game: $5.00 on the Ticketmaster order, so $20.",
+     "wrong": "Objective criterion 12, the BendFilm fee of $20, and objective criterion 17, SetInLead_Treatment_Final.pdf classified as Ready, both weigh 1.",
+     "problem": "Objective criterion 12 takes a hidden field and a calculation: find that order, take its order processing fee rather than its $15.00 service fee, and multiply by four. Objective criterion 17 checks one listed page count against a limit. At 1 each, a Model A run that misses the fee loses no more than one that misreads a page count.",
+     "right": "Objective criterion 12 at 3, for its two axes, a hidden field lookup and a calculation. Objective criterion 17 stays at 1.",
      "marks": [],
      "good": [],
      "fields": [
@@ -3216,8 +3707,9 @@
         "t": "row",
         "block": "objective",
         "n": 12,
+        "note": "a hidden field lookup and a calculation: two axes",
         "fields": {
-         "weight": 5
+         "weight": 3
         },
         "ref": [
          "criterion",
@@ -3332,10 +3824,11 @@
      "scenario": "Jayden Brown manages a craft store in Raleigh and splits Apt 108 with Percy Okafor, a seventh-grade science teacher who spent the summer running a museum day camp. Their August electricity statement landed well above what either of them expected after a…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "energy_audit.html splits an electricity bill between two flatmates.",
-     "wrong": "Criteria 33 to 42, ten in all, target Trajectory.",
-     "problem": "Several grade a route whose result a page criterion already grades, such as 39, that the file runs, beside criterion 1. Criterion 33 only asks the agent to query an application.",
-     "right": "Keep five only the run can show, 34, 35, 37, 38 and 42, and drop the rest.",
+     "gist": "Objective criteria 33 to 42, ten in all, target Trajectory, where the Guidelines allow five. Several grade the route to a value a page criterion already checks.",
+     "setup": "energy_audit.html audits the August electricity bill and splits it between Jayden and Percy. Its values come from photographs, an image only statement and connected records.",
+     "wrong": "Objective criteria 33 to 42, ten in all, target Trajectory.",
+     "problem": "Objective criterion 34 grades where the split rule's terms came from, yet objective criterion 27 already checks that rule applied on the page. Objective criteria 35, 40 and 41 do the same for objective criteria 28, 26 and 18, whose 235 to 330 kWh band already fails a whole day method. Objective criterion 33 only asks for the queries those values need.",
+     "right": "Keep the five that grade what only the run shows, objective criteria 36, 37, 38, 39 and 42, such as 37, the handwritten log read from the photographs. Drop objective criteria 33, 34, 35, 40 and 41.",
      "marks": [],
      "good": [],
      "fields": [
@@ -3354,23 +3847,23 @@
        {
         "t": "row",
         "block": "objective",
-        "n": 33,
-        "note": "any run passes it",
+        "n": 34,
+        "note": "the route to the split rule objective criterion 27 checks on the page",
         "ref": [
          "criterion",
          "objective",
-         33
+         34
         ]
        },
        {
         "t": "row",
         "block": "objective",
-        "n": 39,
-        "note": "criteria 1 and 5 already grade the page it checks",
+        "n": 41,
+        "note": "objective criterion 18's 235 to 330 kWh band already fails a whole day method",
         "ref": [
          "criterion",
          "objective",
-         39
+         41
         ]
        }
       ],
@@ -3379,13 +3872,13 @@
        {
         "t": "fact",
         "where": "Trajectory criteria",
-        "text": "{{Five kept: 34, 35, 37, 38 and 42}}, which only the run can show, such as 37, the handwritten log read from photographs.",
+        "text": "{{Five kept: 36, 37, 38, 39 and 42}}, which only the run can show, such as 37, the handwritten log read from photographs.",
         "ref": null
        },
        {
         "t": "fact",
         "where": "The other five",
-        "text": "{{33, 36, 39, 40 and 41 go}}: each grades a route whose result a page criterion already grades (7, 1, 26 and 18), or nothing at all.",
+        "text": "{{33, 34, 35, 40 and 41 go}}: each grades the route to a value objective criteria 27, 28, 26 and 18 already check, and 33 the queries those values need.",
         "ref": null
        }
       ],
@@ -3481,6 +3974,61 @@
          "flag": true
         }
        ]
+      },
+      {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 18,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "energy_audit.html identifies a load that runs continuously, through the night as well as the day, states it over the audited period as between 235 and 330 kWh, and names the basis it took that figure from; a page whose stated standing figure deliberately excludes the refrigerator passes when that figure plus the page's own refrigerator figure lands inside the same band.",
+         "flag": false
+        },
+        {
+         "n": 26,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "energy_audit.html attributes the payments already made on the account - the recurring $96.00 charges and the $148.62 paid on Jul 22 - to Jayden rather than treating them as shared, and what each person owes reflects that Percy has paid nothing toward electricity.",
+         "flag": false
+        },
+        {
+         "n": 27,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Instruction Following",
+         "text": "energy_audit.html applies the allocation the user gave - the household total divided evenly except for the weekday hours Percy was at the museum, which fall wholly to Jayden - with the museum absence applied as a weekday block running either 08:00 to 15:00 or 08:00 to 16:00.",
+         "flag": false
+        },
+        {
+         "n": 28,
+         "weight": 5,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "In the final energy_audit.html the consumption of the Jul 17 to Jul 19, 2026 coast weekend is moved onto Percy's side - Friday Jul 17 counted in full, prorated from mid-afternoon, or left aside, all three being defensible reads of a span that began when Jayden left - and the two people's shares sum to the household total of approximately 1,040 kWh over the 32-day period (553.2 + 486.7 on the full-Friday reading; shares stated as percentages of a stated \\~1,040 kWh total satisfy the sum).",
+         "flag": false
+        }
+       ],
+       "title": "Objective criteria 18, 26, 27, 28"
+      },
+      {
+       "t": "evidence",
+       "title": "energy_audit.html",
+       "label": "energy_audit.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6a9607c2ba5fbe081921a1b5/energy_audit.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "energy_audit.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 19
@@ -3520,10 +4068,11 @@
      "scenario": "Sunniva Haugland owns Storvik Bakeri at 808 Commercial Avenue in Anacortes. She has been trying to decide whether to buy a Doyon three‑deck oven since April. The oven needs a three‑phase electrical service the building does not have, and in June her landlord…",
      "category": "Commerce & Product",
      "turns": 4,
-     "setup": "",
+     "gist": "Model A fails 13 of 49 criteria, 43 of the 123 total weight with both blocks counted: 35.0%. The floor is half the weight, 62.",
+     "setup": "Leg A turns 1 to 4 build oven_decision.html, a one page case for a deck oven: its cost, the landlord's allowance, the building's power and the monthly commitments.",
      "wrong": "Model A failed 13 of 49 criteria, carrying 43 of the 123 total weight.",
-     "problem": "That is 35.0%, well under 50%, and the failed rows are already the heavy ones: Model A got most of the task right.",
-     "right": "A harder scenario before the run, with sources that disagree; not heavier weights or extra rows.",
+     "problem": "That is 35.0%; the floor needs 62, so the task fails. Nothing else flags it: the rubric is sound and the golden passes it. Weights cannot fix it: three of the four weight 5 criteria are already failed, and objective criteria 1, 26 and 34, image reads Model A passed, belong at 3, not 1.",
+     "right": "A harder scenario, with sources that disagree, and both legs run again until Model A fails at least half the weight. Never heavier weights or extra rows.",
      "marks": [],
      "good": [],
      "fields": [
@@ -3695,6 +4244,75 @@
          "flag": false
         }
        ]
+      },
+      {
+       "t": "prompts",
+       "title": "Every Leg A prompt, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "Hi, I need the deck oven decision summarized in a single page before my call with Delphine on the 9th of September at 1pm. Here is what I remember: Northwest Bakery Equipment gave me a price for a Doyon deck oven in April for \\~$21,500. After that it turned out that the building would need a 3-phase electrical service in order to be able to run it and Fidalgo Electric's price for the job was \\~$15,500 with the utility charge and permit so in May I decided to not proceed with that idea. In June the landlord - Cap Sante, offered me an early lease renewal which includes an improvement allowance. In August I revisited the oven numbers, with the allowance this time, and sent them to Odalys, my accountant. Her reply is in the inbox. The rest of the information can be found in my email and the maintenance channel on Slack. I've attached a photo of my spreadsheet with a note from Marguerite about some mistakes she found in my calculations, a photo of the note that Peder left me after he was in the back electrical pannel in July and there is also a screenshot from the supplier, but please leave that for later. I want you to build a single page(oven_decision.html) which shows: the cost as it stood in May next to the cost with the allowance included, line by line; what the allowance actually is under Cap Sante's written terms and whether I can use it on an oven, bought before the new lease term starts; whether the building can take the oven as quoted based on Peder's note and last - what I am commited to paying every month from September, with Marguerite's corrections applied and marked so I can see what changed. For the rent, loan and the account balances, use FinTrack rather than my memory or the bank's alert emails."
+        },
+        {
+         "turn": 2,
+         "text": "The supplier screenshot I told you to leave alone is the new quote, it came in on the first. Put the current price and lead time on the page wherever the oven price appears, and send Odalys an email with the delivered and installed figure and how long it holds. She wanted it by Friday the 4th."
+        },
+        {
+         "turn": 3,
+         "text": "Split the bottom of the page into two paths side by side: buy now on my own money, or wait for the new lease term and use the allowance. Leave everything above that exactly as it is."
+        },
+        {
+         "turn": 4,
+         "text": "Before I print this, do the rent, loan and payroll lines on the page match what actually left the business checking account in August? Put the account's figures next to mine."
+        }
+       ]
+      },
+      {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 1,
+         "weight": 1,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The May total on `oven_decision.html` is 36,852.00, built from 21,400.00 + 11,240.00 + 3,900.00 + 312.00.",
+         "flag": false
+        },
+        {
+         "n": 26,
+         "weight": 1,
+         "target": "State change",
+         "category": "Task Completion",
+         "text": "The email sent to [odalys@ferreirakwan.com](mailto:odalys@ferreirakwan.com) states that quote 15310 holds to 16 October 2026.",
+         "flag": false
+        },
+        {
+         "n": 34,
+         "weight": 1,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The monthly commitments list an oven electricity line of 310.00, taken from the cost sheet.",
+         "flag": false
+        }
+       ],
+       "title": "Objective criteria 1, 26, 34"
+      },
+      {
+       "t": "evidence",
+       "title": "oven_decision.html",
+       "label": "oven_decision.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6aa73af2a7b183d5fb7eb8a3/oven_decision.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "oven_decision.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 20
@@ -3734,10 +4352,11 @@
      "scenario": "Jayden Brown is helping his sister Tamara prepare a memorial photo display for their upcoming family reunion, honoring Daddy and Grandma Pearl while also celebrating the relatives gathering together. Because several original photographs are delicate and…",
      "category": "Creative & Media",
      "turns": 3,
-     "setup": "Leg A turn 3 asks for Tamara's exact phrase in the logo: “That truck is a family heirloom at this point.”",
+     "gist": "Criterion 15 wants `family heirloom` in the logo in place of FAMILY. Leg A turn 3 asks for Tamara's exact phrase, a whole sentence, and the golden logo shows it.",
+     "setup": "Leg A turn 3 asks for “the exact phrase Tamara used when she joked about Terrence’s truck”. The records give “That truck is a family heirloom at this point.”",
      "wrong": "Criterion 15: In family_photo_tree.html, the logo shows `family heirloom` beneath the tree in place of the original word `FAMILY`.",
-     "problem": "The turn asks for a sentence and the criterion for two words, so the golden, which renders the sentence, fails.",
-     "right": "The logo reads `That truck is a family heirloom at this point.`",
+     "problem": "Criterion 15 copies Desired Outcome item 5, which Model A and Model B never see, instead of Leg A turn 3. Model B, Leg B turn 3, puts Tamara's whole sentence in the logo, as asked, so the golden fails criterion 15. The golden is right; the criterion is what is broken.",
+     "right": "Criterion 15 follows Leg A turn 3: the logo shows `That truck is a family heirloom at this point.` beneath the tree in place of `FAMILY`, which the golden passes.",
      "marks": [
       [
        "criteria",
@@ -3824,6 +4443,17 @@
        ]
       },
       {
+       "t": "golden",
+       "title": "From the Leg B conversation, with Model B",
+       "rows": [
+        {
+         "role": "agent",
+         "turn": 3,
+         "text": "The mock confirms the finished layout works exactly as intended:\n\n- **Silver background** (Reggie's Nissan Altima — he told you *\"Silver one, hood already up\"*)\n- **Title \"Brown fam\"** — your group chat's exact name\n- **Logo in the top-right corner**, with the checkerboard keyed out to real transparency so it sits cleanly on the silver\n- **Motto beneath the tree in the logo**, replacing \"FAMILY\" with Tamara's exact words: *\"That truck is a family heirloom at this point.\"* — kept in the same dark-green serif with a gold edge\n- All **six family photos** in place from before (Daddy & Grandma Pearl up top; Tamara, Uncle Chuck, Aunt Rosalind, Terrence along the bottom)\n\nEverything is saved (self-contained, valid UTF-8) at **`/app/outputs/family_photo_tree.html`**.\n\n## Records I checked\n- **Motto:** In your reunion chat, when you said *\"Terrence with the loud truck,\"* Tamara replied *\"That truck is a family heirloom at this point.\"* — used verbatim.\n- **Background color:** Reggie Foster's texts — his battery died in *\"the Altima\"* (Nissan), and he confirmed it's the *\"Silver one.\"* → silver background.\n\nOne small heads-up: the motto is a full sentence, so in the small corner logo it wraps to three lines and reads a bit fine at that size. If you'd like, I can make the logo a touch larger, set the motto in a single line, or also place it as a caption beneath the main tree on the page. Want me to adjust anything before you send it to Tamara and Reggie?"
+        }
+       ]
+      },
+      {
        "t": "evidence",
        "title": "family_photo_tree.html",
        "label": "family_photo_tree.html",
@@ -3831,7 +4461,7 @@
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6aa09f92992e6e82402e51ee/family_photo_tree.html",
+         "src": "evidence/6aa09f92992e6e82402e51ee/family_photo_tree.969d89.html",
          "targets": 1,
          "runtime": [
           "css:img[alt^='Brown family tree logo']"
@@ -3850,10 +4480,11 @@
      "scenario": "Abelardo Quintero is a Registered Professional Land Surveyor and the whole of Quintero Land Surveying, PLLC, a one-man practice in Amarillo, Texas, where his wife Rosalba runs the office. In March he was retained as the boundary expert in a Moore County case…",
      "category": "Small Business & Personal Docs",
      "turns": 5,
-     "setup": "Leg A turn 1 asks which jobs the check cannot clear “because the record is too thin”.",
-     "wrong": "Only the Desired Outcome asks for \"Exactly three records\". Criteria 24 and 26 grade one of them, \"invoice 21-018\".",
-     "problem": "Invoice 21-018 has no job number, so nothing the prompts ask for reaches it, and the golden, which never mentions it, fails both.",
-     "right": "Criterion 24 limited to job 14-011 and the ground covered by job 26-004; criterion 26 dropped.",
+     "gist": "Criteria 24 and 26 grade invoice 21-018 as a record that cannot be cleared, but only the Desired Outcome names it and the golden never mentions it.",
+     "setup": "Leg A turn 1 asks to check every named party and the tract, and which of the jobs they touch cannot be cleared “because the record is too thin”.",
+     "wrong": "Criterion 24 requires that conflict_check.html “lists exactly three records as unresolved rather than cleared: job 14-011, invoice 21-018, and the ground covered by job 26-004.” Criterion 26 grades the reason invoice 21-018 cannot be cleared. Only the Desired Outcome asks for the count or the invoice: “Exactly three records must be listed as unresolved rather than cleared”.",
+     "problem": "Invoice 21-018 has no job number, billing address or phone in QLS_invoices_2011-2025_export.csv, and no ledger line, so it matches no named party and no tract, and no Leg A prompt names it. The golden never mentions it and fails both criteria, as would any run doing exactly what the Leg A prompts ask.",
+     "right": "Criterion 24 names only job 14-011 and the ground covered by job 26-004, with no count, so the golden's 26-028 does not fail it. Criterion 26 goes.",
      "marks": [
       [
        "text",
@@ -9662,7 +10293,7 @@
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6aa34dd1625bb5b220c6b1ba/conflict_check.html",
+         "src": "evidence/6aa34dd1625bb5b220c6b1ba/conflict_check.faeade.html",
          "targets": 2,
          "runtime": [
           "=26-028"
@@ -9711,10 +10342,11 @@
      "scenario": "Help Noor Al-Bazzaz prepare new technical illustrators at Chinook Technical Publications for a TR-72 change board with a short self-study video. Develop the same video across the conversation as new learning and decision goals are added. Use her work records…",
      "category": "Visual Learning",
      "turns": 3,
-     "setup": "A teaching video's change board scene runs 127.8 to 138.3 seconds.",
-     "wrong": "The criterion is scoped to \"The change-board step\" and requires \"PCR-2026-0688\", \"accepted on 10 July 2026\".",
-     "problem": "Both appear only in an earlier scene, so the golden is Not Present at weight 5.",
-     "right": "Scope it to the video, where both values appear: “source_check.mp4 presents acceptance and release as separate states.”",
+     "gist": "Criterion 23 requires PCR-2026-0688 and its 10 July 2026 acceptance in the change board step. The golden's change board scene shows neither; both sit in an earlier scene.",
+     "setup": "Leg A turn 3 asks for one more decision step in source_check.mp4, to show that “finding a discrepancy, accepting a change request, and releasing a changed figure are different decisions”.",
+     "wrong": "Criterion 23 is scoped to “The change-board step” and requires “PCR-2026-0688”, “accepted on 10 July 2026”. The golden's change board scene, 127.8 to 138.3 seconds, names 32-21-07 as accepted in July, with no PCR number and no date.",
+     "problem": "The PCR number and the 10 July date appear in source_check.mp4, but only in the earlier record scene, 26 to 39 seconds, and Leg A turn 3 never asks for them in the new step. So the golden is Not Present on criterion 23 at weight 5. This is Overfitting, which costs points.",
+     "right": "Criterion 23 scoped to source_check.mp4: the July acceptance of the 32-21-07 Figure 2 change request did not put the change in the manual; only the 30 September release does.",
      "marks": [
       [
        "criteria",
@@ -9818,6 +10450,16 @@
        ]
       },
       {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 3, to Model A",
+       "rows": [
+        {
+         "turn": 3,
+         "text": "For the change-board version, add one more decision step to source_check.mp4. Use the status history around the same three cases to show that finding a discrepancy, accepting a change request, and releasing a changed figure are different decisions. Keep both learning activities and the three-minute limit."
+        }
+       ]
+      },
+      {
        "t": "evidence",
        "title": "source_check.mp4",
        "label": "source_check.mp4",
@@ -9851,10 +10493,11 @@
      "scenario": "Create and iteratively revise combined-home.html to test whether two neighboring apartment plans can become one coherent home for Jayden Brown and his household.\nThe opening concept must use the two original floor-plan images. After Jayden supplies…",
      "category": "Property & Space",
      "turns": 5,
-     "setup": "The voice note asks about \"family members who might stay with us\", and the records support two.",
-     "wrong": "Criteria 13 and 28 require Aunt Rosalind.",
-     "problem": "The golden names Tamara Brown-Ellis, whom the records also support, and fails both.",
-     "right": "Either answer passes: “combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.”",
+     "gist": "Criteria 13 and 28 require Aunt Rosalind as the possible guest. The voice note asks about family members, plural and unnamed, and the golden names Tamara Brown-Ellis instead, failing both.",
+     "setup": "Leg A turn 3 hands over turn-3-voice-note.mp3, which asks about “family members who might stay with us” and names no one. The records support more than one.",
+     "wrong": "Criterion 13 requires combined-home.html to name Aunt Rosalind as a possible guest, and criterion 28 requires the trajectory to find that she cannot walk far.",
+     "problem": "The golden's combined-home.html answers the voice note with Tamara Brown-Ellis, from Contacts, Calendar and Email, and never mentions Rosalind, so the golden is Not Present on both criteria. Pinning one person where the voice note asks for any family member the records support is Overfitting, which costs points.",
+     "right": "Criterion 13, widened: “combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.” Criterion 28 goes.",
      "marks": [
       [
        "criteria",
@@ -9981,11 +10624,26 @@
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6aa88e8600a9cc42267c9867/combined-home.html",
+         "src": "evidence/6aa88e8600a9cc42267c9867/combined-home.e828bc.html",
          "targets": 1,
          "runtime": [],
          "name": "combined-home.html",
          "role": "artifact",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "turn-3-voice-note.mp3",
+       "label": "turn-3-voice-note.mp3",
+       "note": "",
+       "items": [
+        {
+         "kind": "audio",
+         "src": "evidence/6aa88e8600a9cc42267c9867/turn-3-voice-note.mp3",
+         "name": "turn-3-voice-note.mp3",
+         "role": "input",
          "marks": []
         }
        ]
@@ -9998,10 +10656,11 @@
      "scenario": "Sunniva Haugland is the owner-baker at Storvik Bakeri, 808 Commercial Avenue, Anacortes. It's Saturday, 12 September 2026. In May she put a handwritten card in the window after her manager (Marguerite) told her not to. The card worked. She still wants a…",
      "category": "Creative & Media",
      "turns": 5,
-     "setup": "The register prices sit both on a calendar event and in a PDF mailed the night before.",
-     "wrong": "Criterion 26: \"The trajectory grounds the nine old and new register prices in the calendar event.\"",
-     "problem": "Criterion 29 wants its values from the mail, so a run reading one source fails one of the two; the golden fails 26.",
-     "right": "Either source accepted: the calendar event or the price list attached to the 4 May mail.",
+     "gist": "Criterion 26 accepts the register prices only from the 5 May calendar event. The same list is attached to the 4 May mail, and the golden took it from there.",
+     "setup": "The nine price changes sit in two records, the 5 May calendar event and price list 5 may.pdf attached to the 4 May mail. Both carry the held prices too.",
+     "wrong": "Criterion 26 wants the nine old and new register prices grounded in “the 5 May 2026 07:00 PT calendar event”, and criterion 29 wants the held prices “from the 4 May mail”. Model B, Leg B turn 1, grounds the list in the mail: “The list you sent Marguerite the night before”.",
+     "problem": "Leg A turn 1 names neither record, and either one gives every price. Criterion 29 rewards reading the mail, and a run that takes the whole list from there, as the golden did, fails criterion 26 at weight 5. Pinning one of two valid sources is Overfitting, which costs points.",
+     "right": "Criterion 26 accepts either record: the nine prices from the calendar event “New prices in the register” or from the price list attached to the 4 May mail.",
      "marks": [
       [
        "criteria",
@@ -10117,6 +10776,16 @@
          "text": "Done. `storvik_price_cards.html` is in `/app/outputs`.\n\n## What I pulled it together from\n- **The photo** → the voice and format: short, plain, first person, the closing line *\"Ask me, not the till,\"* and your habit of putting the source account in the corner (that card's **GG-1184**).\n- **The clip** → the leftover pack on the pass is stamped **5 × 7**, kraft. Every card is built to print at exactly that size on that stock.\n- **The register list** → I didn't retype it. The list you sent Marguerite the night before (\"*New price list, into the register tomorrow at seven*\", attachment **price list 5 may.pdf**) is the source of truth — the nine that moved, and the two you held.\n- **The two letters** → the *why*: **Golden Glen Creamery** (GG-1184, butter $4.68 → $5.94/lb) and **Samish Bay Mill** (ref SBM/HAU/2026-04, flour $41.50 → $46.25/sack).\n\n## The set (one 5×7 card each, kraft, dark-pen handwriting)\nButter cards carry **GG-1184** in the corner; flour loaves carry **SBM/HAU/2026-04**; coffee carries the roaster/dairy — same corner-source habit as the card that's up.\n\n1. Kanelsnurr **$4.75** (was 4.25) — *\"Butter went up. You've bought this one since we opened, so you'll feel it.\"*\n2. Kardemommebolle **$5.00** (was 4.50)\n3. Skolebrød **$5.25** (was 4.75) — *\"Same creamery as March.\"*\n4. Wienerbrød **$5.75** (was 5.25) — *\"The one that's all butter.\"*\n5. Croissant **$5.00** (was 4.50)\n6. Rugbrød loaf **$9.50** (was 8.50) — *\"The mill in Bow, first of April.\"*\n7. Solsikkebrød loaf **$9.00** (was 8.00)\n8. Drip coffee **$3.25** (was 3.00)\n9. Latte **$5.25** (was 4.75)\n\nI also added a tenth companion card — *\"These didn't move. Day-old bag still $5. Kids' bolle still $2.\"* — since you were firm those two stay put. Drop it if you only want the nine.\n\n## Printing\nOpen it, `File → Print`, paper **5×7** at **100% / actual size** (no scaling), margins **None**, and turn on **Background graphics** so the kraft colour prints. One card per sheet; the grey instruction strip doesn't print.\n\nTwo calls I made that you can veto: the coffee/latte reasons (\"beans went up,\" \"beans and milk both up\") aren't backed by a letter the way butter and flour are — I kept them plainly honest rather than inventing a supplier notice. And I used proper ø spelling (Skolebrød, Wienerbrød, Rugbrød, Solsikkebrød) to match your hand, not the ASCII on the register PDF. Say the word if you'd rather they match the till exactly."
         }
        ]
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 1, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "My manager told me not to put a card in the window. I put one up anyway, in my own handwriting, and it did what I needed. I still don't have a proper set of window cards for the ones that moved, written in the same voice and sized to the stock I actually buy. The photograph is the card that's up. The short clip is the leftover pack on the pass. The list went into the register that morning. The letters from the creamery and the mill are already in my mail. I'm not typing the list out again. Can you build the set in a file called storvik_price_cards.html?"
+        }
+       ]
       }
      ],
      "num": 25
@@ -10156,10 +10825,11 @@
      "scenario": "Brandon Lewis runs HoopHighlights, a YouTube channel of youth rec-league and pickup basketball edits he has been cutting for years around a full-time product job in Boston. He has signed on a condo, and the laptop that holds the entire library does not…",
      "category": "Operations & QA",
      "turns": 5,
-     "setup": "Criteria 17 and 30 grade what a file states.",
-     "wrong": "Both are Agent Behavior, targeting the artifact.",
-     "problem": "Agent Behavior always targets Trajectory; a check on what a file says grades the deliverable.",
-     "right": "Task Completion, same target.",
+     "gist": "Criteria 17 and 30 grade what the running note says, yet their Category is Agent Behavior, which always targets Trajectory. A check on a file grades the deliverable: Task Completion.",
+     "setup": "Leg A turn 1 asks for “a running note of where each album stands and what the rules are”. Criteria 17 and 30 grade what that note states.",
+     "wrong": "Both are Category Agent Behavior, with Evaluation Target Final answer/artifact.",
+     "problem": "In the golden, both are read off hh_migration_notes.md, its running note, so they grade the deliverable, not the trajectory. Wording and target are right; only the category is wrong. The criteria still pass and fail the right runs, so grading never exposes it, but the client receives wrong rubric data, which costs points.",
+     "right": "Category Task Completion on both, keeping Evaluation Target Final answer/artifact and the wording. A retag is made in place; neither leg runs again.",
      "marks": [],
      "good": [],
      "fields": [
@@ -10248,6 +10918,33 @@
          "flag": true
         }
        ]
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 1, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "I'm getting the HoopHighlights library off this laptop before the move. Phase one is done, laptop onto the T7. I've put my checklist, a voice note with the parts I never wrote down, and screenshots of both drives in the workspace. The checklist has the process and the rules, so go by it.\n\nBuild me hh_migration_manifest.csv, one row per album folder that's actually on the laptop, with these columns: album, laptop_size_gb, laptop_items, shot_date, published, publish_ref, t7_status, flags, action. Shot dates, and whether each album ever went out and where, are spread across my mail, calendar and the league threads. Dig them out rather than guessing. The t7_status and action columns follow the rules on my list.\n\nI'm doing this in stints, so keep a running note of where each album stands and what the rules are. The mini step is next, I'll send that when it's done. before I wipe anything: is the T7 copy actually finished?"
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "hh_migration_notes.md",
+       "label": "hh_migration_notes.md",
+       "note": "",
+       "items": [
+        {
+         "kind": "text",
+         "text": "# HoopHighlights migration — running note\n\nPurpose: track where each album stands and the rules, across stints.\nCompanion: `hh_migration_manifest.csv` (now has both `t7_status` and `mini_status`).\nScope: **laptop → T7 (verified Aug 17) AND T7 → mini (verified Aug 19).** Both passes are now in. The wipe decision is on the table.\n\n## Which screenshot is which device\n- **Laptop (source of truth), Aug 16 2026:** list view (sizes + modified dates), icon view (item counts, 8 folders), and the finale folder open (6 items). Path `Macintosh HD > Users > brandon > Videos > HoopHighlights`. 41 GB free.\n- **T7 Shield, Aug 17 2026:** list view (sizes + modified dates), icon view (item counts, 7 folders), and Get Info. exFAT, 4 TB, **Available 3.79 TB, Used ~210.91 GB, volume Created Wed May 6 2026 7:12 PM**. (Used 210.91 GB == the 7 folders on it: 58.4+59.3+12.4+18.9+21.7+23.4+16.8.)\n- **Mac mini, Aug 19 2026 (per Brandon, the Aug 19 shots are the mini):** HoopHighlights list view (sizes + mod dates) and the finale folder open. Internal disk is ALSO named \"Macintosh HD\" (~1.77 TB free) — that's why the path reads that way; it is the mini, not the laptop. The mini list view gives **sizes** for every album but not top-level item counts (only the finale's internals were opened).\n- **SET ASIDE per Brandon:** `IMG_4471.JPG` (Aug 23 phone photo) only — leave it alone.\n\n## \"When the drive showed up\" = **Wed May 6, 2026**\nSamsung T7 Shield 4TB, Amazon #113-8842061-4470258: placed May 4, shipped May 5, **delivered Wed May 6** (email). T7 volume Created May 6 7:12 PM (Get Info). Both agree.\n\n---\n\n## THE RULES\n\n### Checklist (\"HH move - do not screw this up\", written Aug 15)\n1. laptop → T7 (Finder copy)\n2. verify T7: every album, item **count AND size** match laptop\n3. T7 → mini\n4. verify mini the same way\n5. wipe laptop **ONLY** when steps 2 **and** 4 are clean\n\nChecks:\n- **count AND size both off → STOP, hold everything**\n- **size off only → recopy that album, no hold**\n- **archive folder: count + size only, don't open it**\n- 7 albums, ~213 GB (the 7 folders that are NOT `bc eagles 3-21`; that set sums to 213.2 GB)\n- finale: 191 clips + project + autosaves. **autosaves ARE the edit.**\n- names stay EXACTLY as on disk (Premiere relinks break)\n- **double-check any album modified after the drive showed up** (drive = May 6, 2026)\n\n### Voice note (the parts not on the checklist) — transcribed from \"New Recording 47.mp3\"\n- **Any album with only one copy anywhere → automatic HOLD.** Don't wipe, no matter what else passes.\n- The wipe call at the end must **name what is blocking**, by name — not just yes/no.\n- The finale: **the cut IS the autosaves.** If those don't survive, the whole thing was pointless.\n- Card readers are in the desk drawer (for pulling anything off the cards).\n\n---\n\n## LAPTOP ↔ T7 COMPARISON (Aug 16 vs Aug 17)\n| album | laptop | T7 | verdict |\n|---|---|---|---|\n| 2025 archive | 214 / 58.6 | 214 / **58.4** | size off only → recopy |\n| bc eagles 3-21 | 118 / 41.2 | **absent** | missing → one copy → HOLD |\n| finale reel FINAL | **6** / **61.4** | **5** / **59.3** | both off → STOP/hold |\n| mar madness mixtape | 37 / 12.4 | 37 / 12.4 | ✅ clean |\n| Pickup Run Vol. 9 | 52 / 18.9 | 52 / 18.9 | ✅ clean |\n| pickup runs vol 4 | 61 / 21.7 | 61 / 21.7 | ✅ clean |\n| wryb 5-16 parents reel | 68 / 23.4 | 68 / 23.4 | ✅ clean (double-check) |\n| wryb week6 cut | 44 / 16.8 | 44 / 16.8 | ✅ clean (double-check) |\n\n## DOUBLE-CHECK RULE — which albums (laptop modified after May 6 2026)\nfinale reel FINAL (Aug 12), wryb 5-16 parents reel (May 19), wryb week6 cut (May 9). The other five predate the drive. Both wryb reels were copied Aug 16–17 (after their edits) and match on count+size → they pass. Finale fails on its own merits.\n\n---\n\n## IS THE T7 COPY FINISHED? — **NO.** Step 2 (verify T7) is not clean.\nBlockers, by name (per voice rule):\n1. **finale reel FINAL** — count AND size both off (T7 5 / 59.3 vs laptop 6 / 61.4). Missing `slowmo tests` (9 items / ~2.1 GB). T7's Auto-Save is **unverified** and the cut IS the autosaves. → STOP / hold everything.\n2. **bc eagles 3-21** — never copied to T7. Exists on the laptop only → one copy → auto-HOLD.\n3. **2025 archive** — size off (58.4 vs 58.6). → recopy (no hold).\n\nFive albums copied through clean: mar madness mixtape, Pickup Run Vol. 9, pickup runs vol 4, wryb 5-16 parents reel, wryb week6 cut.\n\n---\n\n## MINI PASS (step 4, Aug 19) + FINAL WIPE DECISION: **DO NOT WIPE**\nNeither step 2 (T7) nor step 4 (mini) is clean. Blockers by name:\n1. **finale reel FINAL** — on the mini it is 5 items / 59.1 GB vs laptop 6 / 61.4 (both off) AND its **Auto-Save folder is empty (0 items; laptop has 11)**. The cut did not survive to the mini. STOP / hold everything.\n2. **bc eagles 3-21** — not on the T7 and not on the mini. Exists only on the laptop → one copy → auto-hold.\n3. **2025 archive** — size off on both T7 and mini (58.4 vs laptop 58.6) → recopy before clean.\n\nAlso on the mini: a **stray `wryb week6 cut copy` (16.8 GB)** that is not on the laptop or the T7 → delete it.\n\nMini verification gap: the mini list view gives **sizes** for every album (all match the T7, whose counts were verified) but not top-level item counts, except the finale (opened). A mini icon view would close that loop.\n\n### WHAT CHANGED vs THE T7 PASS\nOnly two things moved; everything else copied through T7→mini identically.\n1. **Finale got worse.** T7 finale = 59.3 GB with autosaves apparently intact (size = laptop minus only the slowmo tests). Mini finale = 59.1 GB with **Auto-Save = 0 items** — the ~11 autosave files (~0.2 GB) present on the T7 were dropped in the T7→mini copy. This is exactly the \"autosaves ARE the cut\" failure.\n2. **New stray folder on the mini:** `wryb week6 cut copy` (16.8 GB), not present on the laptop or the T7 → remove it.\nUnchanged carry-overs: bc eagles still absent (one copy), 2025 archive still size-off on both, and the five clean albums stayed size-clean.\n\n\"Finder didn't complain\" is not verification — a drag-copy finishing without an error dialog does not mean counts/sizes match. The rules still flag finale, bc eagles, and the archive.\n\n---\n\n## WHERE THE FACTS CAME FROM (dug out, not guessed)\n- **Shot dates:** bc eagles = calendar \"BC Eagles game with Mason\" 3/21/2026 + Ticketmaster confirm. WRYB week structure from Ray Delgado (ray@wryb.org): season Sat 9–11 at the Ohrenberger, **Week 1 = 3/21 → Week 6 = 4/25**; 5/16 game (\"film a few minutes for the parents\") = the parents reel; **finale = 6/6**.\n- **Publications (YouTube \"is live\" / analytics emails):** Pickup Run Vol. 9 live 3/6 (1k views 3/12); Pickup Runs Vol 4 live 4/18; \"Spring Rec League – Week 6 Highlights\" live ~5/9; \"March Madness – Local Legends Mixtape\" ≥612 views by 3/13.\n- **wryb 5-16 parents reel:** unlisted link `youtu.be/aB3kR9xQ2mN` — Brandon → Ray 5/19 (SENT), Ray replied he'd send it to the parent list that night.\n- **finale not published:** Brandon's 6/5 reply promised Ray a reel \"early the following week\"; no delivery email exists and `finale_export.mp4` is 0 KB.\n- Slack = work (Sparrow Money), not league. Messaging has USPS/Amazon/etc.; the league thread is the Ray/WRYB email chain.\n\n## PER-ALBUM STATUS (T7 pass = Aug 17)\nLegend: ✅ clean · ⚠️ recopy · ⛔ hold · 🔁 double-check\n- ⛔🔁 **finale reel FINAL** — laptop 6/61.4, T7 5/59.3. Both off; `slowmo tests` missing; T7 autosaves unverified. Not published (export 0 KB).\n- ⛔ **bc eagles 3-21** — laptop 118/41.2; not on T7. One copy → HOLD. Shot 3/21/26 (BC w/ Mason). Not published.\n- ⚠️ **2025 archive** — 214/58.6 vs T7 214/58.4. Size off → recopy. Don't open (archive rule).\n- ✅ **mar madness mixtape** — 37/12.4 both. YouTube mixtape.\n- ✅ **Pickup Run Vol. 9** — 52/18.9 both. YouTube, live 3/6.\n- ✅ **pickup runs vol 4** — 61/21.7 both. YouTube, live 4/18.\n- ✅🔁 **wryb 5-16 parents reel** — 68/23.4 both. Shot 5/16. Unlisted YouTube → parent list via Ray 5/19.\n- ✅🔁 **wryb week6 cut** — 44/16.8 both. Shot 4/25 (Week 6). YouTube \"…Week 6 Highlights\" ~5/9.\n\n## TO CLEAR BEFORE WIPE (both T7 and mini must end clean)\n- **finale reel FINAL:** recopy the whole folder from the laptop (incl. `slowmo tests`) to T7 AND mini, then open the project folder on BOTH and confirm **Auto-Save = 11 items**. Size alone is not enough here — the cut IS the autosaves.\n- **bc eagles 3-21:** copy to T7 AND mini; verify count+size. (Until then it is a single copy → hold.)\n- **2025 archive:** recopy (size off on both); re-verify count+size (don't open — archive rule).\n- **stray `wryb week6 cut copy` on the mini:** delete it.\n- Grab a mini **icon view** so top-level counts are verified, not just sizes.\n- Only when steps 2 AND 4 are both clean is the wipe on the table — and the wipe call must name any remaining blockers.\n- `IMG_4471.JPG` (Aug 23) stays set aside per Brandon.\n\n### Correction log\n- The Aug 19 shots are the **mini** (confirmed by Brandon). Only the Aug 23 phone photo is set aside.\n- The stray `wryb week6 cut copy` lives on the **mini** (not the T7).\n",
+         "cut": false,
+         "find": [],
+         "name": "hh_migration_notes.md",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 26
@@ -10257,10 +10954,11 @@
      "scenario": "Rosalind Achterberg is a certified medical illustrator in the Surgical Visualization Unit at the University of Michigan Medical School. In the summer lull after the atlas went to press she is redrawing the deltoid plate for Dr. Yusuf Oyelaran's shoulder…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "Subjective criterion 2 grades the key's colours in deltoid_plate_study.html.",
+     "gist": "Subjective criterion 2, on key markers coloured like their muscle's heading, is tagged Instruction Following. No Leg A prompt asks for colours, and the subjective block takes Task Completion only.",
+     "setup": "Subjective criterion 2 grades whether the key markers in deltoid_plate_study.html use one colour per muscle, matching that muscle's section heading.",
      "wrong": "It is tagged Instruction Following.",
-     "problem": "No prompt asks for the colours, so it is a presentation property, and Instruction Following is never valid in the subjective block.",
-     "right": "Task Completion.",
+     "problem": "None of the four Leg A prompts mentions colour, so subjective criterion 2 grades no instruction; it grades how deltoid_plate_study.html looks, which is Task Completion. Had a Leg A prompt asked for the colours, the check would belong in the objective block instead. The wording is right; only the tag costs points.",
+     "right": "Category Task Completion, with the wording and Evaluation Target Final answer/artifact unchanged.",
      "marks": [],
      "good": [],
      "fields": [
@@ -10318,6 +11016,23 @@
          "flag": true
         }
        ]
+      },
+      {
+       "t": "evidence",
+       "title": "deltoid_plate_study.html",
+       "label": "deltoid_plate_study.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6a9a43f6353e55844b5c3fbe/deltoid_plate_study.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "deltoid_plate_study.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 27
@@ -10357,10 +11072,11 @@
      "scenario": "Anselm Kirchner (graphics editor, The Richmond Beacon) needs a year-in-review page of the desk's chart dailies. Nadine Ptaszek asked for something the desk can actually use. He wants it built from exports in the drop, path matches, and not from every chart…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "",
-     "wrong": "Criterion 2 says the dailies index lists only four files; criterion 9 says two maps are not on it.",
-     "problem": "If criterion 2 passes, criterion 9 cannot fail: one property, two rows of weight.",
-     "right": "Keep criterion 2, drop 9.",
+     "gist": "Criterion 9 checks that the two inspection maps are off the dailies index. Criterion 2 already requires the index to list only four files, neither map among them.",
+     "setup": "Leg A turn 2 hands over three map exports, among them inspections_map_q3.png and inspections_church_hill.png. Leg A turn 3 asks to move inspection project work off the dailies index and recount.",
+     "wrong": "Criterion 2 requires the dailies index to list “only these four files” as dailies, and neither inspection map is among them. Criterion 9 requires that years_in_review.html “does not list inspections_map_q3.png or inspections_church_hill.png” on the index. Both carry weight 5.",
+     "problem": "The four files criterion 2 names leave out both inspection maps, so an index that passes criterion 2 passes criterion 9. Keeping the maps off the index is worth weight 10 across two rows, and an index that keeps one map loses both. The golden passes both, so nothing flags it; the duplicate costs points.",
+     "right": "Keep criterion 2, whose list of four files already keeps both inspection maps off the dailies index, and drop criterion 9.",
      "marks": [
       [
        "criteria",
@@ -10462,6 +11178,147 @@
          "flag": true
         }
        ]
+      },
+      {
+       "t": "prompts",
+       "title": "Every Leg A prompt, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "Nadine wants a year-in-review of the dailies for the desk... not a recap from my head. The exports are in this drop, named by month(2026-02...and so on);  desk_review_notes.md is how I usually sort what actually ran. Build years_in_review.html from those files: what ran, what it was about, which chart types we reached for, and which pieces still carry a correction. Mark each one read or confirmed. I need the counts on the page to click through to the files behind them."
+        },
+        {
+         "turn": 2,
+         "text": "The map exports are in this drop. Fold them into year_in_review.html; do not rebuild the index from scratch."
+        },
+        {
+         "turn": 3,
+         "text": "Nadine looked at it. Some of this belongs with the inspection project, not on the dailies index. Separate that out and recount. Keep year_in_review.html."
+        },
+        {
+         "turn": 4,
+         "text": "Can you check the confirmed marks against the actual sign-off threads? I don't want a stray \"got it\" sitting on the wrong piece. Same file."
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "inspections_map_q3.png",
+       "label": "inspections_map_q3.png",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa02f48755f41e02b01483f/inspections_map_q3.png",
+         "w": 1080,
+         "h": 675,
+         "name": "inspections_map_q3.png",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "inspections_church_hill.png",
+       "label": "inspections_church_hill.png",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa02f48755f41e02b01483f/inspections_church_hill.png",
+         "w": 1080,
+         "h": 675,
+         "name": "inspections_church_hill.png",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "years_in_review.html",
+       "label": "years_in_review.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6aa02f48755f41e02b01483f/years_in_review.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "years_in_review.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "2026-02_export_0224.svg",
+       "label": "2026-02_export_0224.svg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa02f48755f41e02b01483f/2026-02_export_0224.png",
+         "w": 2600,
+         "h": 1528,
+         "name": "2026-02_export_0224.svg",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "2026-03_frame_0305.svg",
+       "label": "2026-03_frame_0305.svg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa02f48755f41e02b01483f/2026-03_frame_0305.png",
+         "w": 2600,
+         "h": 1856,
+         "name": "2026-03_frame_0305.svg",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "2026-04_frame_0416.png",
+       "label": "2026-04_frame_0416.png",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa02f48755f41e02b01483f/2026-04_frame_0416.png",
+         "w": 1080,
+         "h": 675,
+         "name": "2026-04_frame_0416.png",
+         "role": "input",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "2026-06_export_0611.svg",
+       "label": "2026-06_export_0611.svg",
+       "note": "",
+       "items": [
+        {
+         "kind": "image",
+         "src": "evidence/6aa02f48755f41e02b01483f/2026-06_export_0611.png",
+         "w": 2600,
+         "h": 1474,
+         "name": "2026-06_export_0611.svg",
+         "role": "input",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 28
@@ -10501,10 +11358,11 @@
      "scenario": "Brandon Lewis runs HoopHighlights, a YouTube channel of youth rec-league and pickup basketball edits he has been cutting for years around a full-time product job in Boston. He has signed on a condo, and the laptop that holds the entire library does not…",
      "category": "Operations & QA",
      "turns": 5,
-     "setup": null,
-     "wrong": "None of the 10 subjective criteria names a file, and the task ships four.",
-     "problem": "Criteria 2 and 3 grade marks and columns that both the video and the notes file carry, so graders can score them against different files.",
-     "right": "“In move_walkthrough.mp4, passed and failed outcomes are distinguished by colour or a mark, not by wording alone.”",
+     "gist": "None of the 10 subjective criteria names a file, though Leg A asks for three, so each leaves the grader to choose which file it grades.",
+     "setup": "Leg A turn 1 asks for hh_migration_manifest.csv and a running note, hh_migration_notes.md in the golden. Leg A turn 4 adds move_walkthrough.mp4, a video that shows the album table.",
+     "wrong": "None of the 10 subjective criteria names a file, and the golden archive holds four: hh_migration_manifest.csv, hh_migration_notes.md, move_walkthrough.mp4 and voice_note_transcript.txt.",
+     "problem": "The task ships more than one file, so each subjective criterion has to name the one it grades, and none does. Subjective criterion 2's pass and fail marks and subjective criterion 3's table columns also appear in hh_migration_notes.md, an album table with “✅ clean” rows, so the grader has to decide which file is meant. It costs points.",
+     "right": "Every subjective criterion opens with the file it grades: “In move_walkthrough.mp4, passed and failed outcomes are distinguished by colour or a mark, not by wording alone.”",
      "marks": [],
      "good": [],
      "fields": null,
@@ -10628,9 +11486,37 @@
         }
        ],
        "links": {
-        "hh_migration_notes.md": 2,
-        "move_walkthrough.mp4": 3
+        "hh_migration_notes.md": 3,
+        "move_walkthrough.mp4": 4,
+        "hh_migration_manifest.csv": 5,
+        "voice_note_transcript.txt": 6
        }
+      },
+      {
+       "t": "prompts",
+       "title": "Every Leg A prompt, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "I'm getting the HoopHighlights library off this laptop before the move. Phase one is done, laptop onto the T7. I've put my checklist, a voice note with the parts I never wrote down, and screenshots of both drives in the workspace. The checklist has the process and the rules, so go by it.\n\nBuild me hh_migration_manifest.csv, one row per album folder that's actually on the laptop, with these columns: album, laptop_size_gb, laptop_items, shot_date, published, publish_ref, t7_status, flags, action. Shot dates, and whether each album ever went out and where, are spread across my mail, calendar and the league threads. Dig them out rather than guessing. The t7_status and action columns follow the rules on my list.\n\nI'm doing this in stints, so keep a running note of where each album stands and what the rules are. The mini step is next, I'll send that when it's done. before I wipe anything: is the T7 copy actually finished?"
+        },
+        {
+         "turn": 2,
+         "text": "Right, that's what I was afraid of.\n\nI did the mini step last night, T7 into the mini. Both views of it are in there, along with what's inside the project folder. It felt clean to me. Finder didn't complain once.\n\nAdd a mini_status column to hh_migration_manifest.csv and fill it in the same way as the T7 one, using the same rules. Don't rebuild the file, just extend it.\n\nThen tell me in the chat, not only in the file: what changed compared to the T7 pass, if anything?"
+        },
+        {
+         "turn": 3,
+         "text": "They're in there, both of them, from Wednesday night.\n\nDo the mini pass off those, same rules as the T7 one, and fill in mini_status properly.\n\nThen the same question as last time: compared to the T7 pass, what changed?"
+        },
+        {
+         "turn": 4,
+         "text": "That's the picture I needed. That's all I took of the mini, so work with what's there.\n\nOne more thing while this is fresh. The raw footage archive is next month and it's four times this size, so I'll be doing this again at 1am with drives all over the desk. Put it in something I can just play: move_walkthrough.mp4, one part per step off my note, in that order, each one showing the check and what it actually came back as, passed or failed.\n\nOn the verify step, show the album table itself, with the real numbers and expected next to found. Use the names exactly as they are on disk.\n\nThen show me what a failed one looks like, using one that actually failed, with the rule that tripped it.\n\nTalk over it if your setup does voice; otherwise put big text on screen. I watch these muted half the time anyway. Keep it landscape, and ninety seconds is plenty.\n\nKeep the rules handy for next month."
+        },
+        {
+         "turn": 5,
+         "text": "I ran that copy again overnight, straight off the laptop this time instead of through the T7. A photo of the mini's screen is in there so you can see how it landed.\n\nFold that in, then fix what it changes and nothing else: the row in the manifest, and the failure example in the clip, since it can't be showing something that's fixed now. Re-export it.\n\nThen give me the call again under my rules. So we're good to wipe the laptop tonight, right?"
+        }
+       ]
       },
       {
        "t": "evidence",
@@ -10661,6 +11547,148 @@
          "kind": "video",
          "src": "evidence/6a7965b63b7d368e70c7de5b/move_walkthrough.mp4",
          "name": "move_walkthrough.mp4",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "hh_migration_manifest.csv",
+       "label": "hh_migration_manifest.csv",
+       "note": "",
+       "items": [
+        {
+         "kind": "table",
+         "head": [
+          "album",
+          "laptop_size_gb",
+          "laptop_items",
+          "shot_date",
+          "published",
+          "publish_ref",
+          "t7_status",
+          "flags",
+          "action",
+          "mini_status"
+         ],
+         "rows": [
+          [
+           "2025 archive",
+           "58.6",
+           "214",
+           "2025 (archive; mixed dates)",
+           "N/A",
+           "Archive - not a release",
+           "On T7. Count OK (214=214). SIZE MISMATCH: 58.4 GB vs laptop 58.6 GB.",
+           "Archive: verify by count+size only, do NOT open (checklist). Modified Dec 14 2025 -> predates drive (May 6) -> no double-check. exFAT/APFS rounding does not excuse it; rule is mechanical.",
+           "RECOPY (size off only -> recopy, no hold). Not clean until re-verified.",
+           "On mini. SIZE MISMATCH: 58.4 GB vs laptop 58.6 GB (same delta as T7). Top-level count not re-captured (mini list view shows size, not count). Archive: don't open. Size off only -> RECOPY (no hold). Same result as T7."
+          ],
+          [
+           "bc eagles 3-21",
+           "41.2",
+           "118",
+           "2026-03-21",
+           "No",
+           "Not published. Personal - BC Eagles men's bball at Conte Forum, Sat 3/21/2026 7pm, taken with son Mason (calendar + Ticketmaster #TM-BOS-4471902).",
+           "MISSING from T7 - never copied.",
+           "Only ONE copy anywhere (laptop) -> auto-HOLD (voice rule), regardless of anything else. Modified Apr 23 2026 -> predates drive -> no double-check. NOT part of the '7 albums / ~213 GB' plan (those 7 = the other folders, sum 213.2 GB).",
+           "HOLD - do not wipe. Copy bc eagles 3-21 to T7, then verify count+size.",
+           "MISSING from mini (never reached T7, so nothing to copy from). Still only ONE copy anywhere (laptop) -> auto-HOLD. Unchanged from T7."
+          ],
+          [
+           "finale reel FINAL",
+           "61.4",
+           "6",
+           "2026-06-06 (WRYB season finale)",
+           "No",
+           "Not published. finale_export.mp4 is 0 KB (never exported). Promised Ray a reel 'early the following week' after 6/6 (sent email 2026-06-05); link never sent.",
+           "On T7 but BOTH OFF: count 5 vs laptop 6; size 59.3 GB vs laptop 61.4 GB.",
+           "count AND size both off -> STOP / hold everything (checklist). The missing item is 'slowmo tests' (9 items / ~2.1 GB; 61.4-59.3=2.1). T7's finale internals were NOT captured, so T7 Auto-Save is UNVERIFIED - and the cut IS the autosaves (voice rule). DOUBLE-CHECK: laptop modified Aug 12 2026 (after drive May 6) -> re-check current laptop state before recopy.",
+           "Mini now GOOD via direct laptop->mini copy (6 items; Auto-Save 11; slowmo tests present). STILL TO DO on the T7: recopy finale in full incl. 'slowmo tests' and confirm Auto-Save = 11 before trusting; also glance at the mini folder size to fully close step 4.",
+           "RE-COPIED straight laptop->mini (Aug 23; photo of mini screen). Now 6 items = laptop 6: Adobe Premiere Pro Auto-Save = 11 (laptop 11) -> the cut SURVIVED; 'slowmo tests' (9) present; footage 191; music 6. Count + internal structure now MATCH the laptop -> the 'autosaves ARE the cut' failure is RESOLVED on the mini. (Folder byte-size not shown in the photo; glance at it to fully close step 4, but composition is complete.) NOTE: this fixed the MINI only - the T7 finale is still short (5 / 59.3)."
+          ],
+          [
+           "mar madness mixtape",
+           "12.4",
+           "37",
+           "compilation (no single shoot date; live early Mar 2026)",
+           "Yes",
+           "YouTube (HoopHighlights): 'March Madness - Local Legends Mixtape' (>=612 views by 3/13/2026).",
+           "VERIFIED on T7: count 37=37; size 12.4=12.4 GB.",
+           "2 copies (laptop + T7). Modified Mar 13 2026 -> predates drive -> no double-check.",
+           "Clean (2 copies) -> ready for mini step.",
+           "VERIFIED on mini by size: 12.4=12.4 GB (matches laptop & T7). Top-level count not re-captured (list view). Size-clean."
+          ],
+          [
+           "Pickup Run Vol. 9",
+           "18.9",
+           "52",
+           "compilation (no single shoot date)",
+           "Yes",
+           "YouTube (HoopHighlights): 'Pickup Run Vol. 9' - live 2026-03-06 (passed 1,000 views 3/12).",
+           "VERIFIED on T7: count 52=52; size 18.9=18.9 GB.",
+           "2 copies (laptop + T7). Modified Mar 6 2026 -> predates drive -> no double-check.",
+           "Clean -> ready for mini step.",
+           "VERIFIED on mini by size: 18.9=18.9 GB (matches). Count not re-captured (list view). Size-clean."
+          ],
+          [
+           "pickup runs vol 4",
+           "21.7",
+           "61",
+           "compilation (no single shoot date; cut ~4/18/2026)",
+           "Yes",
+           "YouTube (HoopHighlights): 'Pickup Runs Vol 4' - live 2026-04-18.",
+           "VERIFIED on T7: count 61=61; size 21.7=21.7 GB.",
+           "2 copies (laptop + T7). Modified Apr 18 2026 -> predates drive -> no double-check. Vol number not chronological (Vol 4 out after Vol 9) - cosmetic.",
+           "Clean -> ready for mini step.",
+           "VERIFIED on mini by size: 21.7=21.7 GB (matches). Count not re-captured (list view). Size-clean."
+          ],
+          [
+           "wryb 5-16 parents reel",
+           "23.4",
+           "68",
+           "2026-05-16",
+           "Yes",
+           "Unlisted YouTube https://youtu.be/aB3kR9xQ2mN - Brandon sent to Ray (ray@wryb.org) 2026-05-19; Ray forwarded to the WRYB parent list that night.",
+           "VERIFIED on T7: count 68=68; size 23.4=23.4 GB.",
+           "DOUBLE-CHECK: laptop modified May 19 2026 (after drive May 6). The T7 copy was made Aug 16-17 (after that edit) and count+size match -> passes; just confirm no further edits since Aug 16.",
+           "Clean (passes double-check) -> ready for mini step.",
+           "VERIFIED on mini by size: 23.4=23.4 GB (matches). Count not re-captured (list view). Size-clean. Double-check album, but the copy post-dates the edit -> OK."
+          ],
+          [
+           "wryb week6 cut",
+           "16.8",
+           "44",
+           "2026-04-25 (WRYB Week 6)",
+           "Yes",
+           "YouTube (HoopHighlights): 'Spring Rec League - Week 6 Highlights' - live ~2026-05-09.",
+           "VERIFIED on T7: count 44=44; size 16.8=16.8 GB.",
+           "DOUBLE-CHECK: laptop modified May 9 2026 (after drive May 6). T7 copy made Aug 16-17 (after that edit) and count+size match -> passes. Week 6 = 4/25 derived from league thread (Ray: Week 1 = 3/21, Sat 9-11 at the Ohrenberger).",
+           "Clean (passes double-check) -> ready for mini step.",
+           "VERIFIED on mini by size: 16.8=16.8 GB (matches). Count not re-captured (list view). NEW ISSUE: a stray 'wryb week6 cut copy' (16.8 GB, same mod date) is on the mini but NOT on the laptop or T7 -> extraneous, delete it. Album itself size-clean."
+          ]
+         ],
+         "hit": [],
+         "name": "hh_migration_manifest.csv",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "voice_note_transcript.txt",
+       "label": "voice_note_transcript.txt",
+       "note": "",
+       "items": [
+        {
+         "kind": "text",
+         "text": "Okay, before I forget, ground rules for the library move, the stuff that's not on the\nchecklist.\nOne, if any album ends up with only one copy anywhere, that's an automatic hold, we are\nnot wiping the laptop, doesn't matter what else passes.\nTwo, the wipe call at the end has to say what's blocking, by name, not just yes or no.\nAnd the finale project, the cut is the autosaves.\nIf those don't survive, the whole thing was pointless.\nCard readers in the desk drawer, if I need to pull anything off the cards, again, that's\nit.\n",
+         "cut": false,
+         "find": [],
+         "name": "voice_note_transcript.txt",
          "role": "artifact",
          "marks": []
         }
@@ -10704,10 +11732,11 @@
      "scenario": "Ingrid Falkenrath is a Research Ecologist at the Large Lakes Observatory, University of Minnesota Duluth. She owns a 1947 story and a half house on 2.4 acres at 5811 London Rd, on the lake side of the road inside the Lake Superior shoreland district, with a…",
      "category": "Property & Space",
      "turns": 5,
-     "setup": null,
+     "gist": "The subjective block carries 32 of 103 absolute weight, 31.1%, over the 30% cap. Its twelve criteria clear the count of ten; the weight alone is the error.",
+     "setup": "The objective block holds 21 criteria worth 71 absolute weight; the subjective block holds 12 worth 32, with subjective criteria 1 and 2 at +5.",
      "wrong": "The subjective block carries 32 of 103 absolute weight: 31.1%.",
-     "problem": "Twelve criteria clears the count; the weight alone breaks the cap, however close.",
-     "right": "One +5 lowered to +3 gives 29.7%, with almost no margin.",
+     "problem": "Signs ignored, so subjective criterion 11's -3 counts as 3: 32 over 103 is 31.1%. Twelve criteria clear the count of ten, so the weight alone breaks the cap, and 1.1 points over is still over. No single row is wrong; only dividing the sums shows it. It costs points.",
+     "right": "Lower subjective criterion 1 from +5 to +3: 30 of 101, 29.7%. Adding the checks Leg A turns 2 and 5 ask for and nothing grades widens the margin.",
      "marks": [],
      "good": [],
      "fields": [
@@ -10871,10 +11900,11 @@
      "scenario": "Ingrid Falkenrath is a research ecologist in Duluth who binds her own field notebooks and prints their covers by letterpress. She and her husband Halvard, a shop teacher, live in a 1947 frame house where nothing is square. The front room wall between the…",
      "category": "Property & Space",
      "turns": 4,
-     "setup": null,
-     "wrong": "Five subjective criteria.",
-     "problem": "None looks at the page's cut diagrams or scribe section, so an unreadable diagram scores the same as a clear one.",
-     "right": "Ten or more, region by region, each naming front_room_builtin.html.",
+     "gist": "The subjective block holds five criteria, where the Guidelines expect ten or more, and none grades the cutting diagrams or the scribe plan Leg A turn 1 asks for.",
+     "setup": "Leg A turn 1 asks for front_room_builtin.html: a cut list in mm, how to scribe the edges that meet the wall and ceiling, and a cutting diagram for each sheet.",
+     "wrong": "Five subjective criteria, on heading levels, a page that does not report an unread source, table header rows, part names in the cut list, and content inside the page width.",
+     "problem": "Objective criteria 14 and 25 check the parts in the three cutting diagrams, and objective criterion 13 that the scribe plan names the part at each edge. No subjective criterion looks at how either reads, so an unreadable diagram scores the same as a clear one. It costs points.",
+     "right": "Ten or more subjective criteria, region by region, each naming front_room_builtin.html, among them “In front_room_builtin.html, each part rectangle in the cutting diagrams is labelled inside its own outline.”",
      "marks": [],
      "good": [],
      "fields": null,
@@ -10968,6 +11998,46 @@
        "compact": true
       },
       {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 1, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "Hi, I need a plan for the built-in on the front room wall, the one between the corner and the door. Halvard agreed to build it, but he needs a proper cut list as the wall isn't a perfect square. I measured it and took photos at the floor, middle and ceiling levels + made a sketch, and keep in mind that the photos are the ground truth for the measurements if something's off. I have a voice memo of what plywood he has and a sticky note with his shop rules attached so stick to those. It has to fit my drafting table, my bound notebooks(standing up) + my printing plates. I included a picture of my notebooks to see their sizes from and leave space for two more seasons of notebooks(my calendar has info on how many I do per season). I still have to verify something on the photo of the plates, so skip that for now. Write all up as front_room_builtin.html - the cut list in mm with each part sized to the real wall, how to scribe the edges that meet the wall and ceiling and a cutting diagram for each sheet."
+        }
+       ]
+      },
+      {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 13,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The scribing instructions name the part that closes the gap at each of the three edges that meet the structure: the door end, the corner end and the top.",
+         "flag": false
+        },
+        {
+         "n": 14,
+         "weight": 5,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "Every part in the cut list is drawn exactly once across the sheet diagrams.",
+         "flag": false
+        },
+        {
+         "n": 25,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "No part in the sheet diagrams overlaps another part, runs off the edge of its sheet, or crosses the knocked corner of roughly 300 by 400 on the damaged sheet.",
+         "flag": false
+        }
+       ],
+       "title": "Objective criteria 13, 14, 25"
+      },
+      {
        "t": "evidence",
        "title": "front_room_builtin.html",
        "label": "front_room_builtin.html",
@@ -11022,10 +12092,11 @@
      "scenario": "Noor Al-Bazzaz is a lead technical illustrator at Chinook Technical Publications, a small technical documentation firm in Yakima, Washington. In the past few months she drove her own car to two client visits in Everett and filed a mileage claim for each trip…",
      "category": "Small Business & Personal Docs",
      "turns": 3,
-     "setup": "",
-     "wrong": "Criteria 1 and 4 require the golden's own card headings, \"Claim 1 - May trip\" and \"Claim 2 - August trip\", and its exact header row, \"Claim, Reached your account?, Due by 28 Aug?, and Verdict\".",
-     "problem": "Nine of ten subjective criteria quote words no prompt asks for, so a correct page with its own headings fails all nine.",
-     "right": "“In reimbursement_status.html, the two claims are presented as two cards side by side rather than one after the other.”",
+     "gist": "Nine of ten subjective criteria require the golden page's own headings and labels, such as “Claim 1 - May trip”, which none of the three Leg A prompts asks for.",
+     "setup": "Leg A turns 1 to 3 ask for reimbursement_status.html: for each of two mileage claims, whether the money reached Noor, and the deadline for an overdue one.",
+     "wrong": "Subjective criteria 1 and 4 require the golden's own card headings, \"Claim 1 - May trip\" and \"Claim 2 - August trip\", and its exact header row, \"Claim, Reached your account?, Due by 28 Aug?, and Verdict\".",
+     "problem": "No Leg A prompt asks for these headings; they are the golden's choices. Each criterion copies the golden page, so nothing flags it, but a correct page with its own headings fails subjective criteria 1 and 4 and seven more. Only subjective criterion 2 names a property without quoting text.",
+     "right": "Subjective criterion 1 grades the layout, not the words: “In reimbursement_status.html, the two claims are presented as two cards side by side rather than one after the other.”",
      "marks": [
       [
        "criteria",
@@ -11089,7 +12160,7 @@
        {
         "t": "fact",
         "where": "Leg A prompts",
-        "text": "None of the three uses any of these words.",
+        "text": "None of the three asks for these headings.",
         "ref": null
        }
       ],
@@ -11173,6 +12244,20 @@
        ]
       },
       {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 2,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "In `reimbursement_status.html`, each claim card carries an uppercase tinted status pill immediately under the claim heading.",
+         "flag": false
+        }
+       ],
+       "title": "Subjective criterion 2"
+      },
+      {
        "t": "evidence",
        "title": "reimbursement_status.html",
        "label": "reimbursement_status.html",
@@ -11180,7 +12265,7 @@
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6aa73af2a7b183d5fb7eb8b6/reimbursement_status.html",
+         "src": "evidence/6aa73af2a7b183d5fb7eb8b6/reimbursement_status.53801b.html",
          "targets": 2,
          "runtime": [],
          "name": "reimbursement_status.html",
@@ -11233,10 +12318,11 @@
      "scenario": "Winslow Achebe, an Operations Manager at Marchand Logistics Group facility HAT2 in Hattiesburg, Mississippi, has received an internal promotion offer from Regional Vice President Corwin Steadman for Regional Operations Manager, Southeast at $104,000 base…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "setup": "The calendar photo, IMG_0814_calendar.jpg, and the calendar service both give the handover as 18:30.",
-     "wrong": "The golden dashboard: “on-site until 17:00 Fri, can't make the 13:30-15:30 exchange”",
-     "problem": "13:30 to 15:30 appears in three places, and the conclusion holds either way, so no criterion catches it.",
-     "right": "18:30 in all three places.",
+     "gist": "The golden gives the Friday custody handover as 13:30 to 15:30. The calendar photo and the calendar service both put it at 18:30.",
+     "setup": "Leg A turn 2 hands over the school calendar, IMG_0814_calendar.jpg, and asks how many custody handovers clash with travel. Its margin notes give the handover time as 18:30.",
+     "wrong": "Model B, Leg B turn 4, reads the margin as “13:30/15:30”, and the golden dashboard carries it into three places, among them “on-site until 17:00 Fri, can't make the 13:30-15:30 exchange”.",
+     "problem": "The golden is the answer the subjective block is graded against, so every value in it has to match the inputs, graded or not. No criterion grades the time, and a 17:00 finish misses the handover at either time, so every criterion still passes and nothing flags it.",
+     "right": "18:30 in all three places, reached with a Leg B cleanup turn to Model B that points at the handover time, not its value, before you complete Leg B.",
      "marks": [
       [
        "golden",
@@ -11334,9 +12420,19 @@
         }
        ],
        "links": {
-        "IMG_0814_calendar.jpg": 2,
-        "dashboard.html": 3
+        "IMG_0814_calendar.jpg": 3,
+        "dashboard.html": 4
        }
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 2, to Model A",
+       "rows": [
+        {
+         "turn": 2,
+         "text": "I dug up Jaylen's school calendar for this year and marked it up (see attached IMG_0814_calendar.jpg). My carline mornings are highlighted on it and the custody handovers with Terrance are circled, with the Poplarville details in the margin. Since the regional job runs 60% to 70% travel, about three days a week across the five sites, update dashboard.html with a schedule conflict calendar and a week-by-week matrix across the school year. Map the travel load against what is marked on that calendar, and tell me exactly how many school mornings and how many handovers end up with a travel collision."
+        }
+       ]
       },
       {
        "t": "evidence",
@@ -11363,7 +12459,7 @@
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6aa34dd1625bb5b220c6b1cb/dashboard.html",
+         "src": "evidence/6aa34dd1625bb5b220c6b1cb/dashboard.afa40f.html",
          "targets": 1,
          "runtime": [],
          "name": "dashboard.html",
@@ -11380,10 +12476,11 @@
      "scenario": "Teodora Marchetti co-owns Fret and Fathom Records in East Nashville and has spent most of 2026 producing Sunny Okafor's debut album. The record was tracked in Room A through the spring, overdubbed across a run of evening sessions, and mixed during a week in…",
      "category": "Creative & Media",
      "turns": 3,
-     "setup": "A later turn's photo adds a sixteenth post to the fifteen from the export.",
+     "gist": "The golden page counts 16 label posts, in its header and in its cards, but a note further down still explains “why the count is 15, not 17”.",
+     "setup": "The export holds 17 posts, and two artist account posts come out, leaving 15. Leg A turn 2's shot of Marisol's queue adds a sixteenth.",
      "wrong": "“Two artist-account posts (C16, C17) go out under @sunnyokafor — under P11 not ours to review, so not shown. That's why the count is 15, not 17.”",
-     "problem": "The header counts “16 label posts”; this paragraph was never updated.",
-     "right": "“That is why 15 of the 16 cards come from the export.”",
+     "problem": "Fifteen was right until Leg A turn 2. When the queue added a post, the header and the cards moved to 16 and the note did not, so the golden contradicts its own page. No criterion grades the note, so nothing flags it; a stale count like this costs points.",
+     "right": "The note agrees with the page: “That is why 15 of the 16 cards come from the export.”, fixed with a Leg B cleanup turn to Model B before you complete Leg B.",
      "marks": [
       [
        "golden",
@@ -11458,6 +12555,16 @@
        ]
       },
       {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 2, to Model A",
+       "rows": [
+        {
+         "turn": 2,
+         "text": "ok Marisol finally sent the artwork over, it's all in asset_pack/ - there's a shot of\nher actual queue in there too. fold it into the same page, i think a couple of these\nchange the picture.\n\nand can you tell me plainly which of the ones already out there need to come down\ntonight, rather than sitting in a list with everything else"
+        }
+       ]
+      },
+      {
        "t": "evidence",
        "title": "social_audit.html",
        "label": "social_audit.html",
@@ -11465,7 +12572,7 @@
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6a99296813124786224a01ef/social_audit.html",
+         "src": "evidence/6a99296813124786224a01ef/social_audit.7ebad7.html",
          "targets": 2,
          "runtime": [],
          "name": "social_audit.html",
@@ -11512,21 +12619,13 @@
      "scenario": "Anselm Kirchner is Graphics Editor at The Richmond Beacon. It is October 17, 2026. He has open City of Richmond records requests with Lorna Whitfield-Baptiste at the Office of the City Clerk, Records, and with two other city departments. They are at different…",
      "category": "Visual Learning",
      "turns": 5,
-     "setup": "A late turn moves the newsletter teaser and changes the count from days since filing to days since acknowledgment.",
-     "wrong": "The page still says \"The newsletter teaser rides the same Records batch\" and \"days since filing\".",
-     "problem": "The teaser now sits in two places, and one row still counts from filing while the rest of the page counts from acknowledgment.",
-     "right": "The old sentence moved with the teaser, and the row reading \"days since acknowledgment\".",
+     "gist": "The golden foia_register.html puts the newsletter teaser on RPD-26-2204 yet says “The newsletter teaser rides the same Records batch”, and labels a count from acknowledgment “days since filing”.",
+     "setup": "Leg B turn 6, to Model B, asks to move the newsletter teaser from the records row to RPD-26-2204, the slip's request, and to count sitting time from acknowledgment.",
+     "wrong": "The walk in section still says “The newsletter teaser rides the same Records batch”, and every row's detail still reads “days since filing”.",
+     "problem": "Model B moved the teaser to RPD-26-2204 after Leg B turn 6, so the walk in section lists the newsletter there and then says it rides the Records batch: two answers on one page. Each row's detail calls an acknowledgment count “days since filing”. No criterion reads either sentence, so nothing flags them.",
+     "right": "The walk in sentence follows the teaser or goes, and the detail reads “days since acknowledgment”: one Leg B cleanup turn to Model B before you complete Leg B.",
      "marks": [],
-     "good": [
-      [
-       "golden",
-       "the newsletter one is still hanging on the records row as extra backlog"
-      ],
-      [
-       "golden",
-       "the office clocks should run from when they acknowledged, not from the filed line"
-      ]
-     ],
+     "good": [],
      "fields": null,
      "gap": [],
      "missing": [],
@@ -11536,7 +12635,7 @@
         "t": "said",
         "where": "foia_register.html",
         "text": "[[The newsletter teaser rides the same Records batch]]…",
-        "note": "the old sentence, still on the records row",
+        "note": "the old sentence, still in the walk in section",
         "ref": [
          "evidence",
          "foia_register.html"
@@ -11546,7 +12645,7 @@
         "t": "said",
         "where": "foia_register.html",
         "text": "…[[days since filing]]…",
-        "note": "one row's detail, while the page counts from acknowledgment",
+        "note": "the label every row's detail shares, though each count runs from acknowledgment",
         "ref": [
          "evidence",
          "foia_register.html"
@@ -11558,7 +12657,7 @@
        {
         "t": "fact",
         "where": "foia_register.html",
-        "text": "{{The teaser sentence moves with the teaser}}, to the request added from the slip, and the row reads {{days since acknowledgment}}.",
+        "text": "{{The teaser sentence follows the teaser, or goes}}, and every row's detail reads {{days since acknowledgment}}.",
         "ref": null
        }
       ],
@@ -11589,11 +12688,11 @@
        "t": "evidence",
        "title": "foia_register.html",
        "label": "foia_register.html",
-       "note": "The golden register after the late turn. The old teaser sentence still renders, and the row detail still counts days since filing.",
+       "note": "The golden register after the late turn. The old teaser sentence still renders, and every row's detail still labels its count days since filing.",
        "items": [
         {
          "kind": "page",
-         "src": "evidence/6aa02f48755f41e02b01483e/foia_register.html",
+         "src": "evidence/6aa02f48755f41e02b01483e/foia_register.95a7dd.html",
          "targets": 2,
          "runtime": [
           "The newsletter teaser rides the same Records batch",
@@ -11655,10 +12754,11 @@
      "scenario": "Abelardo Quintero runs a small surveying practice in Amarillo. When his Trimble S6 came back from repair in Lubbock, he checked it on the baseline behind his shop, as he does with any instrument that has been off the property. It passed, but he is the only…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.",
-     "wrong": "The golden archive also ships make_baseline_video.py, whose docstring names each answer's \"Source of truth\".",
-     "problem": "Five files for three: the script shows how each answer was reached, a quiz image is a renamed copy of an input, and the printable script carries the rebuild instruction.",
-     "right": "Only the three named files, none carrying the rebuild instruction.",
+     "gist": "The golden archive holds five files where the Leg A prompts name three. make_baseline_video.py names each answer's “Source of truth”, and baseline_quiz_page.jpg is the input IMG_4642.jpg renamed.",
+     "setup": "The four Leg A prompts name three files: baseline_check.mp4, baseline_check_script.md, which Rosalba prints for the instrument case, and MEMORY.md.",
+     "wrong": "The golden archive also ships make_baseline_video.py, whose docstring names each answer's “Source of truth”, and baseline_quiz_page.jpg. baseline_check_script.md, the script Rosalba prints, tells its reader to run “python3 make_baseline_video.py”.",
+     "problem": "The golden archive ships finished artifacts only. make_baseline_video.py shows how the video was made, down to which input each answer came from, and baseline_quiz_page.jpg is an input under a new name. The script Rosalba prints even tells her to run the generator. Model B, Leg B turn 1, announced it, and no Leg B turn removed it.",
+     "right": "The golden archive holds only baseline_check.mp4, baseline_check_script.md and MEMORY.md, with no rebuild line in the printable script: one Leg B cleanup turn to Model B before you complete Leg B.",
      "marks": [
       [
        "files",
@@ -11768,10 +12868,12 @@
         }
        ],
        "links": {
-        "make_baseline_video.py": 2,
-        "baseline_check_script.md": 3,
-        "baseline_quiz_page.jpg": 4,
-        "IMG_4642.jpg": 4
+        "make_baseline_video.py": 3,
+        "baseline_check_script.md": 4,
+        "baseline_quiz_page.jpg": 5,
+        "IMG_4642.jpg": 5,
+        "baseline_check.mp4": 6,
+        "MEMORY.md": 7
        }
       },
       {
@@ -11793,6 +12895,17 @@
         {
          "turn": 4,
          "text": "Estefana watched it twice and came back with one question, which is more than I got from anyone else: why do we not just use the number on Talmadge's sheet. Fair question. Put it in, his number worked out on the 812 next to mine, and one line on which one we use and why. One more thing while that is open, add the baseline number and my rule to MEMORY.md so next time nobody has to go looking for the book."
+        }
+       ]
+      },
+      {
+       "t": "golden",
+       "title": "From the Leg B conversation, with Model B",
+       "rows": [
+        {
+         "role": "agent",
+         "turn": 1,
+         "text": "Done, Abe. Both files are in `/app/outputs`:\n\n- **`baseline_check.mp4`** — 1080p, 1:45, plays anywhere (H.264/yuv420p, verified clean).\n- **`baseline_check_script.md`** — the print-and-keep-in-the-case version, matches the video step for step.\n- (Also left `make_baseline_video.py` so the video can be rebuilt when you swap in your quiz page.)\n\n**What the video does, in your order:**\n1. **Where the baseline came from** — BL-1→BL-2, published **812.000 ft**, BL-M midpoint at 406.000. \"Judge against this. Not the brochure.\"\n2. **What the S6 was on the bench for** — LEIS pulled the angles *and* the distance guts back into spec (HA collimation −19.4″→+0.6″, EDM additive −1.7mm→+0.2mm, EDM scale +2.6→+0.5ppm). Ends on \"the sheet is nice to have, the sheet is not the check.\"\n3. **Setup** — tripod both ends, over your actual photo; good vs. a pole.\n4. **Step 1 PPM** — good `812.005` (PPM +52) next to bad `811.962` (PPM 0), with the math on screen: `812 × 0.000052 = 0.042 ft short`.\n5. **Step 2 three sets** — tight spread (0.002, keep all) next to an outlier (`812.037`, strike and reshoot, never average).\n6. **Step 3 the call** — `2436.012 ÷ 3 = 812.004`, `−812.000 = +0.004 → GOOD` next to `+0.013 → GOES BACK`.\n7. **The real 16 Jul run**, worked end to end over your page photo.\n8. **The quiz** — 812.006 / **812.041** / 812.003, a 5-count, then the reveal.\n9. **Rule card** to freeze on.\n\nEverything is in **feet to three places**, every step shows good beside bad, and every number is worked on screen.\n\n**Two things to flag:**\n- **The quiz call:** the readings force the call I'm confident you'd make — Set 2 is 0.037 off, so it's a *strike and reshoot, never average*, and the video shows the trap (averaging gives 812.017 → you'd send a good gun back over one bad set). You said you'd dig out your own page — when you do, the script.md marks exactly where to drop it in and the one line in the generator to change. If your page ends on a straight good/goes-back instead, that swaps in the same way.\n- I read \"back from LEIS\" as **Llano Estacado Instrument Service** (matches the sheet letterhead and the Lubbock trip). If that's wrong, it's one line to fix."
         }
        ]
       },
@@ -11862,132 +12975,52 @@
          "marks": []
         }
        ]
+      },
+      {
+       "t": "evidence",
+       "title": "baseline_check.mp4",
+       "label": "baseline_check.mp4",
+       "note": "",
+       "items": [
+        {
+         "kind": "video",
+         "src": "evidence/6aa34dd1625bb5b220c6b1be/baseline_check.mp4",
+         "name": "baseline_check.mp4",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
+      },
+      {
+       "t": "evidence",
+       "title": "MEMORY.md",
+       "label": "MEMORY.md",
+       "note": "",
+       "items": [
+        {
+         "kind": "text",
+         "text": "# MEMORY\n\n## Shop calibration baseline (behind the shop, 8710 Bowie Street)\n- Two **brass caps**, monumented **2016**. **BL-1 to BL-2 = 812.000 ft** (the held length). Midpoint **BL-M at 406.000**.\n- **Re-observed every spring.**\n- Tripod both ends, never a pole. Trimble 360 prism, constant 0.0.\n\n## Office rule — baseline check\nAny instrument back from a bench gets this **before it goes out on a job**.\n\n1. Set **PPM off the shop gauge** before the first shot — every time.\n2. **Three sets**, horizontal distance (HD), **feet to three places**.\n3. A set **> 0.005 ft** off the other two = a strike (a bump, or PPM). **Strike it, shoot it again. Never average a strike.**\n4. **Mean of three, less 812.000:**\n   - inside **0.010 ft → GOOD** (it stays / it goes out)\n   - over **0.010 ft → IT GOES BACK**\n5. **Write it down:** date, instrument + SN, conditions, PPM, the three sets, mean, deviation, the call, initials.\n\n## Why our 0.010 ft, not the manufacturer sheet\nThe service sheet spec is **±(2 mm + 2 ppm)**, prism mode. Worked at 812.000 ft that is **≈ ±0.008 ft**\n(2 mm ≈ 0.007 ft + 2 ppm ≈ 0.002 ft). That is the instrument alone on the shop's 3-pillar bench.\nOur **±0.010 ft** is a field limit that covers the whole setup on our line — tripods both ends,\ntribrachs, centering, PPM, and the baseline itself. **Judge against 0.010 ft. Not the brochure.**\n\n_Full procedure: `baseline_check.mp4` and `baseline_check_script.md` (kept in the instrument case)._\n",
+         "cut": false,
+         "find": [],
+         "name": "MEMORY.md",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
      "num": 36
-    },
-    {
-     "task_id": "6aa34dd1625bb5b220c6b1ca",
-     "scenario": "Winslow Achebe and Adaeze Onwuka are paying for their 22 May 2027 wedding out of two Ally savings accounts and nothing else. No parent on either side is contributing, which they settled in one conversation in September 2025. Since the first Saturday in May…",
-     "category": "Small Business & Personal Docs",
-     "turns": 4,
-     "setup": "",
-     "wrong": "The prompt names IMG_4508.jpg; the inputs archive holds IMG45.08.JPG.",
-     "problem": "Any criterion citing the name cannot be scored against the archive.",
-     "right": "IMG_4508.jpg everywhere.",
-     "marks": [
-      [
-       "prompts",
-       "IMG_4508.jpg"
-      ],
-      [
-       "files",
-       "IMG45.08.JPG"
-      ],
-      [
-       "prompts@3",
-       "IMG_4508.jpg"
-      ]
-     ],
-     "good": [],
-     "fields": null,
-     "gap": [],
-     "missing": [],
-     "diag": {
-      "was": [
-       {
-        "t": "said",
-        "where": "Leg A turn 3",
-        "text": "…Her vendor list is in it, [[IMG_4508.jpg]], with a parking plan and a timeline template I do not need…",
-        "ref": [
-         "prompt",
-         3
-        ]
-       },
-       {
-        "t": "said",
-        "where": "Input files",
-        "text": "[[IMG45.08.JPG]]",
-        "ref": [
-         "files",
-         "Input files"
-        ]
-       }
-      ],
-      "ctx": [],
-      "now": [
-       {
-        "t": "said",
-        "where": "Input files",
-        "text": "{{IMG_4508.jpg}}",
-        "note": "the name the prompt uses",
-        "ref": [
-         "files",
-         "Input files"
-        ]
-       }
-      ],
-      "rule": {
-       "i": 2,
-       "words": "named exactly as requested"
-      }
-     },
-     "focus": null,
-     "panels": [
-      {
-       "t": "prompts",
-       "title": "Leg A prompt, turn 3, to Model A",
-       "rows": [
-        {
-         "turn": 3,
-         "text": "You are asking me for statements again and I am not going to start exporting things. I told you at the start where our money sits and it has not moved since. The two funds month by month is the part I actually needed and it is still not there. And Yolanda's envelope finally turned up. Her vendor list is in it, IMG_4508.jpg, with a parking plan and a timeline template I do not need. That is the piece I was missing for the music and the Friday. Put the two lines I am covering in at what they would have cost, the way I said on the note. I do not want a page that makes us look cheaper than we are."
-        }
-       ],
-       "isit": true
-      },
-      {
-       "t": "files",
-       "title": "Input files",
-       "rows": [
-        {
-         "name": "IMG45.08.JPG",
-         "ext": ".jpg",
-         "size": 2253544,
-         "turn": null
-        },
-        {
-         "name": "AUD-20260831-WA0007.mp3",
-         "ext": ".mp3",
-         "size": 697351,
-         "turn": null
-        },
-        {
-         "name": "IMG_4471.jpg",
-         "ext": ".jpg",
-         "size": 145348,
-         "turn": null
-        },
-        {
-         "name": "Screenshot_20260831_221408.png",
-         "ext": ".png",
-         "size": 42262,
-         "turn": null
-        }
-       ],
-       "links": {}
-      }
-     ],
-     "num": 37
     },
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
      "scenario": "The resident of Apt 4B at 123 Main street, San Francisco  organizes the buildings shared Amazon Fresh group order for four apartments (2A, 3C, 4B, and 5D). A neighbor, Tom from 3C, mocked up a pantry board of product listings for the neighbors, and residents…",
      "category": "Commerce & Product",
      "turns": 3,
-     "setup": "",
-     "wrong": "Criterion 22 wants a fee of %0.00, and milestone 4 ends \"an apartment the sheet doe snot marks keeps all the requests\".",
-     "problem": "The grader has to guess the intended fee, and in Leg B you judge Model B against a sentence that does not parse.",
-     "right": "\"pantry_audit.html shows a delivery fee of $0.00 for the Mon 6 Jul 2026 order.\"",
+     "gist": "Objective criterion 22 asks for a fee of “%0.00” where $0.00 is meant, objective criterion 7 omits the day, and milestone 4 ends in a clause that does not parse.",
+     "setup": "Leg A turn 1 sets the order for Monday 29 June 2026, and Leg A turn 3 moves it to Monday 6 July 2026.",
+     "wrong": "Objective criterion 22 wants a fee of “%0.00”, objective criterion 7 dates its call only “for the Mon Jul 2026 order”, and milestone 4 ends “an apartment the sheet doe snot marks keeps all the requests”.",
+     "problem": "A grader must decode objective criterion 22's “%0.00” as $0.00, and piece objective criterion 7's date together from objective criterion 3. In Leg B you judge Model B against milestone 4, and a user simulator replays it later: its broken clause leaves each to guess the meaning. These cost points.",
+     "right": "Objective criterion 22: “pantry_audit.html shows a delivery fee of $0.00 for the Mon 6 Jul 2026 order.” Milestone 4: “an apartment the sheet does not mark keeps all its requests”.",
      "marks": [
       [
        "criteria",
@@ -12154,9 +13187,60 @@
          "note": null
         }
        ]
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 1, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "hey so our building fresh order goes in monday 6/29/26. tom threw together pantry_board_draft.png for the neighbors, signup_sheet.jpg is the sheet from the laundry room and the house rules are in pantry_rules.md. can you check his listings before anyone sees it and make me pantry_audit.html - verdict+fixed card for each listing. and what each apt owes. people should be able to pick the apt and only see their part"
+        }
+       ]
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 3, to Model A",
+       "rows": [
+        {
+         "turn": 3,
+         "text": "ugh fresh has no delivery slots this week so the order's moving to monday 7/6/26. rosa texted me too chat_5D.png. update pantry_audit.html and give me settle_up.csv (household, items_total, fee_share, amount_due) so i can send out the payment requests"
+        }
+       ]
+      },
+      {
+       "t": "criteria",
+       "rows": [
+        {
+         "n": 3,
+         "weight": 1,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "pantry_audit.html states the order date as Monday 6 July 2026.",
+         "flag": false
+        }
+       ],
+       "title": "Objective criterion 3"
+      },
+      {
+       "t": "evidence",
+       "title": "pantry_audit.html",
+       "label": "pantry_audit.html",
+       "note": "",
+       "items": [
+        {
+         "kind": "page",
+         "src": "evidence/6aac6ee4f0c334e21057f9e6/pantry_audit.html",
+         "targets": 0,
+         "runtime": [],
+         "name": "pantry_audit.html",
+         "role": "artifact",
+         "marks": []
+        }
+       ]
       }
      ],
-     "num": 38
+     "num": 37
     }
    ]
   }

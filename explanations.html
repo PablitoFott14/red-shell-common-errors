@@ -10,7 +10,7 @@
 <nav><a href="slides/index.html">Slides</a><a href="index.html">All mistakes</a><a href="explanations.html" aria-current="page">Explanations</a><a href="checklist.html">Before you submit</a></nav></header>
 <div class="hero slim"><p class="eyebrow">The course text</p>
 <h1>Explanations</h1>
-<p class="lede">The full write up of all 23 mistakes and their 38 real examples. Every example links back
+<p class="lede">The full write up of all 23 mistakes and their 37 real examples. Every example links back
 to the viewer, where it opens on the exact spot in the task.</p></div>
 <main class="wrap xwrap" id="main">
 <nav class="xtoc" aria-label="Contents"><details open><summary>Contents</summary><ol class="toc"><li><a class="tsec" href="#how-to-use-this">How to use this</a></li><li><a class="tsec" href="#section-1">1. The Foundations Every Task Must Get Right</a><ol><li><a href="#below-complexity-bar"><span>1.1</span>The deliverable sits below the complexity bar</a></li><li><a href="#universe-missing-records"><span>1.2</span>The task relies on records the universe does not hold</a></li></ol></li><li><a class="tsec" href="#section-2">2. What you may not tell Model A or Model B</a><ol><li><a href="#steering-hands-answer"><span>2.1</span>A Leg B hint that hands Model B the answer</a></li><li><a href="#prompt-answers-attachment"><span>2.2</span>A Leg A prompt that answers its own attachment</a></li><li><a href="#deferred-asset-announced"><span>2.3</span>A deferred asset that announces its own turn</a></li></ol></li><li><a class="tsec" href="#section-3">3. Milestones</a><ol><li><a href="#milestone-fields"><span>3.1</span>Modifier and Assets Delivered that do not match the Leg A turn</a></li><li><a href="#continuation-criteria"><span>3.2</span>Stopping rules that do not gate the turn</a></li><li><a href="#milestone-coverage"><span>3.3</span>A Leg A turn no milestone covers, or the same milestone written twice</a></li></ol></li><li><a class="tsec" href="#section-4">4. A rubric that separates two runs</a><ol><li><a href="#no-negatives"><span>4.1</span>A rubric that can only reward, never penalise</a></li><li><a href="#coverage-both-ways"><span>4.2</span>A requirement nothing grades, and a criterion nothing asked for</a></li><li><a href="#weights-flat"><span>4.3</span>Weights that do not separate difficulty from lookup</a></li><li><a href="#trajectory-cap"><span>4.4</span>More trajectory criteria than the Guidelines allow</a></li><li><a href="#run-too-easy"><span>4.5</span>A run that does not fail enough of the rubric</a></li></ol></li><li><a class="tsec" href="#section-5">5. Criteria a correct run can pass</a><ol><li><a href="#golden-fails-own-criterion"><span>5.1</span>A criterion the golden itself fails</a></li><li><a href="#unanswerable-criterion"><span>5.2</span>Criteria a correct run cannot pass, or a wrong one can</a></li><li><a href="#category-and-target"><span>5.3</span>Category and Evaluation Target filled with the wrong kind of value</a></li><li><a href="#same-check-twice"><span>5.4</span>The same check written twice</a></li></ol></li><li><a class="tsec" href="#section-6">6. The subjective block</a><ol><li><a href="#subjective-no-file"><span>6.1</span>Subjective criteria that never name the file</a></li><li><a href="#subjective-size-and-share"><span>6.2</span>Too few subjective criteria, or too much weight on them</a></li><li><a href="#subjective-from-the-page"><span>6.3</span>Subjective criteria that require your golden&#x27;s wording</a></li></ol></li><li><a class="tsec" href="#section-7">7. Closing the task</a><ol><li><a href="#golden-contradicts-sources"><span>7.1</span>The golden states something its own sources contradict</a></li><li><a href="#revision-leaves-old-wording"><span>7.2</span>A revision that leaves the old wording standing</a></li><li><a href="#closeout-mechanics"><span>7.3</span>The five minute close out nobody runs</a></li></ol></li><li><a class="tsec" href="#the-order-that-keeps-the-cost-down">Before you submit</a></li></ol></details></nav>
@@ -83,10 +83,11 @@ the step, the more a fix costs:</p>
 <p>So only a prompt can ask for a dashboard.</p>
 </blockquote>
 <h4 id="example-1">Example 1 (🔗<a href="mistakes/below-complexity-bar.html#ex-below-complexity-bar-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The Agent Objective calls it a dashboard, over 14 orders and 222 order lines.</p>
-<p><strong>Where it shows.</strong> ada_list.html has no script, button, filter or navigation: markup around nine images.</p>
-<p><strong>How it breaks the standard.</strong> That is a document, the lowest priority deliverable on the bar, though the data would have supported a sortable buy list or a filter for what Fresh does not stock.</p>
-<p><strong>What it should have been.</strong> A prompt that asks for it: "put the buy list in a table I can sort by aisle or by price".</p>
+<p><strong>What is wrong.</strong> The Agent Objective asks for "one local HTML dashboard"; the golden ada_list.html has no script, button, filter or link. Static, it clears neither the dashboard nor the interactive HTML floor.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks Model A for ada_list.html, a shop list giving brand, price, size and a picture per item. Leg A turns 2 and 3 add rules and layout.</p>
+<p><strong>Where it shows.</strong> The Agent Objective: "He needs one local HTML dashboard". The golden ada_list.html has no script, button, filter or link: a list of seven items, one comparison table and nine images.</p>
+<p><strong>How it breaks the standard.</strong> Nothing on ada_list.html responds, so the task ships a document, the lowest priority type on the Complexity Bar, though 14 Fresh orders could feed sorting or filters. Model A and Model B never see the Agent Objective, and no Leg A prompt asks for interaction, so no criterion grades it.</p>
+<p><strong>What it should have been.</strong> Leg A turn 1 asks for the interaction: "Put the buy list in a table I can sort by price, and let Ada hide what's not on Fresh."</p>
 <h4>Catching it in your own task</h4>
 <p>Ask what the page does when someone clicks it. If nothing, it is a document, whatever the Agent Objective calls it.</p>
 <h4>What to do instead</h4>
@@ -106,10 +107,11 @@ the step, the more a fix costs:</p>
 <p>Fails the task when the missing records carry the main request; costs points otherwise.</p>
 </blockquote>
 <h4 id="example-2">Example 2 (🔗<a href="mistakes/universe-missing-records.html#ex-universe-missing-records-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Five items on a neighbour's board are priced against Amazon Fresh.</p>
-<p><strong>Where it shows.</strong> Rule 1 prices lines "at the pack option we add to the cart from Fresh's catalog"; rule 5 takes the fee from "Fresh's Delivery Policy and nothing else". The universe's catalog has none of the five items, and its policies are empty.</p>
-<p><strong>How it breaks the standard.</strong> Leg B turn 3 tells Model B to reach the pages "another way", the golden says "its catalog search returns nothing", and no run can meet the criteria wanting $0.55 a lb or a $4.99 fee.</p>
-<p><strong>What it should have been.</strong> Rules that cite only records the universe returns, checked before the run.</p>
+<p><strong>What is wrong.</strong> pantry_rules.md prices every line from Fresh's catalog and the delivery fee from Fresh's Delivery Policy. The universe's catalog holds none of the five board items, and its policies are empty.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks Model A to check the five listings on Tom's pantry_board_draft.png and work out what each apartment owes, under the house rules in pantry_rules.md.</p>
+<p><strong>Where it shows.</strong> Rule 1 prices lines "at the pack option we add to the cart from Fresh's catalog"; rule 5 takes the fee from "Fresh's Delivery Policy and nothing else". The universe's catalog has none of the five items, and its policies are empty, so Leg B turn 3 sends Model B to find the pages "another way".</p>
+<p><strong>How it breaks the standard.</strong> Pricing every card and what each apartment owes rests on rules 1 and 5, so neither Model A nor Model B can do the main request. The golden keeps Tom's board prices, flagged unconfirmed, and criteria 16, 17 and 26 want Fresh's $0.55 a lb bananas, $5.45 spinach and $4.99 fee, which no tool returns.</p>
+<p><strong>What it should have been.</strong> Rules 1 and 5 cite only records the universe returns, checked before Leg A turn 1: a catalog search for the five items and a policy search for the fee.</p>
 <h4>Catching it in your own task</h4>
 <p>Your golden shows it: an empty search, a Leg B hint sending Model B another way, figures flagged as unconfirmed.</p>
 <h4>What to do instead</h4>
@@ -139,15 +141,17 @@ the step, the more a fix costs:</p>
 <p>About the Leg A follow ups.</p>
 </blockquote>
 <h4 id="example-3">Example 3 (🔗<a href="mistakes/steering-hands-answer.html#ex-steering-hands-answer-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Model B still had not opened the day 3 field notes after Leg B turn 8 said they describe PT 128.</p>
+<p><strong>What is wrong.</strong> Leg B turn 9 names the file Model B must open, 26-014_Field_notes_2026-03-19.pdf, and opening it is what criterion 14 grades. Leg B hints may name the mail, not the file.</p>
+<p><strong>The task.</strong> PT 128 is described in 26-014_Field_notes_2026-03-19.pdf, a mail attachment. After Leg B turn 8 points at the day 3 notes, Model B says the figures are in an unreachable book.</p>
 <p><strong>Where it shows.</strong> Leg B turn 9, to Model B: “Open the day-3 field notes PDF in the mail, the file named 26-014_Field_notes_2026-03-19.pdf”.</p>
-<p><strong>How it breaks the standard.</strong> Criteria 14 and 2 grade opening that PDF and the card built from it; the golden meets both because the turn named the file. No value is stated, so it costs points.</p>
-<p><strong>What it should have been.</strong> A hint that leaves the work: “The PT 128 figure on the cedar mound card doesn't match what was actually recorded out there.”</p>
+<p><strong>How it breaks the standard.</strong> Criteria 14 and 2, both weight 5, grade opening that PDF and the PT 128 description taken from it. Model B's own search had missed the attachment, and the filename did that search for it, so the golden meets both on instruction. No value from the PDF is stated, so it costs points.</p>
+<p><strong>What it should have been.</strong> Leg B turn 9 points at the source, not the file: "Not the physical field book. The day 3 field notes came by email."</p>
 <h4 id="example-4">Example 4 (🔗<a href="mistakes/steering-hands-answer.html#ex-steering-hands-answer-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Rule 5 says the building account is not Prime; criterion 30, a -5 negative, catches pricing avocados at the $1.89 Prime price in chat_5D.png.</p>
+<p><strong>What is wrong.</strong> Leg B turn 7 tells Model B "dont price our order off rosas phone", the conclusion criterion 30 tests. Model B had to reach it from rule 5 and chat_5D.png.</p>
+<p><strong>The task.</strong> Rule 5 of pantry_rules.md: the building account is not Prime. chat_5D.png, delivered at Leg B turn 5, shows Rosa's Prime app pricing avocados at $1.89, and Model B used it.</p>
 <p><strong>Where it shows.</strong> Leg B turn 7, to Model B: "dont price our order off rosas phone - thats her own account, not the buildings".</p>
-<p><strong>How it breaks the standard.</strong> That is the conclusion criterion 30 tests, so the golden avoids the trap on instruction. A stated conclusion fails the task in either leg. Model A never got this turn.</p>
-<p><strong>What it should have been.</strong> Leg B turn 6: "some prices on the page dont look like what fresh charges us", which leaves Model B to find which prices.</p>
+<p><strong>How it breaks the standard.</strong> Criterion 30, a -5 negative, catches that price. Model B kept it after the Leg B turn 6 hint, and Leg B turn 7 handed it the conclusion criterion 30 tests, so the golden avoids the trap on instruction, not reasoning. No price is stated, so it is over steering and costs points. Model A got no such turn.</p>
+<p><strong>What it should have been.</strong> Leg B turn 7 drops the answer and keeps its pointer: "the house rules say which prices count for us". Model B still has to find rule 5.</p>
 <h4>Catching it in your own task</h4>
 <p>For each Leg B turn, ask what is left for Model B to work out. A turn that states what a criterion grades has answered it.</p>
 <h4>What to do instead</h4>
@@ -165,10 +169,11 @@ the step, the more a fix costs:</p>
 <p>Unchanged in Leg B, so the turn that hands Model B the file repeats the value.</p>
 </blockquote>
 <h4 id="example-5">Example 5 (🔗<a href="mistakes/prompt-answers-attachment.html#ex-prompt-answers-attachment-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 2 releases the plates photo, IMG_4392, for Model A to count and measure the plates; Leg B turn 4 releases it to Model B.</p>
+<p><strong>What is wrong.</strong> Leg A turn 2 releases IMG_4392.jpeg and tells Model A the count it exists to supply: "five big ones and one small one". Leg B turn 4 repeats it to Model B.</p>
+<p><strong>The task.</strong> Leg A turn 1 holds back IMG_4392.jpeg, the plates photo. Leg A turn 2 releases it, so Model A can plan flat storage sized from it.</p>
 <p><strong>Where it shows.</strong> Leg A turn 2: "There are five big ones and one small one, and they need to be stored flat somewhere in the unit." Leg B turn 4 sent Model B the same words.</p>
-<p><strong>How it breaks the standard.</strong> That count is the read IMG_4392 exists to force, so neither model has to open the photo to pass.</p>
-<p><strong>What it should have been.</strong> The same turn without the count: "They need to be stored flat somewhere in the unit, not stood on edge."</p>
+<p><strong>How it breaks the standard.</strong> IMG_4392.jpeg shows one large plate by the rulers, a stack behind it and a small one; counting the stack is the read the photo exists to force. Given the count, Model A and Model B only have to measure one plate of each size. A count is a value, so this fails the task.</p>
+<p><strong>What it should have been.</strong> Leg A turn 2 and Leg B turn 4 without the count: "They need to be stored flat somewhere in the unit, not stood on edge." Both legs run again.</p>
 <h4>Catching it in your own task</h4>
 <p>Read each prompt beside the file it hands over, in both legs: any value the model should read from that file is a leak.</p>
 <h4>What to do instead</h4>
@@ -187,10 +192,11 @@ the step, the more a fix costs:</p>
 <p>Written for the Leg A follow ups.</p>
 </blockquote>
 <h4 id="example-6">Example 6 (🔗<a href="mistakes/deferred-asset-announced.html#ex-deferred-asset-announced-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The calendar arrives at Leg A turn 2 and the travel rules at Leg A turn 3, both in the input folder from turn 1.</p>
+<p><strong>What is wrong.</strong> The deferred files IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg sit in the input folder from the start, and their names say what Leg A turns 2 and 3 will hand over.</p>
+<p><strong>The task.</strong> Leg A turn 2 hands Model A Jaylen's marked school calendar, and Leg A turn 3 the Q3 travel directives.</p>
 <p><strong>Where it shows.</strong> They are named IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg.</p>
-<p><strong>How it breaks the standard.</strong> Each name tells both models what is coming before its turn. Nothing graded leaks, so this costs points; a phone would write IMG_0814.jpg.</p>
-<p><strong>What it should have been.</strong> IMG_0814.jpg and IMG_0819.jpg, with the turns that deliver them saying what each is.</p>
+<p><strong>How it breaks the standard.</strong> From their first turn, Model A and Model B can see in the input folder that a school calendar and a travel policy are coming, before the turn that hands each over in either leg. Neither name states a requirement or a graded value, so this costs points.</p>
+<p><strong>What it should have been.</strong> IMG_0814.jpg and IMG_0819.jpg. Leg A turns 2 and 3 already say what each is, "Jaylen's school calendar" and the "Q3 travel directives", and their Leg B turns repeat it.</p>
 <h4>Catching it in your own task</h4>
 <p>Read the input folder as both models will at turn 1, filenames included: price_sheet_for_turn3.pdf fails, price_sheet.pdf costs points, sheet_02.pdf is fine.</p>
 <h4>What to do instead</h4>
@@ -213,20 +219,23 @@ the step, the more a fix costs:</p>
 <p>“Also fails where a deferred asset was handed over during the conversation but is absent from assets_delivered, or is listed but missing from input_files/.”</p>
 </blockquote>
 <h4 id="example-7">Example 7 (🔗<a href="mistakes/milestone-fields.html#ex-milestone-fields-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 2 hands over bourgery_legend_pages.pdf, the one deferred file.</p>
+<p><strong>What is wrong.</strong> Milestone 9, the deferred_asset row for Leg A turn 2, reads Assets Delivered: .html, the deliverable's extension. The file that turn hands over, bourgery_legend_pages.pdf, is on no milestone.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks for deltoid_plate_study.html from eighteen images. Leg A turn 2 hands over bourgery_legend_pages.pdf, the one deferred file.</p>
 <p><strong>Where it shows.</strong> Milestones 1 to 12 all read Assets Delivered: .html, including milestone 9, the deferred_asset row for Leg A turn 2.</p>
-<p><strong>How it breaks the standard.</strong> A bare extension is not a filename, so the deferred file is listed on no row, which fails the task. The saved input archive lacks the PDF too.</p>
-<p><strong>What it should have been.</strong> Milestone 9 lists bourgery_legend_pages.pdf, which ships in input_files/.</p>
+<p><strong>How it breaks the standard.</strong> The .html on those rows is the extension of deltoid_plate_study.html, the deliverable, not a file the user hands over. The file Leg A turn 2 hands over, bourgery_legend_pages.pdf, sits on no row, so a user simulator replaying them has no record of when it arrives. A deferred file missing from Assets Delivered fails the task.</p>
+<p><strong>What it should have been.</strong> Milestone 9 reads Assets Delivered: bourgery_legend_pages.pdf, which ships in input_files/ from upload. Milestones 1 to 8 name the eighteen Leg A turn 1 files; milestones 10 to 12 are empty.</p>
 <h4 id="example-8">Example 8 (🔗<a href="mistakes/milestone-fields.html#ex-milestone-fields-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> handbook.mp4 comes with the opening prompt, at Leg A turn 1.</p>
+<p><strong>What is wrong.</strong> Milestones 7 and 8, on Leg A turn 1, read deferred_asset and revision, with Assets Delivered: .mp4. Leg A turn 1 is always opening, and handbook.mp4 comes with it.</p>
+<p><strong>The task.</strong> Leg A turn 1 attaches index.html, Vantol.pdf and handbook.mp4 together, and asks Model A to reconcile “a festival message and a runtime record” and complete the runtime section.</p>
 <p><strong>Where it shows.</strong> Milestones 7 and 8, both on Leg A turn 1, read deferred_asset and revision, each with Assets Delivered: .mp4.</p>
-<p><strong>How it breaks the standard.</strong> Nothing is deferred into Leg A turn 1, and Model A has delivered nothing yet for a revision to change.</p>
-<p><strong>What it should have been.</strong> Both opening, with handbook.mp4 named in full.</p>
+<p><strong>How it breaks the standard.</strong> Leg A turn 1 asks for milestone 7's work, and handbook.mp4 is in the folder before Model A starts, so nothing is deferred. Milestone 8's corrections fall within the response to that same turn, and a revision changes work delivered at an earlier Leg A turn. A bare .mp4 names no file.</p>
+<p><strong>What it should have been.</strong> Milestones 7 and 8 read Modifier: opening, like milestones 1 to 6. Assets Delivered names the Leg A turn 1 files in full: index.html, Vantol.pdf and handbook.mp4.</p>
 <h4 id="example-9">Example 9 (🔗<a href="mistakes/milestone-fields.html#ex-milestone-fields-3">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A has four turns; the fourth asks for a new list without touching the walkthroughs.</p>
-<p><strong>Where it shows.</strong> Milestones 1 and 4 read Modifier: none, and milestone 5 sits on turn 5.</p>
-<p><strong>How it breaks the standard.</strong> None is not a modifier: turns 1 and 4 add work without touching delivered work, so both are opening. Leg A has no turn 5.</p>
-<p><strong>What it should have been.</strong> Milestones 1 and 4 opening; milestone 5 deleted.</p>
+<p><strong>What is wrong.</strong> Milestones 1 and 4 read Modifier: none, which is not one of the four modifiers. Both should read opening.</p>
+<p><strong>The task.</strong> Leg A has four turns. Leg A turn 1 asks for the walkthrough; Leg A turn 4 asks for every check, in order, in the reply, and touches no file.</p>
+<p><strong>Where it shows.</strong> Milestones 1 and 4 read Modifier: none.</p>
+<p><strong>How it breaks the standard.</strong> The value none is not one of the four modifiers. Leg A turn 1 is always opening, and Leg A turn 4 asks for a list in the reply, changing neither walkthrough, so it is opening too. A wrong modifier costs points.</p>
+<p><strong>What it should have been.</strong> Milestones 1 and 4 read Modifier: opening.</p>
 <h4>Catching it in your own task</h4>
 <p>Read Modifier and Assets Delivered beside the Leg A prompts: Leg A turn 1 is opening, and each deferred file sits on the Leg A turn that hands it over.</p>
 <h4>What to do instead</h4>
@@ -244,15 +253,17 @@ the step, the more a fix costs:</p>
 <p>In Leg B, the simulator is you.</p>
 </blockquote>
 <h4 id="example-10">Example 10 (🔗<a href="mistakes/continuation-criteria.html#ex-continuation-criteria-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 2 hands over the school calendar; the travel rules arrive at Leg A turn 3.</p>
-<p><strong>Where it shows.</strong> Milestone 8, on Leg A turn 2, asks for the travel rules, with the clause “the travel days in the model reflect only the document the user attached”.</p>
-<p><strong>How it breaks the standard.</strong> No correct response to Leg A turn 2 can meet it, so in Leg B it keeps you hinting Model B toward a document not yet handed over.</p>
-<p><strong>What it should have been.</strong> Delete milestone 8; milestone 9 already carries it on Leg A turn 3.</p>
+<p><strong>What is wrong.</strong> Milestone 8, on Leg A turn 2, requires the travel rules in IMG_0819_travel_policy.jpg, which only Leg A turn 3 hands over. Milestone 9 repeats its intent there, word for word.</p>
+<p><strong>The task.</strong> Leg A turn 2 hands over IMG_0814_calendar.jpg and sets the travel itself: “about three days a week”. The travel directives, IMG_0819_travel_policy.jpg, arrive at Leg A turn 3.</p>
+<p><strong>Where it shows.</strong> Milestone 8, on Leg A turn 2, reads “The user has sent the travel rules his employer issued”, and its first clause requires “the travel days in the model reflect only the document the user attached”.</p>
+<p><strong>How it breaks the standard.</strong> At Leg A turn 2 the only file handed over is the calendar, and the user sets the travel at about three days a week himself. No correct response to Leg A turn 2 can meet the clause, so in Leg B it would keep you hinting Model B toward a directive not yet handed over.</p>
+<p><strong>What it should have been.</strong> Delete milestone 8. Milestone 9, on Leg A turn 3, the turn that hands over IMG_0819_travel_policy.jpg, already checks that the travel days come from it.</p>
 <h4 id="example-11">Example 11 (🔗<a href="mistakes/continuation-criteria.html#ex-continuation-criteria-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 1 asks, among other things, which pieces still carry a correction.</p>
-<p><strong>Where it shows.</strong> Milestone 1's six clauses never mention corrections.</p>
-<p><strong>How it breaks the standard.</strong> In Leg B they let you move Model B on with that ask undone.</p>
-<p><strong>What it should have been.</strong> Add a clause: pieces carrying a correction are marked as such on their own card.</p>
+<p><strong>What is wrong.</strong> Leg A turn 1 asks which pieces still carry a correction, and none of milestone 1's six clauses checks it, so Model B can pass milestone 1 without it.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks, among other things, which pieces still carry a correction. None of its three exports does, and Slack holds corrections for pieces outside the drop.</p>
+<p><strong>Where it shows.</strong> Milestone 1's six clauses check the file, the cards, type and subject, the counts and the read or confirmed marks. The first restates Leg A turn 1's ask and stops at “every count opening the files behind it”, with no word on corrections.</p>
+<p><strong>How it breaks the standard.</strong> In Leg B you move Model B past milestone 1 once its six clauses hold, and a response that never checks corrections meets every one. Here the right answer is none of the three, so a response that skips the check, or pins another piece's Slack correction on one, moves on unchecked. This costs points.</p>
+<p><strong>What it should have been.</strong> A seventh clause beside the six: each card states whether its piece still carries a correction. Until every card does, you keep hinting Model B in Leg B.</p>
 <h4>Catching it in your own task</h4>
 <p>Could a response skip one of the Leg A turn's asks and still pass? Could a correct one fail for lack of a later file?</p>
 <h4>What to do instead</h4>
@@ -273,14 +284,17 @@ the step, the more a fix costs:</p>
 <p>Count Leg A turns.</p>
 </blockquote>
 <h4 id="example-12">Example 12 (🔗<a href="mistakes/milestone-coverage.html#ex-milestone-coverage-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Model A asked which addresses to use for a note to June, and Leg A turn 5, the last, answers.</p>
+<p><strong>What is wrong.</strong> No milestone covers Leg A turn 5, “Use her OPB address, from my Vantol Films account.” The set stops at Leg A turn 4, and every Leg A turn needs one.</p>
+<p><strong>The task.</strong> Leg A turn 4 asks for a note to June. Model A asks which address and which sending account to use, and Leg A turn 5, the last, answers.</p>
 <p><strong>Where it shows.</strong> The milestones stop at Leg A turn 4, so “Use her OPB address, from my Vantol Films account” has none.</p>
-<p><strong>How it breaks the standard.</strong> Criterion 7 grades both, but no milestone carries them, so a replay against a run that asks, as Model A did, has no script for the answer.</p>
-<p><strong>What it should have been.</strong> A Leg A turn 5 milestone: the note goes to the address, and from the account, the user named.</p>
+<p><strong>How it breaks the standard.</strong> Criterion 7 grades both answers: the note goes to June's OPB address, from Idris's Vantol Films account. Model B did this unasked, so the gap never showed in Leg B. A user simulator replaying the set against a future run that asks, as Model A did, has no script for the reply. This costs points.</p>
+<p><strong>What it should have been.</strong> A milestone on Leg A turn 5: the note to June goes to her OPB address, sent from the Vantol Films account, one continuation clause for each.</p>
 <h4 id="example-13">Example 13 (🔗<a href="mistakes/milestone-coverage.html#ex-milestone-coverage-2">Open in the viewer</a>)</h4>
+<p><strong>What is wrong.</strong> Milestones 13 and 14, on Leg A turn 2, are the same milestone twice, intent and clauses word for word. Only one artwork file, loudness_card.png, is missing.</p>
+<p><strong>The task.</strong> Leg A turn 2 hands over asset_pack/, the artwork and a shot of Marisol's queue. One post's artwork, loudness_card.png, never came through.</p>
 <p><strong>Where it shows.</strong> Milestones 13 and 14, both on Leg A turn 2, are identical, word for word.</p>
-<p><strong>How it breaks the standard.</strong> Leg A turn 2's other asks already have milestones, so the copy only repeats a check.</p>
-<p><strong>What it should have been.</strong> Delete milestone 14.</p>
+<p><strong>How it breaks the standard.</strong> Leg A turn 2 has one missing file to report, and its other asks, the artwork, the queue and the take downs, already have milestones 11, 12, 15 and 16. Milestone 14 repeats milestone 13's check and covers nothing new; Model B meets both with one answer, so nothing flags it. A duplicate costs points.</p>
+<p><strong>What it should have been.</strong> Delete milestone 14 and keep milestone 13 as the one milestone for the missing artwork file.</p>
 <h4>Catching it in your own task</h4>
 <p>List each milestone's Turn beside the Leg A prompts: every Leg A turn needs one per ask. Identical neighbours are duplicates.</p>
 <h4>What to do instead</h4>
@@ -302,14 +316,17 @@ the step, the more a fix costs:</p>
 <p>“For negative weight: The trajectory contains the undesirable behavior or boundary violation described by the criterion.”</p>
 </blockquote>
 <h4 id="example-14">Example 14 (🔗<a href="mistakes/no-negatives.html#ex-no-negatives-1">Open in the viewer</a>)</h4>
+<p><strong>What is wrong.</strong> The 34 criteria carry no negative, though Leg A turn 1 sets a trap: it says the clip's quiz picks are right, and basics.mp4 shows all three wrong.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks for the page shown in 2panels_demo.webm, built as cardio.html, and calls the clip's picks right. mod3_notes.txt says they “were fast ones”: go with the slides.</p>
 <p><strong>Where it shows.</strong> 24 objective and 10 subjective criteria, every weight positive.</p>
-<p><strong>How it breaks the standard.</strong> The opening prompt calls the clip's selected answers right, and all three are wrong. A run that trusts them loses only the two +3s of criteria 12 and 19.</p>
-<p><strong>What it should have been.</strong> “cardio.html keys the self check to the picks selected in 2panels_demo.webm.” Weight −5.</p>
+<p><strong>How it breaks the standard.</strong> The trap is real: Model B, Leg B turn 1, keyed the third item to the clip's ~80%. Yet a run that trusts all three picks loses only the two +3s of objective criteria 12 and 19, exactly what Model A lost without reading the clip at all. Taking the bait costs nothing extra.</p>
+<p><strong>What it should have been.</strong> Add an objective negative at -3, since mod3_notes.txt points the right way: “cardio.html keys the self check to the picks selected in 2panels_demo.webm.”</p>
 <h4 id="example-15">Example 15 (🔗<a href="mistakes/no-negatives.html#ex-no-negatives-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> A four and a half minute explainer on an anatomical plate.</p>
-<p><strong>Where it shows.</strong> A negative at weight −3: “the finished teaching plate remains legible at normal 1080p or full-window playback”.</p>
-<p><strong>How it breaks the standard.</strong> The golden is legible, so it is Present and loses three points; an unreadable video keeps them.</p>
-<p><strong>What it should have been.</strong> Weight −3 on the flaw: the plate renders with its captions or labels below legible size.</p>
+<p><strong>What is wrong.</strong> Subjective criterion 10 is a -3 negative worded as a virtue: the finished plate “remains legible”. The golden's plate is legible, so the golden is Present and loses three points.</p>
+<p><strong>The task.</strong> Leg A turns 1 to 3 ask for plate12_simplification_lesson.mp4, a narrated lesson on Plate 12. The golden video runs four and a half minutes at 1080p, its finished plate legible.</p>
+<p><strong>Where it shows.</strong> Subjective criterion 10, a negative at weight -3: “the finished teaching plate remains legible at normal 1080p or full-window playback”.</p>
+<p><strong>How it breaks the standard.</strong> A negative takes its weight when Present, so subjective criterion 10 charges every legible video three points and spares an unreadable one. The golden, the reference the subjective block is graded against, is the video it penalises. Subjective criterion 3 has the right form: it names the flaw, a black or frozen frame.</p>
+<p><strong>What it should have been.</strong> Subjective criterion 10 at -3, naming the flaw: the finished plate in plate12_simplification_lesson.mp4 renders its captions or labels below legible size at 1080p.</p>
 <h4>Catching it in your own task</h4>
 <p>Negatives should be about a quarter of the set. Present means failure, so a negative describing a good run is inverted.</p>
 <h4>What to do instead</h4>
@@ -328,15 +345,17 @@ the step, the more a fix costs:</p>
 <p>A Major issue.</p>
 </blockquote>
 <h4 id="example-16">Example 16 (🔗<a href="mistakes/coverage-both-ways.html#ex-coverage-both-ways-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 3 asks for the runbook checked against the cleaning threads, never for a citation.</p>
-<p><strong>Where it shows.</strong> Criterion 12: runbook_for_cyrus.md names the team's own prior cleaning threads as a source of its rules.</p>
-<p><strong>How it breaks the standard.</strong> A run that corrects every rule but cites nothing fails it; the golden passes only because it happens to end with a Sources line.</p>
-<p><strong>What it should have been.</strong> Delete the criterion, and its copy in milestone 11.</p>
+<p><strong>What is wrong.</strong> Objective criterion 12 requires runbook_for_cyrus.md to cite the team's cleaning threads. No Leg A turn asks for a citation: Leg A turn 3 asks for a check against them.</p>
+<p><strong>The task.</strong> Leg A turn 3 asks Model A to check runbook_for_cyrus.md against “what we worked out” in the team's threads, and to put the request and due date on top.</p>
+<p><strong>Where it shows.</strong> Objective criterion 12: runbook_for_cyrus.md names the team's own prior cleaning threads as a source of its rules.</p>
+<p><strong>How it breaks the standard.</strong> A correct run checks every rule against the threads and fixes the ones that diverge, as Leg A turn 3 asks, and still fails objective criterion 12 for lacking a citation nobody requested. The golden passes only because runbook_for_cyrus.md happens to end with a Sources line, so checking against the golden never exposes it.</p>
+<p><strong>What it should have been.</strong> Delete objective criterion 12 and milestone 11's clause “the runbook names the threads as a source”. Objective criteria 3 to 5 already grade the rules the threads settled.</p>
 <h4 id="example-17">Example 17 (🔗<a href="mistakes/coverage-both-ways.html#ex-coverage-both-ways-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 4 says Keep holds only what survives the sheets, Yusuf's email and the calendar.</p>
-<p><strong>Where it shows.</strong> Only IMG_2201 and IMG_2105 are excluded; nothing says Keep holds nothing else.</p>
-<p><strong>How it breaks the standard.</strong> Model A's page left IMG_2107 in Keep, which notes.md leaves out of it, and every criterion still passes.</p>
-<p><strong>What it should have been.</strong> One closure criterion: Keep holds only the items criteria 1 to 10 check for, and nothing else.</p>
+<p><strong>What is wrong.</strong> Leg A turn 4 limits Keep to what survives the sheets, Yusuf's email and the calendar. No criterion grades it: objective criteria 21 and 25 exclude only IMG_2201.jpg and IMG_2105.jpg.</p>
+<p><strong>The task.</strong> notes.md defines Keep on canon_study.html: the live head height, the plate IMG_2104.jpg, and the conference and workshop facts from Yusuf's email and the calendar. IMG_2107.jpg is not among them.</p>
+<p><strong>Where it shows.</strong> Objective criteria 1 to 10 require ten facts in Keep, and objective criteria 21 and 25 penalise IMG_2201.jpg and IMG_2105.jpg there. No criterion says Keep holds nothing else.</p>
+<p><strong>How it breaks the standard.</strong> Model A walked into the gap: its Leg A turn 4 page keeps IMG_2107.jpg, the deep back muscles plate, under Keep, though notes.md says “Keep is only IMG_2104.jpg.” No negative names IMG_2107.jpg, so no criterion fails Model A for it, and the point of Leg A turn 4 goes ungraded.</p>
+<p><strong>What it should have been.</strong> Add a closure, as objective criterion 13 does for Do not mix: Keep on the final canon_study.html holds only the items criteria 1 to 10 check for, and nothing else.</p>
 <h4>Catching it in your own task</h4>
 <p>Pair each prompt requirement with its criterion, and each criterion with the sentence that asks for it.</p>
 <h4>What to do instead</h4>
@@ -354,9 +373,11 @@ the step, the more a fix costs:</p>
 <p>A Moderate issue, despite its name.</p>
 </blockquote>
 <h4 id="example-18">Example 18 (🔗<a href="mistakes/weights-flat.html#ex-weights-flat-1">Open in the viewer</a>)</h4>
-<p><strong>Where it shows.</strong> Criterion 12, a four step fee derivation across two services, and criterion 17, a PDF page count, both weigh 1.</p>
-<p><strong>How it breaks the standard.</strong> The score cannot tell a run that found the fee from one that only read page counts.</p>
-<p><strong>What it should have been.</strong> Weight 5 on criterion 12, 1 on criterion 17.</p>
+<p><strong>What is wrong.</strong> Objective criterion 12, the BendFilm fee worked out from a ticket order, weighs 1, like objective criterion 17, a page count read off the inventory. A calculation from one source takes +3.</p>
+<p><strong>The task.</strong> Leg A turn 1 sets the BendFilm fee at four times the order processing fee of the June Timbers vs Sounders game: $5.00 on the Ticketmaster order, so $20.</p>
+<p><strong>Where it shows.</strong> Objective criterion 12, the BendFilm fee of $20, and objective criterion 17, SetInLead_Treatment_Final.pdf classified as Ready, both weigh 1.</p>
+<p><strong>How it breaks the standard.</strong> Objective criterion 12 takes a hidden field and a calculation: find that order, take its order processing fee rather than its $15.00 service fee, and multiply by four. Objective criterion 17 checks one listed page count against a limit. At 1 each, a Model A run that misses the fee loses no more than one that misreads a page count.</p>
+<p><strong>What it should have been.</strong> Objective criterion 12 at 3, for its two axes, a hidden field lookup and a calculation. Objective criterion 17 stays at 1.</p>
 <h4>Catching it in your own task</h4>
 <p>Count the axes each criterion exercises and read off its weight.</p>
 <h4>What to do instead</h4>
@@ -373,10 +394,11 @@ the step, the more a fix costs:</p>
 <p>“The agent's reasoning path, Trajectory: An identification, a dependency order, a piece of restraint. The intent it pursued, never a named tool call.”</p>
 </blockquote>
 <h4 id="example-19">Example 19 (🔗<a href="mistakes/trajectory-cap.html#ex-trajectory-cap-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> energy_audit.html splits an electricity bill between two flatmates.</p>
-<p><strong>Where it shows.</strong> Criteria 33 to 42, ten in all, target Trajectory.</p>
-<p><strong>How it breaks the standard.</strong> Several grade a route whose result a page criterion already grades, such as 39, that the file runs, beside criterion 1. Criterion 33 only asks the agent to query an application.</p>
-<p><strong>What it should have been.</strong> Keep five only the run can show, 34, 35, 37, 38 and 42, and drop the rest.</p>
+<p><strong>What is wrong.</strong> Objective criteria 33 to 42, ten in all, target Trajectory, where the Guidelines allow five. Several grade the route to a value a page criterion already checks.</p>
+<p><strong>The task.</strong> energy_audit.html audits the August electricity bill and splits it between Jayden and Percy. Its values come from photographs, an image only statement and connected records.</p>
+<p><strong>Where it shows.</strong> Objective criteria 33 to 42, ten in all, target Trajectory.</p>
+<p><strong>How it breaks the standard.</strong> Objective criterion 34 grades where the split rule's terms came from, yet objective criterion 27 already checks that rule applied on the page. Objective criteria 35, 40 and 41 do the same for objective criteria 28, 26 and 18, whose 235 to 330 kWh band already fails a whole day method. Objective criterion 33 only asks for the queries those values need.</p>
+<p><strong>What it should have been.</strong> Keep the five that grade what only the run shows, objective criteria 36, 37, 38, 39 and 42, such as 37, the handwritten log read from the photographs. Drop objective criteria 33, 34, 35, 40 and 41.</p>
 <h4>Catching it in your own task</h4>
 <p>Count the objective rows that target Trajectory.</p>
 <h4>What to do instead</h4>
@@ -394,9 +416,11 @@ the step, the more a fix costs:</p>
 <p>So the 50% counts both blocks.</p>
 </blockquote>
 <h4 id="example-20">Example 20 (🔗<a href="mistakes/run-too-easy.html#ex-run-too-easy-1">Open in the viewer</a>)</h4>
+<p><strong>What is wrong.</strong> Model A fails 13 of 49 criteria, 43 of the 123 total weight with both blocks counted: 35.0%. The floor is half the weight, 62.</p>
+<p><strong>The task.</strong> Leg A turns 1 to 4 build oven_decision.html, a one page case for a deck oven: its cost, the landlord's allowance, the building's power and the monthly commitments.</p>
 <p><strong>Where it shows.</strong> Model A failed 13 of 49 criteria, carrying 43 of the 123 total weight.</p>
-<p><strong>How it breaks the standard.</strong> That is 35.0%, well under 50%, and the failed rows are already the heavy ones: Model A got most of the task right.</p>
-<p><strong>What it should have been.</strong> A harder scenario before the run, with sources that disagree; not heavier weights or extra rows.</p>
+<p><strong>How it breaks the standard.</strong> That is 35.0%; the floor needs 62, so the task fails. Nothing else flags it: the rubric is sound and the golden passes it. Weights cannot fix it: three of the four weight 5 criteria are already failed, and objective criteria 1, 26 and 34, image reads Model A passed, belong at 3, not 1.</p>
+<p><strong>What it should have been.</strong> A harder scenario, with sources that disagree, and both legs run again until Model A fails at least half the weight. Never heavier weights or extra rows.</p>
 <h4>Catching it in your own task</h4>
 <p>Divide the weight of the criteria Model A fails by the total, both blocks counted, signs ignored.</p>
 <h4>What to do instead</h4>
@@ -416,15 +440,17 @@ the step, the more a fix costs:</p>
 <p>Listed under “Not valid: your defect, or the platform's”.</p>
 </blockquote>
 <h4 id="example-21">Example 21 (🔗<a href="mistakes/golden-fails-own-criterion.html#ex-golden-fails-own-criterion-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 3 asks for Tamara's exact phrase in the logo: “That truck is a family heirloom at this point.”</p>
+<p><strong>What is wrong.</strong> Criterion 15 wants <code>family heirloom</code> in the logo in place of FAMILY. Leg A turn 3 asks for Tamara's exact phrase, a whole sentence, and the golden logo shows it.</p>
+<p><strong>The task.</strong> Leg A turn 3 asks for “the exact phrase Tamara used when she joked about Terrence’s truck”. The records give “That truck is a family heirloom at this point.”</p>
 <p><strong>Where it shows.</strong> Criterion 15: In family_photo_tree.html, the logo shows <code>family heirloom</code> beneath the tree in place of the original word <code>FAMILY</code>.</p>
-<p><strong>How it breaks the standard.</strong> The turn asks for a sentence and the criterion for two words, so the golden, which renders the sentence, fails.</p>
-<p><strong>What it should have been.</strong> The logo reads <code>That truck is a family heirloom at this point.</code></p>
+<p><strong>How it breaks the standard.</strong> Criterion 15 copies Desired Outcome item 5, which Model A and Model B never see, instead of Leg A turn 3. Model B, Leg B turn 3, puts Tamara's whole sentence in the logo, as asked, so the golden fails criterion 15. The golden is right; the criterion is what is broken.</p>
+<p><strong>What it should have been.</strong> Criterion 15 follows Leg A turn 3: the logo shows <code>That truck is a family heirloom at this point.</code> beneath the tree in place of <code>FAMILY</code>, which the golden passes.</p>
 <h4 id="example-22">Example 22 (🔗<a href="mistakes/golden-fails-own-criterion.html#ex-golden-fails-own-criterion-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Leg A turn 1 asks which jobs the check cannot clear “because the record is too thin”.</p>
-<p><strong>Where it shows.</strong> Only the Desired Outcome asks for "Exactly three records". Criteria 24 and 26 grade one of them, "invoice 21-018".</p>
-<p><strong>How it breaks the standard.</strong> Invoice 21-018 has no job number, so nothing the prompts ask for reaches it, and the golden, which never mentions it, fails both.</p>
-<p><strong>What it should have been.</strong> Criterion 24 limited to job 14-011 and the ground covered by job 26-004; criterion 26 dropped.</p>
+<p><strong>What is wrong.</strong> Criteria 24 and 26 grade invoice 21-018 as a record that cannot be cleared, but only the Desired Outcome names it and the golden never mentions it.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks to check every named party and the tract, and which of the jobs they touch cannot be cleared “because the record is too thin”.</p>
+<p><strong>Where it shows.</strong> Criterion 24 requires that conflict_check.html “lists exactly three records as unresolved rather than cleared: job 14-011, invoice 21-018, and the ground covered by job 26-004.” Criterion 26 grades the reason invoice 21-018 cannot be cleared. Only the Desired Outcome asks for the count or the invoice: “Exactly three records must be listed as unresolved rather than cleared”.</p>
+<p><strong>How it breaks the standard.</strong> Invoice 21-018 has no job number, billing address or phone in QLS_invoices_2011-2025_export.csv, and no ledger line, so it matches no named party and no tract, and no Leg A prompt names it. The golden never mentions it and fails both criteria, as would any run doing exactly what the Leg A prompts ask.</p>
+<p><strong>What it should have been.</strong> Criterion 24 names only job 14-011 and the ground covered by job 26-004, with no count, so the golden's 26-028 does not fail it. Criterion 26 goes.</p>
 <h4>Catching it in your own task</h4>
 <p>Before you complete Leg B, grade the golden against every objective criterion, and mark every Desired Outcome rule no turn asks for.</p>
 <h4>What to do instead</h4>
@@ -441,20 +467,23 @@ the step, the more a fix costs:</p>
 <p>Both are Moderate.</p>
 </blockquote>
 <h4 id="example-23">Example 23 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> A teaching video's change board scene runs 127.8 to 138.3 seconds.</p>
-<p><strong>Where it shows.</strong> The criterion is scoped to "The change-board step" and requires "PCR-2026-0688", "accepted on 10 July 2026".</p>
-<p><strong>How it breaks the standard.</strong> Both appear only in an earlier scene, so the golden is Not Present at weight 5.</p>
-<p><strong>What it should have been.</strong> Scope it to the video, where both values appear: “source_check.mp4 presents acceptance and release as separate states.”</p>
+<p><strong>What is wrong.</strong> Criterion 23 requires PCR-2026-0688 and its 10 July 2026 acceptance in the change board step. The golden's change board scene shows neither; both sit in an earlier scene.</p>
+<p><strong>The task.</strong> Leg A turn 3 asks for one more decision step in source_check.mp4, to show that “finding a discrepancy, accepting a change request, and releasing a changed figure are different decisions”.</p>
+<p><strong>Where it shows.</strong> Criterion 23 is scoped to “The change-board step” and requires “PCR-2026-0688”, “accepted on 10 July 2026”. The golden's change board scene, 127.8 to 138.3 seconds, names 32-21-07 as accepted in July, with no PCR number and no date.</p>
+<p><strong>How it breaks the standard.</strong> The PCR number and the 10 July date appear in source_check.mp4, but only in the earlier record scene, 26 to 39 seconds, and Leg A turn 3 never asks for them in the new step. So the golden is Not Present on criterion 23 at weight 5. This is Overfitting, which costs points.</p>
+<p><strong>What it should have been.</strong> Criterion 23 scoped to source_check.mp4: the July acceptance of the 32-21-07 Figure 2 change request did not put the change in the manual; only the 30 September release does.</p>
 <h4 id="example-24">Example 24 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The voice note asks about "family members who might stay with us", and the records support two.</p>
-<p><strong>Where it shows.</strong> Criteria 13 and 28 require Aunt Rosalind.</p>
-<p><strong>How it breaks the standard.</strong> The golden names Tamara Brown-Ellis, whom the records also support, and fails both.</p>
-<p><strong>What it should have been.</strong> Either answer passes: “combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.”</p>
+<p><strong>What is wrong.</strong> Criteria 13 and 28 require Aunt Rosalind as the possible guest. The voice note asks about family members, plural and unnamed, and the golden names Tamara Brown-Ellis instead, failing both.</p>
+<p><strong>The task.</strong> Leg A turn 3 hands over turn-3-voice-note.mp3, which asks about “family members who might stay with us” and names no one. The records support more than one.</p>
+<p><strong>Where it shows.</strong> Criterion 13 requires combined-home.html to name Aunt Rosalind as a possible guest, and criterion 28 requires the trajectory to find that she cannot walk far.</p>
+<p><strong>How it breaks the standard.</strong> The golden's combined-home.html answers the voice note with Tamara Brown-Ellis, from Contacts, Calendar and Email, and never mentions Rosalind, so the golden is Not Present on both criteria. Pinning one person where the voice note asks for any family member the records support is Overfitting, which costs points.</p>
+<p><strong>What it should have been.</strong> Criterion 13, widened: “combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.” Criterion 28 goes.</p>
 <h4 id="example-25">Example 25 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-3">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The register prices sit both on a calendar event and in a PDF mailed the night before.</p>
-<p><strong>Where it shows.</strong> Criterion 26: "The trajectory grounds the nine old and new register prices in the calendar event."</p>
-<p><strong>How it breaks the standard.</strong> Criterion 29 wants its values from the mail, so a run reading one source fails one of the two; the golden fails 26.</p>
-<p><strong>What it should have been.</strong> Either source accepted: the calendar event or the price list attached to the 4 May mail.</p>
+<p><strong>What is wrong.</strong> Criterion 26 accepts the register prices only from the 5 May calendar event. The same list is attached to the 4 May mail, and the golden took it from there.</p>
+<p><strong>The task.</strong> The nine price changes sit in two records, the 5 May calendar event and price list 5 may.pdf attached to the 4 May mail. Both carry the held prices too.</p>
+<p><strong>Where it shows.</strong> Criterion 26 wants the nine old and new register prices grounded in “the 5 May 2026 07:00 PT calendar event”, and criterion 29 wants the held prices “from the 4 May mail”. Model B, Leg B turn 1, grounds the list in the mail: “The list you sent Marguerite the night before”.</p>
+<p><strong>How it breaks the standard.</strong> Leg A turn 1 names neither record, and either one gives every price. Criterion 29 rewards reading the mail, and a run that takes the whole list from there, as the golden did, fails criterion 26 at weight 5. Pinning one of two valid sources is Overfitting, which costs points.</p>
+<p><strong>What it should have been.</strong> Criterion 26 accepts either record: the nine prices from the calendar event “New prices in the register” or from the price list attached to the 4 May mail.</p>
 <h4>Catching it in your own task</h4>
 <p>For each criterion, name its source line and where your golden shows it, then ask what wrong run still passes.</p>
 <h4>What to do instead</h4>
@@ -470,15 +499,17 @@ the step, the more a fix costs:</p>
 <p>“Task Completion is the only valid category for subjective rubrics.”</p>
 </blockquote>
 <h4 id="example-26">Example 26 (🔗<a href="mistakes/category-and-target.html#ex-category-and-target-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Criteria 17 and 30 grade what a file states.</p>
-<p><strong>Where it shows.</strong> Both are Agent Behavior, targeting the artifact.</p>
-<p><strong>How it breaks the standard.</strong> Agent Behavior always targets Trajectory; a check on what a file says grades the deliverable.</p>
-<p><strong>What it should have been.</strong> Task Completion, same target.</p>
+<p><strong>What is wrong.</strong> Criteria 17 and 30 grade what the running note says, yet their Category is Agent Behavior, which always targets Trajectory. A check on a file grades the deliverable: Task Completion.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks for “a running note of where each album stands and what the rules are”. Criteria 17 and 30 grade what that note states.</p>
+<p><strong>Where it shows.</strong> Both are Category Agent Behavior, with Evaluation Target Final answer/artifact.</p>
+<p><strong>How it breaks the standard.</strong> In the golden, both are read off hh_migration_notes.md, its running note, so they grade the deliverable, not the trajectory. Wording and target are right; only the category is wrong. The criteria still pass and fail the right runs, so grading never exposes it, but the client receives wrong rubric data, which costs points.</p>
+<p><strong>What it should have been.</strong> Category Task Completion on both, keeping Evaluation Target Final answer/artifact and the wording. A retag is made in place; neither leg runs again.</p>
 <h4 id="example-27">Example 27 (🔗<a href="mistakes/category-and-target.html#ex-category-and-target-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> Subjective criterion 2 grades the key's colours in deltoid_plate_study.html.</p>
+<p><strong>What is wrong.</strong> Subjective criterion 2, on key markers coloured like their muscle's heading, is tagged Instruction Following. No Leg A prompt asks for colours, and the subjective block takes Task Completion only.</p>
+<p><strong>The task.</strong> Subjective criterion 2 grades whether the key markers in deltoid_plate_study.html use one colour per muscle, matching that muscle's section heading.</p>
 <p><strong>Where it shows.</strong> It is tagged Instruction Following.</p>
-<p><strong>How it breaks the standard.</strong> No prompt asks for the colours, so it is a presentation property, and Instruction Following is never valid in the subjective block.</p>
-<p><strong>What it should have been.</strong> Task Completion.</p>
+<p><strong>How it breaks the standard.</strong> None of the four Leg A prompts mentions colour, so subjective criterion 2 grades no instruction; it grades how deltoid_plate_study.html looks, which is Task Completion. Had a Leg A prompt asked for the colours, the check would belong in the objective block instead. The wording is right; only the tag costs points.</p>
+<p><strong>What it should have been.</strong> Category Task Completion, with the wording and Evaluation Target Final answer/artifact unchanged.</p>
 <h4>Catching it in your own task</h4>
 <p>Read each category beside its target: Agent Behavior and Tool Use only on Trajectory, every subjective row Task Completion.</p>
 <h4>What to do instead</h4>
@@ -495,9 +526,11 @@ the step, the more a fix costs:</p>
 <p>A subjective restatement of an objective value is this.</p>
 </blockquote>
 <h4 id="example-28">Example 28 (🔗<a href="mistakes/same-check-twice.html#ex-same-check-twice-1">Open in the viewer</a>)</h4>
-<p><strong>Where it shows.</strong> Criterion 2 says the dailies index lists only four files; criterion 9 says two maps are not on it.</p>
-<p><strong>How it breaks the standard.</strong> If criterion 2 passes, criterion 9 cannot fail: one property, two rows of weight.</p>
-<p><strong>What it should have been.</strong> Keep criterion 2, drop 9.</p>
+<p><strong>What is wrong.</strong> Criterion 9 checks that the two inspection maps are off the dailies index. Criterion 2 already requires the index to list only four files, neither map among them.</p>
+<p><strong>The task.</strong> Leg A turn 2 hands over three map exports, among them inspections_map_q3.png and inspections_church_hill.png. Leg A turn 3 asks to move inspection project work off the dailies index and recount.</p>
+<p><strong>Where it shows.</strong> Criterion 2 requires the dailies index to list “only these four files” as dailies, and neither inspection map is among them. Criterion 9 requires that years_in_review.html “does not list inspections_map_q3.png or inspections_church_hill.png” on the index. Both carry weight 5.</p>
+<p><strong>How it breaks the standard.</strong> The four files criterion 2 names leave out both inspection maps, so an index that passes criterion 2 passes criterion 9. Keeping the maps off the index is worth weight 10 across two rows, and an index that keeps one map loses both. The golden passes both, so nothing flags it; the duplicate costs points.</p>
+<p><strong>What it should have been.</strong> Keep criterion 2, whose list of four files already keeps both inspection maps off the dailies index, and drop criterion 9.</p>
 <h4>Catching it in your own task</h4>
 <p>Name the evidence that decides each criterion: two on the same line are duplicates.</p>
 <h4>What to do instead</h4>
@@ -518,9 +551,11 @@ the step, the more a fix costs:</p>
 <p>With more than one file, that includes the filename.</p>
 </blockquote>
 <h4 id="example-29">Example 29 (🔗<a href="mistakes/subjective-no-file.html#ex-subjective-no-file-1">Open in the viewer</a>)</h4>
-<p><strong>Where it shows.</strong> None of the 10 subjective criteria names a file, and the task ships four.</p>
-<p><strong>How it breaks the standard.</strong> Criteria 2 and 3 grade marks and columns that both the video and the notes file carry, so graders can score them against different files.</p>
-<p><strong>What it should have been.</strong> “In move_walkthrough.mp4, passed and failed outcomes are distinguished by colour or a mark, not by wording alone.”</p>
+<p><strong>What is wrong.</strong> None of the 10 subjective criteria names a file, though Leg A asks for three, so each leaves the grader to choose which file it grades.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks for hh_migration_manifest.csv and a running note, hh_migration_notes.md in the golden. Leg A turn 4 adds move_walkthrough.mp4, a video that shows the album table.</p>
+<p><strong>Where it shows.</strong> None of the 10 subjective criteria names a file, and the golden archive holds four: hh_migration_manifest.csv, hh_migration_notes.md, move_walkthrough.mp4 and voice_note_transcript.txt.</p>
+<p><strong>How it breaks the standard.</strong> The task ships more than one file, so each subjective criterion has to name the one it grades, and none does. Subjective criterion 2's pass and fail marks and subjective criterion 3's table columns also appear in hh_migration_notes.md, an album table with “✅ clean” rows, so the grader has to decide which file is meant. It costs points.</p>
+<p><strong>What it should have been.</strong> Every subjective criterion opens with the file it grades: “In move_walkthrough.mp4, passed and failed outcomes are distinguished by colour or a mark, not by wording alone.”</p>
 <h4>Catching it in your own task</h4>
 <p>With more than one file, every subjective criterion contains a filename.</p>
 <h4>What to do instead</h4>
@@ -537,13 +572,17 @@ the step, the more a fix costs:</p>
 <p>Signs are ignored on both sides of the division.</p>
 </blockquote>
 <h4 id="example-30">Example 30 (🔗<a href="mistakes/subjective-size-and-share.html#ex-subjective-size-and-share-1">Open in the viewer</a>)</h4>
+<p><strong>What is wrong.</strong> The subjective block carries 32 of 103 absolute weight, 31.1%, over the 30% cap. Its twelve criteria clear the count of ten; the weight alone is the error.</p>
+<p><strong>The task.</strong> The objective block holds 21 criteria worth 71 absolute weight; the subjective block holds 12 worth 32, with subjective criteria 1 and 2 at +5.</p>
 <p><strong>Where it shows.</strong> The subjective block carries 32 of 103 absolute weight: 31.1%.</p>
-<p><strong>How it breaks the standard.</strong> Twelve criteria clears the count; the weight alone breaks the cap, however close.</p>
-<p><strong>What it should have been.</strong> One +5 lowered to +3 gives 29.7%, with almost no margin.</p>
+<p><strong>How it breaks the standard.</strong> Signs ignored, so subjective criterion 11's -3 counts as 3: 32 over 103 is 31.1%. Twelve criteria clear the count of ten, so the weight alone breaks the cap, and 1.1 points over is still over. No single row is wrong; only dividing the sums shows it. It costs points.</p>
+<p><strong>What it should have been.</strong> Lower subjective criterion 1 from +5 to +3: 30 of 101, 29.7%. Adding the checks Leg A turns 2 and 5 ask for and nothing grades widens the margin.</p>
 <h4 id="example-31">Example 31 (🔗<a href="mistakes/subjective-size-and-share.html#ex-subjective-size-and-share-2">Open in the viewer</a>)</h4>
-<p><strong>Where it shows.</strong> Five subjective criteria.</p>
-<p><strong>How it breaks the standard.</strong> None looks at the page's cut diagrams or scribe section, so an unreadable diagram scores the same as a clear one.</p>
-<p><strong>What it should have been.</strong> Ten or more, region by region, each naming front_room_builtin.html.</p>
+<p><strong>What is wrong.</strong> The subjective block holds five criteria, where the Guidelines expect ten or more, and none grades the cutting diagrams or the scribe plan Leg A turn 1 asks for.</p>
+<p><strong>The task.</strong> Leg A turn 1 asks for front_room_builtin.html: a cut list in mm, how to scribe the edges that meet the wall and ceiling, and a cutting diagram for each sheet.</p>
+<p><strong>Where it shows.</strong> Five subjective criteria, on heading levels, a page that does not report an unread source, table header rows, part names in the cut list, and content inside the page width.</p>
+<p><strong>How it breaks the standard.</strong> Objective criteria 14 and 25 check the parts in the three cutting diagrams, and objective criterion 13 that the scribe plan names the part at each edge. No subjective criterion looks at how either reads, so an unreadable diagram scores the same as a clear one. It costs points.</p>
+<p><strong>What it should have been.</strong> Ten or more subjective criteria, region by region, each naming front_room_builtin.html, among them “In front_room_builtin.html, each part rectangle in the cutting diagrams is labelled inside its own outline.”</p>
 <h4>Catching it in your own task</h4>
 <p>Count the rows, ten at least, and divide the subjective weight by the total, signs ignored.</p>
 <h4>What to do instead</h4>
@@ -561,9 +600,11 @@ the step, the more a fix costs:</p>
 <p>A label you chose is graded nowhere.</p>
 </blockquote>
 <h4 id="example-32">Example 32 (🔗<a href="mistakes/subjective-from-the-page.html#ex-subjective-from-the-page-1">Open in the viewer</a>)</h4>
-<p><strong>Where it shows.</strong> Criteria 1 and 4 require the golden's own card headings, "Claim 1 - May trip" and "Claim 2 - August trip", and its exact header row, "Claim, Reached your account?, Due by 28 Aug?, and Verdict".</p>
-<p><strong>How it breaks the standard.</strong> Nine of ten subjective criteria quote words no prompt asks for, so a correct page with its own headings fails all nine.</p>
-<p><strong>What it should have been.</strong> “In reimbursement_status.html, the two claims are presented as two cards side by side rather than one after the other.”</p>
+<p><strong>What is wrong.</strong> Nine of ten subjective criteria require the golden page's own headings and labels, such as “Claim 1 - May trip”, which none of the three Leg A prompts asks for.</p>
+<p><strong>The task.</strong> Leg A turns 1 to 3 ask for reimbursement_status.html: for each of two mileage claims, whether the money reached Noor, and the deadline for an overdue one.</p>
+<p><strong>Where it shows.</strong> Subjective criteria 1 and 4 require the golden's own card headings, "Claim 1 - May trip" and "Claim 2 - August trip", and its exact header row, "Claim, Reached your account?, Due by 28 Aug?, and Verdict".</p>
+<p><strong>How it breaks the standard.</strong> No Leg A prompt asks for these headings; they are the golden's choices. Each criterion copies the golden page, so nothing flags it, but a correct page with its own headings fails subjective criteria 1 and 4 and seven more. Only subjective criterion 2 names a property without quoting text.</p>
+<p><strong>What it should have been.</strong> Subjective criterion 1 grades the layout, not the words: “In reimbursement_status.html, the two claims are presented as two cards side by side rather than one after the other.”</p>
 <h4>Catching it in your own task</h4>
 <p>Search the prompts for every label a subjective criterion quotes. Not found: it grades your wording. Found: it belongs in the objective block.</p>
 <h4>What to do instead</h4>
@@ -586,15 +627,17 @@ the step, the more a fix costs:</p>
 <p>One of the shapes that fail the task.</p>
 </blockquote>
 <h4 id="example-33">Example 33 (🔗<a href="mistakes/golden-contradicts-sources.html#ex-golden-contradicts-sources-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The calendar photo, IMG_0814_calendar.jpg, and the calendar service both give the handover as 18:30.</p>
-<p><strong>Where it shows.</strong> The golden dashboard: “on-site until 17:00 Fri, can't make the 13:30-15:30 exchange”</p>
-<p><strong>How it breaks the standard.</strong> 13:30 to 15:30 appears in three places, and the conclusion holds either way, so no criterion catches it.</p>
-<p><strong>What it should have been.</strong> 18:30 in all three places.</p>
+<p><strong>What is wrong.</strong> The golden gives the Friday custody handover as 13:30 to 15:30. The calendar photo and the calendar service both put it at 18:30.</p>
+<p><strong>The task.</strong> Leg A turn 2 hands over the school calendar, IMG_0814_calendar.jpg, and asks how many custody handovers clash with travel. Its margin notes give the handover time as 18:30.</p>
+<p><strong>Where it shows.</strong> Model B, Leg B turn 4, reads the margin as “13:30/15:30”, and the golden dashboard carries it into three places, among them “on-site until 17:00 Fri, can't make the 13:30-15:30 exchange”.</p>
+<p><strong>How it breaks the standard.</strong> The golden is the answer the subjective block is graded against, so every value in it has to match the inputs, graded or not. No criterion grades the time, and a 17:00 finish misses the handover at either time, so every criterion still passes and nothing flags it.</p>
+<p><strong>What it should have been.</strong> 18:30 in all three places, reached with a Leg B cleanup turn to Model B that points at the handover time, not its value, before you complete Leg B.</p>
 <h4 id="example-34">Example 34 (🔗<a href="mistakes/golden-contradicts-sources.html#ex-golden-contradicts-sources-2">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> A later turn's photo adds a sixteenth post to the fifteen from the export.</p>
+<p><strong>What is wrong.</strong> The golden page counts 16 label posts, in its header and in its cards, but a note further down still explains “why the count is 15, not 17”.</p>
+<p><strong>The task.</strong> The export holds 17 posts, and two artist account posts come out, leaving 15. Leg A turn 2's shot of Marisol's queue adds a sixteenth.</p>
 <p><strong>Where it shows.</strong> “Two artist-account posts (C16, C17) go out under @sunnyokafor — under P11 not ours to review, so not shown. That's why the count is 15, not 17.”</p>
-<p><strong>How it breaks the standard.</strong> The header counts “16 label posts”; this paragraph was never updated.</p>
-<p><strong>What it should have been.</strong> “That is why 15 of the 16 cards come from the export.”</p>
+<p><strong>How it breaks the standard.</strong> Fifteen was right until Leg A turn 2. When the queue added a post, the header and the cards moved to 16 and the note did not, so the golden contradicts its own page. No criterion grades the note, so nothing flags it; a stale count like this costs points.</p>
+<p><strong>What it should have been.</strong> The note agrees with the page: “That is why 15 of the 16 cards come from the export.”, fixed with a Leg B cleanup turn to Model B before you complete Leg B.</p>
 <h4>Catching it in your own task</h4>
 <p>Point every ungraded value at its source line, and check each total or count against the same page.</p>
 <h4>What to do instead</h4>
@@ -610,10 +653,11 @@ the step, the more a fix costs:</p>
 <p>“The golden has to show the edit applied to work that already existed: earlier content kept, the change visible, nothing left stale that depended on it.”</p>
 </blockquote>
 <h4 id="example-35">Example 35 (🔗<a href="mistakes/revision-leaves-old-wording.html#ex-revision-leaves-old-wording-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> A late turn moves the newsletter teaser and changes the count from days since filing to days since acknowledgment.</p>
-<p><strong>Where it shows.</strong> The page still says "The newsletter teaser rides the same Records batch" and "days since filing".</p>
-<p><strong>How it breaks the standard.</strong> The teaser now sits in two places, and one row still counts from filing while the rest of the page counts from acknowledgment.</p>
-<p><strong>What it should have been.</strong> The old sentence moved with the teaser, and the row reading "days since acknowledgment".</p>
+<p><strong>What is wrong.</strong> The golden foia_register.html puts the newsletter teaser on RPD-26-2204 yet says “The newsletter teaser rides the same Records batch”, and labels a count from acknowledgment “days since filing”.</p>
+<p><strong>The task.</strong> Leg B turn 6, to Model B, asks to move the newsletter teaser from the records row to RPD-26-2204, the slip's request, and to count sitting time from acknowledgment.</p>
+<p><strong>Where it shows.</strong> The walk in section still says “The newsletter teaser rides the same Records batch”, and every row's detail still reads “days since filing”.</p>
+<p><strong>How it breaks the standard.</strong> Model B moved the teaser to RPD-26-2204 after Leg B turn 6, so the walk in section lists the newsletter there and then says it rides the Records batch: two answers on one page. Each row's detail calls an acknowledgment count “days since filing”. No criterion reads either sentence, so nothing flags them.</p>
+<p><strong>What it should have been.</strong> The walk in sentence follows the teaser or goes, and the detail reads “days since acknowledgment”: one Leg B cleanup turn to Model B before you complete Leg B.</p>
 <h4>Catching it in your own task</h4>
 <p>After each revision turn, search the artifact for every value, label and name that moved.</p>
 <h4>What to do instead</h4>
@@ -637,18 +681,17 @@ the step, the more a fix costs:</p>
 <p>A mark of a weak prompt; in a criterion, a Minor issue.</p>
 </blockquote>
 <h4 id="example-36">Example 36 (🔗<a href="mistakes/closeout-mechanics.html#ex-closeout-mechanics-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.</p>
-<p><strong>Where it shows.</strong> The golden archive also ships make_baseline_video.py, whose docstring names each answer's "Source of truth".</p>
-<p><strong>How it breaks the standard.</strong> Five files for three: the script shows how each answer was reached, a quiz image is a renamed copy of an input, and the printable script carries the rebuild instruction.</p>
-<p><strong>What it should have been.</strong> Only the three named files, none carrying the rebuild instruction.</p>
+<p><strong>What is wrong.</strong> The golden archive holds five files where the Leg A prompts name three. make_baseline_video.py names each answer's “Source of truth”, and baseline_quiz_page.jpg is the input IMG_4642.jpg renamed.</p>
+<p><strong>The task.</strong> The four Leg A prompts name three files: baseline_check.mp4, baseline_check_script.md, which Rosalba prints for the instrument case, and MEMORY.md.</p>
+<p><strong>Where it shows.</strong> The golden archive also ships make_baseline_video.py, whose docstring names each answer's “Source of truth”, and baseline_quiz_page.jpg. baseline_check_script.md, the script Rosalba prints, tells its reader to run “python3 make_baseline_video.py”.</p>
+<p><strong>How it breaks the standard.</strong> The golden archive ships finished artifacts only. make_baseline_video.py shows how the video was made, down to which input each answer came from, and baseline_quiz_page.jpg is an input under a new name. The script Rosalba prints even tells her to run the generator. Model B, Leg B turn 1, announced it, and no Leg B turn removed it.</p>
+<p><strong>What it should have been.</strong> The golden archive holds only baseline_check.mp4, baseline_check_script.md and MEMORY.md, with no rebuild line in the printable script: one Leg B cleanup turn to Model B before you complete Leg B.</p>
 <h4 id="example-37">Example 37 (🔗<a href="mistakes/closeout-mechanics.html#ex-closeout-mechanics-2">Open in the viewer</a>)</h4>
-<p><strong>Where it shows.</strong> The prompt names IMG_4508.jpg; the inputs archive holds IMG45.08.JPG.</p>
-<p><strong>How it breaks the standard.</strong> Any criterion citing the name cannot be scored against the archive.</p>
-<p><strong>What it should have been.</strong> IMG_4508.jpg everywhere.</p>
-<h4 id="example-38">Example 38 (🔗<a href="mistakes/closeout-mechanics.html#ex-closeout-mechanics-3">Open in the viewer</a>)</h4>
-<p><strong>Where it shows.</strong> Criterion 22 wants a fee of %0.00, and milestone 4 ends "an apartment the sheet doe snot marks keeps all the requests".</p>
-<p><strong>How it breaks the standard.</strong> The grader has to guess the intended fee, and in Leg B you judge Model B against a sentence that does not parse.</p>
-<p><strong>What it should have been.</strong> "pantry_audit.html shows a delivery fee of $0.00 for the Mon 6 Jul 2026 order."</p>
+<p><strong>What is wrong.</strong> Objective criterion 22 asks for a fee of “%0.00” where $0.00 is meant, objective criterion 7 omits the day, and milestone 4 ends in a clause that does not parse.</p>
+<p><strong>The task.</strong> Leg A turn 1 sets the order for Monday 29 June 2026, and Leg A turn 3 moves it to Monday 6 July 2026.</p>
+<p><strong>Where it shows.</strong> Objective criterion 22 wants a fee of “%0.00”, objective criterion 7 dates its call only “for the Mon Jul 2026 order”, and milestone 4 ends “an apartment the sheet doe snot marks keeps all the requests”.</p>
+<p><strong>How it breaks the standard.</strong> A grader must decode objective criterion 22's “%0.00” as $0.00, and piece objective criterion 7's date together from objective criterion 3. In Leg B you judge Model B against milestone 4, and a user simulator replays it later: its broken clause leaves each to guess the meaning. These cost points.</p>
+<p><strong>What it should have been.</strong> Objective criterion 22: “pantry_audit.html shows a delivery fee of $0.00 for the Mon 6 Jul 2026 order.” Milestone 4: “an apartment the sheet does not mark keeps all its requests”.</p>
 <h4>Catching it in your own task</h4>
 <p>Check the archive against the prompts' filenames, the run picker for “Preferred: 1/1 selected”, each filename character by character, each clause read straight through, and the golden reaching the last prompt.</p>
 <h4>What to do instead</h4>

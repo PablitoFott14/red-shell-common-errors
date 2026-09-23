@@ -171,6 +171,10 @@ html.fromslides .ovback,html.fromslides .ovback.wide{padding-bottom:70px}
 .exn{color:var(--red);font-size:11px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
 .exm{color:var(--ink3);font-size:12px}
 .exctx{margin:8px 0 0;color:var(--ink2);font-size:13.5px;line-height:1.5}
+/* What is wrong: the mistake in a sentence or two, before anything else on the card and the rail */
+.exgist{margin:10px 0 0;color:var(--ink);font-size:14.5px;line-height:1.5;font-weight:500}
+.exgist .xl,.rsec.wrongr .rl{color:var(--red)}
+.rsec.wrongr p{color:var(--ink);font-size:14.5px;font-weight:500}
 .xl{display:block;color:var(--ink3);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   margin-bottom:3px}
 .exf{display:flex;align-items:center;gap:14px;margin-top:10px}
@@ -494,6 +498,11 @@ mark.pulse{animation:markpulse 1.6s ease-out}
 .evimg img{display:block;max-width:100%;max-height:68vh;width:auto;height:auto;margin:0 auto}
 .evimg.full{cursor:zoom-out;max-height:none}
 .evimg.full img{max-width:none;max-height:none}
+/* a PDF, drawn page by page */
+.evpdf{display:grid;gap:14px}
+.evpg{margin:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+.evpg img{display:block;width:100%;height:auto}
+.evpg figcaption{padding:5px 10px;background:var(--bg2);color:var(--ink3);font-size:11.5px;border-top:1px solid var(--line)}
 .evmedia{display:block;width:100%;max-height:64vh;background:#000;border:1px solid var(--line);border-radius:9px}
 audio.evmedia{max-height:none;background:transparent;border:0}
 .evmarks{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 10px}
