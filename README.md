@@ -10,9 +10,10 @@ any line to open the real task on that spot.
 ## → [pablitofott14.github.io/red-shell-common-errors](https://pablitofott14.github.io/red-shell-common-errors/)
 
 That link is the course. The menu lists all 23 mistakes in the seven sections, and can show only the ones
-that fail the task, fail a client CORE standard or cost points. The **Slides** tab steps through the course's
-slide deck, with a PDF and a PPTX of it to download. The files in this repository are what builds it; you do
-not need to read them to take the course.
+that fail the task, fail a client CORE standard or cost points. The **Slides** tab, first in the header, steps
+through the course's slide deck, and every example number on a slide opens that real example; the PDF and the
+PPTX of it to download keep the same links. The files in this repository are what builds it; you do not need
+to read them to take the course.
 
 ---
 
@@ -24,7 +25,7 @@ not need to read them to take the course.
 | `mistakes/<name>.html` | One page per mistake. The mistake and what to do instead, side by side; each real task where it happened, as a diagnosis; how to catch it in your own task; where the correct guidance is written; and why it matters, folded away. |
 | `explanations.html` | The course's explanations: every mistake and every example taken apart in full. Each example links back to the exact spot in the viewer, and the viewer links to each example here. |
 | `checklist.html` | Every recognition test on one page, section by section, with ticks that stay in your browser. |
-| `slides/` | The Slides tab: the course's deck, one slide at a time, with the arrow keys, a strip of every slide, full screen and a link to each slide (`#1` to `#13`). `common-errors-slides.pdf` and `common-errors-slides.pptx` are the same deck to download: the PDF keeps the text as text, and the PPTX shows each slide as one picture, with its words in the speaker notes. |
+| `slides/` | The Slides tab: the course's deck, one slide at a time, with the arrow keys, a strip of every slide, full screen and a link to each slide (`#1` to `#13`). Every example number on a slide opens that example on its page here, in a new tab, and a button for each example sits under the slide. `common-errors-slides.pdf` and `common-errors-slides.pptx` are the same deck to download, with the same links: the PDF keeps the text as text, and the PPTX shows each slide as one picture, with its words and its examples' addresses in the speaker notes. |
 | `data/course.json` | The same content as data, if you want to render it somewhere else. |
 | `evidence/<task>/` | The task files the examples open: golden pages, photos, videos. Only what an example needs. |
 
@@ -112,12 +113,14 @@ still appears verbatim in the file it names. `check_viewer.py` drives every page
 card is a diagnosis, every line of it lands on its spot, every example opens on its spot, every rule link opens
 its quote, every evidence file loads, and every link between the explanations and the viewer resolves.
 `check_deck.py` renders every slide afresh and holds the Slides tab, the PDF and the PPTX to it, slide by
-slide: nothing clipped, overlapping or outside the frame, the PDF's text where the slide puts it, and the PPTX
-opened and exported by PowerPoint itself.
+slide: nothing clipped, overlapping or outside the frame, the PDF's text where the slide puts it, the PPTX
+opened and exported by PowerPoint itself, and every example number a link, on its number, that opens its own
+example.
 
 ## The rest of the course
 
-- **Slides**: 13 slides at 1920x1080, published here as the Slides tab, with a PDF and a PPTX
+- **Slides**: 13 slides at 1920x1080, published here as the Slides tab, with a PDF and a PPTX; every example
+  number on them opens that example here
 - **Explanations**: the course text, one entry per mistake, published here as `explanations.html`
 - **Questions**: comprehension questions, built to test whether someone can recognise the mistake rather
   than repeat the rule
