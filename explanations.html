@@ -303,7 +303,7 @@ the step, the more a fix costs:</p>
 </blockquote>
 <h4 id="example-14">Example 14 (🔗<a href="mistakes/no-negatives.html#ex-no-negatives-1">Open in the viewer</a>)</h4>
 <p><strong>Where it shows.</strong> 24 objective and 10 subjective criteria, every weight positive.</p>
-<p><strong>How it breaks the standard.</strong> The opening prompt calls the clip's selected answers right, and all three are wrong. A run that trusts them loses only one +3.</p>
+<p><strong>How it breaks the standard.</strong> The opening prompt calls the clip's selected answers right, and all three are wrong. A run that trusts them loses only the two +3s of criteria 12 and 19.</p>
 <p><strong>What it should have been.</strong> “cardio.html keys the self check to the picks selected in 2panels_demo.webm.” Weight −5.</p>
 <h4 id="example-15">Example 15 (🔗<a href="mistakes/no-negatives.html#ex-no-negatives-2">Open in the viewer</a>)</h4>
 <p><strong>The task.</strong> A four and a half minute explainer on an anatomical plate.</p>
@@ -335,8 +335,8 @@ the step, the more a fix costs:</p>
 <h4 id="example-17">Example 17 (🔗<a href="mistakes/coverage-both-ways.html#ex-coverage-both-ways-2">Open in the viewer</a>)</h4>
 <p><strong>The task.</strong> Leg A turn 4 says Keep holds only what survives the sheets, Yusuf's email and the calendar.</p>
 <p><strong>Where it shows.</strong> Only IMG_2201 and IMG_2105 are excluded; nothing says Keep holds nothing else.</p>
-<p><strong>How it breaks the standard.</strong> Model A's page left IMG_2107 in Keep, which notes.md excludes, and every criterion still passes.</p>
-<p><strong>What it should have been.</strong> One closure criterion: Keep consists only of the nine items that survive.</p>
+<p><strong>How it breaks the standard.</strong> Model A's page left IMG_2107 in Keep, which notes.md leaves out of it, and every criterion still passes.</p>
+<p><strong>What it should have been.</strong> One closure criterion: Keep holds only the items criteria 1 to 10 check for, and nothing else.</p>
 <h4>Catching it in your own task</h4>
 <p>Pair each prompt requirement with its criterion, and each criterion with the sentence that asks for it.</p>
 <h4>What to do instead</h4>
@@ -376,7 +376,7 @@ the step, the more a fix costs:</p>
 <p><strong>The task.</strong> energy_audit.html splits an electricity bill between two flatmates.</p>
 <p><strong>Where it shows.</strong> Criteria 33 to 42, ten in all, target Trajectory.</p>
 <p><strong>How it breaks the standard.</strong> Several grade a route whose result a page criterion already grades, such as 39, that the file runs, beside criterion 1. Criterion 33 only asks the agent to query an application.</p>
-<p><strong>What it should have been.</strong> Drop 33, 36, 39 and 40, and keep the five only the run shows, such as 37, a handwritten log read from photographs.</p>
+<p><strong>What it should have been.</strong> Keep five only the run can show, 34, 35, 37, 38 and 42, and drop the rest.</p>
 <h4>Catching it in your own task</h4>
 <p>Count the objective rows that target Trajectory.</p>
 <h4>What to do instead</h4>
@@ -422,9 +422,9 @@ the step, the more a fix costs:</p>
 <p><strong>What it should have been.</strong> The logo reads <code>That truck is a family heirloom at this point.</code></p>
 <h4 id="example-22">Example 22 (🔗<a href="mistakes/golden-fails-own-criterion.html#ex-golden-fails-own-criterion-2">Open in the viewer</a>)</h4>
 <p><strong>The task.</strong> Leg A turn 1 asks which jobs the check cannot clear “because the record is too thin”.</p>
-<p><strong>Where it shows.</strong> Only the Desired Outcome asks for "Exactly three records", and criterion 24 names them, including "invoice 21-018".</p>
-<p><strong>How it breaks the standard.</strong> Invoice 21-018 has no job number, so nothing the prompts ask for reaches it, and the golden fails.</p>
-<p><strong>What it should have been.</strong> Criterion 24 limited to what the prompts ask: job 14-011 and the ground covered by job 26-004.</p>
+<p><strong>Where it shows.</strong> Only the Desired Outcome asks for "Exactly three records". Criteria 24 and 26 grade one of them, "invoice 21-018".</p>
+<p><strong>How it breaks the standard.</strong> Invoice 21-018 has no job number, so nothing the prompts ask for reaches it, and the golden, which never mentions it, fails both.</p>
+<p><strong>What it should have been.</strong> Criterion 24 limited to job 14-011 and the ground covered by job 26-004; criterion 26 dropped.</p>
 <h4>Catching it in your own task</h4>
 <p>Before you complete Leg B, grade the golden against every objective criterion, and mark every Desired Outcome rule no turn asks for.</p>
 <h4>What to do instead</h4>
@@ -444,12 +444,12 @@ the step, the more a fix costs:</p>
 <p><strong>The task.</strong> A teaching video's change board scene runs 127.8 to 138.3 seconds.</p>
 <p><strong>Where it shows.</strong> The criterion is scoped to "The change-board step" and requires "PCR-2026-0688", "accepted on 10 July 2026".</p>
 <p><strong>How it breaks the standard.</strong> Both appear only in an earlier scene, so the golden is Not Present at weight 5.</p>
-<p><strong>What it should have been.</strong> Grade the property: acceptance and release shown as separate states.</p>
+<p><strong>What it should have been.</strong> Scope it to the video, where both values appear: “source_check.mp4 presents acceptance and release as separate states.”</p>
 <h4 id="example-24">Example 24 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-2">Open in the viewer</a>)</h4>
 <p><strong>The task.</strong> The voice note asks about "family members who might stay with us", and the records support two.</p>
 <p><strong>Where it shows.</strong> Criteria 13 and 28 require Aunt Rosalind.</p>
-<p><strong>How it breaks the standard.</strong> The golden names Tamara Brown-Ellis, also supported, and fails both.</p>
-<p><strong>What it should have been.</strong> combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.</p>
+<p><strong>How it breaks the standard.</strong> The golden names Tamara Brown-Ellis, whom the records also support, and fails both.</p>
+<p><strong>What it should have been.</strong> Either answer passes: “combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.”</p>
 <h4 id="example-25">Example 25 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-3">Open in the viewer</a>)</h4>
 <p><strong>The task.</strong> The register prices sit both on a calendar event and in a PDF mailed the night before.</p>
 <p><strong>Where it shows.</strong> Criterion 26: "The trajectory grounds the nine old and new register prices in the calendar event."</p>
@@ -586,7 +586,7 @@ the step, the more a fix costs:</p>
 <p>One of the shapes that fail the task.</p>
 </blockquote>
 <h4 id="example-33">Example 33 (🔗<a href="mistakes/golden-contradicts-sources.html#ex-golden-contradicts-sources-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The calendar margin and the calendar service both give the handover as 18:30.</p>
+<p><strong>The task.</strong> The calendar photo, IMG_0814_calendar.jpg, and the calendar service both give the handover as 18:30.</p>
 <p><strong>Where it shows.</strong> The golden dashboard: “on-site until 17:00 Fri, can't make the 13:30-15:30 exchange”</p>
 <p><strong>How it breaks the standard.</strong> 13:30 to 15:30 appears in three places, and the conclusion holds either way, so no criterion catches it.</p>
 <p><strong>What it should have been.</strong> 18:30 in all three places.</p>
@@ -637,7 +637,7 @@ the step, the more a fix costs:</p>
 <p>A mark of a weak prompt; in a criterion, a Minor issue.</p>
 </blockquote>
 <h4 id="example-36">Example 36 (🔗<a href="mistakes/closeout-mechanics.html#ex-closeout-mechanics-1">Open in the viewer</a>)</h4>
-<p><strong>The task.</strong> The prompts name three files.</p>
+<p><strong>The task.</strong> The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.</p>
 <p><strong>Where it shows.</strong> The golden archive also ships make_baseline_video.py, whose docstring names each answer's "Source of truth".</p>
 <p><strong>How it breaks the standard.</strong> Five files for three: the script shows how each answer was reached, a quiz image is a renamed copy of an input, and the printable script carries the rebuild instruction.</p>
 <p><strong>What it should have been.</strong> Only the three named files, none carrying the rebuild instruction.</p>
@@ -667,5 +667,6 @@ the step, the more a fix costs:</p>
 </ol>
 <p><a href="checklist.html">The full checklist before you submit →</a></p></article>
 </main>
-<footer><p>Every example on these pages is a real task from this project, shown as it was submitted.</p></footer>
+<footer><p>Every example on these pages is a real task from this project. Where it shows quotes the task's own
+words, checked against it when the site is built; what it should have been is the course's correction.</p></footer>
 </body></html>

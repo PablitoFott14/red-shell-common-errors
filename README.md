@@ -2,9 +2,10 @@
 
 The error pages of the **Common Errors** course for the OpenClaw MM Rubrics MULTI TURN project.
 
-23 mistakes that keep costing people their tasks, each shown in a real task from this project with the
-exact spot marked. Open a mistake, see what went wrong and what to do instead, then open the real task and
-land on the words, the row or the field where it happened.
+23 mistakes that keep costing people their tasks, each shown in a real task from this project. Open a
+mistake and every real task on its page is laid out as a diagnosis: the exact words, row or field where it
+went wrong, beside what it should have been, then why it breaks the standard and the rule it breaks. Click
+any line to open the real task on that spot.
 
 ## → [pablitofott14.github.io/red-shell-common-errors](https://pablitofott14.github.io/red-shell-common-errors/)
 
@@ -19,29 +20,45 @@ it; you do not need to read them to take the course.
 | Page | What it does |
 |---|---|
 | `index.html` | The menu. Every mistake, grouped into the course's seven sections, with a filter by what it costs. |
-| `mistakes/<name>.html` | One page per mistake. The mistake and what to do instead, side by side; the real tasks where it happened; how to catch it in your own task; where the correct guidance is written; and why it matters, folded away. |
+| `mistakes/<name>.html` | One page per mistake. The mistake and what to do instead, side by side; each real task where it happened, as a diagnosis; how to catch it in your own task; where the correct guidance is written; and why it matters, folded away. |
 | `explanations.html` | The course's explanations: every mistake and every example taken apart in full. Each example links back to the exact spot in the viewer, and the viewer links to each example here. |
 | `checklist.html` | Every recognition test on one page, section by section, with ticks that stay in your browser. |
 | `data/course.json` | The same content as data, if you want to render it somewhere else. |
 | `evidence/<task>/` | The task files the examples open: golden pages, photos, videos. Only what an example needs. |
 
+## Reading an example
+
+Every real task on a mistake's page is a **diagnosis** you can read without opening anything:
+
+- **Where it shows**: the lines of the task where the mistake is, quoted in the task's own words, with the
+  words at fault marked and the one field at fault ringed: a weight, a category, a modifier, an Assets
+  Delivered. Something the task should have and does not, such as a criterion, a clause or a milestone,
+  is a dashed line.
+- **What it should have been**: the same lines as they should read, with what changes in green.
+- **How it breaks the standard**, in a sentence, and **the rule it breaks**, quoted from the Guidelines or
+  the QC spec by its printed section. Its link opens the full quote.
+
+Every line names where it sits in the task. Click it, or any marked word, and the real task opens over the
+page on exactly that spot.
+
 ## Opening an example
 
-Examples open **on the page you are already reading**, not on one of their own. The dialog puts the point on
-the left, in the order the explanations use (the task, where it shows, how it breaks the standard, what it
-should have been), and the task's own fields on the right, tabbed. The tabs carry only the parts of the task
-the mistake lives in.
+Examples open **on the page you are already reading**, not on one of their own. The dialog puts the same
+diagnosis on the left, in the order the explanations use (the task, where it shows, how it breaks the
+standard, what it should have been), and the task's own fields on the right, tabbed. The tabs carry only
+the parts of the task the mistake lives in.
 
-It opens **on the spot**: the tab that "where it shows" points at, scrolled to the first marked place.
+It opens **on the spot**: the tab the diagnosis's first line points at, scrolled to the first marked place.
 
 - **Yellow** marks the exact words to look at, inside the task's own text.
-- **Red** flags the row at fault, and rings the one field at fault on it (a weight, a category, a modifier,
-  an Assets Delivered). A Leg A turn no milestone covers is drawn into the milestone table as a missing row.
-- **Green** marks task text that already does it the right way, where the task has any.
+- **Red** flags the row at fault, and rings the one field at fault on it. A **dashed red** row is what the
+  task is missing, drawn where it belongs: a Leg A turn no milestone covers, a clause a milestone lacks, a
+  criterion the rubric never wrote.
+- **Green** marks what is right: the corrected value, or task text that already does it the right way.
 - **Blue** is a task file you can open.
 
-The **Spot 1 of N** stepper in a tab's header walks every marked place in it, inside a golden page too. The
-chips under "where it shows" jump straight to each one, and every reference in the explanation is a link:
+The **Spot 1 of N** stepper in a tab's header walks every marked place in it, inside a golden page too. Each
+line of the diagnosis jumps straight to its place, and every reference in the explanation is a link:
 *criterion 30*, *Leg B turn 7*, *milestone 9*, a filename or a quoted phrase takes you to what it names.
 Left and right arrows walk the tabs, **Expand** takes the dialog full window, and **Escape** puts you back
 where you were.
@@ -69,9 +86,10 @@ no metadata, and nothing on these pages identifies a contributor.
 error, quoted word for word, with the section titles as they are printed in the document so you can search
 for them and read the whole thing around them.
 
-**The examples are real.** Every one is a task that was actually submitted to this project, shown as it was
-submitted. Every mark an example declares is checked against the task's own text when the site is built, so a
-marked phrase is always one the task really contains.
+**The examples are real.** Every one is a task that was actually submitted to this project. Every line under
+*Where it shows* that quotes the task is checked against the task's own text when the site is built, piece by
+piece, and so is every marked phrase, so a quote is always one the task really contains. *What it should have
+been* is the course's correction, never presented as the task's.
 
 ## Keeping it current
 
@@ -85,10 +103,11 @@ python build_docs.py   # -> course_structure.md, explanations.md
 python build_slides.py # -> the deck
 ```
 
-`spec.py` holds what each mistake says and where each example's mistake sits. `rules.py` holds the quoted
-rules and the document section each one comes from; a checker verifies every quote still appears verbatim in
-the file it names. `check_viewer.py` drives every page in a headless browser: every example opens on its spot,
-every jump lands, every evidence file loads, and every link between the explanations and the viewer resolves.
+`spec.py` holds what each mistake says, where each example's mistake sits and each example's diagnosis.
+`rules.py` holds the quoted rules and the document section each one comes from; a checker verifies every quote
+still appears verbatim in the file it names. `check_viewer.py` drives every page in a headless browser: every
+card is a diagnosis, every line of it lands on its spot, every example opens on its spot, every rule link opens
+its quote, every evidence file loads, and every link between the explanations and the viewer resolves.
 
 ## The rest of the course
 

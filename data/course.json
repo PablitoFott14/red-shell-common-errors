@@ -126,11 +126,64 @@
       [
        "files",
        "ada_list.html"
+      ],
+      [
+       "text",
+       "HTML dashboard"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "Agent Objective",
+        "text": "…He needs one local [[HTML dashboard]], 'ada_list.html ', that Ada can use at the store…",
+        "ref": [
+         "text",
+         "Agent Objective"
+        ]
+       },
+       {
+        "t": "fact",
+        "where": "ada_list.html",
+        "text": "[[No script, no button, no filter, no link]]: one table and nine pictures.",
+        "ref": null
+       }
+      ],
+      "ctx": [
+       {
+        "t": "fact",
+        "where": "Leg A prompts",
+        "text": "None of the three asks the page to do anything when clicked.",
+        "ref": null
+       }
+      ],
+      "now": [
+       {
+        "t": "said",
+        "where": "Leg A turn 1",
+        "text": "…with the amounts I usually buy. {{Put the buy list in a table I can sort by aisle or by price.}} It should be detailed…",
+        "ref": [
+         "prompt",
+         1
+        ]
+       },
+       {
+        "t": "fact",
+        "where": "ada_list.html",
+        "text": "{{Controls that respond}}: the list sorts by aisle or by price.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "A styled static page does not qualify."
+      }
+     },
      "focus": "ada_list.html",
      "panels": [
       {
@@ -252,11 +305,81 @@
       [
        "golden",
        "try getting to the product pages and the policy pages another way"
+      ],
+      [
+       "golden@user@3",
+       "try getting to the product pages and the policy pages another way"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "pantry_rules.md",
+        "text": "…Every line is priced [[at the pack option we add to the cart from Fresh's catalog]]…",
+        "note": "rule 1",
+        "ref": [
+         "evidence",
+         "pantry_rules.md"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "pantry_rules.md",
+        "text": "…For the delivery fee we go by [[Fresh's Delivery Policy and nothing else]]…",
+        "note": "rule 5",
+        "ref": [
+         "evidence",
+         "pantry_rules.md"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Leg B turn 3",
+        "text": "…if the search is coming back empty [[try getting to the product pages and the policy pages another way]]…",
+        "note": "the hint the missing records forced",
+        "ref": [
+         "legb",
+         3,
+         "user"
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "Model B, Leg B turn 2",
+        "text": "…the two endpoints that serve product pages and policy text (search_shop_catalog and search_shop_policies_and_faqs) return zero results for everything…",
+        "ref": [
+         "legb",
+         2,
+         "agent"
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "fact",
+        "where": "Before prompt 1",
+        "text": "{{Search the universe's catalog for the five items, and its policies for the fee.}} Both come back empty, so the rules change before the run.",
+        "ref": null
+       },
+       {
+        "t": "fact",
+        "where": "pantry_rules.md",
+        "text": "Rules 1 and 5 {{cite only records the universe returns}}.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "The universe combined with the multimodal input has to sustain the opening prompt and every follow-up you intend to add"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -395,11 +518,63 @@
       [
        "criteria",
        "26-014_Field_notes_2026-03-19.pdf"
+      ],
+      [
+       "golden@user@9",
+       "the file named 26-014_Field_notes_2026-03-19.pdf"
+      ],
+      [
+       "criteria@objective@14",
+       "26-014_Field_notes_2026-03-19.pdf"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "Leg B turn 9",
+        "text": "Not the physical field book. Open the day-3 field notes PDF in the mail, [[the file named 26-014_Field_notes_2026-03-19.pdf]], and put what that file says about PT 128 on the cedar-mound card.",
+        "ref": [
+         "legb",
+         9,
+         "user"
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 14,
+        "text": "The trajectory opens or otherwise reads email attachment [[26-014_Field_notes_2026-03-19.pdf]] when resolving what PT 128 is.",
+        "ref": [
+         "criterion",
+         "objective",
+         14
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "said",
+        "where": "Leg B turn 9",
+        "text": "{{The PT 128 figure on the cedar mound card doesn't match what was actually recorded out there.}}",
+        "ref": [
+         "legb",
+         9,
+         "user"
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "the hints narrow the search space beyond an area-level nudge (e.g. naming the exact file to open)"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -456,6 +631,10 @@
       [
        "golden",
        "dont price our order off rosas phone - thats her own account, not the buildings"
+      ],
+      [
+       "golden@user@7",
+       "dont price our order off rosas phone - thats her own account, not the buildings"
       ]
      ],
      "good": [
@@ -466,6 +645,45 @@
      ],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "Leg B turn 7",
+        "text": "…but [[dont price our order off rosas phone - thats her own account, not the buildings]], and the house rules say which prices count for us",
+        "ref": [
+         "legb",
+         7,
+         "user"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "said",
+        "where": "Leg B turn 6",
+        "text": "{{some prices on the page dont look like what fresh charges us}}",
+        "note": "already in the task, one turn earlier: it says something is wrong, not what",
+        "ref": [
+         "legb",
+         6,
+         "user"
+        ]
+       },
+       {
+        "t": "fact",
+        "where": "Leg B turn 7",
+        "text": "{{Another hint at that level}}, or none: never the conclusion.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "they may not say WHAT the right answer is"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -563,13 +781,64 @@
        "There are five big ones and one small one"
       ],
       [
-       "files",
-       "IMG_4392.jpeg"
+       "prompts@2",
+       "There are five big ones and one small one"
+      ],
+      [
+       "golden@user@4",
+       "There are five big ones and one small one"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "Leg A turn 2",
+        "text": "Sorted the plates, the photo is fine to use now. [[There are five big ones and one small one]], and they need to be stored flat somewhere in the unit.",
+        "ref": [
+         "prompt",
+         2
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Leg B turn 4",
+        "text": "…[[There are five big ones and one small one]]…",
+        "note": "the same words, sent to Model B",
+        "ref": [
+         "legb",
+         4,
+         "user"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "said",
+        "where": "Leg A turn 2",
+        "text": "Sorted the plates, the photo is fine to use now. {{They need to be stored flat somewhere in the unit, not stood on edge.}}",
+        "ref": [
+         "prompt",
+         2
+        ]
+       },
+       {
+        "t": "fact",
+        "where": "Leg B turn 4",
+        "text": "The same corrected words, to Model B.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "One or more user turns supply a value, count, position, or conclusion"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -584,73 +853,15 @@
        "isit": true
       },
       {
-       "t": "files",
-       "title": "Input files",
+       "t": "golden",
+       "title": "From the Leg B conversation, with Model B",
        "rows": [
         {
-         "name": "IMG_4392.jpeg",
-         "ext": ".jpeg",
-         "size": 230718,
-         "turn": null
-        },
-        {
-         "name": "IMG_4381.png",
-         "ext": ".png",
-         "size": 1113728,
-         "turn": null
-        },
-        {
-         "name": "Scan 2026-08-22 at 19.04.png",
-         "ext": ".png",
-         "size": 719326,
-         "turn": null
-        },
-        {
-         "name": "Recording 3.mp3",
-         "ext": ".mp3",
-         "size": 412098,
-         "turn": null
-        },
-        {
-         "name": "IMG_4371.jpg",
-         "ext": ".jpg",
-         "size": 59542,
-         "turn": null
-        },
-        {
-         "name": "IMG_4378.jpg",
-         "ext": ".jpg",
-         "size": 45550,
-         "turn": null
-        },
-        {
-         "name": "notebooks.jpg",
-         "ext": ".jpg",
-         "size": 94490,
-         "turn": null
-        },
-        {
-         "name": "halvard shop sheet.webp",
-         "ext": ".webp",
-         "size": 104482,
-         "turn": null
-        },
-        {
-         "name": "IMG_4380.jpg",
-         "ext": ".jpg",
-         "size": 84344,
-         "turn": null
-        },
-        {
-         "name": "IMG_4379.webp",
-         "ext": ".webp",
-         "size": 19062,
-         "turn": null
+         "role": "user",
+         "turn": 4,
+         "text": "Sorted the plates, the photo is fine to use now. There are five big ones and one small one, and they need to be stored flat somewhere in the unit. Add that into the HTML rather than starting over."
         }
-       ],
-       "links": {
-        "IMG_4392.jpeg": 2
-       }
+       ]
       },
       {
        "t": "evidence",
@@ -725,11 +936,77 @@
       [
        null,
        "IMG_0819_travel_policy.jpg"
+      ],
+      [
+       "files",
+       "IMG_0814_calendar.jpg"
+      ],
+      [
+       "files",
+       "IMG_0819_travel_policy.jpg"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "Input files",
+        "text": "[[IMG_0814_calendar.jpg]]",
+        "ref": [
+         "files",
+         "Input files"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Input files",
+        "text": "[[IMG_0819_travel_policy.jpg]]",
+        "ref": [
+         "files",
+         "Input files"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "said",
+        "where": "Input files",
+        "text": "{{IMG_0814.jpg}}",
+        "ref": [
+         "files",
+         "Input files"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Input files",
+        "text": "{{IMG_0819.jpg}}",
+        "ref": [
+         "files",
+         "Input files"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Leg A turn 2",
+        "text": "I dug up Jaylen's school calendar for this year and marked it up (see attached {{IMG_0814.jpg}}).",
+        "note": "the turn that delivers it says what it is",
+        "ref": [
+         "prompt",
+         2
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "use neutral filenames"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -759,23 +1036,21 @@
       },
       {
        "t": "prompts",
-       "title": "Every Leg A prompt, to Model A",
+       "title": "Leg A prompt, turn 2, to Model A",
        "rows": [
-        {
-         "turn": 1,
-         "text": "I took a call yesterday afternoon from Corwin Steadman offering me the Regional Operations Manager position for the Southeast region at $104,000 base, compared to my current $82,000 base as Operations Manager at HAT2. I jotted down the offer details, the travel expectations, and our current wedding and house savings balances on a notepad (see IMG_4412_call_notes.jpg). The promotion starts late summer, which sits about nine months out from my wedding to Adaeze in May 2027. We know our wedding savings are currently tracking behind our committed costs, and we recently had to throttle our monthly house savings to keep wedding expenses cash-funded.\n\nI need an interactive HTML dashboard named dashboard.html that lays out an honest financial comparison between staying at HAT2 versus taking this regional role. Specifically, the dashboard needs to calculate our net take-home cash under both positions after standard income taxes and payroll deductions, project the trajectory of both our wedding fund and house savings fund through our wedding date under both salary tracks, and evaluate how quickly the salary delta would close the wedding funding gap and restore our house savings rate. Please structure this with clear visual KPI cards comparing the gross and net figures alongside a month-by-month trajectory table or chart for both funds through May 2027."
-        },
         {
          "turn": 2,
          "text": "I dug up Jaylen's school calendar for this year and marked it up (see attached IMG_0814_calendar.jpg). My carline mornings are highlighted on it and the custody handovers with Terrance are circled, with the Poplarville details in the margin. Since the regional job runs 60% to 70% travel, about three days a week across the five sites, update dashboard.html with a schedule conflict calendar and a week-by-week matrix across the school year. Map the travel load against what is marked on that calendar, and tell me exactly how many school mornings and how many handovers end up with a travel collision."
-        },
+        }
+       ]
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 3, to Model A",
+       "rows": [
         {
          "turn": 3,
          "text": "Corwin sent over the Southeast region's Q3 travel directives (see attached IMG_0819_travel_policy.jpg). Read it and apply what it actually requires, because it is stricter than what you have modelled and it changes the math. On that schedule we would be out about $200 a month for before-school care, $150 a month for the Poplarville handovers, and $180 a month on meals the company will not cover. Update dashboard.html so those costs come off the raise in the cash comparison, and show me the true adjusted monthly delta and what it does to our savings."
-        },
-        {
-         "turn": 4,
-         "text": "One last thing before I make my final decision. I want dashboard.html to include a dedicated strategic summary section titled \"The Cost of the No\". Based on all the numbers we have worked through, clearly articulate the trade-off of walking away from this promotion versus taking it, and specify the exact operational and financial conditions that would have to be true for a future regional offer in 2028 to be a sensible \"Yes\"."
         }
        ]
       }
@@ -833,6 +1108,51 @@
       "assets"
      ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 9,
+        "ref": [
+         "milestone",
+         9
+        ]
+       },
+       {
+        "t": "fact",
+        "where": "Milestones 1 to 12",
+        "text": "Every one reads Assets Delivered: [[.html]], the deliverable's own extension.",
+        "ref": null
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 9,
+        "fields": {
+         "assets": "bourgery_legend_pages.pdf"
+        },
+        "ref": [
+         "milestone",
+         9
+        ]
+       },
+       {
+        "t": "fact",
+        "where": "Milestones 1 to 12",
+        "text": "{{The files their own Leg A turn hands over, or empty}}: never the deliverable.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 2,
+       "words": "Also fails where a deferred asset was handed over during the conversation but is absent from assets_delivered"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -884,6 +1204,16 @@
        ]
       },
       {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 2, to Model A",
+       "rows": [
+        {
+         "turn": 2,
+         "text": "I scanned the Bourgery explanation pages this morning, bourgery_legend_pages.pdf is attached. Use it for the Bourgery keys."
+        }
+       ]
+      },
+      {
        "t": "files",
        "title": "Golden artifacts archive",
        "rows": [
@@ -915,6 +1245,69 @@
       "assets"
      ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 7,
+        "ref": [
+         "milestone",
+         7
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 8,
+        "ref": [
+         "milestone",
+         8
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "fact",
+        "where": "Leg A turn 1",
+        "text": "The opening prompt. handbook.mp4, the only .mp4 in the inputs, is in the folder from the start.",
+        "ref": null
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 7,
+        "fields": {
+         "modifier": "opening",
+         "assets": "handbook.mp4"
+        },
+        "ref": [
+         "milestone",
+         7
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 8,
+        "fields": {
+         "modifier": "opening",
+         "assets": "handbook.mp4"
+        },
+        "ref": [
+         "milestone",
+         8
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "opening: The first turn and any later turn that adds a new requirement without touching work already delivered."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -990,6 +1383,80 @@
       ]
      },
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 1,
+        "ref": [
+         "milestone",
+         1
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 4,
+        "ref": [
+         "milestone",
+         4
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 5,
+        "ref": [
+         "milestone",
+         5
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 1,
+        "fields": {
+         "modifier": "opening"
+        },
+        "ref": [
+         "milestone",
+         1
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 4,
+        "fields": {
+         "modifier": "opening"
+        },
+        "ref": [
+         "milestone",
+         4
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 5,
+        "note": "Leg A has no turn 5",
+        "op": "delete",
+        "ref": [
+         "milestone",
+         5
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "One of the four in section 6.3."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -1087,11 +1554,52 @@
       [
        "milestones",
        "the travel days in the model reflect only the document the user attached"
+      ],
+      [
+       "milestones@8",
+       "The user has sent the travel rules his employer issued"
+      ],
+      [
+       "milestones@8",
+       "the travel days in the model reflect only the document the user attached"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 8,
+        "text": "[[The user has sent the travel rules his employer issued]] and wants the schedule rebuilt… [[the travel days in the model reflect only the document the user attached]], with no residual figures from a prior assumed pattern",
+        "ref": [
+         "milestone",
+         8
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 8,
+        "note": "milestone 9, on Leg A turn 3, already carries it",
+        "op": "delete",
+        "ref": [
+         "milestone",
+         8
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "Write one clause per requirement of that turn"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -1170,6 +1678,45 @@
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [
+      {
+       "kind": "clause",
+       "n": 1,
+       "text": "No clause checks which pieces still carry a correction."
+      }
+     ],
+     "diag": {
+      "was": [
+       {
+        "t": "miss",
+        "kind": "clause",
+        "n": 1,
+        "text": "No clause checks which pieces still carry a correction.",
+        "ref": [
+         "missclause",
+         1
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 1,
+        "text": "{{Each piece that still carries a correction is marked as such on its own card}}",
+        "note": "a seventh clause, beside the six it has",
+        "ref": [
+         "milestone",
+         1
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "they would let the simulator advance while a requirement of that turn is still unmet"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -1252,6 +1799,10 @@
       [
        "prompts",
        "Use her OPB address, from my Vantol Films account"
+      ],
+      [
+       "prompts@5",
+       "Use her OPB address, from my Vantol Films account."
       ]
      ],
      "good": [],
@@ -1259,6 +1810,53 @@
      "gap": [
       5
      ],
+     "missing": [
+      {
+       "kind": "turn",
+       "n": 5,
+       "text": "No milestone covers Leg A turn 5."
+      }
+     ],
+     "diag": {
+      "was": [
+       {
+        "t": "miss",
+        "kind": "turn",
+        "n": 5,
+        "text": "No milestone covers Leg A turn 5.",
+        "ref": [
+         "gap",
+         5
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Leg A turn 5",
+        "text": "[[Use her OPB address, from my Vantol Films account.]]",
+        "ref": [
+         "prompt",
+         5
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "text": "{{The note to June goes to her OPB address, sent from the Vantol Films account.}}",
+        "op": "add",
+        "fields": {
+         "turn": 5
+        },
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "One milestone per requirement, grouped by turn"
+      }
+     },
      "focus": "Milestones",
      "panels": [
       {
@@ -1530,6 +2128,57 @@
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 13,
+        "ref": [
+         "milestone",
+         13
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 14,
+        "note": "the same intent and the same three clauses, word for word",
+        "ref": [
+         "milestone",
+         14
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 13,
+        "op": "keep",
+        "ref": [
+         "milestone",
+         13
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 14,
+        "op": "delete",
+        "ref": [
+         "milestone",
+         14
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "One milestone per requirement"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -1614,12 +2263,16 @@
      "turns": 3,
      "setup": null,
      "wrong": "24 objective and 10 subjective criteria, every weight positive.",
-     "problem": "The opening prompt calls the clip's selected answers right, and all three are wrong. A run that trusts them loses only one +3.",
+     "problem": "The opening prompt calls the clip's selected answers right, and all three are wrong. A run that trusts them loses only the two +3s of criteria 12 and 19.",
      "right": "“cardio.html keys the self check to the picks selected in 2panels_demo.webm.” Weight −5.",
      "marks": [
       [
        "prompts",
        "I think selected the right answers in the clip for reference"
+      ],
+      [
+       "prompts@1",
+       "I think selected the right answers in the clip for reference."
       ]
      ],
      "good": [],
@@ -1627,6 +2280,60 @@
       "negative_count"
      ],
      "gap": [],
+     "missing": [
+      {
+       "kind": "objective",
+       "n": null,
+       "text": "No negative for keying the self check to the clip's picks."
+      }
+     ],
+     "diag": {
+      "was": [
+       {
+        "t": "fact",
+        "where": "The set",
+        "text": "34 criteria, [[not one negative]].",
+        "ref": null
+       },
+       {
+        "t": "miss",
+        "kind": "objective",
+        "text": "No negative for keying the self check to the clip's picks.",
+        "ref": [
+         "missrow",
+         "objective"
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "Leg A turn 1",
+        "text": "…same panels same quiz options. [[I think selected the right answers in the clip for reference.]]…",
+        "note": "the trap",
+        "ref": [
+         "prompt",
+         1
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "text": "{{cardio.html keys the self check to the picks selected in 2panels_demo.webm.}}",
+        "op": "add",
+        "fields": {
+         "weight": -5
+        },
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "The negative slots are for attractive wrong paths the model has to resist."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -1872,11 +2579,49 @@
       [
        "criteria",
        "remains legible"
+      ],
+      [
+       "criteria@subjective@10",
+       "remains legible"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 10,
+        "text": "In plate12_simplification_lesson.mp4, the finished teaching plate [[remains legible]] at normal 1080p or full-window playback…",
+        "ref": [
+         "criterion",
+         "subjective",
+         10
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 10,
+        "text": "In plate12_simplification_lesson.mp4, the finished teaching plate {{renders with its captions or labels below legible size}} at normal 1080p or full-window playback.",
+        "ref": [
+         "criterion",
+         "subjective",
+         10
+        ]
+       }
+      ],
+      "rule": {
+       "i": 2,
+       "words": "The trajectory contains the undesirable behavior or boundary violation described by the criterion."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -1962,10 +2707,61 @@
      "wrong": "Criterion 12: runbook_for_cyrus.md names the team's own prior cleaning threads as a source of its rules.",
      "problem": "A run that corrects every rule but cites nothing fails it; the golden passes only because it happens to end with a Sources line.",
      "right": "Delete the criterion, and its copy in milestone 11.",
-     "marks": [],
+     "marks": [
+      [
+       "criteria@objective@12",
+       "names the team's own prior cleaning threads as a source of its rules"
+      ]
+     ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 12,
+        "text": "runbook_for_cyrus.md [[names the team's own prior cleaning threads as a source of its rules]].",
+        "ref": [
+         "criterion",
+         "objective",
+         12
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "runbook_for_cyrus.md",
+        "text": "Sources behind these rules: the pipeline sketch, the 09-04 standup voice note…",
+        "note": "the golden's last line",
+        "ref": [
+         "evidence",
+         "runbook_for_cyrus.md"
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 12,
+        "note": "and its copy in milestone 11",
+        "op": "delete",
+        "ref": [
+         "criterion",
+         "objective",
+         12
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "Criterion is not an explicit requirement in the prompt"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -2033,17 +2829,64 @@
      "turns": 4,
      "setup": "Leg A turn 4 says Keep holds only what survives the sheets, Yusuf's email and the calendar.",
      "wrong": "Only IMG_2201 and IMG_2105 are excluded; nothing says Keep holds nothing else.",
-     "problem": "Model A's page left IMG_2107 in Keep, which notes.md excludes, and every criterion still passes.",
-     "right": "One closure criterion: Keep consists only of the nine items that survive.",
+     "problem": "Model A's page left IMG_2107 in Keep, which notes.md leaves out of it, and every criterion still passes.",
+     "right": "One closure criterion: Keep holds only the items criteria 1 to 10 check for, and nothing else.",
      "marks": [
       [
        "prompts",
        "Keep should only be what survives the sheets plus Yusuf's email plus the calendar"
+      ],
+      [
+       "prompts@4",
+       "Keep should only be what survives the sheets plus Yusuf's email plus the calendar."
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [
+      {
+       "kind": "objective",
+       "n": null,
+       "text": "No criterion closes Keep. Only IMG_2201.jpg and IMG_2105.jpg are ruled out, by criteria 21 and 25."
+      }
+     ],
+     "diag": {
+      "was": [
+       {
+        "t": "miss",
+        "kind": "objective",
+        "text": "No criterion closes Keep. Only IMG_2201.jpg and IMG_2105.jpg are ruled out, by criteria 21 and 25.",
+        "ref": [
+         "missrow",
+         "objective"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Leg A turn 4",
+        "text": "…[[Keep should only be what survives the sheets plus Yusuf's email plus the calendar.]]…",
+        "ref": [
+         "prompt",
+         4
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "text": "{{Last-turn canon_study.html Keep holds only the items criteria 1 to 10 check for, and nothing else.}}",
+        "op": "add",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "Anything you can tick needs a criterion."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -2331,6 +3174,74 @@
       "weight"
      ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 12,
+        "note": "worked out: the June game's order found, its fee read, times four",
+        "ref": [
+         "criterion",
+         "objective",
+         12
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 17,
+        "note": "one read: the treatment PDF's page count",
+        "ref": [
+         "criterion",
+         "objective",
+         17
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "Leg A turn 1",
+        "text": "…For BendFilm, it will be four times the order processing fee from that same game…",
+        "ref": [
+         "prompt",
+         1
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 12,
+        "fields": {
+         "weight": 5
+        },
+        "ref": [
+         "criterion",
+         "objective",
+         12
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 17,
+        "op": "keep",
+        "ref": [
+         "criterion",
+         "objective",
+         17
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "Weight is difficulty, never importance."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -2372,6 +3283,16 @@
          "5": 7
         }
        }
+      },
+      {
+       "t": "prompts",
+       "title": "Leg A prompt, turn 1, to Model A",
+       "rows": [
+        {
+         "turn": 1,
+         "text": "Hey, Idris here. I have been trying to get a clearer handle on the grant and festival submissions because the information is spread across different places, and I do not want to keep checking separate notes every time I need to confirm information about them. I have been bouncing between project files, old planning notes, festival records, and submission paperwork, and a couple of newer records I found, and at this point I would rather have one place that I can actually trust when I need to see what is due, what each opportunity is asking for, what we already have on hand, and whether the versions we have can actually be submitted. I have attached the dashboard and records to the workspace, so please populate the submission overview for the RACC project, Big Sky, and BendFilm with each opportunity's project or film, deadline, fee, and notification date or window, and complete the requirements section for all three. For each item, classify it as Ready, Needs adaptation, or Missing, and show the relevant file when there is one. For the fees, they have confirmed to me that for RACC it will be the same amount as the service fee from the Timbers vs Sounders game in June, and that for Big Sky it will be twice that service fee. For BendFilm, it will be four times the order processing fee from that same game. I also found a festival message and a runtime record, so please reconcile them with the rest of the available records and update anything that is no longer accurate. I also need the runtime section completed so I can see whether Slack Tide actually qualifies for each one. Please base the calculations on the timecodes and use the displayed values directly.  Please save the updated dashboard as `vantol_films_2026_submission_dashboard.html`."
+        }
+       ]
       }
      ],
      "num": 18
@@ -2414,19 +3335,70 @@
      "setup": "energy_audit.html splits an electricity bill between two flatmates.",
      "wrong": "Criteria 33 to 42, ten in all, target Trajectory.",
      "problem": "Several grade a route whose result a page criterion already grades, such as 39, that the file runs, beside criterion 1. Criterion 33 only asks the agent to query an application.",
-     "right": "Drop 33, 36, 39 and 40, and keep the five only the run shows, such as 37, a handwritten log read from photographs.",
+     "right": "Keep five only the run can show, 34, 35, 37, 38 and 42, and drop the rest.",
      "marks": [],
      "good": [],
      "fields": [
       "target"
      ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "fact",
+        "where": "Trajectory criteria",
+        "text": "[[Ten]], 33 to 42, where the Guidelines allow five.",
+        "ref": null
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 33,
+        "note": "any run passes it",
+        "ref": [
+         "criterion",
+         "objective",
+         33
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 39,
+        "note": "criteria 1 and 5 already grade the page it checks",
+        "ref": [
+         "criterion",
+         "objective",
+         39
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "fact",
+        "where": "Trajectory criteria",
+        "text": "{{Five kept: 34, 35, 37, 38 and 42}}, which only the run can show, such as 37, the handwritten log read from photographs.",
+        "ref": null
+       },
+       {
+        "t": "fact",
+        "where": "The other five",
+        "text": "{{33, 36, 39, 40 and 41 go}}: each grades a route whose result a page criterion already grades (7, 1, 26 and 18), or nothing at all.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "Trajectory Rubrics: Maximum of 5, minimum 0."
+      }
+     },
      "focus": null,
      "panels": [
       {
        "t": "criteria",
        "title": "Every criterion targeting Trajectory (10, cap is 5)",
-       "more": 4,
        "rows": [
         {
          "n": 33,
@@ -2475,6 +3447,38 @@
          "category": "Tool Use",
          "text": "The agent obtains the audited statement's rate card - $14.63 basic charge, the first 400 kWh at $0.11541, the remainder at $0.16967, a $0.00142 per kWh storm rider and a $0.20 renewable rider - by inspecting the rendered pages of a statement that carries no extractable text layer.",
          "flag": true
+        },
+        {
+         "n": 39,
+         "weight": 3,
+         "target": "Trajectory",
+         "category": "Agent Behavior",
+         "text": "The agent confirms that the file it is about to deliver opens and runs before presenting it to the user as finished.",
+         "flag": true
+        },
+        {
+         "n": 40,
+         "weight": 5,
+         "target": "Trajectory",
+         "category": "Tool Use",
+         "text": "The agent goes to the household's own financial records for the payment history rather than asking the user to supply it or concluding it is unavailable.",
+         "flag": true
+        },
+        {
+         "n": 41,
+         "weight": 3,
+         "target": "Trajectory",
+         "category": "Agent Behavior",
+         "text": "The agent derives its always-on baseline from the consumption of individual hours of the interval export rather than from whole-day totals.",
+         "flag": true
+        },
+        {
+         "n": 42,
+         "weight": -3,
+         "target": "Trajectory",
+         "category": "Agent Behavior",
+         "text": "The agent works the refrigerator labels' content into its analysis before the turn that hands the refrigerator over.",
+         "flag": true
         }
        ]
       }
@@ -2522,8 +3526,41 @@
      "right": "A harder scenario before the run, with sources that disagree; not heavier weights or extra rows.",
      "marks": [],
      "good": [],
-     "fields": null,
+     "fields": [
+      "failed_pct"
+     ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "fact",
+        "where": "The set",
+        "text": "Model A fails 13 of 49 criteria, 43 of 123 weight: [[35.0%]].",
+        "ref": null
+       }
+      ],
+      "ctx": [
+       {
+        "t": "fact",
+        "where": "The floor",
+        "text": "At least half the weight, both blocks counted: 62 of 123.",
+        "ref": null
+       }
+      ],
+      "now": [
+       {
+        "t": "fact",
+        "where": "The scenario",
+        "text": "{{Harder before the run}}, with sources that disagree, until Model A fails at least half the weight. {{Never heavier weights or extra rows.}}",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "clearly fails at least 50% of the final rubric score"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -2542,13 +3579,122 @@
          "5": 4,
          "3": 27,
          "-3": 2
-        }
+        },
+        "failed_count": 13,
+        "failed_weight": 43,
+        "failed_pct": 35.0,
+        "criteria_count": 49
        }
       },
       {
-       "t": "text",
-       "title": "Agent Objective",
-       "body": "Sunniva Haugland owns Storvik Bakeri at 808 Commercial Avenue in Anacortes. She has been trying to decide whether to buy a Doyon three‑deck oven since April. The oven needs a three‑phase electrical service the building does not have, and in June her landlord offered an early lease renewal that carries an improvement allowance. She reran the oven figures with that allowance in August. Her accountant has asked for a current oven price and for clarity on when the allowance can actually be used, ahead of a call with the landlord on 9 September. Sunniva needs one page that puts the decision in front of her with figures she can trust, using the corrections her shop manager made by hand and a fresh quote from the supplier, and she needs the current price sent to her accountant."
+       "t": "criteria",
+       "title": "The 13 objective criteria Model A fails, 43 of 123 weight",
+       "rows": [
+        {
+         "n": 2,
+         "weight": 5,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The current oven price on the page is 22,250.00, from quote 15310.",
+         "flag": false
+        },
+        {
+         "n": 4,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The with-allowance total before the allowance is 37,702.00.",
+         "flag": false
+        },
+        {
+         "n": 5,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The oven net of the allowance's leftover is 19,702.00, being 22,250.00 less the 2,548.00 remaining after the 15,452.00 service package.",
+         "flag": false
+        },
+        {
+         "n": 9,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The page reports from Peder's note a 200 A, 240/120 V single-phase main with about 148 A connected.",
+         "flag": false
+        },
+        {
+         "n": 11,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The page states that amperage is not the limit, since 148 A plus the oven's 45 A stays under the 200 A main.",
+         "flag": false
+        },
+        {
+         "n": 12,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The page lists the walk-in and the mixer still sharing one leg as Peder's outstanding item.",
+         "flag": false
+        },
+        {
+         "n": 17,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The financing terms on the page are the cost sheet's: 8.75% APR over 60 months.",
+         "flag": false
+        },
+        {
+         "n": 18,
+         "weight": 5,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The oven payment is 406.59 a month, being 19,702.00 financed at 8.75% APR over 60 months.",
+         "flag": false
+        },
+        {
+         "n": 19,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The corrected monthly total is 13,059.38, the sum of 4,462.00, 2,030.79, 5,850.00, 310.00 and 406.59.",
+         "flag": false
+        },
+        {
+         "n": 20,
+         "weight": 3,
+         "target": "Final answer/artifact",
+         "category": "Task Completion",
+         "text": "The buy-now path states the all-in cost as 37,702.00, being 22,250.00 plus 15,452.00.",
+         "flag": false
+        },
+        {
+         "n": 25,
+         "weight": 3,
+         "target": "State change",
+         "category": "Task Completion",
+         "text": "An email is sent to [odalys@ferreirakwan.com](mailto:odalys@ferreirakwan.com) stating the delivered and installed figure as 22,250.00.",
+         "flag": false
+        },
+        {
+         "n": 29,
+         "weight": 1,
+         "target": "Final answer/artifact",
+         "category": "Instruction Following",
+         "text": "The cost comparison presents May and current figures as paired rows for the oven, the service and panel, the utility charge and the permit, with the current column showing 11,240.00, 3,900.00 and 312.00 unchanged beside the May figures.",
+         "flag": false
+        },
+        {
+         "n": 32,
+         "weight": 5,
+         "target": "Trajectory",
+         "category": "Agent Behavior",
+         "text": "The trajectory shows the agent reconciles Peder's 200 A, 240/120 V single-phase service note with quote 15310's 208 V three-phase requirement and concludes that the quoted oven cannot use the existing service, even though 148 A + 45 A remains below 200 A.",
+         "flag": false
+        }
+       ]
       }
      ],
      "num": 20
@@ -2598,13 +3744,59 @@
        "family heirloom"
       ],
       [
+       "criteria@objective@15",
+       "`family heirloom`"
+      ]
+     ],
+     "good": [
+      [
        "prompts",
        "the exact phrase Tamara used when she joked about Terrence's truck"
       ]
      ],
-     "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 15,
+        "text": "In `family_photo_tree.html`, the logo shows [[`family heirloom`]] beneath the tree in place of the original word `FAMILY`.",
+        "ref": [
+         "criterion",
+         "objective",
+         15
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "fact",
+        "where": "family_photo_tree.html",
+        "text": "The golden logo carries the whole sentence.",
+        "ref": null
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 15,
+        "text": "In `family_photo_tree.html`, the logo shows {{`That truck is a family heirloom at this point.`}} beneath the tree in place of the original word `FAMILY`.",
+        "ref": [
+         "criterion",
+         "objective",
+         15
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "Anything it fails is a broken criterion, not a broken golden."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -2659,9 +3851,9 @@
      "category": "Small Business & Personal Docs",
      "turns": 5,
      "setup": "Leg A turn 1 asks which jobs the check cannot clear “because the record is too thin”.",
-     "wrong": "Only the Desired Outcome asks for \"Exactly three records\", and criterion 24 names them, including \"invoice 21-018\".",
-     "problem": "Invoice 21-018 has no job number, so nothing the prompts ask for reaches it, and the golden fails.",
-     "right": "Criterion 24 limited to what the prompts ask: job 14-011 and the ground covered by job 26-004.",
+     "wrong": "Only the Desired Outcome asks for \"Exactly three records\". Criteria 24 and 26 grade one of them, \"invoice 21-018\".",
+     "problem": "Invoice 21-018 has no job number, so nothing the prompts ask for reaches it, and the golden, which never mentions it, fails both.",
+     "right": "Criterion 24 limited to job 14-011 and the ground covered by job 26-004; criterion 26 dropped.",
      "marks": [
       [
        "text",
@@ -2670,11 +3862,96 @@
       [
        "criteria",
        "invoice 21-018"
+      ],
+      [
+       "criteria@objective@24",
+       "exactly three records"
+      ],
+      [
+       "criteria@objective@24",
+       "invoice 21-018"
+      ],
+      [
+       "criteria@objective@26",
+       "invoice 21-018"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 24,
+        "text": "conflict_check.html lists [[exactly three records]] as unresolved rather than cleared: job 14-011, [[invoice 21-018]], and the ground covered by job 26-004.",
+        "ref": [
+         "criterion",
+         "objective",
+         24
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 26,
+        "text": "conflict_check.html gives the reason [[invoice 21-018]] of 2021-03-04 to \"D.S. CO.\" for $450.00 cannot be cleared…",
+        "ref": [
+         "criterion",
+         "objective",
+         26
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Desired Outcome",
+        "text": "…[[Exactly three records must be listed as unresolved rather than cleared]]…",
+        "note": "never reaches Model A or Model B",
+        "ref": [
+         "text",
+         "Desired Outcome"
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "fact",
+        "where": "conflict_check.html",
+        "text": "The golden cannot clear 14-011, 26-004 and 26-028. Invoice 21-018 is nowhere on it.",
+        "ref": null
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 24,
+        "text": "conflict_check.html lists {{job 14-011 and the ground covered by job 26-004}} as unresolved rather than cleared.",
+        "ref": [
+         "criterion",
+         "objective",
+         24
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 26,
+        "op": "delete",
+        "ref": [
+         "criterion",
+         "objective",
+         26
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "A requirement the model never saw."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -8437,7 +9714,7 @@
      "setup": "A teaching video's change board scene runs 127.8 to 138.3 seconds.",
      "wrong": "The criterion is scoped to \"The change-board step\" and requires \"PCR-2026-0688\", \"accepted on 10 July 2026\".",
      "problem": "Both appear only in an earlier scene, so the golden is Not Present at weight 5.",
-     "right": "Grade the property: acceptance and release shown as separate states.",
+     "right": "Scope it to the video, where both values appear: “source_check.mp4 presents acceptance and release as separate states.”",
      "marks": [
       [
        "criteria",
@@ -8452,13 +9729,67 @@
        "10 July 2026"
       ],
       [
-       "golden",
-       "the change-board decision step"
+       "criteria@objective@23",
+       "The change-board step"
+      ],
+      [
+       "criteria@objective@23",
+       "PCR-2026-0688"
+      ],
+      [
+       "criteria@objective@23",
+       "10 July 2026"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 23,
+        "text": "[[The change-board step]] keeps the documented scopes separate: [[PCR-2026-0688]] is a later record against 32-21-07 Figure 2 that was accepted on [[10 July 2026]]…",
+        "ref": [
+         "criterion",
+         "objective",
+         23
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "Model B, Leg B turn 4",
+        "text": "…(e.g. 32-21-07 accepted (Jul); a 29-11-06 Fig 12 request deferred)…",
+        "note": "the change board step as the golden built it: no PCR number, no date",
+        "ref": [
+         "legb",
+         4,
+         "agent"
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 23,
+        "text": "{{source_check.mp4}} presents acceptance and release as separate states: the July acceptance of the 32-21-07 Figure 2 change request did not put the change in the manual, which happens only at the 30 September release.",
+        "ref": [
+         "criterion",
+         "objective",
+         23
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "they incorrectly reject a subset of valid implementations"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -8479,11 +9810,6 @@
        "t": "golden",
        "title": "From the Leg B conversation, with Model B",
        "rows": [
-        {
-         "role": "agent",
-         "turn": 3,
-         "text": "Updated `source_check.mp4` in `/app/outputs` (now **2:51**, under three minutes), with the transcript refreshed to match.\n\n## What changed in this cut\n\n**1. Added a second learning activity — a predict-and-check on view reading (scenes 10–12).**\nBuilt on the attached view-reading material (scan_211, Fig 4‑30):\n- **Predict:** the learner sees **only the top view** (two concentric circles) — the adjacent view is masked — and is asked to predict: does the round feature *stand up* as a collar, or is it *bored down* as a hole? A short ~3‑second hold gives them time.\n- **Check:** the **adjacent view is brought in** to verify — solid lines standing up = a raised collar; dashed hidden lines going down = a bored hole. Lesson: one view is rarely enough; verify with the adjacent view.\n\nThe existing **closing find-the-problem exercise** and the **three flight-line cases** are both kept intact.\n\n**2. Rechecked the work-email ↔ May relationship against the records and tightened it.**\nThe records show only that PCR‑2026‑0688 (7 Jul) names the **same figure** as a May item (32‑21‑07 Fig 2), on a **different date**, and is a **different kind** (content — the wrong rod end — not routing). Crucially, the May routing fix **names no callout**, and **nothing links this PCR to the 26 May visit** (callout 9's own PCR thread is March's 0463 and July's 0688). Scene 4 now shows this as two explicit boxes — \"What the records establish\" and \"What the records do NOT show\" — so no conclusion runs past the evidence, and the May corrections are neither replaced nor relabelled.\n\n**3. Fixed the flagged visibility issues at delivered resolution.**\n- The **full FAA leader-lines definition** now fits its card (\"…solid lines with one arrowhead. They indicate a part or portion that a note, number, or reference applies to.\").\n- **Both teaching-panel headers** — \"✓ YOURS — re-route the LINE\" and \"✗ NOT ALONE — the ARROWHEAD\" — are now fully visible.\n\n**4. Held under three minutes.** Refactored the hold handling for the new 3‑second predict pause and tightened narration to land at **2:51** (verified against the actual encoded file; gTTS is deterministic so the runtime is stable).\n\nBoth deliverables are in `/app/outputs`: `source_check.mp4` and the updated `source_check_transcript.md`. Build script: `/app/work/build.py`."
-        },
         {
          "role": "agent",
          "turn": 4,
@@ -8527,17 +9853,92 @@
      "turns": 5,
      "setup": "The voice note asks about \"family members who might stay with us\", and the records support two.",
      "wrong": "Criteria 13 and 28 require Aunt Rosalind.",
-     "problem": "The golden names Tamara Brown-Ellis, also supported, and fails both.",
-     "right": "combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.",
+     "problem": "The golden names Tamara Brown-Ellis, whom the records also support, and fails both.",
+     "right": "Either answer passes: “combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.”",
      "marks": [
       [
        "criteria",
+       "Aunt Rosalind"
+      ],
+      [
+       "criteria@objective@13",
+       "Aunt Rosalind"
+      ],
+      [
+       "criteria@objective@28",
        "Aunt Rosalind"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 13,
+        "text": "combined-home.html identifies [[Aunt Rosalind]] as a possible guest.",
+        "ref": [
+         "criterion",
+         "objective",
+         13
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 28,
+        "text": "The trajectory's connected-record result identifies that [[Aunt Rosalind]] cannot walk far.",
+        "ref": [
+         "criterion",
+         "objective",
+         28
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "combined-home.html",
+        "text": "{{Tamara is the family member the records support as an overnight guest}}",
+        "ref": [
+         "evidence",
+         "combined-home.html"
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 13,
+        "text": "combined-home.html identifies {{a family member from the records}} as a possible {{overnight}} guest {{and states the recorded need that shapes where they sleep}}.",
+        "ref": [
+         "criterion",
+         "objective",
+         13
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 28,
+        "note": "criterion 13 now carries the recorded need",
+        "op": "delete",
+        "ref": [
+         "criterion",
+         "objective",
+         28
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "they incorrectly reject a subset of valid implementations"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -8613,11 +10014,75 @@
       [
        "golden",
        "The list you sent Marguerite the night before"
+      ],
+      [
+       "criteria@objective@26",
+       "calendar event"
+      ],
+      [
+       "criteria@objective@29",
+       "from the 4 May mail"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 26,
+        "text": "The trajectory grounds the nine old and new register prices in the 5 May 2026 07:00 PT [[calendar event]] \"New prices in the register\".",
+        "ref": [
+         "criterion",
+         "objective",
+         26
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 29,
+        "text": "The trajectory retrieves the held prices `$5.00` and `$2.00` [[from the 4 May mail]]…",
+        "ref": [
+         "criterion",
+         "objective",
+         29
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "Model B, Leg B turn 1",
+        "text": "…The list you sent Marguerite the night before (\"New price list, into the register tomorrow at seven\", attachment price list 5 may.pdf) is the source of truth…",
+        "ref": [
+         "legb",
+         1,
+         "agent"
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 26,
+        "text": "The trajectory grounds the nine old and new register prices in the 5 May register list, {{from either the calendar event \"New prices in the register\" or the price list attached to the 4 May mail}}.",
+        "ref": [
+         "criterion",
+         "objective",
+         26
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "they incorrectly reject a subset of valid implementations"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -8701,6 +10166,64 @@
       "category"
      ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 17,
+        "ref": [
+         "criterion",
+         "objective",
+         17
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 30,
+        "ref": [
+         "criterion",
+         "objective",
+         30
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 17,
+        "fields": {
+         "category": "Task Completion"
+        },
+        "ref": [
+         "criterion",
+         "objective",
+         17
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 30,
+        "fields": {
+         "category": "Task Completion"
+        },
+        "ref": [
+         "criterion",
+         "objective",
+         30
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "If you wrote Agent Behavior against an artifact, a state change or the final message, you picked the wrong category"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -8744,6 +10267,41 @@
       "category"
      ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 2,
+        "ref": [
+         "criterion",
+         "subjective",
+         2
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 2,
+        "fields": {
+         "category": "Task Completion"
+        },
+        "ref": [
+         "criterion",
+         "subjective",
+         2
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "Task Completion is the only valid category for subjective rubrics."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -8813,18 +10371,79 @@
        "does not list inspections_map_q3.png or inspections_church_hill.png"
       ],
       [
-       "criteria",
-       "After the revision, a dailies count on that page does not include inspections_map_q3.png or inspections_church_hill.png."
+       "criteria@objective@2",
+       "lists only these four files"
+      ],
+      [
+       "criteria@objective@9",
+       "does not list inspections_map_q3.png or inspections_church_hill.png"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 2,
+        "text": "In years_in_review.html, the dailies index [[lists only these four files]] as dailies: 2026-02_export_0224.svg, 2026-03_frame_0305.svg, 2026-04_frame_0416.png, 2026-06_export_0611.svg.",
+        "ref": [
+         "criterion",
+         "objective",
+         2
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 9,
+        "text": "After the revision turn, years_in_review.html [[does not list inspections_map_q3.png or inspections_church_hill.png]] on the dailies index.",
+        "ref": [
+         "criterion",
+         "objective",
+         9
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 2,
+        "op": "keep",
+        "ref": [
+         "criterion",
+         "objective",
+         2
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 9,
+        "note": "if criterion 2 passes, criterion 9 cannot fail",
+        "op": "delete",
+        "ref": [
+         "criterion",
+         "objective",
+         9
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "completely redundant because other criteria completely encompass the former"
+      }
+     },
      "focus": null,
      "panels": [
       {
        "t": "criteria",
-       "title": "Objective criteria 2, 9, 11",
+       "title": "Objective criteria 2, 9",
        "rows": [
         {
          "n": 2,
@@ -8840,14 +10459,6 @@
          "target": "Final answer/artifact",
          "category": "Task Completion",
          "text": "After the revision turn, years_in_review.html does not list inspections_map_q3.png or inspections_church_hill.png on the dailies index.",
-         "flag": true
-        },
-        {
-         "n": 11,
-         "weight": 1,
-         "target": "Final answer/artifact",
-         "category": "Task Completion",
-         "text": "In years_in_review.html, every headline count clicks through to the files that make it up. After the revision, a dailies count on that page does not include inspections_map_q3.png or inspections_church_hill.png.",
          "flag": true
         }
        ]
@@ -8898,6 +10509,46 @@
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 2,
+        "note": "which file?",
+        "ref": [
+         "criterion",
+         "subjective",
+         2
+        ]
+       },
+       {
+        "t": "fact",
+        "where": "Subjective criteria",
+        "text": "[[None of the 10]] names a file, and the golden archive holds four.",
+        "ref": null
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 2,
+        "text": "{{In move_walkthrough.mp4,}} passed and failed outcomes are distinguished by colour or a mark, not by wording alone.",
+        "ref": [
+         "criterion",
+         "subjective",
+         2
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "The element makes the criterion self-contained by telling the reviewer where to look."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9063,6 +10714,30 @@
       "subjective_pct"
      ],
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "fact",
+        "where": "The set",
+        "text": "Subjective block: 32 of 103 absolute weight, [[31.1%]], over the 30% cap.",
+        "ref": null
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "fact",
+        "where": "The set",
+        "text": "One +5 lowered to +3: 30 of 101, {{29.7%}}, with almost no margin.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "block capped at 30% of total task weight."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9204,6 +10879,45 @@
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [
+      {
+       "kind": "subjective",
+       "n": null,
+       "text": "Nothing grades how the cutting diagrams or the scribe plan read."
+      }
+     ],
+     "diag": {
+      "was": [
+       {
+        "t": "fact",
+        "where": "Subjective block",
+        "text": "[[Five criteria]], where the Guidelines expect ten or more.",
+        "ref": null
+       },
+       {
+        "t": "miss",
+        "kind": "subjective",
+        "text": "Nothing grades how the cutting diagrams or the scribe plan read.",
+        "ref": [
+         "missrow",
+         "subjective"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "fact",
+        "where": "Subjective block",
+        "text": "{{Ten or more}}, region by region, each naming front_room_builtin.html, {{the cutting diagrams and the scribe plan included}}.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "The expected number of subjective rubrics is 10 or more"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9328,11 +11042,86 @@
       [
        "criteria",
        "Mileage Reimbursement Status - Two Everett Trips"
+      ],
+      [
+       "criteria@subjective@1",
+       "`Claim 1 - May trip`"
+      ],
+      [
+       "criteria@subjective@1",
+       "`Claim 2 - August trip`"
+      ],
+      [
+       "criteria@subjective@4",
+       "Claim, Reached your account?, Due by 28 Aug?, and Verdict"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 1,
+        "text": "In `reimbursement_status.html`, two claim cards sit in one row, headed [[`Claim 1 - May trip`]] on the left and [[`Claim 2 - August trip`]] on the right.",
+        "ref": [
+         "criterion",
+         "subjective",
+         1
+        ]
+       },
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 4,
+        "text": "…a four-column table has the header row [[Claim, Reached your account?, Due by 28 Aug?, and Verdict]].",
+        "ref": [
+         "criterion",
+         "subjective",
+         4
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "fact",
+        "where": "Leg A prompts",
+        "text": "None of the three uses any of these words.",
+        "ref": null
+       }
+      ],
+      "now": [
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 1,
+        "text": "In reimbursement_status.html, {{the two claims are presented as two cards side by side rather than one after the other}}.",
+        "ref": [
+         "criterion",
+         "subjective",
+         1
+        ]
+       },
+       {
+        "t": "row",
+        "block": "subjective",
+        "n": 4,
+        "text": "In reimbursement_status.html, {{the determination table's header row is set apart from its data rows by colour or weight}}.",
+        "ref": [
+         "criterion",
+         "subjective",
+         4
+        ]
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "Name ONE observable property of the RENDERED artifact."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9444,7 +11233,7 @@
      "scenario": "Winslow Achebe, an Operations Manager at Marchand Logistics Group facility HAT2 in Hattiesburg, Mississippi, has received an internal promotion offer from Regional Vice President Corwin Steadman for Regional Operations Manager, Southeast at $104,000 base…",
      "category": "Small Business & Personal Docs",
      "turns": 4,
-     "setup": "The calendar margin and the calendar service both give the handover as 18:30.",
+     "setup": "The calendar photo, IMG_0814_calendar.jpg, and the calendar service both give the handover as 18:30.",
      "wrong": "The golden dashboard: “on-site until 17:00 Fri, can't make the 13:30-15:30 exchange”",
      "problem": "13:30 to 15:30 appears in three places, and the conclusion holds either way, so no criterion catches it.",
      "right": "18:30 in all three places.",
@@ -9456,11 +11245,57 @@
       [
        "files",
        "IMG_0814_calendar.jpg"
+      ],
+      [
+       "golden@agent@4",
+       "13:30/15:30 in the margin"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "dashboard.html",
+        "text": "on-site until 17:00 Fri, can't make the [[13:30–15:30]] exchange",
+        "ref": [
+         "evidence",
+         "dashboard.html"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Model B, Leg B turn 4",
+        "text": "…Custody handovers (red circles, \"Terrance – Poplarville\" [[13:30/15:30 in the margin]])…",
+        "note": "how the golden misread the calendar",
+        "ref": [
+         "legb",
+         4,
+         "agent"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "said",
+        "where": "dashboard.html",
+        "text": "on-site until 17:00 Fri, can't make the {{18:30}} exchange",
+        "note": "and the same everywhere else the time appears",
+        "ref": [
+         "evidence",
+         "dashboard.html"
+        ]
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "Every factual claim is grounded in the actual inputs"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9553,15 +11388,57 @@
       [
        "golden",
        "15 cards"
-      ],
+      ]
+     ],
+     "good": [
       [
        "golden",
        "16 posts"
       ]
      ],
-     "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "social_audit.html",
+        "text": "…under P11 not ours to review, so not shown. That's why the count is [[15]], not 17.",
+        "ref": [
+         "evidence",
+         "social_audit.html"
+        ]
+       }
+      ],
+      "ctx": [
+       {
+        "t": "said",
+        "where": "social_audit.html",
+        "text": "{{16 label posts}}",
+        "note": "the header of the same page, over 16 cards",
+        "ref": [
+         "evidence",
+         "social_audit.html"
+        ]
+       }
+      ],
+      "now": [
+       {
+        "t": "said",
+        "where": "social_audit.html",
+        "text": "…under P11 not ours to review, so not shown. {{That is why 15 of the 16 cards come from the export.}}",
+        "ref": [
+         "evidence",
+         "social_audit.html"
+        ]
+       }
+      ],
+      "rule": {
+       "i": 2,
+       "words": "the golden asserts a finding the inputs do not support."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9639,7 +11516,8 @@
      "wrong": "The page still says \"The newsletter teaser rides the same Records batch\" and \"days since filing\".",
      "problem": "The teaser now sits in two places, and one row still counts from filing while the rest of the page counts from acknowledgment.",
      "right": "The old sentence moved with the teaser, and the row reading \"days since acknowledgment\".",
-     "marks": [
+     "marks": [],
+     "good": [
       [
        "golden",
        "the newsletter one is still hanging on the records row as extra backlog"
@@ -9649,9 +11527,46 @@
        "the office clocks should run from when they acknowledged, not from the filed line"
       ]
      ],
-     "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "foia_register.html",
+        "text": "[[The newsletter teaser rides the same Records batch]]…",
+        "note": "the old sentence, still on the records row",
+        "ref": [
+         "evidence",
+         "foia_register.html"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "foia_register.html",
+        "text": "…[[days since filing]]…",
+        "note": "one row's detail, while the page counts from acknowledgment",
+        "ref": [
+         "evidence",
+         "foia_register.html"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "fact",
+        "where": "foia_register.html",
+        "text": "{{The teaser sentence moves with the teaser}}, to the request added from the slip, and the row reads {{days since acknowledgment}}.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 1,
+       "words": "nothing left stale that depended on it."
+      }
+     },
      "focus": "foia_register.html",
      "panels": [
       {
@@ -9740,7 +11655,7 @@
      "scenario": "Abelardo Quintero runs a small surveying practice in Amarillo. When his Trimble S6 came back from repair in Lubbock, he checked it on the baseline behind his shop, as he does with any instrument that has been off the property. It passed, but he is the only…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": "The prompts name three files.",
+     "setup": "The prompts name three files: baseline_check.mp4, baseline_check_script.md and MEMORY.md.",
      "wrong": "The golden archive also ships make_baseline_video.py, whose docstring names each answer's \"Source of truth\".",
      "problem": "Five files for three: the script shows how each answer was reached, a quiz image is a renamed copy of an input, and the printable script carries the rebuild instruction.",
      "right": "Only the three named files, none carrying the rebuild instruction.",
@@ -9752,11 +11667,69 @@
       [
        "files",
        "baseline_quiz_page.jpg"
+      ],
+      [
+       "evidence",
+       "Source of truth"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "Golden archive",
+        "text": "[[make_baseline_video.py]]",
+        "note": "no prompt names it",
+        "ref": [
+         "files",
+         "Golden archive"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "make_baseline_video.py",
+        "text": "[[Source of truth]]: Abe's book pages (IMG_4638, IMG_4639), the setup photo (IMG_4452)…",
+        "note": "how each answer was reached",
+        "ref": [
+         "evidence",
+         "make_baseline_video.py"
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Golden archive",
+        "text": "[[baseline_quiz_page.jpg]]",
+        "note": "the input IMG_4642.jpg under a new name",
+        "ref": [
+         "files",
+         "Golden archive"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "fact",
+        "where": "Golden archive",
+        "text": "{{baseline_check.mp4 · baseline_check_script.md · MEMORY.md}}",
+        "ref": null
+       },
+       {
+        "t": "fact",
+        "where": "baseline_check_script.md",
+        "text": "{{No rebuild instruction}}, cleaned out with a Leg B cleanup turn.",
+        "ref": null
+       }
+      ],
+      "rule": {
+       "i": 0,
+       "words": "golden/ ships finished artifacts only."
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9910,11 +11883,55 @@
       [
        "files",
        "IMG45.08.JPG"
+      ],
+      [
+       "prompts@3",
+       "IMG_4508.jpg"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "said",
+        "where": "Leg A turn 3",
+        "text": "…Her vendor list is in it, [[IMG_4508.jpg]], with a parking plan and a timeline template I do not need…",
+        "ref": [
+         "prompt",
+         3
+        ]
+       },
+       {
+        "t": "said",
+        "where": "Input files",
+        "text": "[[IMG45.08.JPG]]",
+        "ref": [
+         "files",
+         "Input files"
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "said",
+        "where": "Input files",
+        "text": "{{IMG_4508.jpg}}",
+        "note": "the name the prompt uses",
+        "ref": [
+         "files",
+         "Input files"
+        ]
+       }
+      ],
+      "rule": {
+       "i": 2,
+       "words": "named exactly as requested"
+      }
+     },
      "focus": null,
      "panels": [
       {
@@ -9987,11 +12004,99 @@
       [
        "milestones",
        "that apartment's quantity for the subscribes item is adjustment as the rules file says"
+      ],
+      [
+       "criteria@objective@22",
+       "%0.00"
+      ],
+      [
+       "criteria@objective@7",
+       "for the Mon Jul 2026 order"
+      ],
+      [
+       "milestones@4",
+       "an apartment the sheet doe snot marks keeps all the requests"
       ]
      ],
      "good": [],
      "fields": null,
      "gap": [],
+     "missing": [],
+     "diag": {
+      "was": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 22,
+        "text": "pantry_audit.html shows a delivery fee of [[%0.00]] for the Mon 6 Jul 2026 order.",
+        "ref": [
+         "criterion",
+         "objective",
+         22
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 7,
+        "text": "pantry_audit.html gives the Free-Range Large Eggs listing the verdict fix [[for the Mon Jul 2026 order]].",
+        "ref": [
+         "criterion",
+         "objective",
+         7
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 4,
+        "text": "…[[an apartment the sheet doe snot marks keeps all the requests]].",
+        "ref": [
+         "milestone",
+         4
+        ]
+       }
+      ],
+      "ctx": [],
+      "now": [
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 22,
+        "text": "pantry_audit.html shows a delivery fee of {{$0.00}} for the Mon 6 Jul 2026 order.",
+        "ref": [
+         "criterion",
+         "objective",
+         22
+        ]
+       },
+       {
+        "t": "row",
+        "block": "objective",
+        "n": 7,
+        "text": "pantry_audit.html gives the Free-Range Large Eggs listing the verdict fix {{for the Mon 6 Jul 2026 order}}.",
+        "ref": [
+         "criterion",
+         "objective",
+         7
+        ]
+       },
+       {
+        "t": "row",
+        "block": "milestone",
+        "n": 4,
+        "text": "…{{an apartment the sheet does not mark keeps all its requests}}.",
+        "ref": [
+         "milestone",
+         4
+        ]
+       }
+      ],
+      "rule": {
+       "i": 3,
+       "words": "Contains avoidable grammatical or wording issues."
+      }
+     },
      "focus": null,
      "panels": [
       {

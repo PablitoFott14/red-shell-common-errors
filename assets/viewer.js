@@ -276,7 +276,24 @@
   document.addEventListener("click", function (e) {
     var t = e.target;
 
-    // a reference, a chip or a file button: straight to what it names
+    // "The rule it breaks": open the full quote where it sits, unfolding it if it is
+    // folded away, without touching the address the open example keeps
+    var rl = t.closest(".rlink");
+    if (rl) {
+      var rule = document.getElementById(rl.getAttribute("href").slice(1));
+      if (rule) {
+        var fold = rule.closest("details");
+        if (fold && !fold.open) fold.open = true;
+        if (rule.closest(".ovrail")) reveal(rule);
+        else rule.scrollIntoView({behavior: "smooth", block: "center"});
+        rule.classList.add("lit");
+        window.setTimeout(function () { rule.classList.remove("lit"); }, 1800);
+      }
+      e.preventDefault();
+      return;
+    }
+
+    // a line of the diagnosis, a reference or a file button: straight to what it names
     var jump = t.closest(".ref, .jump, .evjump");
     if (jump) {
       var ex = jump.getAttribute("data-ex");
