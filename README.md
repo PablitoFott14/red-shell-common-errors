@@ -37,6 +37,9 @@ straight to the row that broke, switching tabs and scrolling to it. Left and rig
 
 Where a task repeats the same defect a dozen times the panel shows four rows and tells you the count.
 
+Every example carries the number the whole course gives it, so Example 12 here is Example 12 on the slides
+and in the course's explanations. A link ending in `#ex-<error>-<n>` opens that example straight away.
+
 ### Seeing the evidence
 
 Where an error can only be checked by looking, the files it turns on open in the same dialog, as blue tabs

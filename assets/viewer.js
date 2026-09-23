@@ -189,4 +189,20 @@
     selectPane(open, tabs[at].getAttribute("data-pane"));
     e.preventDefault();
   });
+
+  /* A link ending in #ex-<error>-<n> opens that example, so the course text can point
+     at the exact task it is taking apart, not only at the page it sits on. Closing it
+     leaves you on its card. */
+  function fromHash() {
+    var h = window.location.hash;
+    if (h.indexOf("#ex-") !== 0) return;
+    var id = decodeURIComponent(h.slice(4));
+    if (!dialog(id)) return;
+    var card = document.querySelector('.excard[data-ex="' + id + '"]');
+    if (card) { card.scrollIntoView({ block: "center" }); card.focus(); }
+    show(id);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fromHash);
+  else fromHash();
+  window.addEventListener("hashchange", fromHash);
 })();

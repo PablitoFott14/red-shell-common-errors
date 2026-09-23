@@ -25,7 +25,7 @@
    "n": 3,
    "slug": "milestones",
    "title": "Milestones",
-   "lead": "The script Leg B is steered by and a simulator replays. Three things go wrong around the intent line: the Modifier and Assets Delivered fields, the stopping rules, and turns with no milestone or two identical ones.",
+   "lead": "The script Leg B is steered by and a simulator replays. Three standards govern what sits around the intent line: the Modifier and Assets Delivered fields, the stopping rules, and one milestone per requirement on every turn.",
    "mistakes": [
     "milestone-fields",
     "continuation-criteria",
@@ -36,7 +36,7 @@
    "n": 4,
    "slug": "a-rubric-that-separates-runs",
    "title": "A rubric that separates two runs",
-   "lead": "A rubric exists to tell a strong run from a weak one. These are the five ways a set stops doing that while still looking complete.",
+   "lead": "A rubric exists to tell a strong run from a weak one. Five standards keep it doing that, and a set can break any of them while still looking complete.",
    "mistakes": [
     "no-negatives",
     "coverage-both-ways",
@@ -187,7 +187,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 1
     }
    ]
   },
@@ -312,7 +313,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 2
     }
    ]
   },
@@ -442,7 +444,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 3
     },
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
@@ -498,7 +501,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 4
     }
    ]
   },
@@ -638,7 +642,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 5
     }
    ]
   },
@@ -734,7 +739,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 6
     }
    ]
   },
@@ -850,7 +856,8 @@
        ],
        "links": {}
       }
-     ]
+     ],
+     "num": 7
     },
     {
      "task_id": "6aa1cedb57e31958c9d6108d",
@@ -910,7 +917,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 8
     },
     {
      "task_id": "6aa09f92992e6e82402e51f0",
@@ -972,7 +980,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 9
     }
    ]
   },
@@ -1070,7 +1079,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 10
     },
     {
      "task_id": "6aa02f48755f41e02b01483f",
@@ -1111,7 +1121,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 11
     }
    ]
   },
@@ -1407,7 +1418,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 12
     },
     {
      "task_id": "6a99296813124786224a01ef",
@@ -1456,7 +1468,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 13
     }
    ]
   },
@@ -1722,7 +1735,8 @@
        ],
        "compact": true
       }
-     ]
+     ],
+     "num": 14
     },
     {
      "task_id": "6aa02f48755f41e02b014849",
@@ -1770,7 +1784,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 15
     }
    ]
   },
@@ -1874,7 +1889,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 16
     },
     {
      "task_id": "6a9a43f6353e55844b5c3fbc",
@@ -2124,7 +2140,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 17
     }
    ]
   },
@@ -2213,7 +2230,8 @@
         }
        }
       }
-     ]
+     ],
+     "num": 18
     }
    ]
   },
@@ -2250,10 +2268,10 @@
      "scenario": "Jayden Brown manages a craft store in Raleigh and splits Apt 108 with Percy Okafor, a seventh-grade science teacher who spent the summer running a museum day camp. Their August electricity statement landed well above what either of them expected after a…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": null,
-     "wrong": "10 criteria target Trajectory where the cap is five",
-     "problem": null,
-     "right": null,
+     "setup": "The deliverable is energy_audit.html, which splits a household's electricity bill between two flatmates. The objective block runs to 46 criteria, and criteria 33 to 42 all target Trajectory.",
+     "wrong": "Ten criteria target Trajectory, twice the cap of five.",
+     "problem": "Several of the ten grade a route whose result is already graded on the page. Criterion 39, that the agent checks the file opens and runs, sits beside criterion 1, which grades that energy_audit.html loads and operates. Criterion 36, the 32 metered days taken from the statement's own evidence, sits beside criterion 7, which grades that the page sums exactly those 32 days. Criterion 40, the payment history found in the household's records, sits beside criterion 26, which grades how the page attributes those payments. Criterion 33 asks only that the agent queries a connected application, which almost any run does.",
+     "right": "Drop 33, 36, 39 and 40, whose results the page criteria already grade, and fold criterion 34's two values, museum hours of 8 to 3 and a camp ending on 3 August 2026, into an artifact criterion if none checks them yet. That keeps five that only the run can show: 35, the absence dates taken from a dated record; 37, the handwritten log read from the photographs; 38, the rate card read off pages with no text layer; 41, the baseline taken from individual hours; and 42, the negative for acting on the refrigerator labels before the turn that hands them over.",
      "highlights": [],
      "panels": [
       {
@@ -2311,7 +2329,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 19
     }
    ]
   },
@@ -2384,7 +2403,8 @@
        "title": "Agent Objective",
        "body": "Sunniva Haugland owns Storvik Bakeri at 808 Commercial Avenue in Anacortes. She has been trying to decide whether to buy a Doyon three‑deck oven since April. The oven needs a three‑phase electrical service the building does not have, and in June her landlord offered an early lease renewal that carries an improvement allowance. She reran the oven figures with that allowance in August. Her accountant has asked for a current oven price and for clarity on when the allowance can actually be used, ahead of a call with the landlord on 9 September. Sunniva needs one page that puts the decision in front of her with figures she can trust, using the corrections her shop manager made by hand and a fresh quote from the supplier, and she needs the current price sent to her accountant."
       }
-     ]
+     ],
+     "num": 20
     }
    ]
   },
@@ -2396,7 +2416,7 @@
    "cost": "fail",
    "what": "A criterion that is wrong about the task it grades, so your own golden fails it: a rule only the Desired Outcome states, a phrase quoted at a different length from the one the golden renders, identical wording demanded across two artifacts that legitimately paraphrase each other, a fact the message threads refute, or a file cited that is not in the inputs archive.",
    "why": "The golden has to pass the complete rubric set. A criterion the golden fails is a broken criterion, not a broken golden, so a correct run gets marked Not Present. Each one counts as Major, and Majors on more than 10% of your criteria fail the task outright. The commonest cause is a rule that lives only in the Desired Outcome: the agent never sees the outcome, so a criterion resting on it fails a run that did exactly what it was told, and it catches your own golden too.",
-   "spot": "Grade the golden against every criterion as the last step before submitting. Separately, read the Desired Outcome clause by clause with the prompts beside it and mark every rule no turn asks for.",
+   "spot": "Grade the golden against every objective criterion before you complete Leg B, while a cleanup turn can still change it. Separately, read the Desired Outcome clause by clause with the prompts beside it and mark every rule no turn asks for.",
    "fix": "Where the golden and a criterion disagree, check both against the prompts and the records. If the criterion is the one they do not support, rewrite it. If the golden is, that is the section 7 error, fixed with a cleanup turn before you complete the conversation. Every rule found only in the outcome is a choice: ask for it in a prompt, without handing over the answer, which means running both legs again, or take it out of the outcome and out of any criterion resting on it. Check every filename a criterion cites against the inputs archive.",
    "note": null,
    "sources": [
@@ -2404,7 +2424,7 @@
      "doc": "Guidelines",
      "sec": "5.7 Final Rubric Checklist",
      "quote": "The golden solution passes the complete rubric set. Anything it fails is a broken criterion, not a broken golden.",
-     "means": "Grading your own golden against every criterion is the last step, and it is on the checklist."
+     "means": "It is on the checklist. Grade the golden against every objective criterion before you complete Leg B, while a cleanup turn can still change it."
     },
     {
      "doc": "Guidelines",
@@ -2479,7 +2499,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 21
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1ba",
@@ -8213,7 +8234,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 22
     }
    ]
   },
@@ -8316,7 +8338,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 23
     },
     {
      "task_id": "6aa88e8600a9cc42267c9867",
@@ -8378,7 +8401,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 24
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1a8",
@@ -8413,7 +8437,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 25
     }
    ]
   },
@@ -8456,9 +8481,9 @@
      "scenario": "Brandon Lewis runs HoopHighlights, a YouTube channel of youth rec-league and pickup basketball edits he has been cutting for years around a full-time product job in Boston. He has signed on a condo, and the laptop that holds the entire library does not…",
      "category": "Operations & QA",
      "turns": 5,
-     "setup": null,
-     "wrong": "Criteria 17 and 30 carry an Agent Behavior or Tool Use category while pointing at something other than Trajectory.",
-     "problem": null,
+     "setup": "Criteria 17 and 30 grade what a markdown or text file in the workspace states: the checklist rule that an album off on both count and size means stop and hold everything, and that bc eagles 3-21 is absent from both destinations while finale reel FINAL is short on the T7.",
+     "wrong": "Both carry the category Agent Behavior, with the Evaluation Target set to the artifact.",
+     "problem": "Agent Behavior grades how the run got there and always targets Trajectory. These two are decided by what a file in the workspace says, so they grade the deliverable. The target is the one thing about them that is right.",
      "right": "Criteria 17 and 30 grade what a file in the workspace says. The target is right and the category is wrong: both are Task Completion on Final Answer Artifact.",
      "highlights": [],
      "panels": [
@@ -8485,16 +8510,17 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 26
     },
     {
      "task_id": "6a9a43f6353e55844b5c3fbe",
      "scenario": "Rosalind Achterberg is a certified medical illustrator in the Surgical Visualization Unit at the University of Michigan Medical School. In the summer lull after the atlas went to press she is redrawing the deltoid plate for Dr. Yusuf Oyelaran's shoulder…",
      "category": "Visual Learning",
      "turns": 4,
-     "setup": null,
+     "setup": "The deliverable is deltoid_plate_study.html. Subjective criterion 2 grades its key markers: one colour per muscle, the same colour as that muscle's section heading.",
      "wrong": "One of 12 subjective criteria is tagged Instruction Following, where Task Completion is the only valid category.",
-     "problem": null,
+     "problem": "Instruction Following is excluded from the subjective block by design: a requirement the prompt states belongs in the objective block. So a subjective row tagged Instruction Following is either an explicit ask in the wrong block or a presentation property under the wrong category.",
      "right": "No prompt asks for the colour scheme, so criterion 2 is a presentation property of the render: Task Completion.",
      "highlights": [],
      "panels": [
@@ -8513,7 +8539,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 27
     }
    ]
   },
@@ -8586,7 +8613,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 28
     }
    ]
   },
@@ -8744,7 +8772,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 29
     }
    ]
   },
@@ -8790,7 +8819,7 @@
      "setup": null,
      "wrong": "the subjective block carries 32 of 103 absolute weight, 31.1% against a 30% cap",
      "problem": "Twelve criteria clears the count, so this block goes wrong on weight alone: 31.1% is over a 30% cap, however close it looks.",
-     "right": null,
+     "right": "Under 30%, with margin. Lowering a single +5 to +3 gives 30 of 101, 29.7%: under the cap, but with almost none to spare. Where the prompts or milestones call for objective checks no criterion owns yet, adding them first grows the total; then lower only a subjective weight that overstates its effect on the reader.",
      "highlights": [],
      "panels": [
       {
@@ -8916,7 +8945,8 @@
        ],
        "compact": true
       }
-     ]
+     ],
+     "num": 30
     },
     {
      "task_id": "6a9e4478f55775e9124002e5",
@@ -8926,7 +8956,7 @@
      "setup": null,
      "wrong": "5 subjective criteria where the Guidelines expect ten or more",
      "problem": "Five criteria for a page that has to carry a cut list, a scribe strategy and a cut diagram per sheet. Apart from a general check that nothing runs past the page edge, none of them looks at the cut diagrams or the scribe section, so a run whose diagrams cannot be read scores the same as one whose diagrams are clear.",
-     "right": null,
+     "right": "Ten or more, written region by region, starting with the two regions nothing grades: how each cut diagram reads, and how the scribe section is laid out. Each one names front_room_builtin.html and one visible property of one element in it.",
      "highlights": [],
      "panels": [
       {
@@ -8993,7 +9023,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 31
     }
    ]
   },
@@ -9107,7 +9138,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 32
     }
    ]
   },
@@ -9231,7 +9263,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 33
     },
     {
      "task_id": "6a99296813124786224a01ef",
@@ -9275,7 +9308,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 34
     }
    ]
   },
@@ -9352,7 +9386,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 35
     }
    ]
   },
@@ -9550,7 +9585,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 36
     },
     {
      "task_id": "6aa34dd1625bb5b220c6b1ca",
@@ -9605,7 +9641,8 @@
        ],
        "links": {}
       }
-     ]
+     ],
+     "num": 37
     },
     {
      "task_id": "6aac6ee4f0c334e21057f9e6",
@@ -9678,7 +9715,8 @@
         }
        ]
       }
-     ]
+     ],
+     "num": 38
     }
    ]
   }
