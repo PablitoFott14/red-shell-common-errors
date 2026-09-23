@@ -11,6 +11,8 @@
 
   var open = null;          // the dialog currently up
   var prevFocus = null;     // whatever had focus before it opened
+  // where the slides are, from where this script is: right from any page, at any depth
+  var SLIDES = new URL("../slides/index.html", (document.currentScript || {}).src || location.href).href;
 
   function all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function dialog(id) { return document.getElementById("ex-" + id); }
@@ -399,7 +401,31 @@
     show(id);
   }
 
+  /* Back to slides. An example opened from the slide deck carries its slide in the address
+     (?slide=5). From then on, every page offers the way back to that slide: fixed at the bottom
+     left, above the example and its evidence, with room kept for it so it covers nothing, until
+     you are back on the slides, which clear it. The Slides tab then puts you back where you were. */
+  function backToSlides() {
+    var m = /[?&]slide=(\d{1,3})(?:&|$)/.exec(location.search), n = m ? parseInt(m[1], 10) : 0;
+    try {
+      if (n) sessionStorage.setItem("ce-from-slide", String(n));
+      else n = parseInt(sessionStorage.getItem("ce-from-slide") || "0", 10) || 0;
+    } catch (e) { /* storage off: the address alone carries the slide */ }
+    if (!n) return;
+    var a = document.createElement("a");
+    a.className = "toslides";
+    a.href = SLIDES + "#" + n;
+    a.setAttribute("aria-label", "Back to slides, slide " + n);
+    a.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>' +
+                  "<span>Back to slides</span><small>Slide " + n + "</small>";
+    // first in the tab order after the skip link, and outside every dialog, so it is always there
+    var skip = document.querySelector(".skip");
+    document.body.insertBefore(a, skip ? skip.nextSibling : document.body.firstChild);
+    document.documentElement.classList.add("fromslides");
+  }
+
   function start() {
+    backToSlides();
     paintTicks();
     fromHash();
   }

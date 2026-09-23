@@ -32,23 +32,62 @@
     var sr = strip.getBoundingClientRect(), tr = t.getBoundingClientRect();
     if (tr.left < sr.left || tr.right > sr.right) strip.scrollLeft += (tr.left - sr.left) - (sr.width - tr.width) / 2;
   }
-  // Every example number on a slide opens that example in the viewer, in a new tab, so the deck
-  // stays where it was. Each number gets a link laid over it on the picture, and a button under the
-  // slide, which is also how a keyboard or a screen reader reaches it. Pointing at either lights both.
+  // Every example number on a slide opens that example in the viewer. Each number gets a link laid
+  // over it on the picture, and a button under the slide, which is also how a keyboard or a screen
+  // reader reaches it. Pointing at either lights both.
   function light(n, on) {
     Array.prototype.forEach.call(document.querySelectorAll('[data-n="' + n + '"]'), function (el) {
       el.classList.toggle('on', on);
     });
   }
+
+  // The example opens in this tab, and its page offers Back to slides, to this slide (the address
+  // carries it). Before leaving, the deck notes where you were: the slide, how far the page and the
+  // strip were scrolled, the example you opened, whether you opened it from the keyboard, and
+  // whether the slide was full screen. Coming back puts all of it back.
+  var RETURN = 'ce-slides-return', FROM = 'ce-from-slide';
+  function keep(k, v) {
+    try { if (v === null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, JSON.stringify(v)); }
+    catch (e) { /* storage off: the slide still comes back, from the address */ }
+  }
+  function kept(k) {
+    try { return JSON.parse(sessionStorage.getItem(k) || 'null'); } catch (e) { return null; }
+  }
   function link(el, l) {
     el.href = l.href;
-    el.target = '_blank';
-    el.rel = 'noopener';
     el.setAttribute('data-n', l.n);
     el.addEventListener('pointerenter', function () { light(l.n, true); });
     el.addEventListener('pointerleave', function () { light(l.n, false); });
     el.addEventListener('focus', function () { light(l.n, true); });
     el.addEventListener('blur', function () { light(l.n, false); });
+    el.addEventListener('click', function (e) {
+      keep(RETURN, {slide: cur + 1, y: window.scrollY, strip: strip.scrollLeft, n: l.n,
+                    key: e.detail === 0, full: document.fullscreenElement === wrap});
+    });
+  }
+  function resume() {
+    var r = kept(RETURN);
+    keep(RETURN, null);
+    keep(FROM, null);   // back on the slides: the site stops offering the way back
+    if (!r || r.slide !== cur + 1) return;
+    // at once: the site scrolls smoothly, and coming back is not a scroll
+    window.scrollTo({top: r.y || 0, left: 0, behavior: 'instant'});
+    strip.scrollLeft = r.strip || 0;
+    // the example you opened lights up for a moment, so you see where you were
+    light(r.n, true);
+    setTimeout(function () { light(r.n, false); }, 1600);
+    if (r.key) {
+      var c = exlist.querySelector('[data-n="' + r.n + '"]');
+      if (c) c.focus({preventScroll: true});
+    }
+    // a browser only goes full screen when asked, so say how
+    if (r.full && document.fullscreenEnabled) {
+      var t = document.createElement('p');
+      t.className = 'dk-hint';
+      t.textContent = 'Press F to go back to full screen';
+      stage.appendChild(t);
+      setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 4000);
+    }
   }
   function examples(s) {
     hots.textContent = '';
@@ -76,7 +115,7 @@
         prev = l.title;
         c.className = 'dk-exa';
         c.title = l.title;
-        c.setAttribute('aria-label', 'Example ' + l.n + ': ' + l.title + ', opens in a new tab');
+        c.setAttribute('aria-label', 'Example ' + l.n + ': ' + l.title);
         c.innerHTML = 'Example ' + Number(l.n) + ARROW;
         link(c, l);
         li.appendChild(c);
@@ -180,5 +219,8 @@
 
   show(fromHash());
   fit();
+  resume();
+  // Back from a page the browser kept whole: the slide is as it was, but the notes still clear
+  window.addEventListener('pageshow', function (e) { if (e.persisted) resume(); });
   document.documentElement.setAttribute('data-deck', 'ready');
 })();

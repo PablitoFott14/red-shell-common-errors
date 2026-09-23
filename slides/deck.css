@@ -39,7 +39,13 @@
 .dk-hot{position:absolute;pointer-events:auto;border-radius:5px;cursor:pointer}
 .dk-hot:hover,.dk-hot.on{background:rgba(124,192,255,.14);box-shadow:0 0 0 2px rgba(124,192,255,.9)}
 
-/* and the same examples under the slide, one button each, opening in a new tab */
+/* back from an example that was opened in full screen: how to go full screen again, for a moment */
+.dk-hint{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);margin:0;padding:8px 14px;
+  border-radius:8px;background:rgba(5,8,15,.9);border:1px solid var(--line2);color:var(--ink);
+  font:600 13px/1.2 var(--sans);white-space:nowrap;pointer-events:none;animation:dkhint 4s ease forwards}
+@keyframes dkhint{0%,80%{opacity:1}100%{opacity:0}}
+
+/* and the same examples under the slide, one button each */
 .dk-ex{width:100%;min-height:30px;display:flex;align-items:center;justify-content:center;gap:8px 14px;flex-wrap:wrap}
 .dk-ex[data-empty]{visibility:hidden}
 .dk-exlab{color:var(--ink3);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
