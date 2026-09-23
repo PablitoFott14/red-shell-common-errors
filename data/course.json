@@ -2,8 +2,8 @@
  "sections": [
   {
    "n": 1,
-   "slug": "the-task-you-were-given",
-   "title": "The task you were given",
+   "slug": "the-foundations-every-task-must-get-right",
+   "title": "The Foundations Every Task Must Get Right",
    "lead": "Two decisions made before prompt 1 that cannot be repaired afterwards. Each one is cheap to check and expensive to get wrong.",
    "mistakes": [
     "below-complexity-bar",
