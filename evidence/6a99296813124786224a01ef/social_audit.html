@@ -426,6 +426,7 @@ renderAll();
 (function () {
   var T = ["16 label posts", "That's why the count is 15, not 17."];
   var SKIP = {SCRIPT: 1, STYLE: 1, TEMPLATE: 1, NOSCRIPT: 1, MARK: 1};
+  var all = [], at = 0, found = 0;
   function textTarget(t) {
     var exact = t.charAt(0) === "=", s = exact ? t.slice(1) : t, hits = [];
     var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
@@ -441,7 +442,7 @@ renderAll();
       var r = document.createRange();
       r.setStart(node, i); r.setEnd(node, i + s.length);
       var m = document.createElement("mark");
-      m.style.cssText = "background:#ffe066;color:#111;outline:3px solid #ff4d63;border-radius:2px;padding:0 1px";
+      m.style.cssText = "background:#ffe066;color:#111;outline:1.5px solid #ff4d63;border-radius:2px;padding:0 1px";
       r.surroundContents(m);
       hits.push(m);
     });
@@ -460,8 +461,23 @@ renderAll();
     }
     window.scrollTo(0, window.scrollY + el.getBoundingClientRect().top - window.innerHeight / 3);
   }
+  function post() {
+    try {
+      parent.postMessage({ceEvidence: document.title || "page", found: found, of: T.length,
+                          marks: all.length, at: at}, "*");
+    } catch (e) {}
+  }
+  /* The passage on show gets a heavier ring, so stepping is visible on a busy page. */
+  function go(i) {
+    if (!all.length) { post(); return; }
+    at = ((i % all.length) + all.length) % all.length;
+    all.forEach(function (el, k) {
+      el.style.boxShadow = k === at ? "0 0 0 3px #ff4d63, 0 0 0 8px rgba(255,77,99,.35)" : "";
+    });
+    reveal(all[at]);
+    post();
+  }
   function mark() {
-    var found = 0, first = null;
     T.forEach(function (t) {
       var hits = [];
       if (t.indexOf("css:") === 0) {
@@ -470,11 +486,16 @@ renderAll();
       } else {
         hits = textTarget(t);
       }
-      if (hits.length) { found++; if (!first) first = hits[0]; }
+      if (hits.length) found++;
+      all = all.concat(hits);
     });
-    if (first) reveal(first);
-    try { parent.postMessage({ceEvidence: document.title || "page", found: found, of: T.length}, "*"); } catch (e) {}
+    all.sort(function (a, b) { return a.compareDocumentPosition(b) & 4 ? -1 : 1; });
+    go(0);
   }
+  window.addEventListener("message", function (e) {
+    var d = e.data;
+    if (d && typeof d.ceStep === "number" && e.source === parent) go(d.ceStep === 0 ? at : at + d.ceStep);
+  });
   window.addEventListener("load", function () { setTimeout(mark, 300); });
 })();
 </script></body>

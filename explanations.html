@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Explanations · Red Shell Common Errors</title>
+<meta name="description" content="The full write up of every mistake, with each real example taken apart.">
+<link rel="stylesheet" href="assets/style.css"><script src="assets/viewer.js" defer></script>
+</head><body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top"><a class="brand" href="index.html"><span class="bd"></span>Red Shell · Common Errors</a>
+<nav><a href="index.html">All mistakes</a><a href="explanations.html" aria-current="page">Explanations</a><a href="checklist.html">Before you submit</a></nav></header>
+<div class="hero slim"><p class="eyebrow">The course text</p>
+<h1>Explanations</h1>
+<p class="lede">The full write up of all 23 mistakes and their 38 real examples. Every example links back
+to the viewer, where it opens on the exact spot in the task.</p></div>
+<main class="wrap xwrap" id="main">
+<nav class="xtoc" aria-label="Contents"><details open><summary>Contents</summary><ol class="toc"><li><a class="tsec" href="#how-to-use-this">How to use this</a></li><li><a class="tsec" href="#section-1">1. The Foundations Every Task Must Get Right</a><ol><li><a href="#below-complexity-bar"><span>1.1</span>The deliverable sits below the complexity bar</a></li><li><a href="#universe-missing-records"><span>1.2</span>The task relies on records the universe does not hold</a></li></ol></li><li><a class="tsec" href="#section-2">2. What you may not tell Model A or Model B</a><ol><li><a href="#steering-hands-answer"><span>2.1</span>A Leg B hint that hands Model B the answer</a></li><li><a href="#prompt-answers-attachment"><span>2.2</span>A Leg A prompt that answers its own attachment</a></li><li><a href="#deferred-asset-announced"><span>2.3</span>A deferred asset that announces its own turn</a></li></ol></li><li><a class="tsec" href="#section-3">3. Milestones</a><ol><li><a href="#milestone-fields"><span>3.1</span>Modifier and Assets Delivered that do not match the Leg A turn</a></li><li><a href="#continuation-criteria"><span>3.2</span>Stopping rules that do not gate the turn</a></li><li><a href="#milestone-coverage"><span>3.3</span>A Leg A turn no milestone covers, or the same milestone written twice</a></li></ol></li><li><a class="tsec" href="#section-4">4. A rubric that separates two runs</a><ol><li><a href="#no-negatives"><span>4.1</span>A rubric that can only reward, never penalise</a></li><li><a href="#coverage-both-ways"><span>4.2</span>A requirement nothing grades, and a criterion nothing asked for</a></li><li><a href="#weights-flat"><span>4.3</span>Weights that do not separate difficulty from lookup</a></li><li><a href="#trajectory-cap"><span>4.4</span>More trajectory criteria than the Guidelines allow</a></li><li><a href="#run-too-easy"><span>4.5</span>A run that does not fail enough of the rubric</a></li></ol></li><li><a class="tsec" href="#section-5">5. Criteria a correct run can pass</a><ol><li><a href="#golden-fails-own-criterion"><span>5.1</span>A criterion the golden itself fails</a></li><li><a href="#unanswerable-criterion"><span>5.2</span>Criteria a correct run cannot pass, or a wrong one can</a></li><li><a href="#category-and-target"><span>5.3</span>Category and Evaluation Target filled with the wrong kind of value</a></li><li><a href="#same-check-twice"><span>5.4</span>The same check written twice</a></li></ol></li><li><a class="tsec" href="#section-6">6. The subjective block</a><ol><li><a href="#subjective-no-file"><span>6.1</span>Subjective criteria that never name the file</a></li><li><a href="#subjective-size-and-share"><span>6.2</span>Too few subjective criteria, or too much weight on them</a></li><li><a href="#subjective-from-the-page"><span>6.3</span>Subjective criteria that require your golden&#x27;s wording</a></li></ol></li><li><a class="tsec" href="#section-7">7. Closing the task</a><ol><li><a href="#golden-contradicts-sources"><span>7.1</span>The golden states something its own sources contradict</a></li><li><a href="#revision-leaves-old-wording"><span>7.2</span>A revision that leaves the old wording standing</a></li><li><a href="#closeout-mechanics"><span>7.3</span>The five minute close out nobody runs</a></li></ol></li><li><a class="tsec" href="#the-order-that-keeps-the-cost-down">Before you submit</a></li></ol></details></nav>
+<article class="xdoc"><p>The mistakes that keep costing tasks in this project, each shown in real tasks where it happened. The slides teach the standard; each entry here quotes where it is written, takes the examples apart, and ends with how to catch the mistake and what to do instead.</p>
+<p>Each issue opens with its cost: 🔴 <strong>Fails the task</strong>, 🟠 <strong>Fails a client CORE standard</strong> or 🟡 <strong>Costs points</strong>. Examples are numbered across the course, the same on the slides and in the viewer.</p>
+<hr />
+<h2 id="how-to-use-this">How to use this</h2>
+<p>Read the sections for the step you are on. They follow the part of the task, not the build order, and the earlier
+the step, the more a fix costs:</p>
+<table>
+<thead>
+<tr>
+<th>Step in the Guidelines</th>
+<th>Sections</th>
+<th>If you get it wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Planning the Agent Task, 2 Setting Up the Run</td>
+<td>1; 2, for the input folder and the opening prompt</td>
+<td>Run both legs again</td>
+</tr>
+<tr>
+<td>3 Task Runner - Leg A</td>
+<td>2, for each follow up you send Model A</td>
+<td>Run both legs again</td>
+</tr>
+<tr>
+<td>5 Objective Rubrics</td>
+<td>4; 5</td>
+<td>Rewrite in place, or run both legs again if the fix changes a prompt or Model A fails under half the weight</td>
+</tr>
+<tr>
+<td>6 Milestones</td>
+<td>3</td>
+<td>Rewrite in place, before Leg B</td>
+</tr>
+<tr>
+<td>7 Golden Solution - Leg B</td>
+<td>2, for each turn you send Model B; 5, for the golden passing every objective criterion; 7</td>
+<td>A Leg B cleanup turn to Model B before you complete Leg B, or Leg B again for a hint that leaks</td>
+</tr>
+<tr>
+<td>8 Subjective Rubric Block</td>
+<td>6</td>
+<td>Rewrite in place</td>
+</tr>
+<tr>
+<td>Before you submit</td>
+<td>7, the close out</td>
+<td>Fix in place</td>
+</tr>
+</tbody>
+</table>
+<p>One habit prevents most of what follows: <strong>open the files, then write.</strong></p>
+<hr />
+<h2 id="section-1">1. The Foundations Every Task Must Get Right</h2>
+<p>Two decisions made before prompt 1 that cannot be repaired afterwards. Each one is cheap to check and expensive to get wrong.</p>
+<h3 id="below-complexity-bar">1.1 The deliverable sits below the complexity bar<a class="toviewer" href="mistakes/below-complexity-bar.html">See it in the viewer</a></h3>
+<p class="sev sev-core">🟠 <strong>Fails a client CORE standard</strong></p>
+<p>The deliverable misses its type's complexity floor. Typically the Agent Objective says dashboard, no prompt asks for interaction, and the page ships static.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · Complexity Bar</strong></p>
+<p>“Interactive HTML: Interaction that actually works: controls that respond, state that changes, filters or navigation. A styled static page does not qualify. Dashboard: Several linked views over data the model extracted itself. One chart is not a dashboard.”</p>
+<p>Both are P0 floors.</p>
+<p><strong>Guidelines · 1.3 Defining the Draft History</strong></p>
+<p>“The Draft History (Agent Objective, Desired Outcome, Multimodal Upload) is not embedded in the agent by default.”</p>
+<p>So only a prompt can ask for a dashboard.</p>
+</blockquote>
+<h4 id="example-1">Example 1 (🔗<a href="mistakes/below-complexity-bar.html#ex-below-complexity-bar-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> The Agent Objective calls it a dashboard, over 14 orders and 222 order lines.</p>
+<p><strong>Where it shows.</strong> ada_list.html has no script, button, filter or navigation: markup around nine images.</p>
+<p><strong>How it breaks the standard.</strong> That is a document, the lowest priority deliverable on the bar, though the data would have supported a sortable buy list or a filter for what Fresh does not stock.</p>
+<p><strong>What it should have been.</strong> A prompt that asks for it: "put the buy list in a table I can sort by aisle or by price".</p>
+<h4>Catching it in your own task</h4>
+<p>Ask what the page does when someone clicks it. If nothing, it is a document, whatever the Agent Objective calls it.</p>
+<h4>What to do instead</h4>
+<p>Before prompt 1, check the deliverable type against its floor, and have a prompt ask for the interaction the data supports.</p>
+<h3 id="universe-missing-records">1.2 The task relies on records the universe does not hold<a class="toviewer" href="mistakes/universe-missing-records.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Trajectory - Feasibility With Tools</p>
+<p>A rule reads off records the assigned universe does not hold, such as a catalog or a policy page, while prompts, inputs and criteria read as if they were there.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 1.2.1 Start With the Universe</strong></p>
+<p>“The universe combined with the multimodal input has to sustain the opening prompt and every follow-up you intend to add”</p>
+<p><strong>Guidelines · 4. Valid vs. Invalid Model Failures</strong></p>
+<p>“Data that is not in the server, asked for anyway, and the model penalised for not finding it.”</p>
+<p>Listed under “Not valid: your defect, or the platform's”.</p>
+<p><strong>QC spec · Trajectory - Feasibility With Tools</strong></p>
+<p>“The primary request is impractical or impossible and can't be answered by the tools available or enabled for the task.”</p>
+<p>Fails the task when the missing records carry the main request; costs points otherwise.</p>
+</blockquote>
+<h4 id="example-2">Example 2 (🔗<a href="mistakes/universe-missing-records.html#ex-universe-missing-records-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Five items on a neighbour's board are priced against Amazon Fresh.</p>
+<p><strong>Where it shows.</strong> Rule 1 prices lines "at the pack option we add to the cart from Fresh's catalog"; rule 5 takes the fee from "Fresh's Delivery Policy and nothing else". The universe's catalog has none of the five items, and its policies are empty.</p>
+<p><strong>How it breaks the standard.</strong> Leg B turn 3 tells Model B to reach the pages "another way", the golden says "its catalog search returns nothing", and no run can meet the criteria wanting $0.55 a lb or a $4.99 fee.</p>
+<p><strong>What it should have been.</strong> Rules that cite only records the universe returns, checked before the run.</p>
+<h4>Catching it in your own task</h4>
+<p>Your golden shows it: an empty search, a Leg B hint sending Model B another way, figures flagged as unconfirmed.</p>
+<h4>What to do instead</h4>
+<p>Before the run, query the universe once per rule and rewrite any rule whose record is missing. If it only surfaces in Leg B, redesign the task rather than hint again.</p>
+<hr />
+<h2 id="section-2">2. What you may not tell Model A or Model B</h2>
+<p>Leg A defines the task: the opening prompt and the follow ups you send Model A. Leg B is the golden run: Model B gets the same opening prompt, word for word, then the turns you send it as you steer it through the milestones. The no leak rule and the input folder are the same in both legs; what a turn may point at is not.</p>
+<h3 id="steering-hands-answer">2.1 A Leg B hint that hands Model B the answer<a class="toviewer" href="mistakes/steering-hands-answer.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Multi-Turn - Simulator Answer Leak</p>
+<p>In Leg B, a turn you send Model B hands it what it had to work out: a value, a count, a position or the conclusion. Naming the exact file to open costs points instead.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec · Multi-Turn - Simulator Answer Leak</strong></p>
+<p>“The user may say THAT something is wrong; they may not say WHAT the right answer is, WHERE exactly to find it, or HOW MANY of anything there are”</p>
+<p>Any turn, either leg.</p>
+<p><strong>QC spec · Multi-Turn - Simulator Answer Leak</strong></p>
+<p>“No graded value is leaked, but the hints narrow the search space beyond an area-level nudge (e.g. naming the exact file to open).”</p>
+<p>Costs points. Written about Leg B hints.</p>
+<p><strong>Guidelines · 7.2 Steering the Run &amp; Hinting</strong></p>
+<p>“The test is simple: if the model can copy your hint into the artifact or use it directly as the reasoning needed to reach the milestone, you have given away the answer.”</p>
+<p>Leg B only.</p>
+<p><strong>Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</strong></p>
+<p>“Never flag the miss. If the agent omitted a total, misread a date, or ignored a source, do not tell it what went wrong or where to look. Pointing directly at the failure compromises the 50% failure threshold every task has to meet.”</p>
+<p>Leg A only. A punctual correction that comes up naturally is still fine, as long as it does not compromise the 50% failure threshold.</p>
+<p><strong>QC spec · Multi-Turn - Turn Structure &amp; Dependency</strong></p>
+<p>“Each follow-up must do real work: deliver a withheld asset, extend a requirement, correct an error, tighten a constraint, or answer a clarification the agent asked for.”</p>
+<p>About the Leg A follow ups.</p>
+</blockquote>
+<h4 id="example-3">Example 3 (🔗<a href="mistakes/steering-hands-answer.html#ex-steering-hands-answer-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Model B still had not opened the day 3 field notes after Leg B turn 8 said they describe PT 128.</p>
+<p><strong>Where it shows.</strong> Leg B turn 9, to Model B: “Open the day-3 field notes PDF in the mail, the file named 26-014_Field_notes_2026-03-19.pdf”.</p>
+<p><strong>How it breaks the standard.</strong> Criteria 14 and 2 grade opening that PDF and the card built from it; the golden meets both because the turn named the file. No value is stated, so it costs points.</p>
+<p><strong>What it should have been.</strong> A hint that leaves the work: “The PT 128 figure on the cedar mound card doesn't match what was actually recorded out there.”</p>
+<h4 id="example-4">Example 4 (🔗<a href="mistakes/steering-hands-answer.html#ex-steering-hands-answer-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Rule 5 says the building account is not Prime; criterion 30, a -5 negative, catches pricing avocados at the $1.89 Prime price in chat_5D.png.</p>
+<p><strong>Where it shows.</strong> Leg B turn 7, to Model B: "dont price our order off rosas phone - thats her own account, not the buildings".</p>
+<p><strong>How it breaks the standard.</strong> That is the conclusion criterion 30 tests, so the golden avoids the trap on instruction. A stated conclusion fails the task in either leg. Model A never got this turn.</p>
+<p><strong>What it should have been.</strong> Leg B turn 6: "some prices on the page dont look like what fresh charges us", which leaves Model B to find which prices.</p>
+<h4>Catching it in your own task</h4>
+<p>For each Leg B turn, ask what is left for Model B to work out. A turn that states what a criterion grades has answered it.</p>
+<h4>What to do instead</h4>
+<p>Hint as the user would: say what looks wrong and point at the area, never at the file, the value or the conclusion. If Model B still misses, hint again at the same level.</p>
+<h3 id="prompt-answers-attachment">2.2 A Leg A prompt that answers its own attachment<a class="toviewer" href="mistakes/prompt-answers-attachment.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Multi-Turn - Simulator Answer Leak</p>
+<p>A Leg A prompt that hands Model A a file also states what the file exists to make it read, such as a count or which document is current. The same words in Leg B leak it to Model B too.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec · Multi-Turn - Simulator Answer Leak</strong></p>
+<p>“One or more user turns supply a value, count, position, or conclusion (see notes for exceptions) the agent was supposed to derive from the multimodal inputs”</p>
+<p>Any user turn, in either leg. A count is a value.</p>
+<p><strong>Guidelines · 7.1 What Changes from Leg A</strong></p>
+<p>“The same intent expressed the same way, and the same persona from first turn to last.”</p>
+<p>Unchanged in Leg B, so the turn that hands Model B the file repeats the value.</p>
+</blockquote>
+<h4 id="example-5">Example 5 (🔗<a href="mistakes/prompt-answers-attachment.html#ex-prompt-answers-attachment-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 2 releases the plates photo, IMG_4392, for Model A to count and measure the plates; Leg B turn 4 releases it to Model B.</p>
+<p><strong>Where it shows.</strong> Leg A turn 2: "There are five big ones and one small one, and they need to be stored flat somewhere in the unit." Leg B turn 4 sent Model B the same words.</p>
+<p><strong>How it breaks the standard.</strong> That count is the read IMG_4392 exists to force, so neither model has to open the photo to pass.</p>
+<p><strong>What it should have been.</strong> The same turn without the count: "They need to be stored flat somewhere in the unit, not stood on edge."</p>
+<h4>Catching it in your own task</h4>
+<p>Read each prompt beside the file it hands over, in both legs: any value the model should read from that file is a leak.</p>
+<h4>What to do instead</h4>
+<p>State the requirement and leave the value to the file, then run both legs again.</p>
+<h3 id="deferred-asset-announced">2.3 A deferred asset that announces its own turn<a class="toviewer" href="mistakes/deferred-asset-announced.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Input Artifacts - Deferred Asset Handling</p>
+<p>Something in the input folder, open to both models from turn 1, previews a later turn: a file named for its turn, or a document carrying a later instruction. A file named only for its contents costs points.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec · Input Artifacts - Deferred Asset Handling</strong></p>
+<p>“The file still ships in input_files/ at upload time, but neither its filename nor any manifest may preview the turn that delivers it.”</p>
+<p><strong>Guidelines · 1.2.2 Select the Multimodal Inputs</strong></p>
+<p>“All assets must be included in the input .zip folder from the start and use neutral filenames.”</p>
+<p><strong>Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</strong></p>
+<p>“The follow-up must name the asset being introduced so the model knows exactly what new evidence has become available.”</p>
+<p>Written for the Leg A follow ups.</p>
+</blockquote>
+<h4 id="example-6">Example 6 (🔗<a href="mistakes/deferred-asset-announced.html#ex-deferred-asset-announced-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> The calendar arrives at Leg A turn 2 and the travel rules at Leg A turn 3, both in the input folder from turn 1.</p>
+<p><strong>Where it shows.</strong> They are named IMG_0814_calendar.jpg and IMG_0819_travel_policy.jpg.</p>
+<p><strong>How it breaks the standard.</strong> Each name tells both models what is coming before its turn. Nothing graded leaks, so this costs points; a phone would write IMG_0814.jpg.</p>
+<p><strong>What it should have been.</strong> IMG_0814.jpg and IMG_0819.jpg, with the turns that deliver them saying what each is.</p>
+<h4>Catching it in your own task</h4>
+<p>Read the input folder as both models will at turn 1, filenames included: price_sheet_for_turn3.pdf fails, price_sheet.pdf costs points, sheet_02.pdf is fine.</p>
+<h4>What to do instead</h4>
+<p>Name deferred files as a phone or scanner would, and let the Leg A follow up that delivers each one say what it is; the Leg B turn repeats it.</p>
+<hr />
+<h2 id="section-3">3. Milestones</h2>
+<p>Written from the Leg A conversation with Model A, used in Leg B to steer Model B. Three standards cover what sits around the intent line: Modifier and Assets Delivered, the stopping rules, and one milestone per requirement on every Leg A turn.</p>
+<h3 id="milestone-fields">3.1 Modifier and Assets Delivered that do not match the Leg A turn<a class="toviewer" href="mistakes/milestone-fields.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Milestones - Milestone Annotations · Milestones - Continuation Criteria &amp; Assets · most common right now</p>
+<p>Modifier or Assets Delivered misdescribes the milestone's Leg A turn: deferred_asset or revision on Leg A turn 1, none as a modifier, a bare extension for a filename, or a deferred file no row lists. Only the last fails the task.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 6.1 What a Milestone is Made of?</strong></p>
+<p>“Modifier: What this turn does to work that already exists. One of the four in section 6.3. Assets delivered: Files handed over at this turn, or empty.”</p>
+<p>This turn is the milestone's Leg A turn.</p>
+<p><strong>Guidelines · 6.3 Modifiers</strong></p>
+<p>“opening: The first turn and any later turn that adds a new requirement without touching work already delivered. revision: Something already delivered changes.”</p>
+<p>Leg A turn 1 is always opening.</p>
+<p><strong>QC spec · Milestones - Continuation Criteria &amp; Assets</strong></p>
+<p>“Also fails where a deferred asset was handed over during the conversation but is absent from assets_delivered, or is listed but missing from input_files/.”</p>
+</blockquote>
+<h4 id="example-7">Example 7 (🔗<a href="mistakes/milestone-fields.html#ex-milestone-fields-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 2 hands over bourgery_legend_pages.pdf, the one deferred file.</p>
+<p><strong>Where it shows.</strong> Milestones 1 to 12 all read Assets Delivered: .html, including milestone 9, the deferred_asset row for Leg A turn 2.</p>
+<p><strong>How it breaks the standard.</strong> A bare extension is not a filename, so the deferred file is listed on no row, which fails the task. The saved input archive lacks the PDF too.</p>
+<p><strong>What it should have been.</strong> Milestone 9 lists bourgery_legend_pages.pdf, which ships in input_files/.</p>
+<h4 id="example-8">Example 8 (🔗<a href="mistakes/milestone-fields.html#ex-milestone-fields-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> handbook.mp4 comes with the opening prompt, at Leg A turn 1.</p>
+<p><strong>Where it shows.</strong> Milestones 7 and 8, both on Leg A turn 1, read deferred_asset and revision, each with Assets Delivered: .mp4.</p>
+<p><strong>How it breaks the standard.</strong> Nothing is deferred into Leg A turn 1, and Model A has delivered nothing yet for a revision to change.</p>
+<p><strong>What it should have been.</strong> Both opening, with handbook.mp4 named in full.</p>
+<h4 id="example-9">Example 9 (🔗<a href="mistakes/milestone-fields.html#ex-milestone-fields-3">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A has four turns; the fourth asks for a new list without touching the walkthroughs.</p>
+<p><strong>Where it shows.</strong> Milestones 1 and 4 read Modifier: none, and milestone 5 sits on turn 5.</p>
+<p><strong>How it breaks the standard.</strong> None is not a modifier: turns 1 and 4 add work without touching delivered work, so both are opening. Leg A has no turn 5.</p>
+<p><strong>What it should have been.</strong> Milestones 1 and 4 opening; milestone 5 deleted.</p>
+<h4>Catching it in your own task</h4>
+<p>Read Modifier and Assets Delivered beside the Leg A prompts: Leg A turn 1 is opening, and each deferred file sits on the Leg A turn that hands it over.</p>
+<h4>What to do instead</h4>
+<p>Set each modifier from what its Leg A turn does to delivered work, and list each file handed over at that turn by full filename, never the deliverable.</p>
+<h3 id="continuation-criteria">3.2 Stopping rules that do not gate the turn<a class="toviewer" href="mistakes/continuation-criteria.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Milestones - Continuation Criteria &amp; Assets · Milestones - Milestone Annotations</p>
+<p>Continuation criteria, read in Leg B to decide when Model B moves on, either miss one of their Leg A turn's asks or demand what that turn cannot produce, such as a later turn's file.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 6.2 Writing the Milestones</strong></p>
+<p>“Write one clause per requirement of that turn, separated by pipes, each of them true or false on inspection.”</p>
+<p>That turn is the milestone's Leg A turn.</p>
+<p><strong>QC spec · Milestones - Continuation Criteria &amp; Assets</strong></p>
+<p>“Continuation criteria are present and checkable but under-specified — they would let the simulator advance while a requirement of that turn is still unmet.”</p>
+<p>In Leg B, the simulator is you.</p>
+</blockquote>
+<h4 id="example-10">Example 10 (🔗<a href="mistakes/continuation-criteria.html#ex-continuation-criteria-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 2 hands over the school calendar; the travel rules arrive at Leg A turn 3.</p>
+<p><strong>Where it shows.</strong> Milestone 8, on Leg A turn 2, asks for the travel rules, with the clause “the travel days in the model reflect only the document the user attached”.</p>
+<p><strong>How it breaks the standard.</strong> No correct response to Leg A turn 2 can meet it, so in Leg B it keeps you hinting Model B toward a document not yet handed over.</p>
+<p><strong>What it should have been.</strong> Delete milestone 8; milestone 9 already carries it on Leg A turn 3.</p>
+<h4 id="example-11">Example 11 (🔗<a href="mistakes/continuation-criteria.html#ex-continuation-criteria-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 1 asks, among other things, which pieces still carry a correction.</p>
+<p><strong>Where it shows.</strong> Milestone 1's six clauses never mention corrections.</p>
+<p><strong>How it breaks the standard.</strong> In Leg B they let you move Model B on with that ask undone.</p>
+<p><strong>What it should have been.</strong> Add a clause: pieces carrying a correction are marked as such on their own card.</p>
+<h4>Catching it in your own task</h4>
+<p>Could a response skip one of the Leg A turn's asks and still pass? Could a correct one fail for lack of a later file?</p>
+<h4>What to do instead</h4>
+<p>Tick every ask in each Leg A prompt against a clause, and move any clause that needs a later file or ask to the turn that brings it.</p>
+<h3 id="milestone-coverage">3.3 A Leg A turn no milestone covers, or the same milestone written twice<a class="toviewer" href="mistakes/milestone-coverage.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Milestones - Continuation Criteria &amp; Assets</p>
+<p>A Leg A turn no milestone covers, usually from a set stopping a turn short, or two milestones on one turn with identical intent and clauses.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 6.2 Writing the Milestones</strong></p>
+<p>“One milestone per requirement, grouped by turn: A follow up carrying three requirements produces three milestones, not one.”</p>
+<p>So every Leg A turn has at least one.</p>
+<p><strong>Guidelines · 6. Milestones</strong></p>
+<p>“you are the simulator, and the milestone set is the only script you have.”</p>
+<p>In Leg B, steering Model B.</p>
+<p><strong>Guidelines · 6.1 What a Milestone is Made of?</strong></p>
+<p>“Turn: Which turn of the Model A conversation the requirement came from.”</p>
+<p>Count Leg A turns.</p>
+</blockquote>
+<h4 id="example-12">Example 12 (🔗<a href="mistakes/milestone-coverage.html#ex-milestone-coverage-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Model A asked which addresses to use for a note to June, and Leg A turn 5, the last, answers.</p>
+<p><strong>Where it shows.</strong> The milestones stop at Leg A turn 4, so “Use her OPB address, from my Vantol Films account” has none.</p>
+<p><strong>How it breaks the standard.</strong> Criterion 7 grades both, but no milestone carries them, so a replay against a run that asks, as Model A did, has no script for the answer.</p>
+<p><strong>What it should have been.</strong> A Leg A turn 5 milestone: the note goes to the address, and from the account, the user named.</p>
+<h4 id="example-13">Example 13 (🔗<a href="mistakes/milestone-coverage.html#ex-milestone-coverage-2">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> Milestones 13 and 14, both on Leg A turn 2, are identical, word for word.</p>
+<p><strong>How it breaks the standard.</strong> Leg A turn 2's other asks already have milestones, so the copy only repeats a check.</p>
+<p><strong>What it should have been.</strong> Delete milestone 14.</p>
+<h4>Catching it in your own task</h4>
+<p>List each milestone's Turn beside the Leg A prompts: every Leg A turn needs one per ask. Identical neighbours are duplicates.</p>
+<h4>What to do instead</h4>
+<p>Write a milestone for each uncovered turn from its prompt, and delete a duplicate or give it its missing requirement.</p>
+<hr />
+<h2 id="section-4">4. A rubric that separates two runs</h2>
+<p>A rubric exists to tell a strong run from a weak one. Five standards keep it doing that, and a set can break any of them while still looking complete.</p>
+<h3 id="no-negatives">4.1 A rubric that can only reward, never penalise<a class="toviewer" href="mistakes/no-negatives.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Overall Rubric Quality · most common right now</p>
+<p>Too few negatives for the scenario's traps, so taking the bait costs nothing extra, or a negative worded as the virtue, which marks down correct runs.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.3 Positive and Negative Distribution</strong></p>
+<p>“Negatives are the exception: They should usually make up around 25% of the rubric block and should generally stay below 30%. Use a negative criterion only when it captures a specific, plausible failure mode that the scenario or trajectory meaningfully exposes.”</p>
+<p><strong>Guidelines · 5.2 Rubric Weights</strong></p>
+<p>“The negative slots are for attractive wrong paths the model has to resist.”</p>
+<p>Start with the traps Leg A walked into.</p>
+<p><strong>Guidelines · 5.5 Rating Model A and Justifying the Failures</strong></p>
+<p>“For negative weight: The trajectory contains the undesirable behavior or boundary violation described by the criterion.”</p>
+</blockquote>
+<h4 id="example-14">Example 14 (🔗<a href="mistakes/no-negatives.html#ex-no-negatives-1">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> 24 objective and 10 subjective criteria, every weight positive.</p>
+<p><strong>How it breaks the standard.</strong> The opening prompt calls the clip's selected answers right, and all three are wrong. A run that trusts them loses only one +3.</p>
+<p><strong>What it should have been.</strong> “cardio.html keys the self check to the picks selected in 2panels_demo.webm.” Weight −5.</p>
+<h4 id="example-15">Example 15 (🔗<a href="mistakes/no-negatives.html#ex-no-negatives-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> A four and a half minute explainer on an anatomical plate.</p>
+<p><strong>Where it shows.</strong> A negative at weight −3: “the finished teaching plate remains legible at normal 1080p or full-window playback”.</p>
+<p><strong>How it breaks the standard.</strong> The golden is legible, so it is Present and loses three points; an unreadable video keeps them.</p>
+<p><strong>What it should have been.</strong> Weight −3 on the flaw: the plate renders with its captions or labels below legible size.</p>
+<h4>Catching it in your own task</h4>
+<p>Negatives should be about a quarter of the set. Present means failure, so a negative describing a good run is inverted.</p>
+<h4>What to do instead</h4>
+<p>After Leg A, write a negative for each worthwhile wrong turn Model A took, stating the flaw, never the virtue.</p>
+<h3 id="coverage-both-ways">4.2 A requirement nothing grades, and a criterion nothing asked for<a class="toviewer" href="mistakes/coverage-both-ways.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Rubric Criteria - Overall Rubric Quality</p>
+<p>A prompt requirement no criterion checks, or a criterion no turn asked for, usually written from the golden. Both are Major; a non critical gap, or a criterion that only narrows a real ask, costs points.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.7 Final Rubric Checklist</strong></p>
+<p>“Walk the prompt once per turn and tick off every ask. Anything you can tick needs a criterion.”</p>
+<p><strong>QC spec appendix · Rubric Quality Definitions · Incorrect Criteria</strong></p>
+<p>“Criterion is not an explicit requirement in the prompt and implementing it makes the response worse.”</p>
+<p><strong>QC spec appendix · Rubric Quality Definitions · Missing Criteria - Critical Requirements</strong></p>
+<p>“Count each missing rubric that ought to check for an explicit requirement in the prompt or a critical implicit expectation of the prompt as one issue”</p>
+<p>A Major issue.</p>
+</blockquote>
+<h4 id="example-16">Example 16 (🔗<a href="mistakes/coverage-both-ways.html#ex-coverage-both-ways-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 3 asks for the runbook checked against the cleaning threads, never for a citation.</p>
+<p><strong>Where it shows.</strong> Criterion 12: runbook_for_cyrus.md names the team's own prior cleaning threads as a source of its rules.</p>
+<p><strong>How it breaks the standard.</strong> A run that corrects every rule but cites nothing fails it; the golden passes only because it happens to end with a Sources line.</p>
+<p><strong>What it should have been.</strong> Delete the criterion, and its copy in milestone 11.</p>
+<h4 id="example-17">Example 17 (🔗<a href="mistakes/coverage-both-ways.html#ex-coverage-both-ways-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 4 says Keep holds only what survives the sheets, Yusuf's email and the calendar.</p>
+<p><strong>Where it shows.</strong> Only IMG_2201 and IMG_2105 are excluded; nothing says Keep holds nothing else.</p>
+<p><strong>How it breaks the standard.</strong> Model A's page left IMG_2107 in Keep, which notes.md excludes, and every criterion still passes.</p>
+<p><strong>What it should have been.</strong> One closure criterion: Keep consists only of the nine items that survive.</p>
+<h4>Catching it in your own task</h4>
+<p>Pair each prompt requirement with its criterion, and each criterion with the sentence that asks for it.</p>
+<h4>What to do instead</h4>
+<p>Write criteria from the prompt, never from the golden. Where an instruction closes a set, write the closure: X consists only of A, B and C.</p>
+<h3 id="weights-flat">4.3 Weights that do not separate difficulty from lookup<a class="toviewer" href="mistakes/weights-flat.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Overall Rubric Quality</p>
+<p>Weights that ignore difficulty: a cross source derivation weighted like a direct read, or one operation at 5 in one row and 3 in the next.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.2 Rubric Weights</strong></p>
+<p>“Weight is difficulty, never importance. How hard the criterion is to satisfy, or for a negative, how tempting the failure is.”</p>
+<p>Priced by four axes (source coordination, reasoning depth, modality, discovery effort): three or more is +5, two is +3, zero or one is +1.</p>
+<p><strong>QC spec appendix · Rubric Quality Definitions · Incorrect Weights - Major</strong></p>
+<p>“Criteria that are objectively incorrectly weighted by two levels, e.g., 1 is selected when 5 is appropriate or vice versa.”</p>
+<p>A Moderate issue, despite its name.</p>
+</blockquote>
+<h4 id="example-18">Example 18 (🔗<a href="mistakes/weights-flat.html#ex-weights-flat-1">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> Criterion 12, a four step fee derivation across two services, and criterion 17, a PDF page count, both weigh 1.</p>
+<p><strong>How it breaks the standard.</strong> The score cannot tell a run that found the fee from one that only read page counts.</p>
+<p><strong>What it should have been.</strong> Weight 5 on criterion 12, 1 on criterion 17.</p>
+<h4>Catching it in your own task</h4>
+<p>Count the axes each criterion exercises and read off its weight.</p>
+<h4>What to do instead</h4>
+<p>Weight by axis count, never importance. A lookup at 5, or a chained derivation at 1, is a two level miss.</p>
+<h3 id="trajectory-cap">4.4 More trajectory criteria than the Guidelines allow<a class="toviewer" href="mistakes/trajectory-cap.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Overall Rubric Quality</p>
+<p>More than five criteria target Trajectory. Each is usually sound on its own, so the count creeps up.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.1 Rubric Fundamentals</strong></p>
+<p>“[NEW]: Trajectory Rubrics: Maximum of 5, minimum 0. They are NOT mandatory.”</p>
+<p>Since v3, 10 Sep 2026.</p>
+<p><strong>Guidelines · 5.4 Category &amp; Evaluation Target</strong></p>
+<p>“The agent's reasoning path, Trajectory: An identification, a dependency order, a piece of restraint. The intent it pursued, never a named tool call.”</p>
+</blockquote>
+<h4 id="example-19">Example 19 (🔗<a href="mistakes/trajectory-cap.html#ex-trajectory-cap-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> energy_audit.html splits an electricity bill between two flatmates.</p>
+<p><strong>Where it shows.</strong> Criteria 33 to 42, ten in all, target Trajectory.</p>
+<p><strong>How it breaks the standard.</strong> Several grade a route whose result a page criterion already grades, such as 39, that the file runs, beside criterion 1. Criterion 33 only asks the agent to query an application.</p>
+<p><strong>What it should have been.</strong> Drop 33, 36, 39 and 40, and keep the five only the run shows, such as 37, a handwritten log read from photographs.</p>
+<h4>Catching it in your own task</h4>
+<p>Count the objective rows that target Trajectory.</p>
+<h4>What to do instead</h4>
+<p>Keep the five only the run can show, such as a load bearing media read, and move the rest's values into artifact criteria.</p>
+<p><strong>Note.</strong> The previous version of this course asked for more trajectory weight; Guidelines v3 capped it.</p>
+<h3 id="run-too-easy">4.5 A run that does not fail enough of the rubric<a class="toviewer" href="mistakes/run-too-easy.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Hard Client Requirements for Every Task</p>
+<p>The criteria Model A fails carry under half the rubric's weight, both blocks counted. Everything looks sound; only the arithmetic shows it.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · Hard Client Requirements for Every Task</strong></p>
+<p>“Model A has to fail: Enough difficulty that the Model A trajectory clearly fails at least 50% of the final rubric score”</p>
+<p><strong>Guidelines · 8.5 Rating Against both Models and Justifications</strong></p>
+<p>“Rate each subjective rubric as Present or Not Present for Model A.”</p>
+<p>So the 50% counts both blocks.</p>
+</blockquote>
+<h4 id="example-20">Example 20 (🔗<a href="mistakes/run-too-easy.html#ex-run-too-easy-1">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> Model A failed 13 of 49 criteria, carrying 43 of the 123 total weight.</p>
+<p><strong>How it breaks the standard.</strong> That is 35.0%, well under 50%, and the failed rows are already the heavy ones: Model A got most of the task right.</p>
+<p><strong>What it should have been.</strong> A harder scenario before the run, with sources that disagree; not heavier weights or extra rows.</p>
+<h4>Catching it in your own task</h4>
+<p>Divide the weight of the criteria Model A fails by the total, both blocks counted, signs ignored.</p>
+<h4>What to do instead</h4>
+<p>Under 50%, make the scenario harder and run both legs again. Never inflate the weights or pad the set.</p>
+<hr />
+<h2 id="section-5">5. Criteria a correct run can pass</h2>
+<p>A criterion has to pass a correct run, fail a wrong one, carry the right Category and Evaluation Target, and count once. If your own golden fails one, check the criterion first: it is usually the one that is broken.</p>
+<h3 id="golden-fails-own-criterion">5.1 A criterion the golden itself fails<a class="toviewer" href="mistakes/golden-fails-own-criterion.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Rubric Criteria - Overall Rubric Quality · most common right now</p>
+<p>Your golden fails a criterion that is wrong about the task: a rule only the Desired Outcome states, a phrase at a different length than the golden renders, or a file the inputs archive lacks.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.7 Final Rubric Checklist</strong></p>
+<p>“The golden solution passes the complete rubric set. Anything it fails is a broken criterion, not a broken golden.”</p>
+<p><strong>Guidelines · 4. Valid vs. Invalid Model Failures</strong></p>
+<p>“A requirement the model never saw. A rubric demanding a heading that appears only in the Desired Outcome.”</p>
+<p>Listed under “Not valid: your defect, or the platform's”.</p>
+</blockquote>
+<h4 id="example-21">Example 21 (🔗<a href="mistakes/golden-fails-own-criterion.html#ex-golden-fails-own-criterion-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 3 asks for Tamara's exact phrase in the logo: “That truck is a family heirloom at this point.”</p>
+<p><strong>Where it shows.</strong> Criterion 15: In family_photo_tree.html, the logo shows <code>family heirloom</code> beneath the tree in place of the original word <code>FAMILY</code>.</p>
+<p><strong>How it breaks the standard.</strong> The turn asks for a sentence and the criterion for two words, so the golden, which renders the sentence, fails.</p>
+<p><strong>What it should have been.</strong> The logo reads <code>That truck is a family heirloom at this point.</code></p>
+<h4 id="example-22">Example 22 (🔗<a href="mistakes/golden-fails-own-criterion.html#ex-golden-fails-own-criterion-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Leg A turn 1 asks which jobs the check cannot clear “because the record is too thin”.</p>
+<p><strong>Where it shows.</strong> Only the Desired Outcome asks for "Exactly three records", and criterion 24 names them, including "invoice 21-018".</p>
+<p><strong>How it breaks the standard.</strong> Invoice 21-018 has no job number, so nothing the prompts ask for reaches it, and the golden fails.</p>
+<p><strong>What it should have been.</strong> Criterion 24 limited to what the prompts ask: job 14-011 and the ground covered by job 26-004.</p>
+<h4>Catching it in your own task</h4>
+<p>Before you complete Leg B, grade the golden against every objective criterion, and mark every Desired Outcome rule no turn asks for.</p>
+<h4>What to do instead</h4>
+<p>Rewrite an unsupported criterion, or fix the golden with a Leg B cleanup turn. Move an outcome only rule into a prompt and run both legs again, or drop it.</p>
+<h3 id="unanswerable-criterion">5.2 Criteria a correct run cannot pass, or a wrong one can<a class="toviewer" href="mistakes/unanswerable-criterion.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Overall Rubric Quality</p>
+<p>A criterion stricter than its source fails correct runs: it pins a figure the source leaves open, picks one answer of several, insists on one of two sources, or scopes to a step that lacks the values. A looser one passes wrong runs.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.1 Rubric Fundamentals</strong></p>
+<p>“Since these are objective rubrics, only requirements that can be evaluated objectively from the scenario should be included.”</p>
+<p><strong>QC spec appendix · Rubric Quality Definitions · Overfitting and Underfitting</strong></p>
+<p>“Overfitting: Criteria that are overly specific, inflexible or too rigid - they incorrectly reject a subset of valid implementations. Underfitting: Criteria that are overly broad, permissive or loose - they accept valid implementations, but also incorrectly accept invalid implementations too.”</p>
+<p>Both are Moderate.</p>
+</blockquote>
+<h4 id="example-23">Example 23 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> A teaching video's change board scene runs 127.8 to 138.3 seconds.</p>
+<p><strong>Where it shows.</strong> The criterion is scoped to "The change-board step" and requires "PCR-2026-0688", "accepted on 10 July 2026".</p>
+<p><strong>How it breaks the standard.</strong> Both appear only in an earlier scene, so the golden is Not Present at weight 5.</p>
+<p><strong>What it should have been.</strong> Grade the property: acceptance and release shown as separate states.</p>
+<h4 id="example-24">Example 24 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> The voice note asks about "family members who might stay with us", and the records support two.</p>
+<p><strong>Where it shows.</strong> Criteria 13 and 28 require Aunt Rosalind.</p>
+<p><strong>How it breaks the standard.</strong> The golden names Tamara Brown-Ellis, also supported, and fails both.</p>
+<p><strong>What it should have been.</strong> combined-home.html identifies a family member from the records as a possible overnight guest and states the recorded need that shapes where they sleep.</p>
+<h4 id="example-25">Example 25 (🔗<a href="mistakes/unanswerable-criterion.html#ex-unanswerable-criterion-3">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> The register prices sit both on a calendar event and in a PDF mailed the night before.</p>
+<p><strong>Where it shows.</strong> Criterion 26: "The trajectory grounds the nine old and new register prices in the calendar event."</p>
+<p><strong>How it breaks the standard.</strong> Criterion 29 wants its values from the mail, so a run reading one source fails one of the two; the golden fails 26.</p>
+<p><strong>What it should have been.</strong> Either source accepted: the calendar event or the price list attached to the 4 May mail.</p>
+<h4>Catching it in your own task</h4>
+<p>For each criterion, name its source line and where your golden shows it, then ask what wrong run still passes.</p>
+<h4>What to do instead</h4>
+<p>Grade the shape of an answer the source leaves open, accept either source, scope to where the values appear, and add bounds: exactly, only, between.</p>
+<h3 id="category-and-target">5.3 Category and Evaluation Target filled with the wrong kind of value<a class="toviewer" href="mistakes/category-and-target.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Overall Rubric Quality</p>
+<p>Category or Evaluation Target does not fit the criterion: Agent Behavior or Tool Use on an artifact, a category in the target field, or a subjective row tagged Instruction Following.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.4 Category &amp; Evaluation Target</strong></p>
+<p>“Agent Behavior, Target: Trajectory, always. If you wrote Agent Behavior against an artifact, a state change or the final message, you picked the wrong category: you are grading the deliverable, which is Task Completion, Instruction Following or Factuality.”</p>
+<p><strong>Guidelines · 8.4 Categories and Evaluation Targets for Subjective Rubrics</strong></p>
+<p>“Task Completion is the only valid category for subjective rubrics.”</p>
+</blockquote>
+<h4 id="example-26">Example 26 (🔗<a href="mistakes/category-and-target.html#ex-category-and-target-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Criteria 17 and 30 grade what a file states.</p>
+<p><strong>Where it shows.</strong> Both are Agent Behavior, targeting the artifact.</p>
+<p><strong>How it breaks the standard.</strong> Agent Behavior always targets Trajectory; a check on what a file says grades the deliverable.</p>
+<p><strong>What it should have been.</strong> Task Completion, same target.</p>
+<h4 id="example-27">Example 27 (🔗<a href="mistakes/category-and-target.html#ex-category-and-target-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> Subjective criterion 2 grades the key's colours in deltoid_plate_study.html.</p>
+<p><strong>Where it shows.</strong> It is tagged Instruction Following.</p>
+<p><strong>How it breaks the standard.</strong> No prompt asks for the colours, so it is a presentation property, and Instruction Following is never valid in the subjective block.</p>
+<p><strong>What it should have been.</strong> Task Completion.</p>
+<h4>Catching it in your own task</h4>
+<p>Read each category beside its target: Agent Behavior and Tool Use only on Trajectory, every subjective row Task Completion.</p>
+<h4>What to do instead</h4>
+<p>Retag, do not rewrite: a check on a file takes the deliverable's category, and an explicit ask moves from the subjective block to the objective one.</p>
+<h3 id="same-check-twice">5.4 The same check written twice<a class="toviewer" href="mistakes/same-check-twice.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Overall Rubric Quality</p>
+<p>Two criteria decided by the same evidence: one inside a broader one, a negative mirroring a positive, or a subjective criterion restating an objective value.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec appendix · Rubric Quality Definitions · Overlapping/Redundant Criteria</strong></p>
+<p>“Criterion that is either completely redundant because other criteria completely encompass the former or multiple criteria that check for the same thing partly. This can also apply to criteria which have direct semantic overlap with oppositely weighted criteria.”</p>
+<p><strong>QC spec appendix · Rubric Quality Definitions · Block Bleed</strong></p>
+<p>“A deterministic value check placed in the subjective block, or a presentation judgment placed in the objective block. Count each misplaced criterion. The fix is to move it, never to duplicate it across both blocks.”</p>
+<p>A subjective restatement of an objective value is this.</p>
+</blockquote>
+<h4 id="example-28">Example 28 (🔗<a href="mistakes/same-check-twice.html#ex-same-check-twice-1">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> Criterion 2 says the dailies index lists only four files; criterion 9 says two maps are not on it.</p>
+<p><strong>How it breaks the standard.</strong> If criterion 2 passes, criterion 9 cannot fail: one property, two rows of weight.</p>
+<p><strong>What it should have been.</strong> Keep criterion 2, drop 9.</p>
+<h4>Catching it in your own task</h4>
+<p>Name the evidence that decides each criterion: two on the same line are duplicates.</p>
+<h4>What to do instead</h4>
+<p>Keep one, the broader where one swallows the other. A subjective restatement keeps only its presentation property, or goes.</p>
+<hr />
+<h2 id="section-6">6. The subjective block</h2>
+<p>Ten or more criteria, no more than 30% of the weight, each grading a property of the render rather than your golden's wording, and each naming its file when the task ships more than one. Check all four before you submit.</p>
+<h3 id="subjective-no-file">6.1 Subjective criteria that never name the file<a class="toviewer" href="mistakes/subjective-no-file.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Subjective Block Scope</p>
+<p>Subjective criteria describe features without naming the file that carries them, usually after the first one or two.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 5.1 Rubric Fundamentals</strong></p>
+<p>“Include the exact expected value, filename, classification, decision, or other fact needed to determine whether it is Present or Not Present.”</p>
+<p>8.1 applies it to the subjective block.</p>
+<p><strong>Guidelines · 8.1 Writing Subjective Rubrics</strong></p>
+<p>“The element makes the criterion self-contained by telling the reviewer where to look.”</p>
+<p>With more than one file, that includes the filename.</p>
+</blockquote>
+<h4 id="example-29">Example 29 (🔗<a href="mistakes/subjective-no-file.html#ex-subjective-no-file-1">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> None of the 10 subjective criteria names a file, and the task ships four.</p>
+<p><strong>How it breaks the standard.</strong> Criteria 2 and 3 grade marks and columns that both the video and the notes file carry, so graders can score them against different files.</p>
+<p><strong>What it should have been.</strong> “In move_walkthrough.mp4, passed and failed outcomes are distinguished by colour or a mark, not by wording alone.”</p>
+<h4>Catching it in your own task</h4>
+<p>With more than one file, every subjective criterion contains a filename.</p>
+<h4>What to do instead</h4>
+<p>Open each one with “In <filename>,”.</p>
+<h3 id="subjective-size-and-share">6.2 Too few subjective criteria, or too much weight on them<a class="toviewer" href="mistakes/subjective-size-and-share.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Subjective Block Scope</p>
+<p>The subjective block holds fewer than ten criteria, or more than 30% of the total weight. Either alone is the error.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>Guidelines · 8.1 Writing Subjective Rubrics</strong></p>
+<p>“The expected number of subjective rubrics is 10 or more, but do not optimize for the count itself.”</p>
+<p><strong>QC spec appendix · Multi-Turn Authoring Standards · Writing Subjective Rubrics</strong></p>
+<p>“Same weight set {-5, -3, -1, +1, +3, +5}; block capped at 30% of total task weight.”</p>
+<p>Signs are ignored on both sides of the division.</p>
+</blockquote>
+<h4 id="example-30">Example 30 (🔗<a href="mistakes/subjective-size-and-share.html#ex-subjective-size-and-share-1">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> The subjective block carries 32 of 103 absolute weight: 31.1%.</p>
+<p><strong>How it breaks the standard.</strong> Twelve criteria clears the count; the weight alone breaks the cap, however close.</p>
+<p><strong>What it should have been.</strong> One +5 lowered to +3 gives 29.7%, with almost no margin.</p>
+<h4 id="example-31">Example 31 (🔗<a href="mistakes/subjective-size-and-share.html#ex-subjective-size-and-share-2">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> Five subjective criteria.</p>
+<p><strong>How it breaks the standard.</strong> None looks at the page's cut diagrams or scribe section, so an unreadable diagram scores the same as a clear one.</p>
+<p><strong>What it should have been.</strong> Ten or more, region by region, each naming front_room_builtin.html.</p>
+<h4>Catching it in your own task</h4>
+<p>Count the rows, ten at least, and divide the subjective weight by the total, signs ignored.</p>
+<h4>What to do instead</h4>
+<p>Add a criterion for each region nothing grades. Over the cap, add the objective checks your prompts call for, then lower overstated subjective weights.</p>
+<h3 id="subjective-from-the-page">6.3 Subjective criteria that require your golden's wording<a class="toviewer" href="mistakes/subjective-from-the-page.html">See it in the viewer</a></h3>
+<p class="sev sev-bleed">🟡 <strong>Costs points</strong> · Rubric Criteria - Overall Rubric Quality</p>
+<p>A subjective criterion requires the exact heading or label your golden happens to use, words no prompt contains.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec appendix · Multi-Turn Authoring Standards · Writing Subjective Rubrics</strong></p>
+<p>“Name ONE observable property of the RENDERED artifact. The judge sees the render, not the intent behind it.”</p>
+<p>A property, not one build's wording.</p>
+<p><strong>Guidelines · 8.1 Writing Subjective Rubrics</strong></p>
+<p>“If anything related to the render is asked in the prompt, it requires an objective rubric ONLY.”</p>
+<p>A label you chose is graded nowhere.</p>
+</blockquote>
+<h4 id="example-32">Example 32 (🔗<a href="mistakes/subjective-from-the-page.html#ex-subjective-from-the-page-1">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> Criteria 1 and 4 require the golden's own card headings, "Claim 1 - May trip" and "Claim 2 - August trip", and its exact header row, "Claim, Reached your account?, Due by 28 Aug?, and Verdict".</p>
+<p><strong>How it breaks the standard.</strong> Nine of ten subjective criteria quote words no prompt asks for, so a correct page with its own headings fails all nine.</p>
+<p><strong>What it should have been.</strong> “In reimbursement_status.html, the two claims are presented as two cards side by side rather than one after the other.”</p>
+<h4>Catching it in your own task</h4>
+<p>Search the prompts for every label a subjective criterion quotes. Not found: it grades your wording. Found: it belongs in the objective block.</p>
+<h4>What to do instead</h4>
+<p>Name the element by what it is, and grade how it is presented, not what it is called.</p>
+<hr />
+<h2 id="section-7">7. Closing the task</h2>
+<p>The golden is a deliverable, not a run you stopped. Check every value against its source and every revision for wording it left behind, then run the close out before you submit.</p>
+<h3 id="golden-contradicts-sources">7.1 The golden states something its own sources contradict<a class="toviewer" href="mistakes/golden-contradicts-sources.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Golden Solution - Artifact Completeness</p>
+<p>The golden states a value its source, or its own page, contradicts, often one true at an earlier turn. Nothing graded catches it.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec · Golden Solution - Artifact Completeness</strong></p>
+<p>“Subjective rubrics and pairwise scoring are graded relative to it, so a defective golden corrupts every subjective score on the task.”</p>
+<p><strong>Guidelines · 7. Golden Solution - Leg B</strong></p>
+<p>“Every factual claim is grounded in the actual inputs: images opened, videos watched, PDFs read. Nothing is asserted from a filename alone.”</p>
+<p>Including the values no criterion grades.</p>
+<p><strong>QC spec · Golden Solution - Artifact Completeness</strong></p>
+<p>“the golden asserts a finding the inputs do not support.”</p>
+<p>One of the shapes that fail the task.</p>
+</blockquote>
+<h4 id="example-33">Example 33 (🔗<a href="mistakes/golden-contradicts-sources.html#ex-golden-contradicts-sources-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> The calendar margin and the calendar service both give the handover as 18:30.</p>
+<p><strong>Where it shows.</strong> The golden dashboard: “on-site until 17:00 Fri, can't make the 13:30-15:30 exchange”</p>
+<p><strong>How it breaks the standard.</strong> 13:30 to 15:30 appears in three places, and the conclusion holds either way, so no criterion catches it.</p>
+<p><strong>What it should have been.</strong> 18:30 in all three places.</p>
+<h4 id="example-34">Example 34 (🔗<a href="mistakes/golden-contradicts-sources.html#ex-golden-contradicts-sources-2">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> A later turn's photo adds a sixteenth post to the fifteen from the export.</p>
+<p><strong>Where it shows.</strong> “Two artist-account posts (C16, C17) go out under @sunnyokafor — under P11 not ours to review, so not shown. That's why the count is 15, not 17.”</p>
+<p><strong>How it breaks the standard.</strong> The header counts “16 label posts”; this paragraph was never updated.</p>
+<p><strong>What it should have been.</strong> “That is why 15 of the 16 cards come from the export.”</p>
+<h4>Catching it in your own task</h4>
+<p>Point every ungraded value at its source line, and check each total or count against the same page.</p>
+<h4>What to do instead</h4>
+<p>Before you complete Leg B, send Model B a cleanup turn that points at the area, never the value, then check every place the value appears.</p>
+<h3 id="revision-leaves-old-wording">7.2 A revision that leaves the old wording standing<a class="toviewer" href="mistakes/revision-leaves-old-wording.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Multi-Turn - Revision Turn Handling</p>
+<p>A revision changes what was asked but leaves wording that depended on it, so the artifact states the old position and the new one.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec · Multi-Turn - Revision Turn Handling</strong></p>
+<p>“FAIL: both present but contradictory: March rows gone and the flags survived, but the total at the bottom still includes the March amounts.”</p>
+<p><strong>Guidelines · 6.3 Modifiers</strong></p>
+<p>“The golden has to show the edit applied to work that already existed: earlier content kept, the change visible, nothing left stale that depended on it.”</p>
+</blockquote>
+<h4 id="example-35">Example 35 (🔗<a href="mistakes/revision-leaves-old-wording.html#ex-revision-leaves-old-wording-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> A late turn moves the newsletter teaser and changes the count from days since filing to days since acknowledgment.</p>
+<p><strong>Where it shows.</strong> The page still says "The newsletter teaser rides the same Records batch" and "days since filing".</p>
+<p><strong>How it breaks the standard.</strong> The teaser now sits in two places, and one row still counts from filing while the rest of the page counts from acknowledgment.</p>
+<p><strong>What it should have been.</strong> The old sentence moved with the teaser, and the row reading "days since acknowledgment".</p>
+<h4>Catching it in your own task</h4>
+<p>After each revision turn, search the artifact for every value, label and name that moved.</p>
+<h4>What to do instead</h4>
+<p>Send Model B a Leg B cleanup turn that points at the stale area, never at the new wording.</p>
+<h3 id="closeout-mechanics">7.3 The five minute close out nobody runs<a class="toviewer" href="mistakes/closeout-mechanics.html">See it in the viewer</a></h3>
+<p class="sev sev-fail">🔴 <strong>Fails the task</strong> · Golden Solution - Trajectory Exclusion · Golden Solution - Artifact Completeness · Trajectory - Golden/Preferred Run Selection</p>
+<p>Five cheap checks, often skipped: stray files in the golden archive, a filename spelled two ways, a golden that stops early, no starred run, and clauses a grader must decode. The last two cost points.</p>
+<h4>Where the correct guidance is written</h4>
+<blockquote>
+<p><strong>QC spec · Golden Solution - Trajectory Exclusion</strong></p>
+<p>“golden/ ships finished artifacts only. The external judge receives the golden ARTIFACTS and never the golden trajectory — anything left in the folder describing how the answer was reached leaks the solution path into grading.”</p>
+<p>A caveat about the deliverable stays.</p>
+<p><strong>Guidelines · 7.1 What Changes from Leg A</strong></p>
+<p>“The preferred run (if multiple exist) must still be marked as ‘Preferred‘ with the star.”</p>
+<p>Also in Leg B. A missing star costs points.</p>
+<p><strong>Guidelines · 7. Golden Solution - Leg B</strong></p>
+<p>“Satisfies every objective requirement, with every required file present and named exactly as requested.”</p>
+<p>The prompt's spelling wins.</p>
+<p><strong>Guidelines · 1.2.3 Create the Initial Prompt and the Follow-ups</strong></p>
+<p>“Contains avoidable grammatical or wording issues.”</p>
+<p>A mark of a weak prompt; in a criterion, a Minor issue.</p>
+</blockquote>
+<h4 id="example-36">Example 36 (🔗<a href="mistakes/closeout-mechanics.html#ex-closeout-mechanics-1">Open in the viewer</a>)</h4>
+<p><strong>The task.</strong> The prompts name three files.</p>
+<p><strong>Where it shows.</strong> The golden archive also ships make_baseline_video.py, whose docstring names each answer's "Source of truth".</p>
+<p><strong>How it breaks the standard.</strong> Five files for three: the script shows how each answer was reached, a quiz image is a renamed copy of an input, and the printable script carries the rebuild instruction.</p>
+<p><strong>What it should have been.</strong> Only the three named files, none carrying the rebuild instruction.</p>
+<h4 id="example-37">Example 37 (🔗<a href="mistakes/closeout-mechanics.html#ex-closeout-mechanics-2">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> The prompt names IMG_4508.jpg; the inputs archive holds IMG45.08.JPG.</p>
+<p><strong>How it breaks the standard.</strong> Any criterion citing the name cannot be scored against the archive.</p>
+<p><strong>What it should have been.</strong> IMG_4508.jpg everywhere.</p>
+<h4 id="example-38">Example 38 (🔗<a href="mistakes/closeout-mechanics.html#ex-closeout-mechanics-3">Open in the viewer</a>)</h4>
+<p><strong>Where it shows.</strong> Criterion 22 wants a fee of %0.00, and milestone 4 ends "an apartment the sheet doe snot marks keeps all the requests".</p>
+<p><strong>How it breaks the standard.</strong> The grader has to guess the intended fee, and in Leg B you judge Model B against a sentence that does not parse.</p>
+<p><strong>What it should have been.</strong> "pantry_audit.html shows a delivery fee of $0.00 for the Mon 6 Jul 2026 order."</p>
+<h4>Catching it in your own task</h4>
+<p>Check the archive against the prompts' filenames, the run picker for “Preferred: 1/1 selected”, each filename character by character, each clause read straight through, and the golden reaching the last prompt.</p>
+<h4>What to do instead</h4>
+<p>Remove anything not named, clean build notes out with a Leg B cleanup turn, star the golden run, match the prompts' spelling, and rewrite any clause you read twice.</p>
+<hr />
+<h2 id="the-order-that-keeps-the-cost-down">The order that keeps the cost down</h2>
+<ol>
+<li>Confirm the universe returns every record your rules point at.</li>
+<li>Check the deliverable type against the complexity bar.</li>
+<li>Build the inputs, then prompts that they and the universe can support.</li>
+<li>Run Leg A, write the objective rubric with negatives from Leg A's wrong turns, and rate Model A.</li>
+<li>Write the milestones from the Model A conversation, and check them before Leg B.</li>
+<li>Run Leg B to the golden. Before you complete it, grade the golden against every objective criterion, check its values and revisions, and fix anything with a Leg B cleanup turn to Model B.</li>
+<li>Write the subjective block with the Model A render and the golden side by side, and rate both models.</li>
+<li>Run the close out, and confirm Model A fails at least half the weight, both blocks counted.</li>
+</ol>
+<p><a href="checklist.html">The full checklist before you submit →</a></p></article>
+</main>
+<footer><p>Every example on these pages is a real task from this project, shown as it was submitted.</p></footer>
+</body></html>
