@@ -20,7 +20,7 @@ what builds it; you do not need to read them to take the course.
 |---|---|
 | `index.html` | The menu. Every error, grouped into the course's seven sections. |
 | `mistakes/<name>.html` | One page per error, in five steps: what the issue is, why it matters with the rules it breaks quoted, how to recognise it in your own task, real tasks where it happened, what to do instead. |
-| `checklist.html` | Every recognition test on one page, in build order. The five minutes before you submit. |
+| `checklist.html` | Every recognition test on one page, section by section. The five minutes before you submit. |
 | `data/course.json` | The same content as data, if you want to render it somewhere else. |
 | `evidence/<task>/` | The task files the examples open: golden pages, photos, videos. Only what an example needs. |
 
