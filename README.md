@@ -119,7 +119,7 @@ example.
 
 ## The rest of the course
 
-- **Slides**: 13 slides at 1920x1080, published here as the Slides tab, with a PDF and a PPTX; every example
+- **Slides**: 14 slides at 1920x1080, published here as the Slides tab, with a PDF and a PPTX; every example
   number on them opens that example here
 - **Explanations**: the course text, one entry per mistake, published here as `explanations.html`
 - **Questions**: comprehension questions, built to test whether someone can recognise the mistake rather
